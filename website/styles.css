@@ -1,0 +1,147 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Styles for the header/navigation bar */
+header {
+    background-color: #333;
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.logo {
+    width: 160px; /* Adjust the size of the logo as needed */
+    height: fit-content;
+    margin-right: 10px;
+}
+
+.logo img {
+    width: 100%;
+    height: fit-content;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+    padding-right: 25px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Calibri';
+}
+
+.loading-section {
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 40px;
+    font-family: 'Calibri';
+    font-size: 19px;
+}
+
+.loading-image {
+    scale: 0.7;
+}
+
+.welcome-message {
+    padding: 20px 8px; /* top, left */
+    font-family: 'Calibri';
+}
+
+.first-text {
+    padding-top: 20px;
+    padding-left: 10px;
+    font-family: 'Calibri';
+}
+
+/* Sticky Footer Styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  height: 40px; /* Set the height of the footer */
+  margin-top: auto;
+}
+
+footer .footer-links a {
+  color: #fff;
+  font-family: 'Calibri';
+  font-size: 20px;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+footer .footer-links a:last-child {
+  margin-right: 0;
+}
+
+.copyright {
+  font-family: 'Calibri';
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .logo {
+    width: auto;
+    height: auto;
+  }
+
+  .logo img {
+    height: 70px;
+  }
+
+  nav {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  nav li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .welcome-message {
+    padding: 20px 8px;
+    font-size: 22px;
+    font-family: 'Calibri';
+  }
+
+  .loading-section {
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .loading-image {
+    width: 250px;
+    height: 250px;
+  }
+}
