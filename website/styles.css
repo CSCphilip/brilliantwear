@@ -1,7 +1,13 @@
 /* Reset some default styles */
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -14,69 +20,72 @@ body {
 
 /* Styles for the header/navigation bar */
 header {
-    background-color: #df8f28; /*Old: #333*/
-    color: hsl(0, 0%, 100%);
-    display: flex;
-    align-items: center;
-    height: 50px;
+  background-color: #df8f28;
+  /*Old: #333*/
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
 
 .logo {
-    width: 160px; /* Adjust the size of the logo as needed */
-    height: fit-content;
-    margin-right: 10px;
-    margin-top: 10px;
+  width: 160px;
+  /* Adjust the size of the logo as needed */
+  height: fit-content;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 .logo img {
-    width: 100%;
-    height: fit-content;
-    scale: 1.4;
+  width: 100%;
+  height: fit-content;
+  scale: 1.4;
 }
 
 nav {
-    flex: 1;
-    text-align: right;
-    padding-right: 25px;
+  flex: 1;
+  text-align: right;
+  padding-right: 25px;
 }
 
 nav ul {
-    list-style: none;
+  list-style: none;
 }
 
 nav li {
-    display: inline-block;
-    margin-left: 20px;
+  display: inline-block;
+  margin-left: 20px;
 }
 
 nav li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 25px;
-    font-family: 'Calibri';
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: 'Calibri';
 }
 
 .loading-section {
-    text-align: center;
-    padding-top: 70px;
-    padding-bottom: 40px;
-    font-family: 'Calibri';
-    font-size: 19px;
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 40px;
+  font-family: 'Calibri';
+  font-size: 19px;
 }
 
 .loading-image {
-    scale: 0.7;
+  scale: 0.7;
 }
 
 .welcome-message {
-    padding: 20px 8px; /* top, left */
-    font-family: 'Calibri';
+  padding: 20px 8px;
+  /* top, left */
+  font-family: 'Calibri';
 }
 
 .first-text {
-    padding-top: 20px;
-    padding-left: 10px;
-    font-family: 'Calibri';
+  padding-top: 20px;
+  padding-left: 10px;
+  font-family: 'Calibri';
 }
 
 /* Sticky Footer Styles */
@@ -84,7 +93,8 @@ footer {
   background-color: #333;
   color: #fff;
   padding: 10px;
-  height: 40px; /* Set the height of the footer */
+  height: 40px;
+  /* Set the height of the footer */
   margin-top: auto;
 }
 
