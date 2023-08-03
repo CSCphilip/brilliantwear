@@ -64,6 +64,20 @@ nav li a {
   font-family: 'Calibri';
 }
 
+nav button {
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: 'Calibri';
+}
+
+nav button:hover {
+  color: #000000;
+}
+
 .loading-section {
   text-align: center;
   padding-top: 70px;
@@ -112,6 +126,36 @@ footer .footer-links a:last-child {
 
 .copyright {
   font-family: 'Calibri';
+}
+
+/* Drop-down button styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
 }
 
 /* Responsive styles */

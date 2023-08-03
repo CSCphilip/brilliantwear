@@ -22,10 +22,29 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#">Glasögon</a></li>
-        <li><a href="#">Kläder</a></li>
-        <li><a href="#">Accessoarer</a></li>
+        <li>
+          <div class="dropdown">
+            <button onclick="toggleDropdown('myDropdown1')">Kläder</button>
+            <div class="dropdown-content" id="myDropdown1">
+              <a href="/tshirts.html">T-shirts</a>
+              <a href="#">Långbyxor</a>
+              <a href="#">Shorts</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button onclick="toggleDropdown('myDropdown2')">Accessoarer</button>
+            <div class="dropdown-content" id="myDropdown2">
+              <a href="#">Smycken</a>
+              <a href="#">Klockor</a>
+              <a href="#">Ryggsäckar</a>
+              <a href="#">Hattar</a>
+            </div>
+          </div>
+        </li>
         <li><a href="#">Ansiktsvård</a></li>
+        <li><a href="#">Glasögon</a></li>
         <li><a href="#">Tänder</a></li>
         <li><a href="#">Skor</a></li>
         <li><a href="#">Hygien</a></li>
@@ -51,6 +70,8 @@
     </div>
     <p class="copyright">&copy; 2023 Brilliantwear. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
