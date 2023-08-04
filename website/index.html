@@ -23,9 +23,10 @@
     <nav>
       <ul>
         <li>
-          <div class="dropdown">
-            <button onclick="toggleDropdown('myDropdown1')">Kläder</button>
-            <div class="dropdown-content" id="myDropdown1">
+          <div class="dropdown" onmouseover="showDropdown('dropdownContent1')"
+            onmouseout="hideDropdown('dropdownContent1')">
+            <button class="dropbtn">Kläder</button>
+            <div class="dropdown-content" id="dropdownContent1">
               <a href="/tshirts.html">T-shirts</a>
               <a href="#">Långbyxor</a>
               <a href="#">Shorts</a>
@@ -33,12 +34,12 @@
           </div>
         </li>
         <li>
-          <div class="dropdown">
-            <button onclick="toggleDropdown('myDropdown2')">Accessoarer</button>
-            <div class="dropdown-content" id="myDropdown2">
+          <div class="dropdown" onmouseover="showDropdown('dropdownContent2')"
+            onmouseout="hideDropdown('dropdownContent2')">
+            <button class="dropbtn">Accessoarer</button>
+            <div class="dropdown-content" id="dropdownContent2">
               <a href="#">Smycken</a>
               <a href="#">Klockor</a>
-              <a href="#">Ryggsäckar</a>
               <a href="#">Hattar</a>
             </div>
           </div>
