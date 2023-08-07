@@ -20,43 +20,54 @@
                 <img src="images/logo.png" alt="Brilliantwear">
             </a>
         </div>
-        <nav>
-            <ul>
-                <li>
-                    <div class="dropdown">
-                        <button onclick="toggleDropdown('myDropdown1')">Kläder</button>
-                        <div class="dropdown-content" id="myDropdown1">
-                            <a href="/tshirts.html">T-shirts</a>
-                            <a href="#">Långbyxor</a>
-                            <a href="#">Shorts</a>
+        <nav class="navbar">
+            <div class="navbar-container container">
+                <input type="checkbox">
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <ul class="menu-items">
+                    <li>
+                        <div class="dropdown" onmouseover="showDropdown('dropdownContent1')"
+                            onmouseout="hideDropdown('dropdownContent1')">
+                            <button class="dropbtn">Kläder</button>
+                            <div class="dropdown-content" id="dropdownContent1">
+                                <a href="/tshirts.html">T-shirts</a>
+                                <a href="#">Långbyxor</a>
+                                <a href="#">Shorts</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <button onclick="toggleDropdown('myDropdown2')">Accessoarer</button>
-                        <div class="dropdown-content" id="myDropdown2">
-                            <a href="#">Smycken</a>
-                            <a href="#">Klockor</a>
-                            <a href="#">Ryggsäckar</a>
-                            <a href="#">Hattar</a>
+                    </li>
+                    <li>
+                        <div class="dropdown" onmouseover="showDropdown('dropdownContent2')"
+                            onmouseout="hideDropdown('dropdownContent2')">
+                            <button class="dropbtn">Accessoarer</button>
+                            <div class="dropdown-content" id="dropdownContent2">
+                                <a href="#">Smycken</a>
+                                <a href="#">Klockor</a>
+                                <a href="#">Hattar</a>
+                                <a href="#">Väskor</a>
+                                <a href="#">Solglasögon</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li><a href="#">Ansiktsvård</a></li>
-                <li><a href="#">Glasögon</a></li>
-                <li><a href="#">Tänder</a></li>
-                <li><a href="#">Skor</a></li>
-                <li><a href="#">Hygien</a></li>
-                <li><a href="#">Doft</a></li>
-                <li><a href="#">Hår & Frisyrer</a></li>
-                <li><a href="#">Skägg</a></li>
-                <li><a href="#">Tatueringar</a></li>
-            </ul>
+                    </li>
+                    <li><a href="#">Ansiktsvård</a></li>
+                    <li><a href="#">Tänder</a></li>
+                    <li><a href="#">Skor</a></li>
+                    <li><a href="#">Hygien</a></li>
+                    <li><a href="#">Doft</a></li>
+                    <li><a href="#">Hår & Frisyrer</a></li>
+                    <li><a href="#">Skägg</a></li>
+                    <li><a href="#">Tatueringar</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <h2 style="padding: 20px 8px; font-family: 'Calibri';">Här kommer du snart kunna hitta t-shirts att köpa.</h2>
+    <h2 style="padding: 20px 8px; font-family: 'Calibri', 'Arial';">Här kommer du snart kunna hitta t-shirts att köpa.
+    </h2>
 
     <footer>
         <div class="footer-links">
