@@ -73,10 +73,18 @@
     <figcaption>Denna webbsida är under uppbyggnad.</figcaption>
   </div>
 
+  <div class="center-buttons">
+    <button onclick="changeNewsImage()" class="newsbtn">Fler Nyheter</button>
+  </div>
+
   <div class="centered-container">
     <div class="image-grid-2x2">
       <div class="column">
-        <img src="" alt="Nyheter">
+        <img src="/images/news-images/Raafey_Presse_Bilder_Schweiz.jpg" alt="Nyheter" id="news-image"
+          onclick=openNewTabContainingImage() onmouseover=showOverlayText() onmouseout=hideOverlayText()>
+        <div id="overlay-text">
+          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+        </div>
         <img src="" alt="Populärt">
       </div>
       <div class="column">
@@ -88,7 +96,7 @@
 
   <p>Test</p>
 
-  <div class="white"></div>
+  <div class="white-section"></div>
 
   <footer>
     <div class="footer-links">

@@ -155,7 +155,7 @@ footer .footer-links a:last-child {
 .centered-container {
   position: relative;
   width: 100%;
-  height: 75vh;
+  height: 76vh;
 }
 
 .image-grid-2x2 {
@@ -179,10 +179,41 @@ footer .footer-links a:last-child {
 
 .column img {
   width: 100%;
-  border: thin solid #df8f28;
+  height: 38vh;
+  border: solid thin seagreen;
 }
 
-.white {
+#overlay-text {
+  display: none;
+  position: absolute;
+}
+
+.text-over-image {
+  font-family: 'Calibri', 'Arial';
+  font-size: large;
+}
+
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.newsbtn {
+  height: 50px;
+  width: 200px;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: 'Calibri', 'Arial';
+  border-radius: 8px;
+}
+
+.white-section {
   background-color: white;
   height: 200px;
 }
