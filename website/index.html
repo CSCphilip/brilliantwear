@@ -73,28 +73,55 @@
     <figcaption>Denna webbsida är under uppbyggnad.</figcaption>
   </div>
 
+  <hr style="width:100%;">
+
   <div class="center-buttons">
-    <button onclick="changeNewsImage()" class="newsbtn">Fler Nyheter</button>
+    <button onclick="change2x2GridImages('news-image', newsImages)" class="centerbtn">Fler Nyheter</button>
+    <button onclick="change2x2GridImages('popular-image', popularImages)" class="centerbtn">Fler Populära</button>
+    <button onclick="change2x2GridImages('sale-image', saleImages)" class="centerbtn">Fler Rea Produkter</button>
+    <button onclick="change2x2GridImages('inspiration-image', inspirationImages)" class="centerbtn right-centerbtn">Mer
+      Inspiration</button>
   </div>
 
   <div class="centered-container">
     <div class="image-grid-2x2">
       <div class="column">
         <img src="/images/news-images/Raafey_Presse_Bilder_Schweiz.jpg" alt="Nyheter" id="news-image"
-          onclick=openNewTabContainingImage() onmouseover=showOverlayText() onmouseout=hideOverlayText()>
-        <div id="overlay-text">
+          onclick="openNewTabContainingImage('news-image')"
+          onmouseover="showOverlayText('news-image','overlay-text-news')"
+          onmouseout="hideOverlayText('news-image','overlay-text-news')">
+        <div id="overlay-text-news">
           <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
         </div>
-        <img src="" alt="Populärt">
+        <img src="/images/popular/bs2160-image-kwvyl7u6.jpg" alt="Populärt" id="popular-image"
+          onclick="openNewTabContainingImage('popular-image')"
+          onmouseover="showOverlayText('popular-image','overlay-text-popular')"
+          onmouseout="hideOverlayText('popular-image','overlay-text-popular')">
+        <div id="overlay-text-popular">
+          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+        </div>
       </div>
       <div class="column">
-        <img src="" alt="Rea">
-        <img src="" alt="Inspiration">
+        <img src="/images/sale/5550676712_bdfe1c4506_b.jpg" alt="Rea" id="sale-image"
+          onclick="openNewTabContainingImage('sale-image')"
+          onmouseover="showOverlayText('sale-image','overlay-text-sale')"
+          onmouseout="hideOverlayText('sale-image','overlay-text-sale')">
+        <div id="overlay-text-sale">
+          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+        </div>
+        <img
+          src="/images/inspiration/adult_autumn_casual_clothes_colors_fall_fashion_fine_looking-1514707-133368789.jpeg"
+          alt="Inspiration" id="inspiration-image" onclick="openNewTabContainingImage('inspiration-image')"
+          onmouseover="showOverlayText('inspiration-image','overlay-text-inspiration')"
+          onmouseout="hideOverlayText('inspiration-image','overlay-text-inspiration')">
+        <div id="overlay-text-inspiration">
+          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <p>Test</p>
+  <hr style="width:100%;">
 
   <div class="white-section"></div>
 

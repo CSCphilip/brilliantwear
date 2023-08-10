@@ -82,7 +82,7 @@ nav button:hover {
 .loading-section {
   text-align: center;
   padding-top: 70px;
-  padding-bottom: 130px;
+  padding-bottom: 180px;
   font-family: 'Calibri', 'Arial';
   font-size: 19px;
 }
@@ -155,7 +155,8 @@ footer .footer-links a:last-child {
 .centered-container {
   position: relative;
   width: 100%;
-  height: 76vh;
+  height: 75vh;
+  margin-bottom: 50px;
 }
 
 .image-grid-2x2 {
@@ -169,7 +170,6 @@ footer .footer-links a:last-child {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: solid;
 }
 
 .column {
@@ -180,12 +180,31 @@ footer .footer-links a:last-child {
 .column img {
   width: 100%;
   height: 38vh;
-  border: solid thin seagreen;
+  border: solid thin black;
 }
 
-#overlay-text {
+#overlay-text-news {
   display: none;
   position: absolute;
+}
+
+#overlay-text-popular {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+
+#overlay-text-sale {
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+
+#overlay-text-inspiration {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .text-over-image {
@@ -198,10 +217,11 @@ footer .footer-links a:last-child {
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.newsbtn {
+.centerbtn {
   height: 50px;
   width: 200px;
   color: inherit;
@@ -211,6 +231,11 @@ footer .footer-links a:last-child {
   font-size: 20px;
   font-family: 'Calibri', 'Arial';
   border-radius: 8px;
+  margin-right: 20px;
+}
+
+.right-centerbtn {
+  margin-right: 0px;
 }
 
 .white-section {
@@ -366,5 +391,33 @@ footer .footer-links a:last-child {
 
   .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
     transform: rotate(-35deg);
+  }
+
+  .center-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .centerbtn {
+    height: 50px;
+    width: 200px;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Calibri', 'Arial';
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-right: 0px;
+  }
+
+  .right-centerbtn {
+    margin-bottom: 0px;
   }
 }
