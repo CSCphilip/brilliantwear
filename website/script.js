@@ -66,6 +66,30 @@ function hideOverlayText(contentId, overlayTextId) {
     overlayText.style.display = "none";
 }
 
+function start2x2ImageGridParty(imagesArrays, imageIDs) {
+    var j = 0;
+    function changeImages() {
+        for (var i = 0; i < imageIDs.length; i++) {
+            var image = document.getElementById(imageIDs[i]);
+            var imageArray = imagesArrays[i];
+            var random = Math.floor(Math.random() * imageArray.length);
+            while (true) {
+                if (image.src !== imageArray[random]) {
+                    image.src = imageArray[random];
+                    break;
+                }
+            }
+        }
+        j++;
+        if (j < 200) {
+            setTimeout(changeImages, 500);
+        }
+    }
+
+    changeImages();
+}
+
+
 /* Old for learning JS:
 // Example of an object in JS!
 const person = {

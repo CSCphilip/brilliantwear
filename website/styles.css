@@ -18,7 +18,34 @@ body {
   min-height: 100vh;
 }
 
-/* Styles for the header/navigation bar */
+.topbar {
+  display: flex;
+  /* Center vertically: */
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background-color: #df8f28;
+  border-bottom: thin solid black;
+}
+
+#topbar-text {
+  color: black;
+  font-family: 'Calibri', 'Arial';
+  padding-top: 5px;
+  animation: slideText 25s linear infinite alternate;
+}
+
+@keyframes slideText {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+/* Styles for the header */
 header {
   background-color: #df8f28;
   /*Old: #333*/
@@ -221,6 +248,14 @@ footer .footer-links a:last-child {
   padding-bottom: 30px;
 }
 
+.center-bottom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
 .centerbtn {
   height: 50px;
   width: 200px;
@@ -234,7 +269,8 @@ footer .footer-links a:last-child {
   margin-right: 20px;
 }
 
-.right-centerbtn {
+.right-centerbtn,
+.bottom-centerbtn {
   margin-right: 0px;
 }
 
