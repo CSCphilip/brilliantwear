@@ -274,24 +274,59 @@ footer .footer-links a:last-child {
   margin-right: 0px;
 }
 
-.white-section {
-  background-color: white;
-  height: 200px;
-}
-
-/* Everything that has to do with the hamburger menu */
-/*
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-*/
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
   display: none;
+}
+
+.products-container {
+  height: 60vh;
+  /* Use flexbox */
+  display: flex;
+  /* Stack child elements vertically */
+  flex-direction: column;
+  border: solid black;
+}
+
+#products-header {
+  font-family: 'Calibri', 'Arial';
+  padding-left: 7px;
+  font-style: italic;
+}
+
+.products-1x4 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  border: solid red;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 400px;
+  margin-right: 20px;
+  border: solid green;
+}
+
+.last-product {
+  margin-right: 0px;
+}
+
+.product img {
+  height: 325px;
+  border: solid blue;
+}
+
+.product-description {
+  flex: 1;
+  border: solid yellow;
+}
+
+.white-section {
+  background-color: white;
+  height: 200px;
 }
 
 /* Responsive styles */
