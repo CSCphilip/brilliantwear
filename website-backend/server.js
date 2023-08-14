@@ -17,12 +17,16 @@ app.listen(2000, () => {
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/brilliantwear');
 
+const { Schema, model } = mongoose;
+
 const productSchema = new Schema({
     brand: String,
     category: String,
     price: Number,
     image_url: String
-})
+});
+
 var Product = mongoose.model("Product", productSchema);
+
 const firstProduct = await Product.findOne({});
 console.log(firstProduct);
