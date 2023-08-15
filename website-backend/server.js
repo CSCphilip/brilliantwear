@@ -28,9 +28,8 @@ const productSchema = new Schema({
 
 const Product = model('Product', productSchema);
 
-
-// Prints the last added product/record/document(official) in the colletion named "products"
-Product.find().limit(1).sort({$natural:-1}).then(p => console.log(p)).catch(error => console.log(error));
+// Prints the last added document/product in the collection named "products"
+Product.find().limit(1).sort({ $natural: -1 }).then(p => console.log(p)).catch(error => console.log(error));
 
 //async function run() {
 //	const firstProduct = await Product.findOne({});
