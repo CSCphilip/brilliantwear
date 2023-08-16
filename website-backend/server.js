@@ -11,10 +11,18 @@ app.get('/', (req, res) => {
     res.send('Hi, your request has been received');
 });
 
-app.get('/get-latest-products/:no', (req, res) => {
+app.get('/get-latest-products/:no', async (req, res) => {
+    console.log('Getting latest products from the MongoDB');
     const noProducts = req.params.no;
-    const latestProducts = getLatestProducts(noProducts);
-    res.send(latestProducts);
+
+    try {
+        const latestProducts = await getLatestProducts(noProducts);
+        console.log(latestProducts);
+        res.json(latestProducts); // Sending the JSON response
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 // Listen on port 80
@@ -37,12 +45,16 @@ const Product = model('Product', productSchema);
 // Prints the last added document/product in the collection named "products"
 // Product.find().limit(1).sort({ $natural: -1 }).then(p => console.log(p)).catch(error => console.log(error));
 
-function getLatestProducts(noProducts) {
+async function getLatestProducts(noProducts) {
     try {
-        const products = Product.find().limit(noProducts).sort({ $natural: -1 });
-        return products;
+        const latestProducts = await Product.find({}, {_id:0})
+	    .limit(noProducts)
+            .sort({ _id: -1 })
+ 	    .exec();
+	return latestProducts;
     } catch (error) {
         console.error(error);
+	throw error;
     }
 }
 
