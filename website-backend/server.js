@@ -47,14 +47,14 @@ const Product = model('Product', productSchema);
 
 async function getLatestProducts(noProducts) {
     try {
-        const latestProducts = await Product.find({}, {_id:0})
-	    .limit(noProducts)
+        const latestProducts = await Product.find({}, { _id: 0 })
+            .limit(noProducts)
             .sort({ _id: -1 })
- 	    .exec();
-	return latestProducts;
+            .exec();
+        return latestProducts;
     } catch (error) {
         console.error(error);
-	throw error;
+        throw error;
     }
 }
 
