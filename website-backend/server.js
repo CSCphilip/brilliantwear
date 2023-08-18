@@ -8,7 +8,8 @@ const { Schema, model } = mongoose;
 
 // Getting the path request and sending the response with text
 app.get('/', (req, res) => {
-    res.send('Hi, your request has been received');
+    console.log('Someone accessed "/"');
+    res.send('Hi, your request has been received!');
 });
 
 app.get('/get-latest-products/:no', async (req, res) => {
