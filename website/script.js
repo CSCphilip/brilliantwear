@@ -90,7 +90,7 @@ function start2x2ImageGridParty(imagesArrays, imageIDs) {
 }
 
 async function fetchProductsFromAPI() {
-    const response = await fetch("http://ec2-16-171-199-109.eu-north-1.compute.amazonaws.com/get-latest-products/4");
+    const response = await fetch("http://api.brilliantwear.se/get-latest-products/4http://ec2-16-171-199-109.eu-north-1.compute.amazonaws.com/get-latest-products/4");
     const products = await response.json();
     console.log(products);
 }
