@@ -89,23 +89,30 @@ function start2x2ImageGridParty(imagesArrays, imageIDs) {
     changeImages();
 }
 
-async function fetchProductsFromAPI() {
-    const response = await fetch("http://api.brilliantwear.se/get-latest-products/4");
-    const products = await response.json();
-    console.log(products);
-}
+async function fetchLatestProductsFromAPI() {
+    try {
+        const response = await fetch("http://localhost:3000/get-latest-products/4");
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const products = await response.json();
+        for (var i = 0; i < 4; i++) {
+            var imageId = "image" + (i + 1);
+            var image = document.getElementById(imageId);
+            var imageURL = products[i].image_url;
+            imageURL = imageURL.replaceAll("/", "%2F");
+            image.src = "http://localhost:3000/get-image/" + imageURL;
 
-
-/* Old for learning JS:
-// Example of an object in JS!
-const person = {
-    firstName: "John",
-    lastName: "Doe",
-    id: 5566,
-    fullName: function () {
-        return this.firstName + " " + this.lastName;
+            const brand = products[i].brand;
+            const category = products[i].category;
+            const price = products[i].price;
+            const productDescriptionElement = document.querySelectorAll('.product-description')[i];
+            productDescriptionElement.innerHTML = // WARNING: Just make sure that you're cautious when using .innerHTML to prevent potential security risks if you're including any user-generated content. If the content you're inserting is safe, like in this case, using .innerHTML for line breaks should be fine.
+                "Märke: " + brand + "<br>" +
+                "Typ: " + category + "<br>" +
+                "Pris: " + price + " kr";
+        }
+    } catch (error) {
+        console.error(`Download error: ${error.message}`);
     }
-};
-
-console.log(person.fullName());
-*/
+}

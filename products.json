@@ -1,8 +1,0 @@
-{"_id":{"$oid":"64d92995ccc8ba60ab54ca45"},"brand":"Converse","category":"Skaters","price":599,"image_url":"~/brilliantwear/website-backend/images/converse_PNG30-351274020.png"}
-{"_id":{"$oid":"64d92a0dccc8ba60ab54ca46"},"brand":"Gideon","category":"Street","price":799,"image_url":"~/brilliantwear/website-backend/images/gideon-shoes-1412083848.jpeg"}
-{"_id":{"$oid":"64d92a79ccc8ba60ab54ca47"},"brand":"Adidas","category":"Sneakers","price":499,"image_url":"~/brilliantwear/website-backend/images/pexels-photo-1456715-1356116325.jpeg"}
-{"_id":{"$oid":"64d92b0accc8ba60ab54ca48"},"brand":"Unknown","category":"High heels","price":1399,"image_url":"~/brilliantwear/website-backend/images/shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178.jpeg"}
-{"_id":{"$oid":"64d92b66ccc8ba60ab54ca49"},"brand":"Unknown","category":"High heels","price":2799,"image_url":"~/brilliantwear/website-backend/images/shoes_fashion_style_high_female_girl_fashionable_woman-718455-3909028581.jpeg"}
-{"_id":{"$oid":"64d92bbcccc8ba60ab54ca4a"},"brand":"Jordan","category":"Sneakers","price":1599,"image_url":"~/brilliantwear/website-backend/images/shoe-street-basketball-sneaker-1989890282.jpeg"}
-{"_id":{"$oid":"64d92c0eccc8ba60ab54ca4b"},"brand":"Unknown","category":"Loafers","price":999,"image_url":"~/brilliantwear/website-backend/images/th-411505416.jpeg"}
-{"_id":{"$oid":"64d92c41ccc8ba60ab54ca4c"},"brand":"Vans","category":"Street","price":799,"image_url":"~/brilliantwear/website-backend/images/vans_PNG12-2500030271.png"}

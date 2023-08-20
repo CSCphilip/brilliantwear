@@ -1,10 +1,14 @@
-// Import the Express library.
 const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
+const { Schema, model } = mongoose;
+
 // Initializing the app.
 const app = express();
-// Import mongoose
-const mongoose = require('mongoose');
-const { Schema, model } = mongoose;
+
+// This enables the frontend of the website to fetch data from this server
+app.use(cors({ origin: 'http://localhost:8000' }));
 
 // Getting the path request and sending the response with text
 app.get('/', (req, res) => {
@@ -19,16 +23,28 @@ app.get('/get-latest-products/:no', async (req, res) => {
     try {
         const latestProducts = await getLatestProducts(noProducts);
         console.log(latestProducts);
-        res.json(latestProducts); // Sending the JSON response
+        res.json(latestProducts);
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
 });
 
-// Listen on port 80
-app.listen(80, () => {
-    console.log('listening at http://localhost:80');
+app.get('/get-image/:url', (req, res) => {
+    const imageURL = req.params.url;
+    console.log('Getting image from url: ' + imageURL);
+
+    try {
+        res.sendFile(__dirname + imageURL);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Listen on port 3000
+app.listen(3000, () => {
+    console.log('listening at http://localhost:3000');
 });
 
 // Connect to MongoDB and the database called brilliantwear 
@@ -43,14 +59,12 @@ const productSchema = new Schema({
 
 const Product = model('Product', productSchema);
 
-// Prints the last added document/product in the collection named "products"
-// Product.find().limit(1).sort({ $natural: -1 }).then(p => console.log(p)).catch(error => console.log(error));
-
 async function getLatestProducts(noProducts) {
     try {
         const latestProducts = await Product.find({}, { _id: 0 })
             .limit(noProducts)
             .sort({ _id: -1 })
+            .lean() // Documents returned from queries with the lean option enabled are plain javascript objects, not Mongoose Documents.
             .exec();
         return latestProducts;
     } catch (error) {
@@ -58,11 +72,5 @@ async function getLatestProducts(noProducts) {
         throw error;
     }
 }
-
-//async function run() {
-//	const firstProduct = await Product.findOne({});
-//	console.log(firstProduct);
-//}
-//run();
 
 //mongoose.connection.close();
