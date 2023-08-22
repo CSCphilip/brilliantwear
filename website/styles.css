@@ -330,6 +330,18 @@ footer .footer-links a:last-child {
   height: 200px;
 }
 
+.upload-container {
+  display: flex;
+  justify-content: center;
+  border: solid black;
+}
+
+.focus-area {
+  height: 600px;
+  width: 50vw;
+  border: solid red;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 1288px) {
   header {

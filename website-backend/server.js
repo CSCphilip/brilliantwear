@@ -1,14 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const multer = require('multer');
+var bodyParser = require('body-parser');
 
 const { Schema, model } = mongoose;
 
 // Initializing the app.
 const app = express();
 
+var upload = multer();
+
 // This enables the frontend of the website to fetch data from this server
-app.use(cors({ origin: 'http://localhost:8000' }));
+app.use(cors({ origin: ['http://localhost:8000'] }));
 
 // Getting the path request and sending the response with text
 app.get('/', (req, res) => {
@@ -41,6 +45,32 @@ app.get('/get-image/:url', (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+// for parsing application/json
+app.use(bodyParser.json());
+
+// for parsing application/xwww-
+app.use(bodyParser.urlencoded({ extended: true }));
+//form-urlencoded
+
+// for parsing multipart/form-data
+app.use(upload.array());
+app.use(express.static('public'));
+
+app.post('/upload-product', (req, res) => {
+    console.log("Got the following body of a POST request to /upload-product:");
+    console.log(req.body);
+
+    // Process the form data and perform necessary operations
+    // TODO
+
+    // Respond with a 200 status to indicate successful form submission
+    res.status(200).send('Form submitted successfully');
+
+    // Redirect the client to a new URL after processing
+    // res.redirect("http://localhost:8000/upload-product");
+});
+
 
 // Listen on port 3000
 app.listen(3000, () => {
