@@ -342,6 +342,12 @@ footer .footer-links a:last-child {
   border: solid red;
 }
 
+.upload-header {
+  font-family: 'Calibri', ' Arial';
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 1288px) {
   header {

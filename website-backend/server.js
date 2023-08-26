@@ -1,15 +1,17 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
+const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const multer = require('multer');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const { Schema, model } = mongoose;
 
 // Initializing the app.
 const app = express();
 
-var upload = multer();
+const upload = multer();
 
 // This enables the frontend of the website to fetch data from this server
 app.use(cors({ origin: ['http://localhost:8000'] }));
@@ -46,34 +48,42 @@ app.get('/get-image/:url', (req, res) => {
     }
 });
 
-// for parsing application/json
-app.use(bodyParser.json());
+// // for parsing application/json
+// app.use(bodyParser.json());
+// // for parsing application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: true }));
+// // for parsing multipart/form-data
+// app.use(upload.array());
+//app.use(express.static(__dirname));
 
-// for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true }));
-//form-urlencoded
+app.post('/upload-product',
+    fileUpload(),
+    (req, res) => {
+        console.log("A POST request to /upload-product was made");
+        const files = req.files;
+        const body = req.body;
 
-// for parsing multipart/form-data
-app.use(upload.array());
-app.use(express.static('public'));
+        const imagePath = path.join(__dirname, 'images', files['image'].name);
 
-app.post('/upload-product', (req, res) => {
-    console.log("Got the following body of a POST request to /upload-product:");
-    console.log(req.body);
+        files['image'].mv(imagePath,
+            (err) => {
+                if (err) return res.status(500).json({ status: "error", message: err })
+            });
 
-    // Process the form data and perform necessary operations
-    // TODO
+        addProduct(body, files['image'].name);
 
-    // Respond with a 200 status to indicate successful form submission
-    res.status(200).send('Form submitted successfully');
-
-    // Redirect the client to a new URL after processing
-    // res.redirect("http://localhost:8000/upload-product");
-});
-
+        // In this case, the client's browser will automatically follow the
+        // Location header, resulting in a GET request to the specified URL.
+        // This approach is in line with HTTP standards and provides a clear 
+        // way to indicate both successful form submission and redirection.
+        res.status(303)
+            .set('Location', 'http://localhost:8000/product-uploaded')
+            .send();
+    });
 
 // Listen on port 3000
-app.listen(3000, () => {
+const PORT = 3000;
+app.listen(PORT, () => {
     console.log('listening at http://localhost:3000');
 });
 
@@ -97,6 +107,20 @@ async function getLatestProducts(noProducts) {
             .lean() // Documents returned from queries with the lean option enabled are plain javascript objects, not Mongoose Documents.
             .exec();
         return latestProducts;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+async function addProduct(body, imageName) {
+    try {
+        const newProduct = new Product(body);
+        newProduct['image_url'] = path.join('/images', imageName);
+        console.log("Created the following new product: " + newProduct);
+
+        await newProduct.save();
+        console.log("New product added to the MongoDB successfully");
     } catch (error) {
         console.error(error);
         throw error;
