@@ -333,13 +333,12 @@ footer .footer-links a:last-child {
 .upload-container {
   display: flex;
   justify-content: center;
-  border: solid black;
 }
 
 .focus-area {
   height: 600px;
   width: 50vw;
-  border: solid red;
+  border: solid black;
 }
 
 .upload-header {

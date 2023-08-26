@@ -3,15 +3,21 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const multer = require('multer');
-const bodyParser = require('body-parser');
+// const multer = require('multer');
+// const bodyParser = require('body-parser');
 
 const { Schema, model } = mongoose;
 
 // Initializing the app.
 const app = express();
 
-const upload = multer();
+// Listen on port 3000
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log('listening at http://localhost:3000');
+});
+
+// const upload = multer();
 
 // This enables the frontend of the website to fetch data from this server
 app.use(cors({ origin: ['http://localhost:8000'] }));
@@ -55,7 +61,6 @@ app.get('/get-image/:url', (req, res) => {
 // // for parsing multipart/form-data
 // app.use(upload.array());
 //app.use(express.static(__dirname));
-
 app.post('/upload-product',
     fileUpload(),
     (req, res) => {
@@ -80,12 +85,6 @@ app.post('/upload-product',
             .set('Location', 'http://localhost:8000/product-uploaded')
             .send();
     });
-
-// Listen on port 3000
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log('listening at http://localhost:3000');
-});
 
 // Connect to MongoDB and the database called brilliantwear 
 mongoose.connect('mongodb://localhost/brilliantwear');
@@ -127,4 +126,4 @@ async function addProduct(body, imageName) {
     }
 }
 
-//mongoose.connection.close();
+// mongoose.connection.close();
