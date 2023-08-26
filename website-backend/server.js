@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieSession = require("cookie-session");
 // const multer = require('multer');
 // const bodyParser = require('body-parser');
 
@@ -20,7 +21,18 @@ app.listen(PORT, () => {
 // const upload = multer();
 
 // This enables the frontend of the website to fetch data from this server
-app.use(cors({ origin: ['http://localhost:8000'] }));
+const corsOptions = {
+    origin: ['http://localhost:8000']
+};
+app.use(cors(corsOptions));
+
+app.use(
+    cookieSession({
+        name: "brilliantwear-session",
+        keys: ["COOKIE_SECRET"], // should use as secret environment variable
+        httpOnly: true // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
+    })
+);
 
 // Getting the path request and sending the response with text
 app.get('/', (req, res) => {
@@ -87,7 +99,7 @@ app.post('/upload-product',
     });
 
 // Connect to MongoDB and the database called brilliantwear 
-mongoose.connect('mongodb://localhost/brilliantwear');
+// mongoose.connect('mongodb://localhost/brilliantwear');
 
 const productSchema = new Schema({
     brand: String,
@@ -124,6 +136,50 @@ async function addProduct(body, imageName) {
         console.error(error);
         throw error;
     }
+}
+
+const db = require("./models");
+const dbConfig = require("./config/db.config");
+const Role = db.role;  // This is a mongoose model
+
+db.mongoose
+    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("Successfully connect to MongoDB.");
+        initial();
+    })
+    .catch(err => {
+        console.error("Connection error", err);
+        process.exit();
+    });
+
+function initial() {
+    Role.estimatedDocumentCount()
+        .then(count => {
+            if (count === 0) {
+                const rolesToInsert = [
+                    { name: "user" },
+                    { name: "moderator" },
+                    { name: "admin" }
+                ];
+
+                return Role.insertMany(rolesToInsert);
+            }
+        })
+        .then(addedRoles => {
+            if (addedRoles) {
+                console.log("Added roles:", addedRoles);
+            } else {
+                console.log("Roles already exist.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+
 }
 
 // mongoose.connection.close();
