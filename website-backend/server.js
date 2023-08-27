@@ -4,27 +4,26 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieSession = require("cookie-session");
+const bodyParser = require('body-parser');
 // const multer = require('multer');
-// const bodyParser = require('body-parser');
+
+// const upload = multer();
 
 const { Schema, model } = mongoose;
 
 // Initializing the app.
 const app = express();
 
-// Listen on port 3000
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log('listening at http://localhost:3000');
-});
-
-// const upload = multer();
-
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
     origin: ['http://localhost:8000']
 };
 app.use(cors(corsOptions));
+
+// for parsing application/json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
     cookieSession({
@@ -33,6 +32,15 @@ app.use(
         httpOnly: true // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
     })
 );
+
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
+
+// Listen on port 3000
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is listening at http://localhost:${PORT}`);
+});
 
 // Getting the path request and sending the response with text
 app.get('/', (req, res) => {
@@ -66,10 +74,6 @@ app.get('/get-image/:url', (req, res) => {
     }
 });
 
-// // for parsing application/json
-// app.use(bodyParser.json());
-// // for parsing application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: true }));
 // // for parsing multipart/form-data
 // app.use(upload.array());
 //app.use(express.static(__dirname));
