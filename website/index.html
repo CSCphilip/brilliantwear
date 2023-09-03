@@ -1,171 +1,234 @@
 <!DOCTYPE html>
 <html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brilliantwear</title>
+    <link rel="stylesheet" href="styles.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brilliantwear</title>
-  <link rel="stylesheet" href="styles.css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/favicon/site.webmanifest" />
+  </head>
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/images/favicon/site.webmanifest">
-</head>
-
-<body onload="fetchLatestProductsFromAPI()">
-  <div class="topbar">
-    <p id="topbar-text">30% Rea Just Nu!</p>
-  </div>
-  <header>
-    <div class="logo">
-      <a href="/">
-        <img src="images/logo.png" alt="Brilliantwear">
-      </a>
+  <body onload="fetchLatestProductsFromAPI()">
+    <div class="topbar">
+      <p id="topbar-text">30% Rea Just Nu!</p>
     </div>
-    <nav class="navbar">
-      <div class="navbar-container container">
-        <input type="checkbox">
-        <div class="hamburger-lines">
-          <span class="line line1"></span>
-          <span class="line line2"></span>
-          <span class="line line3"></span>
-        </div>
-        <ul class="menu-items">
-          <li>
-            <div class="dropdown" onmouseover="showDropdown('dropdownContent1')"
-              onmouseout="hideDropdown('dropdownContent1')">
-              <button class="dropbtn">Kläder</button>
-              <div class="dropdown-content" id="dropdownContent1">
-                <a href="/tshirts.html">T-shirts</a>
-                <a href="#">Långbyxor</a>
-                <a href="#">Shorts</a>
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Brilliantwear" />
+        </a>
+      </div>
+      <nav class="navbar">
+        <div class="navbar-container container">
+          <input type="checkbox" />
+          <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>
+          <ul class="menu-items">
+            <li>
+              <div
+                class="dropdown"
+                onmouseover="showDropdown('dropdownContent1')"
+                onmouseout="hideDropdown('dropdownContent1')"
+              >
+                <button class="dropbtn">Kläder</button>
+                <div class="dropdown-content" id="dropdownContent1">
+                  <a href="/tshirts.html">T-shirts</a>
+                  <a href="#">Långbyxor</a>
+                  <a href="#">Shorts</a>
+                </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="dropdown" onmouseover="showDropdown('dropdownContent2')"
-              onmouseout="hideDropdown('dropdownContent2')">
-              <button class="dropbtn">Accessoarer</button>
-              <div class="dropdown-content" id="dropdownContent2">
-                <a href="#">Smycken</a>
-                <a href="#">Klockor</a>
-                <a href="#">Hattar</a>
-                <a href="#">Väskor</a>
-                <a href="#">Solglasögon</a>
+            </li>
+            <li>
+              <div
+                class="dropdown"
+                onmouseover="showDropdown('dropdownContent2')"
+                onmouseout="hideDropdown('dropdownContent2')"
+              >
+                <button class="dropbtn">Accessoarer</button>
+                <div class="dropdown-content" id="dropdownContent2">
+                  <a href="#">Smycken</a>
+                  <a href="#">Klockor</a>
+                  <a href="#">Hattar</a>
+                  <a href="#">Väskor</a>
+                  <a href="#">Solglasögon</a>
+                </div>
               </div>
-            </div>
-          </li>
-          <li><a href="#">Ansiktsvård</a></li>
-          <li><a href="#">Tänder</a></li>
-          <li><a href="#">Skor</a></li>
-          <li><a href="#">Hygien</a></li>
-          <li><a href="#">Doft</a></li>
-          <li><a href="#">Hår & Frisyrer</a></li>
-          <li><a href="#">Skägg</a></li>
-          <li><a href="#">Tatueringar</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <h1 class="welcome-message">Välkommen till Brilliantwear!</h1>
-
-  <div class="loading-section">
-    <img src="/images/loading.gif" class="loading-image">
-    <figcaption>Denna webbsida är under uppbyggnad.</figcaption>
-  </div>
-
-  <hr style="width:99%;">
-
-  <div class="center-buttons">
-    <button onclick="change2x2GridImages('news-image', newsImages)" class="centerbtn">Fler Nyheter</button>
-    <button onclick="change2x2GridImages('popular-image', popularImages)" class="centerbtn">Fler Populära</button>
-    <button onclick="change2x2GridImages('sale-image', saleImages)" class="centerbtn">Fler Rea Produkter</button>
-    <button onclick="change2x2GridImages('inspiration-image', inspirationImages)" class="centerbtn right-centerbtn">Mer
-      Inspiration</button>
-  </div>
-
-  <div class="centered-container">
-    <div class="image-grid-2x2">
-      <div class="column">
-        <img src="/images/news-images/Raafey_Presse_Bilder_Schweiz.jpg" alt="Nyheter" id="news-image"
-          onclick="openNewTabContainingImage('news-image')"
-          onmouseover="showOverlayText('news-image','overlay-text-news')"
-          onmouseout="hideOverlayText('news-image','overlay-text-news')">
-        <div id="overlay-text-news">
-          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+            </li>
+            <li><a href="#">Ansiktsvård</a></li>
+            <li><a href="#">Tänder</a></li>
+            <li><a href="#">Skor</a></li>
+            <li><a href="#">Hygien</a></li>
+            <li><a href="#">Doft</a></li>
+            <li><a href="#">Hår & Frisyrer</a></li>
+            <li><a href="#">Skägg</a></li>
+            <li><a href="#">Tatueringar</a></li>
+          </ul>
         </div>
-        <img src="/images/popular/bs2160-image-kwvyl7u6.jpg" alt="Populärt" id="popular-image"
-          onclick="openNewTabContainingImage('popular-image')"
-          onmouseover="showOverlayText('popular-image','overlay-text-popular')"
-          onmouseout="hideOverlayText('popular-image','overlay-text-popular')">
-        <div id="overlay-text-popular">
-          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+      </nav>
+    </header>
+
+    <h1 class="welcome-message">Välkommen till Brilliantwear!</h1>
+
+    <div class="loading-section">
+      <img src="/images/loading.gif" class="loading-image" />
+      <figcaption>Denna webbsida är under uppbyggnad.</figcaption>
+    </div>
+
+    <hr style="width: 99%" />
+
+    <div class="center-buttons">
+      <button
+        onclick="change2x2GridImages('news-image', newsImages)"
+        class="centerbtn"
+      >
+        Fler Nyheter
+      </button>
+      <button
+        onclick="change2x2GridImages('popular-image', popularImages)"
+        class="centerbtn"
+      >
+        Fler Populära
+      </button>
+      <button
+        onclick="change2x2GridImages('sale-image', saleImages)"
+        class="centerbtn"
+      >
+        Fler Rea Produkter
+      </button>
+      <button
+        onclick="change2x2GridImages('inspiration-image', inspirationImages)"
+        class="centerbtn right-centerbtn"
+      >
+        Mer Inspiration
+      </button>
+    </div>
+
+    <div class="centered-container">
+      <div class="image-grid-2x2">
+        <div class="column">
+          <img
+            src="/images/news-images/Raafey_Presse_Bilder_Schweiz.jpg"
+            alt="Nyheter"
+            id="news-image"
+            onclick="openNewTabContainingImage('news-image')"
+            onmouseover="showOverlayText('news-image','overlay-text-news')"
+            onmouseout="hideOverlayText('news-image','overlay-text-news')"
+          />
+          <div id="overlay-text-news">
+            <p class="text-over-image">
+              Klicka på bilden för att öppna den i en ny flik
+            </p>
+          </div>
+          <img
+            src="/images/popular/bs2160-image-kwvyl7u6.jpg"
+            alt="Populärt"
+            id="popular-image"
+            onclick="openNewTabContainingImage('popular-image')"
+            onmouseover="showOverlayText('popular-image','overlay-text-popular')"
+            onmouseout="hideOverlayText('popular-image','overlay-text-popular')"
+          />
+          <div id="overlay-text-popular">
+            <p class="text-over-image">
+              Klicka på bilden för att öppna den i en ny flik
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <img src="/images/sale/5550676712_bdfe1c4506_b.jpg" alt="Rea" id="sale-image"
-          onclick="openNewTabContainingImage('sale-image')"
-          onmouseover="showOverlayText('sale-image','overlay-text-sale')"
-          onmouseout="hideOverlayText('sale-image','overlay-text-sale')">
-        <div id="overlay-text-sale">
-          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
-        </div>
-        <img
-          src="/images/inspiration/adult_autumn_casual_clothes_colors_fall_fashion_fine_looking-1514707-133368789.jpeg"
-          alt="Inspiration" id="inspiration-image" onclick="openNewTabContainingImage('inspiration-image')"
-          onmouseover="showOverlayText('inspiration-image','overlay-text-inspiration')"
-          onmouseout="hideOverlayText('inspiration-image','overlay-text-inspiration')">
-        <div id="overlay-text-inspiration">
-          <p class="text-over-image">Klicka på bilden för att öppna den i en ny flik</p>
+        <div class="column">
+          <img
+            src="/images/sale/5550676712_bdfe1c4506_b.jpg"
+            alt="Rea"
+            id="sale-image"
+            onclick="openNewTabContainingImage('sale-image')"
+            onmouseover="showOverlayText('sale-image','overlay-text-sale')"
+            onmouseout="hideOverlayText('sale-image','overlay-text-sale')"
+          />
+          <div id="overlay-text-sale">
+            <p class="text-over-image">
+              Klicka på bilden för att öppna den i en ny flik
+            </p>
+          </div>
+          <img
+            src="/images/inspiration/adult_autumn_casual_clothes_colors_fall_fashion_fine_looking-1514707-133368789.jpeg"
+            alt="Inspiration"
+            id="inspiration-image"
+            onclick="openNewTabContainingImage('inspiration-image')"
+            onmouseover="showOverlayText('inspiration-image','overlay-text-inspiration')"
+            onmouseout="hideOverlayText('inspiration-image','overlay-text-inspiration')"
+          />
+          <div id="overlay-text-inspiration">
+            <p class="text-over-image">
+              Klicka på bilden för att öppna den i en ny flik
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="center-bottom-button">
-    <button
-      onclick="start2x2ImageGridParty([newsImages, popularImages, saleImages, inspirationImages],['news-image','popular-image','sale-image','inspiration-image'])"
-      class="centerbtn bottom-centerbtn">Rulla bilder (Party!)</button>
-  </div>
+    <div class="center-bottom-button">
+      <button
+        onclick="start2x2ImageGridParty([newsImages, popularImages, saleImages, inspirationImages],['news-image','popular-image','sale-image','inspiration-image'])"
+        class="centerbtn bottom-centerbtn"
+      >
+        Rulla bilder (Party!)
+      </button>
+    </div>
 
-  <hr style="width:99%;">
+    <hr style="width: 99%" />
 
-  <div class="products-container">
-    <h2 id="products-header">De senaste produkterna</h2>
-    <div class="products-1x4">
-      <div class="product">
-        <img src="" id="image1">
-        <div class="product-description"></div>
-      </div>
-      <div class="product">
-        <img src="" id="image2">
-        <div class="product-description"></div>
-      </div>
-      <div class="product">
-        <img src="" id="image3">
-        <div class="product-description"></div>
-      </div>
-      <div class="product last-product">
-        <img src="" id="image4">
-        <div class="product-description"></div>
+    <div class="products-container">
+      <h2 id="products-header">De senaste produkterna</h2>
+      <div class="products-1x4">
+        <div class="product">
+          <img src="" id="image1" />
+          <div class="product-description"></div>
+        </div>
+        <div class="product">
+          <img src="" id="image2" />
+          <div class="product-description"></div>
+        </div>
+        <div class="product">
+          <img src="" id="image3" />
+          <div class="product-description"></div>
+        </div>
+        <div class="product last-product">
+          <img src="" id="image4" />
+          <div class="product-description"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="white-section"></div>
+    <div class="white-section"></div>
 
-  <footer>
-    <div class="footer-links">
-      <a href="/#">Om</a>
-      <a href="/#">Kontakt</a>
-      <a href="/upload-product.html">Lägg till produkt</a>
-    </div>
-    <p class="copyright">&copy; 2023 Brilliantwear. All rights reserved.</p>
-  </footer>
+    <footer>
+      <div class="footer-links">
+        <a href="/#">Om</a>
+        <a href="/#">Kontakt</a>
+        <a href="/upload-product.html">Lägg till produkt</a>
+      </div>
+      <p class="copyright">&copy; 2023 Brilliantwear. All rights reserved.</p>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>

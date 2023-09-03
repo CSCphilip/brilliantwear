@@ -30,7 +30,7 @@ body {
 
 #topbar-text {
   color: black;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   padding-top: 5px;
   animation: slideText 25s linear infinite alternate;
 }
@@ -88,7 +88,7 @@ nav li a {
   color: #fff;
   text-decoration: none;
   font-size: 25px;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
 }
 
 nav button {
@@ -98,7 +98,7 @@ nav button {
   cursor: pointer;
   text-decoration: none;
   font-size: 25px;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
 }
 
 nav button:hover {
@@ -110,7 +110,7 @@ nav button:hover {
   text-align: center;
   padding-top: 70px;
   padding-bottom: 180px;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   font-size: 19px;
 }
 
@@ -120,7 +120,7 @@ nav button:hover {
 
 .welcome-message {
   padding: 20px 8px;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
 }
 
 /* Sticky Footer Styles */
@@ -135,7 +135,7 @@ footer {
 
 footer .footer-links a {
   color: #fff;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   font-size: 20px;
   text-decoration: none;
   margin-right: 20px;
@@ -146,7 +146,7 @@ footer .footer-links a:last-child {
 }
 
 .copyright {
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
 }
 
 /* Drop-down button styles */
@@ -235,7 +235,7 @@ footer .footer-links a:last-child {
 }
 
 .text-over-image {
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   font-size: large;
 }
 
@@ -264,7 +264,7 @@ footer .footer-links a:last-child {
   cursor: pointer;
   text-decoration: none;
   font-size: 20px;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   border-radius: 8px;
   margin-right: 20px;
 }
@@ -287,7 +287,7 @@ footer .footer-links a:last-child {
 }
 
 #products-header {
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   padding-left: 7px;
   padding-top: 10px;
   font-style: italic;
@@ -319,7 +319,7 @@ footer .footer-links a:last-child {
 
 .product-description {
   flex: 1;
-  font-family: 'Calibri', 'Arial';
+  font-family: "Calibri", "Arial";
   font-size: medium;
   padding-top: 10px;
   padding-left: 5px;
@@ -342,7 +342,7 @@ footer .footer-links a:last-child {
 }
 
 .upload-header {
-  font-family: 'Calibri', ' Arial';
+  font-family: "Calibri", " Arial";
   padding-left: 20px;
   padding-top: 20px;
 }
@@ -361,7 +361,7 @@ footer .footer-links a:last-child {
   .welcome-message {
     padding: 20px 8px;
     font-size: 22px;
-    font-family: 'Calibri', 'Arial';
+    font-family: "Calibri", "Arial";
   }
 
   .loading-section {
@@ -466,19 +466,19 @@ footer .footer-links a:last-child {
     font-weight: 500;
   }
 
-  .navbar-container input[type="checkbox"]:checked~.menu-items {
+  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
     transform: translateX(0);
   }
 
-  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
     transform: rotate(35deg);
   }
 
-  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
     transform: scaleY(0);
   }
 
-  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
     transform: rotate(-35deg);
   }
 
@@ -500,7 +500,7 @@ footer .footer-links a:last-child {
     cursor: pointer;
     text-decoration: none;
     font-size: 20px;
-    font-family: 'Calibri', 'Arial';
+    font-family: "Calibri", "Arial";
     border-radius: 8px;
     margin-bottom: 15px;
     margin-right: 0px;

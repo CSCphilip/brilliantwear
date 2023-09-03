@@ -1,0 +1,14 @@
+.product {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.product img {
+  height: 100px;
+  width: 100px;
+}
+
+.product-description {
+  margin-top: 3px;
+  border: solid thin red;
+}

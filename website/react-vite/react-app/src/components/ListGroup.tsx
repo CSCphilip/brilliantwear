@@ -26,7 +26,7 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
     return items.length === 0 && <p>No items found.</p>;
   };
 
-  const handleClick = (event: MouseEvent) => console.log(event.clientX);
+  // const handleClick = (event: MouseEvent) => console.log(event.clientX);
 
   return (
     <>
