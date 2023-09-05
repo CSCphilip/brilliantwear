@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 
 // Props: Input passed to a component. Similar to function args.
 interface ListGroupProps {

@@ -6,13 +6,12 @@ interface ProductProps {
 }
 
 const Product = ({ brand, category, price, image_url }: ProductProps) => {
-  image_url = image_url.replaceAll("/", "%2F");
+  image_url = image_url.replaceAll("/", "%2F"); // This is needed to handle the image URL correctly
   return (
     <div className="product">
       <img
-        className="img-thumbnail"
         src={"http://localhost:3000/get-image/" + image_url}
-        alt="The image of the product"
+        alt="The image of the product."
       ></img>
       <div className="product-description">
         <h5>Brand: {brand}</h5>
