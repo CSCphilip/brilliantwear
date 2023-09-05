@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./css/Product.css";
 import "./css/Navbar.css";
 import "./css/App.css";
+import "./css/ProductCatalog.css";
 
 // Bootstrap JS import (for navbar, making the collapse work)
 import "bootstrap/dist/js/bootstrap.bundle.min.js";

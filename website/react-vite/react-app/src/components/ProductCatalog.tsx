@@ -27,8 +27,9 @@ const ProductCatalog = () => {
 
   return (
     <div className="products-container">
-      {products.map((product) => (
+      {products.map((product, index) => (
         <Product
+          key={index}
           brand={product.brand}
           category={product.category}
           price={product.price}
