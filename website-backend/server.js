@@ -48,6 +48,31 @@ app.get("/", (req, res) => {
   res.send("Hi, your request has been received!");
 });
 
+// Get all products from the MongoDB but return the in the latest order
+// (i.e.the latest product is the first one in the array)
+app.get("/get-all-products", async (req, res) => {
+  console.log("Getting all products from the MongoDB");
+
+  var productsInDB = 0;
+  Product.countDocuments({})
+    .then((count) => {
+      console.log("Number of products in the database:", count);
+      productsInDB = count;
+    })
+    .catch((err) => {
+      console.error("Error counting products:", err);
+    });
+
+  try {
+    const allProducts = await getLatestProducts(productsInDB);
+    console.log(allProducts);
+    res.json(allProducts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.get("/get-latest-products/:no", async (req, res) => {
   console.log("Getting latest products from the MongoDB");
   const noProducts = req.params.no;

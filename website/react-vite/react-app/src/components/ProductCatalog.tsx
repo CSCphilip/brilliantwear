@@ -13,10 +13,8 @@ interface ProductType {
 const ProductCatalog = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
-  const numberOfProducts = 100; // TODO: Change this and use another API below.
-
   useEffect(() => {
-    fetch("http://localhost:3000/get-latest-products/" + numberOfProducts)
+    fetch("http://localhost:3000/get-all-products")
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
@@ -26,7 +24,7 @@ const ProductCatalog = () => {
   }, []); // Empty dependency array to run this effect once, like componentDidMount
 
   return (
-    <div className="products-container">
+    <div className="container">
       {products.map((product, index) => (
         <Product
           key={index}
