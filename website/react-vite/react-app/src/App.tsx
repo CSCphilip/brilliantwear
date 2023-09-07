@@ -10,7 +10,6 @@ function App() {
       <Favicon url="public/favicon.ico" />
 
       <Navbar />
-      <h2 className="catalog-heading">Product Catalog</h2>
       <ProductCatalog />
     </div>
   );

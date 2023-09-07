@@ -24,17 +24,48 @@ const ProductCatalog = () => {
   }, []); // Empty dependency array to run this effect once, like componentDidMount
 
   return (
-    <div className="container">
-      {products.map((product, index) => (
-        <Product
-          key={index}
-          brand={product.brand}
-          category={product.category}
-          price={product.price}
-          image_url={product.image_url}
-        />
-      ))}
-    </div>
+    <>
+      <h2 className="catalog-heading">Product Catalog</h2>
+      {/* TODO: Work on filter feature */}
+      <div className="dropdown">
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Filter
+        </button>
+        <ul className="dropdown-menu">
+          <li>
+            <a className="dropdown-item" href="#">
+              Action
+            </a>
+          </li>
+          <li>
+            <a className="dropdown-item" href="#">
+              Another action
+            </a>
+          </li>
+          <li>
+            <a className="dropdown-item" href="#">
+              Something else here
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="container">
+        {products.map((product, index) => (
+          <Product
+            key={index}
+            brand={product.brand}
+            category={product.category}
+            price={product.price}
+            image_url={product.image_url}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
