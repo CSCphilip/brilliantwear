@@ -16,7 +16,7 @@ const app = express();
 
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
-  origin: ["http://localhost:8000", "http://localhost:5173"],
+ // origin: ["http://localhost:8000", "http://localhost:5173"],
 };
 app.use(cors(corsOptions));
 
@@ -36,8 +36,8 @@ app.use(
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
-// Listen on port 3000
-const PORT = 3000;
+// Listen on port 80
+const PORT = 80;
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);
 });
