@@ -13,7 +13,7 @@ interface ProductType {
 // This is a React component:
 const ProductCatalog = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [type, setType] = useState<string>("all");
+  const [type, setType] = useState<string>("All");
 
   useEffect(() => {
     fetch("http://api.brilliantwear.se/get-all-products")
@@ -40,16 +40,20 @@ const ProductCatalog = () => {
         <ul className="dropdown-menu">
           <li>
             <button
-              className="dropdown-item"
+              className={
+                type === "All" ? "dropdown-item active" : "dropdown-item"
+              }
               type="button"
-              onClick={() => setType("all")}
+              onClick={() => setType("All")}
             >
               All products
             </button>
           </li>
           <li>
             <button
-              className="dropdown-item"
+              className={
+                type === "Shoe" ? "dropdown-item active" : "dropdown-item"
+              }
               type="button"
               onClick={() => setType("Shoe")}
             >
@@ -58,7 +62,9 @@ const ProductCatalog = () => {
           </li>
           <li>
             <button
-              className="dropdown-item"
+              className={
+                type === "Jacket" ? "dropdown-item active" : "dropdown-item"
+              }
               type="button"
               onClick={() => setType("Jacket")}
             >
@@ -67,7 +73,9 @@ const ProductCatalog = () => {
           </li>
           <li>
             <button
-              className="dropdown-item"
+              className={
+                type === "Pants" ? "dropdown-item active" : "dropdown-item"
+              }
               type="button"
               onClick={() => setType("Pants")}
             >
@@ -78,7 +86,7 @@ const ProductCatalog = () => {
       </div>
       <div className="container">
         {products
-          .filter((product) => type === "all" || product.type === type) // Filter products based on type
+          .filter((product) => type === "All" || product.type === type) // Filter products based on type
           .map((product, index) => (
             <Product
               key={index}
