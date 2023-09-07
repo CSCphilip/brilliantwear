@@ -5,6 +5,7 @@ import Product from "./Product";
 interface ProductType {
   brand: string;
   category: string;
+  type: string;
   price: number;
   image_url: string;
 }
@@ -12,6 +13,7 @@ interface ProductType {
 // This is a React component:
 const ProductCatalog = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [type, setType] = useState<string>("all");
 
   useEffect(() => {
     fetch("http://api.brilliantwear.se/get-all-products")
@@ -26,7 +28,6 @@ const ProductCatalog = () => {
   return (
     <>
       <h2 className="catalog-heading">Product Catalog</h2>
-      {/* TODO: Work on filter feature */}
       <div className="dropdown">
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -38,32 +39,56 @@ const ProductCatalog = () => {
         </button>
         <ul className="dropdown-menu">
           <li>
-            <a className="dropdown-item" href="#">
-              Action
-            </a>
+            <button
+              className="dropdown-item"
+              type="button"
+              onClick={() => setType("all")}
+            >
+              All products
+            </button>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
+            <button
+              className="dropdown-item"
+              type="button"
+              onClick={() => setType("Shoe")}
+            >
+              Shoes
+            </button>
           </li>
           <li>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
+            <button
+              className="dropdown-item"
+              type="button"
+              onClick={() => setType("Jacket")}
+            >
+              Jackets
+            </button>
+          </li>
+          <li>
+            <button
+              className="dropdown-item"
+              type="button"
+              onClick={() => setType("Pants")}
+            >
+              Pants
+            </button>
           </li>
         </ul>
       </div>
       <div className="container">
-        {products.map((product, index) => (
-          <Product
-            key={index}
-            brand={product.brand}
-            category={product.category}
-            price={product.price}
-            image_url={product.image_url}
-          />
-        ))}
+        {products
+          .filter((product) => type === "all" || product.type === type) // Filter products based on type
+          .map((product, index) => (
+            <Product
+              key={index}
+              brand={product.brand}
+              category={product.category}
+              type={product.type}
+              price={product.price}
+              image_url={product.image_url}
+            />
+          ))}
       </div>
     </>
   );
