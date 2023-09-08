@@ -1,6 +1,11 @@
-const Navbar = () => {
+import Favicon from "react-favicon";
+import { Outlet, Link } from "react-router-dom";
+
+const Layout = () => {
   return (
-    <div>
+    <>
+      <Favicon url="public/favicon.ico" />
+
       <nav className="navbar navbar-expand-lg">
         <a className="navbar-brand" href="/">
           <img src="/public/logo.png" alt="Brilliantwear" />
@@ -20,14 +25,14 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbar-links">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to="/" className="nav-link">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Products
-                </a>
+                <Link to="/shopping-assistant" className="nav-link">
+                  Shopping assistant
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -41,14 +46,14 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="#" className="dropdown-item">
                       About
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link to="#" className="dropdown-item">
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -56,8 +61,10 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </div>
+
+      <Outlet />
+    </>
   );
 };
 
-export default Navbar;
+export default Layout;

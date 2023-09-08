@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
-import Button from "./components/Button";
-import ListGroup from "./components/ListGroup";
+import Alert from "./Alert";
+import Button from "./Button";
+import ListGroup from "./ListGroup";
 
 // NOTE: Remember to enter the following after creating a new file for a component: rafce
 
