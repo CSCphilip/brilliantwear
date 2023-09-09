@@ -7,3 +7,7 @@ nav img {
   height: 47px;
   padding-left: 10px;
 }
+
+.custom-dropdown-width {
+  width: 300px;
+}
