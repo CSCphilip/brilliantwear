@@ -1,96 +1,124 @@
 <!DOCTYPE html>
 <html lang="sv">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lägg till produkt</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/images/favicon/site.webmanifest">
-</head>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/favicon/site.webmanifest" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="logo">
-            <a href="/">
-                <img src="images/logo.png" alt="Brilliantwear">
-            </a>
-        </div>
-        <nav class="navbar">
-            <div class="navbar-container container">
-                <input type="checkbox">
-                <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
+      <div class="logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Brilliantwear" />
+        </a>
+      </div>
+      <nav class="navbar">
+        <div class="navbar-container container">
+          <input type="checkbox" />
+          <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>
+          <ul class="menu-items">
+            <li>
+              <div
+                class="dropdown"
+                onmouseover="showDropdown('dropdownContent1')"
+                onmouseout="hideDropdown('dropdownContent1')"
+              >
+                <button class="dropbtn">Kläder</button>
+                <div class="dropdown-content" id="dropdownContent1">
+                  <a href="/tshirts.html">T-shirts</a>
+                  <a href="#">Långbyxor</a>
+                  <a href="#">Shorts</a>
                 </div>
-                <ul class="menu-items">
-                    <li>
-                        <div class="dropdown" onmouseover="showDropdown('dropdownContent1')"
-                            onmouseout="hideDropdown('dropdownContent1')">
-                            <button class="dropbtn">Kläder</button>
-                            <div class="dropdown-content" id="dropdownContent1">
-                                <a href="/tshirts.html">T-shirts</a>
-                                <a href="#">Långbyxor</a>
-                                <a href="#">Shorts</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown" onmouseover="showDropdown('dropdownContent2')"
-                            onmouseout="hideDropdown('dropdownContent2')">
-                            <button class="dropbtn">Accessoarer</button>
-                            <div class="dropdown-content" id="dropdownContent2">
-                                <a href="#">Smycken</a>
-                                <a href="#">Klockor</a>
-                                <a href="#">Hattar</a>
-                                <a href="#">Väskor</a>
-                                <a href="#">Solglasögon</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#">Ansiktsvård</a></li>
-                    <li><a href="#">Tänder</a></li>
-                    <li><a href="#">Skor</a></li>
-                    <li><a href="#">Hygien</a></li>
-                    <li><a href="#">Doft</a></li>
-                    <li><a href="#">Hår & Frisyrer</a></li>
-                    <li><a href="#">Skägg</a></li>
-                    <li><a href="#">Tatueringar</a></li>
-                </ul>
-            </div>
-        </nav>
+              </div>
+            </li>
+            <li>
+              <div
+                class="dropdown"
+                onmouseover="showDropdown('dropdownContent2')"
+                onmouseout="hideDropdown('dropdownContent2')"
+              >
+                <button class="dropbtn">Accessoarer</button>
+                <div class="dropdown-content" id="dropdownContent2">
+                  <a href="#">Smycken</a>
+                  <a href="#">Klockor</a>
+                  <a href="#">Hattar</a>
+                  <a href="#">Väskor</a>
+                  <a href="#">Solglasögon</a>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">Ansiktsvård</a></li>
+            <li><a href="#">Tänder</a></li>
+            <li><a href="#">Skor</a></li>
+            <li><a href="#">Hygien</a></li>
+            <li><a href="#">Doft</a></li>
+            <li><a href="#">Hår & Frisyrer</a></li>
+            <li><a href="#">Skägg</a></li>
+            <li><a href="#">Tatueringar</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
 
     <div class="upload-container">
-        <div class="focus-area">
-            <form action="http://localhost:3000/upload-product" method="post" enctype="multipart/form-data">
-                <label for="brand">Märke:</label><br>
-                <input type="text" id="brand" name="brand" required><br>
-                <label for="category">Typ:</label><br>
-                <input type="text" id="category" name="category" required><br>
-                <label for="price">Pris:</label><br>
-                <input type="number" id="price" name="price" required><br><br>
-                <input type="file" id="image" name="image" accept="image/*" required><br><br>
-                <input type="submit" value="Lägg till produkt">
-            </form>
-        </div>
+      <div class="focus-area">
+        <form
+          action="http://localhost:3000/upload-product"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label for="brand">Märke:</label><br />
+          <input type="text" id="brand" name="brand" required /><br />
+          <label for="category">Typ:</label><br />
+          <input type="text" id="category" name="category" required /><br />
+          <label for="price">Pris:</label><br />
+          <input type="number" id="price" name="price" required /><br /><br />
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            required
+          /><br /><br />
+          <input type="submit" value="Lägg till produkt" />
+        </form>
+      </div>
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="/#">Om</a>
-            <a href="/#">Kontakt</a>
-            <a href="/upload-product.html">Lägg till produkt</a>
-        </div>
-        <p class="copyright">&copy; 2023 Brilliantwear. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/#">Om</a>
+        <a href="/#">Kontakt</a>
+        <a href="/upload-product.html">Lägg till produkt</a>
+      </div>
+      <p class="copyright">&copy; 2023 Brilliantwear. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

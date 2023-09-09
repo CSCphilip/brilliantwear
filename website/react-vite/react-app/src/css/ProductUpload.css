@@ -1,0 +1,14 @@
+.product-upload-heading {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.product-upload form {
+  padding-left: 10px;
+  width: 400px;
+}
+
+.product-upload button {
+  margin-top: 10px;
+  width: 390px;
+}

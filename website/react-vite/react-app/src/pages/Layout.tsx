@@ -34,6 +34,11 @@ const Layout = () => {
                   Shopping assistant
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/product-upload" className="nav-link">
+                  Upload product
+                </Link>
+              </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -63,7 +68,7 @@ const Layout = () => {
           <div className="dropdown">
             <button
               type="button"
-              className="btn btn-primary dropdown-toggle"
+              className="btn btn-success dropdown-toggle"
               data-bs-toggle="dropdown"
               aria-expanded="false"
               data-bs-auto-close="outside"
@@ -111,7 +116,7 @@ const Layout = () => {
                   </label>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-success">
                 Sign in
               </button>
             </form>

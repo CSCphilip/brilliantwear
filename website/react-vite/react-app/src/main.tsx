@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout.tsx";
 import Home from "./pages/Home.tsx";
 import ShoppingAssistant from "./pages/ShoppingAssistant.tsx";
+import ProductUpload from "./pages/ProductUpload.tsx";
 
 // CSS imports
 import "bootstrap/dist/css/bootstrap.css";
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="shopping-assistant" element={<ShoppingAssistant />} />
+          <Route path="product-upload" element={<ProductUpload />} />
           {/* <Route path="*" element={<NoPage />} /> 404 page // TODO: Create 404 page */}
         </Route>
       </Routes>
