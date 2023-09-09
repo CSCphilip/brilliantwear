@@ -119,10 +119,7 @@ app.post("/upload-product", fileUpload(), (req, res) => {
   // Location header, resulting in a GET request to the specified URL.
   // This approach is in line with HTTP standards and provides a clear
   // way to indicate both successful form submission and redirection.
-  res
-    .status(303)
-    .set("Location", "http://localhost:8000/product-uploaded")
-    .send();
+  res.status(303).set("Location", "http://localhost:5173").send();
 });
 
 // Connect to MongoDB and the database called brilliantwear
