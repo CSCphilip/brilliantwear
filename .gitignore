@@ -1,4 +1,4 @@
 local
 .ipynb_checkpoints/
 */node_modules/
-website-backend/images/*
+backend/images/*
