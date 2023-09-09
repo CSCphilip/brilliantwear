@@ -128,6 +128,7 @@ app.post("/upload-product", fileUpload(), (req, res) => {
 const productSchema = new Schema({
   brand: String,
   category: String,
+  type: String,
   price: Number,
   image_url: String,
 });
