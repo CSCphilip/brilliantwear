@@ -5,9 +5,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
+require("dotenv").config();
+
 // const multer = require('multer');
 
 // const upload = multer();
+
+const db = require("./models");
 
 const { Schema, model } = mongoose;
 
@@ -36,6 +40,9 @@ app.use(
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
+const shoppingAssistantRouter = require("./routes/shoppingAssistant");
+app.use("/shopping-assistant", shoppingAssistantRouter);
+
 // Listen on port 80
 const PORT = 80;
 app.listen(PORT, () => {
@@ -53,18 +60,9 @@ app.get("/", (req, res) => {
 app.get("/get-all-products", async (req, res) => {
   console.log("Getting all products from the MongoDB");
 
-  var productsInDB = 0;
-  Product.countDocuments({})
-    .then((count) => {
-      console.log("Number of products in the database:", count);
-      productsInDB = count;
-    })
-    .catch((err) => {
-      console.error("Error counting products:", err);
-    });
-
   try {
-    const allProducts = await getLatestProducts(productsInDB);
+    const productsInDB = db.getNoProductsInDB();
+    const allProducts = await db.getLatestProducts(productsInDB);
     console.log(allProducts);
     res.json(allProducts);
   } catch (error) {
@@ -78,7 +76,7 @@ app.get("/get-latest-products/:no", async (req, res) => {
   const noProducts = req.params.no;
 
   try {
-    const latestProducts = await getLatestProducts(noProducts);
+    const latestProducts = await db.getLatestProducts(noProducts);
     console.log(latestProducts);
     res.json(latestProducts);
   } catch (error) {
@@ -125,33 +123,11 @@ app.post("/upload-product", fileUpload(), (req, res) => {
 // Connect to MongoDB and the database called brilliantwear
 // mongoose.connect('mongodb://localhost/brilliantwear');
 
-const productSchema = new Schema({
-  brand: String,
-  category: String,
-  type: String,
-  price: Number,
-  image_url: String,
-});
-
-const Product = model("Product", productSchema);
-
-async function getLatestProducts(noProducts) {
-  try {
-    const latestProducts = await Product.find({}, { _id: 0 })
-      .limit(noProducts)
-      .sort({ _id: -1 })
-      .lean() // Documents returned from queries with the lean option enabled are plain javascript objects, not Mongoose Documents.
-      .exec();
-    return latestProducts;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
+// const Product = db.product;
 
 async function addProduct(body, imageName) {
   try {
-    const newProduct = new Product(body);
+    const newProduct = new db.product(body);
     newProduct["image_url"] = path.join("/images", imageName);
     console.log("Created the following new product: " + newProduct);
 
@@ -163,7 +139,6 @@ async function addProduct(body, imageName) {
   }
 }
 
-const db = require("./models");
 const dbConfig = require("./config/db.config");
 const Role = db.role; // This is a mongoose model
 
