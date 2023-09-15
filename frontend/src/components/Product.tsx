@@ -7,11 +7,14 @@ interface ProductProps {
 }
 
 const Product = ({ brand, category, price, image_url }: ProductProps) => {
-  image_url = image_url.replaceAll("/", "%2F"); // This is needed to handle the image URL correctly
+  // image_url = image_url.replaceAll("/", "%2F"); // This is needed to handle the image URL correctly
   return (
     <div className="product">
       <img
-        src={"http://api.brilliantwear.se/get-image/" + image_url}
+        src={
+          "http://api.brilliantwear.se/get-image/" +
+          encodeURIComponent(image_url)
+        }
         alt="The image of the product."
       ></img>
       <div className="product-description">
