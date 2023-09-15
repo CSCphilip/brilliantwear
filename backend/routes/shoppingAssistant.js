@@ -6,7 +6,7 @@ const db = require("../models");
 
 const router = express.Router();
 
-// AWS.config.update({ region: "eu-north-1" });
+AWS.config.update({ region: "eu-north-1" });
 const ssm = new AWS.SSM();
 const parameterName = "Brilliantwear-OpenAI-API-Key";
 var openaiApiKey = "";
