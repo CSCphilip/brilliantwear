@@ -1,29 +1,13 @@
 const express = require("express");
-const OpenAI = require("openai");
-const AWS = require("aws-sdk");
-
 const db = require("../models");
+const { openai } = require("../config/openai.config");
 
 const router = express.Router();
 
-AWS.config.update({ region: "eu-north-1" });
-const ssm = new AWS.SSM();
-const parameterName = "Brilliantwear-OpenAI-API-Key";
-var openaiApiKey = "";
-
-// Retrieve the parameter value and store it in a variable openaiApiKey
-ssm.getParameter({ Name: parameterName }, (err, data) => {
-  if (err) {
-    console.error("Error:", err);
-  } else {
-    openaiApiKey = data.Parameter.Value;
-  }
-});
-
-const openai = new OpenAI({
-  // apiKey: process.env.OPENAI_API_KEY, // NOTE: For development usage only.
-  apiKey: openaiApiKey, // NOTE: For production
-});
+// Old way (for development only):
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 router.get("/:userInput", async (req, res) => {
   console.log('Someone accessed "/shopping-assistant"');
