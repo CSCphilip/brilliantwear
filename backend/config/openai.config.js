@@ -8,11 +8,31 @@ const parameterName = "Brilliantwear-OpenAI-API-Key";
 // Create an async function to retrieve the OpenAI API key
 async function getOpenAIApiKey() {
   try {
+    console.log("Trying to retrieve the OpenAI API key from AWS");
+
     const data = await ssm.getParameter({ Name: parameterName }).promise();
+    console.log("Successfully retrieved the OpenAI API key from AWS");
+
     return data.Parameter.Value;
   } catch (err) {
+    console.log("Could not retrieve the OpenAI API key from AWS");
     console.error("Error:", err);
-    throw err; // Handle the error appropriately in your application
+  }
+
+  try {
+    // For development:
+    console.log("Trying to retrieve the OpenAI API key from the environment");
+
+    const openaiApiKey = process.env.OPENAI_API_KEY;
+    console.log(
+      "Successfully retrieved the OpenAI API key from the environment"
+    );
+
+    return openaiApiKey;
+  } catch (err) {
+    console.log("Could not retrieve the OpenAI API key from the environment");
+    console.error("Error:", err);
+    throw err;
   }
 }
 

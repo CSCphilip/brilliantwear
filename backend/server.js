@@ -5,15 +5,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-// require("dotenv").config(); // For development only
+require("dotenv").config(); // For development
 
 // const multer = require('multer');
 
 // const upload = multer();
 
 const db = require("./models");
-
-const { Schema, model } = mongoose;
 
 // Initializing the app.
 const app = express();
@@ -40,7 +38,7 @@ app.use(
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
-const shoppingAssistantRouter = require("./routes/shoppingAssistant");
+const shoppingAssistantRouter = require("./routes/shoppingAssistant.routes");
 app.use("/shopping-assistant", shoppingAssistantRouter);
 
 // Listen on port 80
