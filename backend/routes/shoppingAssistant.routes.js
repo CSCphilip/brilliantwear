@@ -46,10 +46,8 @@ router.get("/:userInput", validateUserInput, async (req, res) => {
 });
 
 async function fetchProductSuggestionsFromChatGPT(userInput) {
-  console.log(
-    "Trying to fetch product suggestions from ChatGPT based on the user's input.\n",
-    "User input: " + userInput
-  );
+  console.log("Trying to fetch product suggestions from ChatGPT based on the user's input.");
+  console.log("User's input: " + userInput);
 
   try {
     const productsInDB = await db.getNoProductsInDB();
