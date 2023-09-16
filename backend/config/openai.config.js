@@ -27,7 +27,4 @@ async function initializeOpenAI() {
   return openai;
 }
 
-// Initialize OpenAI immediately when this module is imported
-const openai = initializeOpenAI();
-
-module.exports = { openai };
+module.exports = { initializeOpenAI };

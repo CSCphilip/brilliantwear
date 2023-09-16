@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-require("dotenv").config(); // NOTE: Only needed in development
+// require("dotenv").config(); // For development only
 
 // const multer = require('multer');
 
