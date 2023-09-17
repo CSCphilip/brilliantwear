@@ -1,4 +1,4 @@
-const config = require("../config/auth.config");
+const { getJWTSecretKey } = require("../config/auth.config");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
@@ -57,7 +57,9 @@ exports.signin = async (req, res) => {
       return res.status(401).send({ message: "Invalid Password!" });
     }
 
-    const token = jwt.sign({ id: user.id }, config.secret, {
+    const jwtSecretKey = await getJWTSecretKey();
+
+    const token = jwt.sign({ id: user.id }, jwtSecretKey, {
       algorithm: "HS256",
       allowInsecureKeySizes: true,
       expiresIn: 86400, // 24 hours

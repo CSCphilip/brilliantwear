@@ -26,7 +26,7 @@ async function getJWTSecretKey() {
       "Successfully retrieved the JWT Secret key from the environment"
     );
 
-    return openaiApiKey;
+    return jwtSecretKey;
   } catch (err) {
     console.log("Could not retrieve the JWT Secret key from the environment");
     console.error("Error:", err);
@@ -34,16 +34,4 @@ async function getJWTSecretKey() {
   }
 }
 
-let exportJwtSecretKey;
-
-getJWTSecretKey()
-  .then((jwtSecretKey) => {
-    exportJwtSecretKey = jwtSecretKey;
-  })
-  .catch((error) => {
-    console.error("Error fetching the JWT Secret Key:", error);
-  });
-
-module.exports = {
-  secret: exportJwtSecretKey,
-};
+module.exports = { getJWTSecretKey };
