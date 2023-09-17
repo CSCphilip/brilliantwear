@@ -1,7 +1,6 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const path = require("path");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
