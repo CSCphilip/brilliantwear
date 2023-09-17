@@ -46,7 +46,9 @@ router.get("/:userInput", validateUserInput, async (req, res) => {
 });
 
 async function fetchProductSuggestionsFromChatGPT(userInput) {
-  console.log("Trying to fetch product suggestions from ChatGPT based on the user's input.");
+  console.log(
+    "Trying to fetch product suggestions from ChatGPT based on the user's input."
+  );
   console.log("User's input: " + userInput);
 
   try {
@@ -83,7 +85,12 @@ function generateContent(products, userInput) {
   content += JSON.stringify(products) + "\n\n";
 
   content +=
-    "Can you respond with products in the same format as the database? (I.e. a JSON array of products)";
+    "Can you respond with products in the same format as the database? (I.e. a JSON array of products)\n\n";
+
+  content +=
+    "Example of user input: I am looking for products that cost less than 600 kr.\n";
+  content +=
+    "Then I want you to look at the price field for each product in the database and return the products that cost less than 600 kr.\n\n";
 
   content += "User Input: " + userInput;
 
