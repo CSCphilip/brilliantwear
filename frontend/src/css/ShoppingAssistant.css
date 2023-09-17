@@ -41,6 +41,9 @@
 
 .suggested-products-container {
   margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns per row */
+  gap: 20px; /* Adjust the gap between products */
 }
 
 /* 992px is the breakpoint for container-lg in bootstrap  */
@@ -58,5 +61,12 @@
 
   .custom-textarea {
     font-size: 16px;
+  }
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 1200px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

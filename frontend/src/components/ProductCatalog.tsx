@@ -84,7 +84,7 @@ const ProductCatalog = () => {
           </li>
         </ul>
       </div>
-      <div className="container">
+      <div className="container products-container">
         {products
           .filter((product) => type === "All" || product.type === type) // Filter products based on type
           .map((product, index) => (
