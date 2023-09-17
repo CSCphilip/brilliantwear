@@ -2,8 +2,48 @@ const AWS = require("aws-sdk");
 
 AWS.config.update({ region: "eu-north-1" });
 const ssm = new AWS.SSM();
-const parameterName = "";
+const parameterName = "Brilliantwear-JWT-Secret-Key";
+
+async function getJWTSecretKey() {
+  try {
+    console.log("Trying to retrieve the JWT Secret key from AWS");
+
+    const data = await ssm.getParameter({ Name: parameterName }).promise();
+    console.log("Successfully retrieved the JWT Secret key from AWS");
+
+    return data.Parameter.Value;
+  } catch (err) {
+    console.log("Could not retrieve the JWT Secret key from AWS");
+    console.error("Error:", err);
+  }
+
+  try {
+    // For development:
+    console.log("Trying to retrieve the JWT Secret key from the environment");
+
+    const jwtSecretKey = process.env.JWT_SECRET_KEY;
+    console.log(
+      "Successfully retrieved the JWT Secret key from the environment"
+    );
+
+    return openaiApiKey;
+  } catch (err) {
+    console.log("Could not retrieve the JWT Secret key from the environment");
+    console.error("Error:", err);
+    throw err;
+  }
+}
+
+let exportJwtSecretKey;
+
+getJWTSecretKey()
+  .then((jwtSecretKey) => {
+    exportJwtSecretKey = jwtSecretKey;
+  })
+  .catch((error) => {
+    console.error("Error fetching the JWT Secret Key:", error);
+  });
 
 module.exports = {
-  secret: "brilliantwear-secret-key", // TODO: make this harder to guess!! And move it to an environment variable or on AWS SSM.
+  secret: exportJwtSecretKey,
 };
