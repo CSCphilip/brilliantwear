@@ -2,3 +2,49 @@
   padding-left: 10px;
   padding-top: 10px;
 }
+
+.custom-container {
+  margin-top: 20px;
+}
+
+.shopping-assistant-form {
+  width: 768px;
+}
+
+.custom-textarea {
+  height: 100px;
+  font-size: 19px;
+}
+
+.search-clothing-icon {
+  width: 60px;
+  padding-top: 20px;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+}
+
+.suggested-products-container {
+  margin-top: 100px;
+}
+
+/* 992px is the breakpoint for container-lg in bootstrap  */
+@media (max-width: 992px) {
+  .shopping-assistant-form {
+    width: 80%;
+  }
+}
+
+/* 768px is the breakpoint for container-md in bootstrap  */
+@media (max-width: 768px) {
+  .shopping-assistant-form {
+    width: 100%;
+  }
+
+  .custom-textarea {
+    font-size: 16px;
+  }
+}
