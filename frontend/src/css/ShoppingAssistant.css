@@ -3,6 +3,18 @@
   padding-top: 10px;
 }
 
+.powered-by-text {
+  padding-left: 15px;
+  margin-top: -5px;
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #888; /* Adjust the color as needed */
+  font-style: italic;
+}
+
+.suggested-products-text {
+  margin-top: 100px;
+}
+
 .custom-container {
   margin-top: 20px;
 }
@@ -28,7 +40,7 @@
 }
 
 .suggested-products-container {
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 /* 992px is the breakpoint for container-lg in bootstrap  */

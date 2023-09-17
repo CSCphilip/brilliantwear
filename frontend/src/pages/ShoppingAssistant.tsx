@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
+import { BarLoader } from "react-spinners";
+
 import Product from "../components/Product";
 
 interface ProductType {
@@ -9,10 +11,20 @@ interface ProductType {
   image_url: string;
 }
 
+const overrideCSS: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  marginTop: "50px",
+};
+
 const ShoppingAssistant = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    // Show the loading spinner
+    setLoading(true);
+
     // Prevent the browser from reloading the page
     e.preventDefault();
 
@@ -31,15 +43,17 @@ const ShoppingAssistant = () => {
       .then((json) => {
         console.log(json);
         setSuggestedProducts(json);
+
+        // Hide the loading spinner
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }
 
   return (
     <div>
-      <h2 className="shopping-assistant-heading">
-        Shopping Assistant - <i>powered by ChatGPT</i>
-      </h2>
+      <h2 className="shopping-assistant-heading">Shopping Assistant</h2>
+      <p className="powered-by-text">Powered by ChatGPT</p>
 
       <div className="container-fluid d-flex justify-content-center align-items-center">
         <img
@@ -68,6 +82,21 @@ const ShoppingAssistant = () => {
           </div>
         </form>
       </div>
+
+      <BarLoader
+        aria-label="BarLoader"
+        data-testid="loader"
+        loading={loading}
+        color="blue"
+        width={300}
+        cssOverride={overrideCSS}
+      />
+
+      {suggestedProducts.length > 0 && (
+        <h3 className="text-center suggested-products-text">
+          Suggested Products
+        </h3>
+      )}
 
       <div className="container suggested-products-container">
         {suggestedProducts.map((product, index) => (
