@@ -66,60 +66,75 @@ const Layout = () => {
           </div>
 
           <div className="dropdown">
-            <button
-              type="button"
+            <a
               className="btn btn-success dropdown-toggle"
+              href="#"
+              role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              data-bs-auto-close="outside"
             >
               Log In
-            </button>
-            <form className="dropdown-menu p-4 dropdown-menu-end custom-dropdown-width">
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleDropdownFormEmail2"
-                  className="form-label"
-                >
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleDropdownFormEmail2"
-                  placeholder="email@example.com"
-                />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleDropdownFormPassword2"
-                  className="form-label"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="exampleDropdownFormPassword2"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="mb-3">
-                <div className="form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="dropdownCheck2"
-                  />
-                  <label className="form-check-label" htmlFor="dropdownCheck2">
-                    Remember me
-                  </label>
-                </div>
-              </div>
-              <button type="submit" className="btn btn-success">
-                Sign in
-              </button>
-            </form>
+            </a>
+            <ul className="dropdown-menu dropdown-menu-end custom-dropdown-width">
+              <li>
+                <form className="px-4 py-3">
+                  <div className="mb-3">
+                    <label
+                      htmlFor="exampleDropdownFormEmail2"
+                      className="form-label"
+                    >
+                      Email address
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="exampleDropdownFormEmail2"
+                      placeholder="email@example.com"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label
+                      htmlFor="exampleDropdownFormPassword2"
+                      className="form-label"
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      id="exampleDropdownFormPassword2"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <div className="form-check">
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        id="dropdownCheck2"
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="dropdownCheck2"
+                      >
+                        Remember me
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" className="btn btn-success">
+                    Sign in
+                  </button>
+                </form>
+              </li>
+              <li>
+                <div className="dropdown-divider" />
+              </li>
+              <li>
+                <Link to="/register" className="dropdown-item">
+                  New around here? Register
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

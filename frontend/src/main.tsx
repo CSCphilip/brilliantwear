@@ -5,6 +5,7 @@ import Layout from "./pages/Layout.tsx";
 import Home from "./pages/Home.tsx";
 import ShoppingAssistant from "./pages/ShoppingAssistant.tsx";
 import ProductUpload from "./pages/ProductUpload.tsx";
+import Register from "./pages/Register.tsx";
 
 // CSS imports
 import "bootstrap/dist/css/bootstrap.css";
@@ -13,6 +14,7 @@ import "./css/Home.css";
 import "./css/ShoppingAssistant.css";
 import "./css/ProductCatalog.css";
 import "./css/Product.css";
+import "./css/Register.css";
 
 // Bootstrap JS import (for navbar, making the collapse work)
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -26,6 +28,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="shopping-assistant" element={<ShoppingAssistant />} />
           <Route path="product-upload" element={<ProductUpload />} />
+          <Route path="register" element={<Register />} />
           {/* <Route path="*" element={<NoPage />} /> 404 page // TODO: Create 404 page */}
         </Route>
       </Routes>
