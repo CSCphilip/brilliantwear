@@ -1,21 +1,21 @@
-import axios from "axios";
+import axiosInstance from "./axios.config.service";
 
-const API_URL = "http://localhost/test/";
+const URL_PATH = "test/";
 
 const getPublicContent = () => {
-  return axios.get(API_URL + "all");
+  return axiosInstance.get(URL_PATH + "all");
 };
 
 const getUserBoard = () => {
-  return axios.get(API_URL + "user");
+  return axiosInstance.get(URL_PATH + "user");
 };
 
 const getModeratorBoard = () => {
-  return axios.get(API_URL + "mod");
+  return axiosInstance.get(URL_PATH + "mod");
 };
 
 const getAdminBoard = () => {
-  return axios.get(API_URL + "admin");
+  return axiosInstance.get(URL_PATH + "admin");
 };
 
 const UserService = {

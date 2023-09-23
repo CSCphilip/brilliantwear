@@ -1,9 +1,9 @@
-import axios from "axios";
+import axiosInstance from "./axios.config.service";
 
-const API_URL = "http://localhost/auth/"; // port: 80 implicit
+const URL_PATH = "auth/"; // port: 80 implicit
 
 const register = (username: string, email: string, password: string) => {
-  return axios.post(API_URL + "signup", {
+  return axiosInstance.post(URL_PATH + "signup", {
     username,
     email,
     password,
@@ -11,8 +11,8 @@ const register = (username: string, email: string, password: string) => {
 };
 
 const login = (email: string, password: string) => {
-  return axios
-    .post(API_URL + "signin", {
+  return axiosInstance
+    .post(URL_PATH + "signin", {
       email,
       password,
     })
@@ -27,7 +27,7 @@ const login = (email: string, password: string) => {
 
 const logout = () => {
   localStorage.removeItem("user");
-  return axios.post(API_URL + "signout").then((response) => {
+  return axiosInstance.post(URL_PATH + "signout").then((response) => {
     return response.data;
   });
 };
