@@ -17,7 +17,7 @@ const app = express();
 
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
-  // origin: ["http://localhost:8000", "http://localhost:5173"],
+  origin: "http://localhost:5173", // You can have a list here of the allowed origins
 };
 app.use(cors(corsOptions));
 

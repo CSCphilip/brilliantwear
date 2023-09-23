@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
 exports.signin = async (req, res) => {
   try {
     const user = await User.findOne({
-      username: req.body.username,
+      email: req.body.email,
     }).populate("roles", "-__v");
 
     if (!user) {
