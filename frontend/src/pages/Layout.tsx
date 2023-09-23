@@ -1,9 +1,42 @@
 import Favicon from "react-favicon";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import LogIn from "../components/LogIn";
+import AuthService from "../services/auth.service";
+import EventBus from "../common/EventBus";
 
 const Layout = () => {
+  const [currentUser, setCurrentUser] = useState<
+    { username: string } | undefined
+  >(undefined);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+
+    EventBus.on("logout", () => {
+      logOut();
+    });
+
+    return () => {
+      EventBus.remove("logout", AuthService.logout);
+    };
+  }, []);
+
+  const logOut = () => {
+    AuthService.logout().then(() => {
+      setCurrentUser(undefined);
+      navigate("/");
+      window.location.reload();
+    });
+  };
+
   return (
     <>
       <Favicon url="public/favicon.ico" />
@@ -68,28 +101,36 @@ const Layout = () => {
           </div>
 
           <div className="dropdown">
-            <a
-              className="btn btn-success dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Log In
-            </a>
-            <ul className="dropdown-menu dropdown-menu-end custom-dropdown-width">
-              <li>
-                <LogIn />
-              </li>
-              <li>
-                <div className="dropdown-divider custom-divider" />
-              </li>
-              <li>
-                <Link to="/register" className="dropdown-item">
-                  New around here? Register
-                </Link>
-              </li>
-            </ul>
+            {currentUser ? (
+              <button className="btn btn-success" onClick={logOut}>
+                Log out: <b>{currentUser.username}</b>
+              </button>
+            ) : (
+              <>
+                <a
+                  className="btn btn-success dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Log In
+                </a>
+                <ul className="dropdown-menu dropdown-menu-end custom-dropdown-width">
+                  <li>
+                    <LogIn />
+                  </li>
+                  <li>
+                    <div className="dropdown-divider custom-divider" />
+                  </li>
+                  <li>
+                    <Link to="/register" className="dropdown-item">
+                      New around here? Register
+                    </Link>
+                  </li>
+                </ul>
+              </>
+            )}
           </div>
         </div>
       </nav>

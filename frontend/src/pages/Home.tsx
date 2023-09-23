@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ProductCatalog from "../components/ProductCatalog";
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
-import EventBus from "../common/EventBus";
 
 // NOTE: Remember to enter the following after creating a new file for a component: rafce
 
@@ -43,22 +42,7 @@ function Home() {
       setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
-
-    EventBus.on("logout", () => {
-      logOut();
-    });
-
-    return () => {
-      EventBus.remove("logout", AuthService.logout);
-    };
   }, []);
-
-  const logOut = () => {
-    AuthService.logout();
-    setShowModeratorBoard(false);
-    setShowAdminBoard(false);
-    setCurrentUser(undefined);
-  };
 
   return (
     <div>
@@ -91,13 +75,6 @@ function Home() {
             <li>
               <Link to={"/profile"}>Profile: {currentUser.username}</Link>
             </li>
-
-            <button
-              className="btn btn-success log-out-btn-margin"
-              onClick={logOut}
-            >
-              Log Out
-            </button>
           </div>
         ) : (
           <div>
