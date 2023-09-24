@@ -1,7 +1,30 @@
+import { useState, useEffect } from "react";
+
+import UserService from "../services/user.service";
 import "../css/ProductUpload.css";
 
 const ProductUpload = () => {
-  return (
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    UserService.getModeratorBoard().then(
+      (response) => {
+        setContent(response.data);
+      },
+      (error) => {
+        const _content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setContent(_content);
+      }
+    );
+  }, []);
+
+  return content.includes("Moderator Content") ? (
     <div className="product-upload">
       <h2 className="product-upload-heading">Upload Product</h2>
 
@@ -67,6 +90,12 @@ const ProductUpload = () => {
           Upload
         </button>
       </form>
+    </div>
+  ) : (
+    <div className="container">
+      <header className="jumbotron">
+        <h3>{content}</h3>
+      </header>
     </div>
   );
 };
