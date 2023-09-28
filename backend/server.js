@@ -33,18 +33,19 @@ app.use(
     keys: ["COOKIE_SECRET"], // should use as secret environment variable // TODO: I think this should be changed to a secret environment variable or on AWS
     httpOnly: true, // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
     sameSite: "none",
-    secure: false, // TODO: This should be set to true when deploying to production
+    secure: true, // TODO: This should be set to true when deploying to production
   })
 );
 
+// This code is based on https://www.bezkoder.com/node-js-express-login-mongodb/:
 require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
 const shoppingAssistantRouter = require("./routes/shoppingAssistant.routes");
 app.use("/shopping-assistant", shoppingAssistantRouter);
 
-// Listen on port 80
-const PORT = 80;
+// Port to listen on
+const PORT = 7000;
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);
 });
