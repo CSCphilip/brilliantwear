@@ -1,0 +1,9 @@
+services:
+  brilliantwear-backend:
+    image: cscphilip/brilliantwear-backend
+    ports: 
+      - "7000:7000"
+    extra_hosts:
+      - "mongoservice:172.17.0.1"
+    deploy:
+      replicas: 3
