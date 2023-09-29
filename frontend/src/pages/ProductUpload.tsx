@@ -29,7 +29,7 @@ const ProductUpload = () => {
       <h2 className="product-upload-heading">Upload Product</h2>
 
       <form
-        action="http://api.brilliantwear.se/upload-product"
+        action="http://localhost:7000/upload-product"
         method="post"
         encType="multipart/form-data"
       >

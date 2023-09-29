@@ -1,4 +1,4 @@
-import React from "react"; // This can't be removed, even though it is not used directly. It is used by the JSX syntax.
+import _ from "react"; // This can't be removed, even though it is not used directly. It is used by the JSX syntax.
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout.tsx";

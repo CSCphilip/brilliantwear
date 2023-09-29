@@ -35,7 +35,7 @@ const ShoppingAssistant = () => {
     const userInputProductDescription = formData.get("product-description");
 
     fetch(
-      `http://api.brilliantwear.se/shopping-assistant/${encodeURIComponent(
+      `http://localhost:7000/shopping-assistant/${encodeURIComponent(
         userInputProductDescription as string
       )}`
     )

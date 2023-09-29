@@ -11,10 +11,7 @@ const Product = ({ brand, category, price, image_url }: ProductProps) => {
   return (
     <div className="product">
       <img
-        src={
-          "http://api.brilliantwear.se/get-image/" +
-          encodeURIComponent(image_url)
-        }
+        src={"http://localhost:7000/get-image/" + encodeURIComponent(image_url)}
         alt="The image of the product."
       ></img>
       <div className="product-description">
