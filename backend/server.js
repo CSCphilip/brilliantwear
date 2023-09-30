@@ -17,7 +17,7 @@ const app = express();
 
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
-  origin: "http://localhost", // You can have a list here of the allowed origins
+  origin: "http://brilliantwear.se", // You can have a list here of the allowed origins
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -118,7 +118,7 @@ app.post("/upload-product", fileUpload(), (req, res) => {
   // Location header, resulting in a GET request to the specified URL.
   // This approach is in line with HTTP standards and provides a clear
   // way to indicate both successful form submission and redirection.
-  res.status(303).set("Location", "http://localhost").send();
+  res.status(303).set("Location", "http://brilliantwear.se").send();
 });
 
 // Connect to MongoDB and the database called brilliantwear
