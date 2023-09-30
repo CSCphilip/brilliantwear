@@ -57,7 +57,7 @@ const ShoppingAssistant = () => {
 
       <div className="container-fluid d-flex justify-content-center align-items-center">
         <img
-          src="/icon-search-clothing.png"
+          src="icon-search-clothing.png"
           alt="Search clothing"
           className="search-clothing-icon"
         />

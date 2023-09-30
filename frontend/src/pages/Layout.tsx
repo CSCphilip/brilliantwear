@@ -39,11 +39,11 @@ const Layout = () => {
 
   return (
     <>
-      <Favicon url="public/favicon.ico" />
+      <Favicon url="favicon.ico" />
 
       <nav className="navbar navbar-expand-lg">
         <a className="navbar-brand" href="/">
-          <img src="/public/logo.png" alt="Brilliantwear" />
+          <img src="logo.png" alt="Brilliantwear" />
         </a>
         <div className="container-fluid">
           <button

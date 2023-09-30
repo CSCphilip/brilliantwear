@@ -1,6 +1,6 @@
 .register-main-container {
   height: calc(100vh - 73px);
-  background-image: url("register-background.jpeg");
+  /* background-image: url("register-background.jpeg"); */
   background-size: cover; /* This ensures the image covers the entire div */
   background-repeat: no-repeat; /* Prevents the image from repeating */
 }

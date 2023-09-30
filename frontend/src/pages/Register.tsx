@@ -50,7 +50,10 @@ const Register = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center register-main-container">
+    <div
+      className="d-flex justify-content-center align-items-center register-main-container"
+      style={{ backgroundImage: 'url("register-background.jpeg")' }}
+    >
       <div className="d-flex flex-column align-items-center bg-light register-focus-container">
         <h1 className="register-heading">Register</h1>
 
