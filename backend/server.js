@@ -4,141 +4,191 @@ const path = require("path");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-const fs = requite("mz/fs");
+const fs = require("mz/fs");
 const GracefulShutdownManager =
   require("@moebius/http-graceful-shutdown").GracefulShutdownManager;
 
 require("dotenv").config(); // For development
 
 // const multer = require('multer');
-
 // const upload = multer();
 
 const db = require("./models");
 
-const { key, cert } = await (async () => {
-  const certdir = (await fs.readdir("/etc/letsencrypt/live"))[0];
+main();
 
-  return {
-    key: await fs.readFile(`/etc/letsencrypt/live/${certdir}/privkey.pem`),
-    cert: await fs.readFile(`/etc/letsencrypt/live/${certdir}/fullchain.pem`),
+async function main() {
+  const { key, cert } = await (async () => {
+    const certdir = (await fs.readdir("/etc/letsencrypt/live"))[0];
+
+    return {
+      key: await fs.readFile(`/etc/letsencrypt/live/${certdir}/privkey.pem`),
+      cert: await fs.readFile(`/etc/letsencrypt/live/${certdir}/fullchain.pem`),
+    };
+  })();
+
+  // Initializing the app.
+  const app = express();
+
+  // This enables the frontend of the website to fetch data from this server
+  const corsOptions = {
+    origin: ["https://brilliantwear.se", "https://www.brilliantwear.se"],
+    credentials: true,
   };
-})();
+  app.use(cors(corsOptions));
 
-// Initializing the app.
-const app = express();
+  // for parsing application/json
+  app.use(bodyParser.json());
+  // for parsing application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: true }));
 
-// This enables the frontend of the website to fetch data from this server
-const corsOptions = {
-  origin: ["https://brilliantwear.se", "https://www.brilliantwear.se"],
-  credentials: true,
-};
-app.use(cors(corsOptions));
+  app.use(
+    cookieSession({
+      name: "brilliantwear-session",
+      keys: ["COOKIE_SECRET"], // should use as secret environment variable // TODO: I think this should be changed to a secret environment variable or on AWS
+      httpOnly: true, // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
+      sameSite: "none",
+      secure: true, // This should be set to true when deploying to production
+    })
+  );
 
-// for parsing application/json
-app.use(bodyParser.json());
-// for parsing application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+  // This code is based on https://www.bezkoder.com/node-js-express-login-mongodb/:
+  require("./routes/auth.routes")(app);
+  require("./routes/user.routes")(app);
 
-app.use(
-  cookieSession({
-    name: "brilliantwear-session",
-    keys: ["COOKIE_SECRET"], // should use as secret environment variable // TODO: I think this should be changed to a secret environment variable or on AWS
-    httpOnly: true, // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
-    sameSite: "none",
-    secure: true, // This should be set to true when deploying to production
-  })
-);
+  const shoppingAssistantRouter = require("./routes/shoppingAssistant.routes");
+  app.use("/shopping-assistant", shoppingAssistantRouter);
 
-// This code is based on https://www.bezkoder.com/node-js-express-login-mongodb/:
-require("./routes/auth.routes")(app);
-require("./routes/user.routes")(app);
+  // Port to listen on
+  const PORT = 7000;
+  // app.listen(PORT, () => {
+  //   console.log(`Server is listening at http://localhost:${PORT}`);
+  // });
+  const httpsServer = https.createServer({ key, cert }, app).listen(PORT);
 
-const shoppingAssistantRouter = require("./routes/shoppingAssistant.routes");
-app.use("/shopping-assistant", shoppingAssistantRouter);
-
-// Port to listen on
-const PORT = 7000;
-// app.listen(PORT, () => {
-//   console.log(`Server is listening at http://localhost:${PORT}`);
-// });
-const httpsServer = https.createServer({ key, cert }, app).listen(PORT);
-
-// Getting the path request and sending the response with text
-app.get("/", (req, res) => {
-  console.log('Someone accessed "/"');
-  res.send("Hi, your request has been received!");
-});
-
-// Get all products from the MongoDB but return the in the latest order
-// (i.e.the latest product is the first one in the array)
-app.get("/get-all-products", async (req, res) => {
-  console.log("Getting all products from the MongoDB");
-
-  try {
-    const productsInDB = db.getNoProductsInDB();
-    const allProducts = await db.getLatestProducts(productsInDB);
-    console.log(allProducts);
-    res.json(allProducts);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-app.get("/get-latest-products/:no", async (req, res) => {
-  console.log("Getting latest products from the MongoDB");
-  const noProducts = req.params.no;
-
-  try {
-    const latestProducts = await db.getLatestProducts(noProducts);
-    console.log(latestProducts);
-    res.json(latestProducts);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-app.get("/get-image/:url", (req, res) => {
-  const imageURL = req.params.url;
-  console.log("Getting image from url: " + imageURL);
-
-  try {
-    res.sendFile(__dirname + imageURL);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
-});
-
-// // for parsing multipart/form-data
-// app.use(upload.array());
-//app.use(express.static(__dirname));
-app.post("/upload-product", fileUpload(), (req, res) => {
-  console.log("A POST request to /upload-product was made");
-  const files = req.files;
-  const body = req.body;
-
-  const imagePath = path.join(__dirname, "images", files["image"].name);
-
-  files["image"].mv(imagePath, (err) => {
-    if (err) return res.status(500).json({ status: "error", message: err });
+  // Getting the path request and sending the response with text
+  app.get("/", (req, res) => {
+    console.log('Someone accessed "/"');
+    res.send("Hi, your request has been received!");
   });
 
-  addProduct(body, files["image"].name);
+  // Get all products from the MongoDB but return the in the latest order
+  // (i.e.the latest product is the first one in the array)
+  app.get("/get-all-products", async (req, res) => {
+    console.log("Getting all products from the MongoDB");
 
-  // In this case, the client's browser will automatically follow the
-  // Location header, resulting in a GET request to the specified URL.
-  // This approach is in line with HTTP standards and provides a clear
-  // way to indicate both successful form submission and redirection.
-  res.status(303).set("Location", "http://brilliantwear.se").send();
-});
+    try {
+      const productsInDB = db.getNoProductsInDB();
+      const allProducts = await db.getLatestProducts(productsInDB);
+      console.log(allProducts);
+      res.json(allProducts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  });
 
-// Connect to MongoDB and the database called brilliantwear
-// mongoose.connect('mongodb://localhost/brilliantwear');
+  app.get("/get-latest-products/:no", async (req, res) => {
+    console.log("Getting latest products from the MongoDB");
+    const noProducts = req.params.no;
 
-// const Product = db.product;
+    try {
+      const latestProducts = await db.getLatestProducts(noProducts);
+      console.log(latestProducts);
+      res.json(latestProducts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
+  app.get("/get-image/:url", (req, res) => {
+    const imageURL = req.params.url;
+    console.log("Getting image from url: " + imageURL);
+
+    try {
+      res.sendFile(__dirname + imageURL);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
+  // // for parsing multipart/form-data
+  // app.use(upload.array());
+  //app.use(express.static(__dirname));
+  app.post("/upload-product", fileUpload(), (req, res) => {
+    console.log("A POST request to /upload-product was made");
+    const files = req.files;
+    const body = req.body;
+
+    const imagePath = path.join(__dirname, "images", files["image"].name);
+
+    files["image"].mv(imagePath, (err) => {
+      if (err) return res.status(500).json({ status: "error", message: err });
+    });
+
+    addProduct(body, files["image"].name);
+
+    // In this case, the client's browser will automatically follow the
+    // Location header, resulting in a GET request to the specified URL.
+    // This approach is in line with HTTP standards and provides a clear
+    // way to indicate both successful form submission and redirection.
+    res.status(303).set("Location", "http://brilliantwear.se").send();
+  });
+
+  const dbConfig = require("./config/db.config");
+  const Role = db.role; // This is a mongoose model
+
+  db.mongoose
+    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log("Successfully connect to MongoDB.");
+      initial();
+    })
+    .catch((err) => {
+      console.error("Connection error", err);
+      process.exit();
+    });
+
+  function initial() {
+    Role.estimatedDocumentCount()
+      .then((count) => {
+        if (count === 0) {
+          const rolesToInsert = [
+            { name: "user" },
+            { name: "moderator" },
+            { name: "admin" },
+          ];
+
+          return Role.insertMany(rolesToInsert);
+        }
+      })
+      .then((addedRoles) => {
+        if (addedRoles) {
+          console.log("Added roles:", addedRoles);
+        } else {
+          console.log("Roles already exist.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  const httpsShutdownManager = new GracefulShutdownManager(httpsServer);
+
+  process.on("SIGTERM", () => {
+    httpsShutdownManager.terminate(() => {
+      console.log("Server is gracefully terminated");
+    });
+  });
+
+  // mongoose.connection.close();
+}
 
 async function addProduct(body, imageName) {
   try {
@@ -153,55 +203,3 @@ async function addProduct(body, imageName) {
     throw error;
   }
 }
-
-const dbConfig = require("./config/db.config");
-const Role = db.role; // This is a mongoose model
-
-db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    initial();
-  })
-  .catch((err) => {
-    console.error("Connection error", err);
-    process.exit();
-  });
-
-function initial() {
-  Role.estimatedDocumentCount()
-    .then((count) => {
-      if (count === 0) {
-        const rolesToInsert = [
-          { name: "user" },
-          { name: "moderator" },
-          { name: "admin" },
-        ];
-
-        return Role.insertMany(rolesToInsert);
-      }
-    })
-    .then((addedRoles) => {
-      if (addedRoles) {
-        console.log("Added roles:", addedRoles);
-      } else {
-        console.log("Roles already exist.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
-const httpsShutdownManager = new GracefulShutdownManager(httpsServer);
-
-process.on("SIGTERM", () => {
-  httpsShutdownManager.terminate(() => {
-    console.log("Server is gracefully terminated");
-  });
-});
-
-// mongoose.connection.close();
