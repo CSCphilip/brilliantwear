@@ -17,7 +17,7 @@ const app = express();
 
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
-  origin: "http://brilliantwear.se", // You can have a list here of the allowed origins
+  origin: ["https://brilliantwear.se", "https://www.brilliantwear.se"], // You can have a list here of the allowed origins
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -33,7 +33,7 @@ app.use(
     keys: ["COOKIE_SECRET"], // should use as secret environment variable // TODO: I think this should be changed to a secret environment variable or on AWS
     httpOnly: true, // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
     sameSite: "none",
-    secure: true, // TODO: This should be set to true when deploying to production
+    secure: true, // This should be set to true when deploying to production
   })
 );
 
