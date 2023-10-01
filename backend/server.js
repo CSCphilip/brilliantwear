@@ -4,6 +4,10 @@ const path = require("path");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
+const fs = requite("mz/fs");
+const GracefulShutdownManager =
+  require("@moebius/http-graceful-shutdown").GracefulShutdownManager;
+
 require("dotenv").config(); // For development
 
 // const multer = require('multer');
@@ -12,12 +16,21 @@ require("dotenv").config(); // For development
 
 const db = require("./models");
 
+const { key, cert } = await (async () => {
+  const certdir = (await fs.readdir("/etc/letsencrypt/live"))[0];
+
+  return {
+    key: await fs.readFile(`/etc/letsencrypt/live/${certdir}/privkey.pem`),
+    cert: await fs.readFile(`/etc/letsencrypt/live/${certdir}/fullchain.pem`),
+  };
+})();
+
 // Initializing the app.
 const app = express();
 
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
-  origin: ["https://brilliantwear.se", "https://www.brilliantwear.se"], // You can have a list here of the allowed origins
+  origin: ["https://brilliantwear.se", "https://www.brilliantwear.se"],
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -46,9 +59,10 @@ app.use("/shopping-assistant", shoppingAssistantRouter);
 
 // Port to listen on
 const PORT = 7000;
-app.listen(PORT, () => {
-  console.log(`Server is listening at http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is listening at http://localhost:${PORT}`);
+// });
+const httpsServer = https.createServer({ key, cert }, app).listen(PORT);
 
 // Getting the path request and sending the response with text
 app.get("/", (req, res) => {
@@ -181,5 +195,13 @@ function initial() {
       console.error("Error:", error);
     });
 }
+
+const httpsShutdownManager = new GracefulShutdownManager(httpsServer);
+
+process.on("SIGTERM", () => {
+  httpsShutdownManager.terminate(() => {
+    console.log("Server is gracefully terminated");
+  });
+});
 
 // mongoose.connection.close();
