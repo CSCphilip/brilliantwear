@@ -1,6 +1,6 @@
 services:
   brilliantwear-backend:
-    image: cscphilip/brilliantwear-backend
+    image: cscphilip/brilliantwear-backend:latest
     ports: 
       - "7000:7000"
     extra_hosts:
