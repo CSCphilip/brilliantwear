@@ -16,7 +16,7 @@ const ProductCatalog = () => {
   const [type, setType] = useState<string>("All");
 
   useEffect(() => {
-    fetch("http://brilliantwear.se:7000/get-all-products")
+    fetch("https://api.brilliantwear.se/get-all-products")
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
