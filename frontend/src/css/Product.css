@@ -17,10 +17,10 @@
 @media screen and (max-width: 576px) {
   .product {
     width: 75%;
-    margin-left: 5px;
+    margin-left: 0px;
   }
 
   .product img {
-    height: 230px;
+    height: 200px;
   }
 }
