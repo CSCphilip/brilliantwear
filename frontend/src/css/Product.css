@@ -1,7 +1,5 @@
 .product {
-  width: calc(
-    25% - 10px
-  ); /* Adjust width for four products in a row with some spacing */
+  width: 50%; /* Adjust width for four products in a row with some spacing */
   margin-bottom: 20px; /* Add vertical spacing between products */
   margin-left: 10px;
 }
@@ -14,4 +12,15 @@
 
 .product-description {
   margin-top: 3px;
+}
+
+@media screen and (max-width: 576px) {
+  .product {
+    width: 75%;
+    margin-left: 5px;
+  }
+
+  .product img {
+    height: 230px;
+  }
 }

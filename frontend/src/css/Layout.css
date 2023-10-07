@@ -15,3 +15,14 @@ nav img {
 .custom-divider {
   margin-top: -12px;
 }
+
+@media screen and (max-width: 992px) {
+  .logo-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .logo-container img {
+    padding-left: 0px;
+  }
+}

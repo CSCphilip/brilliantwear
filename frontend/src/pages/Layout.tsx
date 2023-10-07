@@ -42,9 +42,11 @@ const Layout = () => {
       <Favicon url="favicon.ico" />
 
       <nav className="navbar navbar-expand-lg">
-        <a className="navbar-brand" href="/">
-          <img src="logo.png" alt="Brilliantwear" />
-        </a>
+        <div className="logo-container">
+          <a className="navbar-brand" href="/">
+            <img src="logo.png" alt="Brilliantwear" />
+          </a>
+        </div>
         <div className="container-fluid">
           <button
             className="navbar-toggler"
