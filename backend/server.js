@@ -33,7 +33,7 @@ app.use(
     keys: ["COOKIE_SECRET"], // should use as secret environment variable // TODO: I think this should be changed to a secret environment variable or on AWS
     httpOnly: true, // indicate that the cookie is only to be sent over HTTP(S), and not made available to client JavaScript.
     sameSite: "none",
-    secure: true, // This should be set to true when deploying to production
+    secure: false, // If true, this means cookies are only sent over HTTPS. However, since my backend server sits behind a proxy with SSL/TLS termination, this value is set to false. When the response from the server reaches my nginx reverse proxy, the cookie will together with the rest of the http response be encrypted and sent out over HTTPS by nginx.
   })
 );
 
