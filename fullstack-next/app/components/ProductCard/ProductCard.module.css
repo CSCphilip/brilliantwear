@@ -1,0 +1,5 @@
+/* You can not use '-' in class name */
+.cardContainer {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
