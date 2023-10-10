@@ -36,4 +36,14 @@ db.getLatestProducts = async function (noProducts) {
   }
 };
 
+db.getProductById = async function (id) {
+  try {
+    const product = await db.product.findOne({ id: id }).lean();
+    return product;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 module.exports = db;

@@ -104,7 +104,9 @@ app.get("/get-image/:url", (req, res) => {
 app.post("/upload-product", fileUpload(), (req, res) => {
   console.log("A POST request to /upload-product was made");
   const files = req.files;
-  const body = req.body;
+  let body = req.body;
+  const id = files["image"].name.split(".")[0]; // To remove the file extension //TODO: This is a security risk, it's better to generate unique IDs on the server-side.
+  body.id = id;
 
   const imagePath = path.join(__dirname, "images", files["image"].name);
 
@@ -119,6 +121,19 @@ app.post("/upload-product", fileUpload(), (req, res) => {
   // This approach is in line with HTTP standards and provides a clear
   // way to indicate both successful form submission and redirection.
   res.status(303).set("Location", "http://brilliantwear.se").send();
+});
+
+app.get("/get-product/:id", async (req, res) => {
+  console.log("Getting product from the MongoDB with the id: " + req.params.id);
+
+  try {
+    const product = await db.getProductById(req.params.id);
+    console.log(product);
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 const dbConfig = require("./config/db.config");
