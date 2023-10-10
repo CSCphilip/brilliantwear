@@ -17,7 +17,7 @@ const app = express();
 
 // This enables the frontend of the website to fetch data from this server
 const corsOptions = {
-  origin: ["https://brilliantwear.se", "https://www.brilliantwear.se"],
+  origin: ["https://brilliantwear.se", "https://www.brilliantwear.se", "http://localhost:3000"],
   credentials: true,
 };
 app.use(cors(corsOptions));
