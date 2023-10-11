@@ -11,7 +11,7 @@
 * Docker
 * Nginx
 * React.js
-* Typescript
+* TypeScript
 * Boostrap 5
 * Next.js
 * Tailwind
