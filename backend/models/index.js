@@ -38,7 +38,7 @@ db.getLatestProducts = async function (noProducts) {
 
 db.getProductById = async function (id) {
   try {
-    const product = await db.product.findOne({ id: id }).lean();
+    const product = await db.product.findOne({ id: id }, { _id: 0 }).lean();
     return product;
   } catch (error) {
     console.error(error);

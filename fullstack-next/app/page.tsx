@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "./components/ProductCard/ProductCard";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <h1>Next full stack</h1>
@@ -11,6 +11,8 @@ export default function Home() {
       the next.js/react.js way of doing it and should be used. */}
       <Link href="/users">UsersPage</Link>
       <ProductCard />
+
+      <Link href={"/products"}>Catalog of products</Link>
     </main>
   );
 }
