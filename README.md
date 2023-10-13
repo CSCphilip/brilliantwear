@@ -8,11 +8,11 @@
 * Express
 * MongoDB
 * JSON Web Token
-* Docker (swarm)
+* Docker & Swarm mode
 * Nginx
 * React.js
 * TypeScript
-* Boostrap 5
+* Bootstrap 5
 * Next.js
 * Tailwind
 
