@@ -13,7 +13,7 @@
 * React.js
 * TypeScript
 * Bootstrap 5
-* Next.js
+* Next.js 13 (App router)
 * Tailwind
 
 
