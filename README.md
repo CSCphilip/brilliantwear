@@ -8,7 +8,7 @@
 * Express
 * MongoDB
 * JSON Web Token
-* Docker
+* Docker (swarm)
 * Nginx
 * React.js
 * TypeScript
