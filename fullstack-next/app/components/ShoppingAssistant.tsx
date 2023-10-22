@@ -63,7 +63,7 @@ const ShoppingAssistant = () => {
           <h3 className="mt-4">Suggested Products</h3>
           <div className="container grid gap-y-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-2">
             {suggestedProducts.map((product) => (
-              <ProductCard {...product} />
+              <ProductCard key={product.id} {...product} />
             ))}
           </div>
         </>
