@@ -13,7 +13,7 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 6000
+EXPOSE 3000
 
 # Will build the next.js fullstack server for production
 RUN npm run build

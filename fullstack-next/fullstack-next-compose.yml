@@ -2,6 +2,6 @@ services:
   brilliantwear-fullstack-next-server:
     image: cscphilip/brilliantwear-fullstack-next:latest
     ports:
-      - "6000:6000"
+      - "3000:3000"
     deploy:
       replicas: 3
