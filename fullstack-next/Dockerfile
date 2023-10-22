@@ -19,4 +19,4 @@ EXPOSE 6000
 RUN npm run build
 
 # Will start the next.js server
-RUN npm run start
+CMD ["npm", "run", "start"]
