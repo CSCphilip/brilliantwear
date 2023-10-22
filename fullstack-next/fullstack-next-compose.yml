@@ -1,5 +1,5 @@
 services:
-  brilliantwear-fullstack-next-server:
+  brilliantwear-fullstack-next:
     image: cscphilip/brilliantwear-fullstack-next:latest
     ports:
       - "3000:3000"
