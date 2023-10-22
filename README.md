@@ -14,7 +14,7 @@
 * TypeScript
 * Bootstrap 5
 * Next.js 13 (App router)
-* Tailwind
+* Tailwind CSS
 
 
 
