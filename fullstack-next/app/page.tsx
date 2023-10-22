@@ -1,18 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ShoppingAssistant from "./components/ShoppingAssistant";
+import LatestProducts from "./components/LatestProducts";
 
 export default async function Home() {
   return (
     <main>
-      <h1>Next full stack</h1>
-      {/* Use the Link tag instead of <a> since this till only download what's new in the next page 
-      and not download all of the content again which would be the case if using <a>. This is 
-      the next.js/react.js way of doing it and should be used. */}
-      <Link href="/users">UsersPage</Link>
-      <ProductCard />
-
-      <Link href={"/products"}>Catalog of products</Link>
+      <div className="w-screen flex flex-col items-center">
+        <h2 className="mt-5">Shopping Assistant</h2>
+        <p className="text-sm text-gray-500 italic mt-[-2px]">
+          Powered by ChatGPT
+        </p>
+        <img
+          src="icon-search-clothing.png"
+          alt="Search clothing icon"
+          className="mt-2 h-14 lg:h-16"
+        />
+        <ShoppingAssistant />
+        <LatestProducts />
+      </div>
     </main>
   );
 }
