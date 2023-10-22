@@ -20,6 +20,7 @@ const corsOptions = {
   origin: [
     "https://brilliantwear.se",
     "https://www.brilliantwear.se",
+    "https://old.brilliantwear.se",
     "http://localhost:3000",
   ],
   credentials: true,
