@@ -20,7 +20,7 @@ const ProductCard = ({
               encodeURIComponent(image_url)
             }
             alt="An image of the product."
-            className="h-64 w-44 border border-primary"
+            className="h-64 w-40 border border-primary"
           />
         </Link>
         <ul className="text-sm">

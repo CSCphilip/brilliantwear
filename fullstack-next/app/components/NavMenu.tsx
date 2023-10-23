@@ -36,14 +36,6 @@ const NavMenu = () => {
               Products
             </Link>
           </li>
-          <li>
-            <Link
-              href="#" // /product-upload
-              className="text-black hover:text-white"
-            >
-              Upload product
-            </Link>
-          </li>
         </ul>
       </div>
     </div>

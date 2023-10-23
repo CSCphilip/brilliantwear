@@ -6,9 +6,7 @@ import Link from "next/link";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const res = await fetch("https://api.brilliantwear.se/get-all-products", {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch("https://api.brilliantwear.se/get-all-products");
   const allProducts: Product[] = await res.json();
 
   const params = allProducts.map((product) => ({
@@ -33,28 +31,32 @@ export default async function ProductDetail({
 }) {
   const product = await getProduct(params.id);
 
-  return product ? (
-    <div style={{ border: "1px solid black", margin: "20px", padding: "20px" }}>
-      <h4>{product.brand}</h4>
-      <p>{product.category}</p>
-      <p>{product.type}</p>
-      <p>{product.price} kr</p>
-      <img
-        src={
-          "https://api.brilliantwear.se/get-image/" +
-          encodeURIComponent(product.image_url)
-        }
-        alt="The image of the product."
-        style={{ height: "500px", border: "1px solid black" }}
-      />
-      <Link href="/products"> Go back </Link>
-    </div>
-  ) : (
-    // NOTE: This is a fallback page if the product is not found.
-    <div>
-      <h2>Not Found</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
-    </div>
+  return (
+    product && (
+      <div className="p-4 m-5 border border-black flex flew-row">
+        <img
+          src={
+            "https://api.brilliantwear.se/get-image/" +
+            encodeURIComponent(product.image_url)
+          }
+          alt="The image of the product."
+          className="h-56 lg:h-[500px]"
+        />
+        <span className="ms-5">
+          <p>
+            <b>Brand:</b> {product.brand}
+          </p>
+          <p>
+            <b>Category:</b> {product.category}
+          </p>
+          <p>
+            <b>Type:</b> {product.type}
+          </p>
+          <p>
+            <b>Price:</b> {product.price} kr
+          </p>
+        </span>
+      </div>
+    )
   );
 }

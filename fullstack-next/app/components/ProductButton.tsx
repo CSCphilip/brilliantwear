@@ -13,12 +13,12 @@ const ProductButton = ({ id }: { id: string }) => {
       style={{
         cursor: "pointer",
         border: "solid black",
-        marginTop: "10px",
         padding: "10px",
       }}
+      className="mt-6"
       onClick={handleClick}
     >
-      Go To Product!
+      Go to product
     </button>
   );
 };

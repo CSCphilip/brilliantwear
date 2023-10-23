@@ -11,17 +11,25 @@ const ProductDetails = ({
 }: ProductProps) => {
   return (
     <div style={{ border: "1px solid black", margin: "20px", padding: "20px" }}>
-      <h4>{brand}</h4>
-      <p>{category}</p>
-      <p>{type}</p>
-      <p>{price} kr</p>
+      <p>
+        <b>Brand:</b> {brand}
+      </p>
+      <p>
+        <b>Category:</b> {category}
+      </p>
+      <p>
+        <b>Type:</b> {type}
+      </p>
+      <p>
+        <b>Price:</b> {price} kr
+      </p>
       <img
         src={
           "https://api.brilliantwear.se/get-image/" +
           encodeURIComponent(image_url)
         }
         alt="The image of the product."
-        style={{ height: "100px", border: "1px solid black" }}
+        className="h-[200px] mt-3"
       />
       <ProductButton id={id} />
     </div>

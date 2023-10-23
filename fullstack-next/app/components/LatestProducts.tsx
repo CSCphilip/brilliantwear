@@ -2,10 +2,7 @@ import { Product } from "../types/types";
 import ProductCard from "./ProductCard";
 
 const LatestProducts = async () => {
-  const res = await fetch(
-    "https://api.brilliantwear.se/get-latest-products/8",
-    { next: { revalidate: 60 } }
-  );
+  const res = await fetch("https://api.brilliantwear.se/get-latest-products/8");
   const latestProducts = await res.json();
 
   return (
