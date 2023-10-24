@@ -31,32 +31,37 @@ export default async function ProductDetail({
 }) {
   const product = await getProduct(params.id);
 
-  return (
-    product && (
-      <div className="p-4 m-5 border border-black flex flew-row">
-        <img
-          src={
-            "https://api.brilliantwear.se/get-image/" +
-            encodeURIComponent(product.image_url)
-          }
-          alt="The image of the product."
-          className="h-56 lg:h-[500px]"
-        />
-        <span className="ms-5">
-          <p>
-            <b>Brand:</b> {product.brand}
-          </p>
-          <p>
-            <b>Category:</b> {product.category}
-          </p>
-          <p>
-            <b>Type:</b> {product.type}
-          </p>
-          <p>
-            <b>Price:</b> {product.price} kr
-          </p>
-        </span>
-      </div>
-    )
+  return product ? (
+    <div className="p-4 m-5 border border-black flex flew-row">
+      <img
+        src={
+          "https://api.brilliantwear.se/get-image/" +
+          encodeURIComponent(product.image_url)
+        }
+        alt="The image of the product."
+        className="h-56 lg:h-[500px]"
+      />
+      <span className="ms-5">
+        <p>
+          <b>Brand:</b> {product.brand}
+        </p>
+        <p>
+          <b>Category:</b> {product.category}
+        </p>
+        <p>
+          <b>Type:</b> {product.type}
+        </p>
+        <p>
+          <b>Price:</b> {product.price} kr
+        </p>
+      </span>
+    </div>
+  ) : (
+    // NOTE: This is a fallback page if the product is not found.
+    <div>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+      <Link href="/">Return Home</Link>
+    </div>
   );
 }
