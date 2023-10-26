@@ -23,7 +23,7 @@ Visit at: https://www.brilliantwear.se/
 ### The most essential tasks
 
 #### First stage (initial and production ready set up)
-- [ ] Fix design bug with the horizontal scroll.
+- [x] Fix design bug with the horizontal scroll.
 - [ ] Design a good 404 page.
 - [ ] Move parts of the backend (currently with Express) to Next.js backend. Perhaps add backend API key to keep the backend secure. 
 - [ ] Log in functionality for admins to for instance upload new products. Perhaps implement a dashboard.
