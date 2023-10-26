@@ -3,7 +3,7 @@ import LatestProducts from "./components/LatestProducts";
 
 export default async function Home() {
   return (
-    <main className="overflow-hidden">
+    <main className="overflow-hidden mb-5">
       <div className="w-screen flex flex-col items-center">
         <h2 className="mt-5">Shopping Assistant</h2>
         <p className="text-sm text-gray-500 italic mt-[-2px]">
