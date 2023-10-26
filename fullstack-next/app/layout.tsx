@@ -21,18 +21,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <nav className="w-screen bg-primary flex flex-row flex-wrap">
-          <div className="h-16 w-screen lg:w-44 flex justify-center lg:justify-normal">
-            <Link href="/" className="flex justify-center">
-              <img
-                className="h-full scale-75 lg:scale-80"
-                src="logo.png"
-                alt="Brilliantwear"
-              />
-            </Link>
-          </div>
-          <NavMenu />
-        </nav>
+        <div className="overflow-hidden">
+          <nav className="w-screen bg-primary flex flex-row flex-wrap">
+            <div className="h-16 w-screen lg:w-44 flex justify-center lg:justify-normal">
+              <Link href="/" className="flex justify-center">
+                <img
+                  className="h-full scale-75 lg:scale-80"
+                  src="logo.png"
+                  alt="Brilliantwear"
+                />
+              </Link>
+            </div>
+            <NavMenu />
+          </nav>
+        </div>
 
         {children}
 
