@@ -14,6 +14,7 @@ const config: Config = {
       },
       backgroundImage: {
         "home-shopping-assistant": "url('../public/closet_home.jpeg')",
+        "404-background": "url('../public/404-background.jpeg')",
       },
     },
   },
