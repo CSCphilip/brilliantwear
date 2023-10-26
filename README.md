@@ -55,3 +55,4 @@ Visit at: https://www.brilliantwear.se/
 * Search feature
 * Log in for users
 * Links to social media
+* Dark mode (mostly for fun)
