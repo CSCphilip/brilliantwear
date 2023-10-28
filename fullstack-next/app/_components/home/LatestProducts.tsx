@@ -1,5 +1,5 @@
-import { Product } from "./types";
-import ProductCard from "./components/ProductCard";
+import { Product } from "../../types";
+import ProductCard from "../ProductCard";
 
 const LatestProducts = async () => {
   const res = await fetch("https://api.brilliantwear.se/get-latest-products/8");

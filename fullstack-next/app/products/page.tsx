@@ -1,4 +1,4 @@
-import ProductDetails from "./ProductDetails";
+import ProductDetails from "../_components/products/ProductDetails";
 import { Product } from "../types";
 
 async function getAllProducts() {
