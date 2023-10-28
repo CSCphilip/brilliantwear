@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import "./globals.css";
-import NavMenu from "./components/NavMenu";
+import NavMenu from "./NavMenu";
 
 // const inter = Inter({ subsets: ["latin"] });
 
