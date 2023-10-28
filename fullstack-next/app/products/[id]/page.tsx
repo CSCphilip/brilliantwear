@@ -1,4 +1,4 @@
-import { Product } from "../../types/types";
+import { Product } from "../../types";
 import Link from "next/link";
 
 // Does so that the page only renders when a user visits a dynamic route that
