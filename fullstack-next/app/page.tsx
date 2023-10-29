@@ -1,5 +1,5 @@
-import ShoppingAssistant from "./_components/home/ShoppingAssistant";
-import LatestProducts from "./_components/home/LatestProducts";
+import ShoppingAssistant from "_components/home/ShoppingAssistant";
+import LatestProducts from "_components/home/LatestProducts";
 
 export default async function Home() {
   return (

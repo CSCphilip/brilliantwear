@@ -1,5 +1,5 @@
-import ProductDetails from "../_components/products/ProductDetails";
-import { Product } from "../types";
+import ProductDetails from "_components/products/ProductDetails";
+import { Product } from "types";
 
 async function getAllProducts() {
   const res = await fetch("https://api.brilliantwear.se/get-all-products");

@@ -3,9 +3,9 @@
 import { CSSProperties, useState } from "react";
 import { BarLoader } from "react-spinners";
 
-import { Product } from "../../types";
+import { Product } from "types";
 import ShoppingAssistantForm from "./ShoppingAssistantForm";
-import ProductCard from "../ProductCard";
+import ProductCard from "_components/ProductCard";
 
 const overrideCSS: CSSProperties = {
   display: "block",
