@@ -6,7 +6,7 @@ const Product = db.Product;
 export async function GET(req: Request, { params: { limit } }: any) {
   const limitNumber = parseInt(limit);
   if (limitNumber < 1 || isNaN(limitNumber)) {
-    return new NextResponse("Bad Request", { status: 400 });
+    return NextResponse.json({ message: "Bad Request", status: 400 });
   }
 
   console.log("Getting the latest", limit, "products from the MongoDB");
