@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aws-sdk": "^2.1484.0",
     "axios": "^1.5.1",
     "mongoose": "^7.6.3",
     "next": "13.5.4",
+    "openai": "^4.14.2",
     "react": "^18",
     "react-dom": "^18",
     "react-spinners": "^0.13.8"
@@ -21,6 +23,7 @@
     "@types/react": "^18",
     "autoprefixer": "^10",
     "daisyui": "^3.9.2",
+    "dotenv": "^16.3.1",
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
