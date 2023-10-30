@@ -1,2 +1,2 @@
 export * from "./mongodb";
-export * from "./openai.config";
+export * from "./openai";
