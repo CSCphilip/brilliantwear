@@ -27,7 +27,7 @@ Visit at: https://www.brilliantwear.se/
 
 - [x] Fix design bug with the horizontal scroll.
 - [x] Design a good 404 page.
-- [ ] Move parts of the backend (currently with Express) to Next.js backend. Perhaps add backend API key to keep the backend secure.
+- [x] Move parts of the backend (currently with Express) to Next.js backend. Perhaps add backend API key to keep the backend secure. **Edit**: all backend (Express) API endpoints have now been implemented in Next.js API.
 - [ ] Log in functionality for admins to for instance upload new products. Perhaps implement a dashboard.
 - [ ] Database management. Improve the database for production ready use. For example: clothes in different sizes. Paging to not load all the products from databse. Set password on MongoDB (and username). This will require to use a .env file or similar on AWS and connect to the database using password which is done in the 'app/\_helpers/server/mongodb.ts' file.
 
