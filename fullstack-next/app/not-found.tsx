@@ -2,11 +2,10 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="h-screen w-screen bg-404-background bg-cover">
-      <div className="h-1/6"></div>
-      <div className="bg-slate-200 bg-opacity-90 h-72 w-screen flex flex-col items-center justify-center">
+    <main className="flex-grow w-screen bg-404-background bg-cover">
+      <div className="bg-slate-200 bg-opacity-90 h-72 my-10 w-screen flex flex-col items-center justify-center">
         <h2 className="text-center">This page could not be found</h2>
-        <p className="text-center text-lg mt-2">
+        <p className="text-center text-lg mt-2 px-4">
           But don&apos;t you worry, there are plenty of clothes to explore on
           our website.
         </p>
@@ -18,6 +17,6 @@ export default function NotFound() {
           Return Home
         </Link>
       </div>
-    </div>
+    </main>
   );
 }

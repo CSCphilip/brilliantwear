@@ -1,4 +1,4 @@
-import { Product } from "types";
+import { Product } from "_types";
 import ProductCard from "_components/ProductCard";
 
 const LatestProducts = async () => {

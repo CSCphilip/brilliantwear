@@ -1,5 +1,5 @@
 import ProductButton from "./ProductButton";
-import { Product as ProductProps } from "types";
+import { Product as ProductProps } from "_types";
 
 const ProductDetails = ({
   id,

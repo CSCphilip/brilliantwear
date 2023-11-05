@@ -20,11 +20,40 @@ mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
 export const db = {
-  //   User: userModel(),
+  User: userModel(),
   Product: productModel(),
 };
 
 // mongoose models with schema definitions
+
+function userModel() {
+  const schema = new Schema(
+    {
+      username: { type: String, unique: true, required: true },
+      password: { type: String, required: true },
+      firstName: { type: String, required: true },
+      lastName: { type: String, required: true },
+    },
+    {
+      // add createdAt and updatedAt timestamps
+      timestamps: true,
+    }
+  );
+
+  schema.set("toJSON", {
+    virtuals: true,
+    versionKey: false,
+    transform: function (doc, ret) {
+      delete ret._id;
+      delete ret.password;
+    },
+  });
+
+  return (
+    mongoose.models.FullstackNextUser ||
+    mongoose.model("FullstackNextUser", schema)
+  );
+}
 
 function productModel() {
   const schema = new Schema(
@@ -47,29 +76,3 @@ function productModel() {
    specified schema and returns that. */
   return mongoose.models.Product || mongoose.model("Product", schema);
 }
-
-// function userModel() {
-//   const schema = new Schema(
-//     {
-//       username: { type: String, unique: true, required: true },
-//       hash: { type: String, required: true },
-//       firstName: { type: String, required: true },
-//       lastName: { type: String, required: true },
-//     },
-//     {
-//       // add createdAt and updatedAt timestamps
-//       timestamps: true,
-//     }
-//   );
-
-//   schema.set("toJSON", {
-//     virtuals: true,
-//     versionKey: false,
-//     transform: function (doc, ret) {
-//       delete ret._id;
-//       delete ret.hash;
-//     },
-//   });
-
-//   return mongoose.models.User || mongoose.model("User", schema);
-// }

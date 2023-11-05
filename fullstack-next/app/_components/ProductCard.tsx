@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Product as ProductCardProps } from "types";
+import { Product as ProductCardProps } from "_types";
 
 const ProductCard = ({
   id,
