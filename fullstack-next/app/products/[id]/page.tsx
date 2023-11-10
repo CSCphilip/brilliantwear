@@ -6,7 +6,7 @@ import Link from "next/link";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const res = await fetch("https://api.brilliantwear.se/get-all-products");
+  const res = await fetch("http://localhost:3000/api/products");
   const allProducts: Product[] = await res.json();
 
   const params = allProducts.map((product) => ({
@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 
 async function getProduct(id: string) {
   const res = await fetch(
-    "https://api.brilliantwear.se/get-product/" + encodeURIComponent(id)
+    "http://localhost:3000/api/products/" + encodeURIComponent(id)
   );
   const product: Product = await res.json();
   return product;
@@ -37,7 +37,7 @@ export default async function ProductDetail({
         <div className="p-4 m-5 border border-black flex flew-row">
           <img
             src={
-              "https://api.brilliantwear.se/get-image/" +
+              "http://localhost:3000/api/products/image/" +
               encodeURIComponent(product.image_url)
             }
             alt="The image of the product."

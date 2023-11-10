@@ -6,7 +6,16 @@ const Product = db.Product;
 
 export const productsRepo = {
   create,
+  getAll,
 };
+
+async function getAll() {
+  console.log("Getting all products from the MongoDB in order of creation");
+
+  const allProducts = await Product.find({}, { _id: 0, __v: 0 }).lean(); // With the lean() method, the average execution time is less (sometimes a lot).
+
+  return allProducts;
+}
 
 async function create(params: FormData) {
   // validate

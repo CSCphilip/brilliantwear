@@ -27,12 +27,16 @@ const ShoppingAssistant = () => {
     // Read the form data
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    const userInputProductDescription = formData.get("product-description");
-    fetch(
-      `https://api.brilliantwear.se/shopping-assistant/${encodeURIComponent(
-        userInputProductDescription as string
-      )}`
-    )
+    const userInputProductDescription = formData.get(
+      "product-description"
+    ) as string;
+    const userInputData = {
+      userInput: userInputProductDescription,
+    };
+    fetch("http://localhost:3000/api/shopping-assistant", {
+      method: "POST",
+      body: JSON.stringify(userInputData),
+    })
       .then((res) => res.json())
       .then((json) => {
         console.log(json);

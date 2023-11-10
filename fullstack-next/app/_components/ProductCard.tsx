@@ -16,7 +16,7 @@ const ProductCard = ({
         <Link href={"/products/" + id}>
           <img
             src={
-              "https://api.brilliantwear.se/get-image/" +
+              "http://localhost:3000/api/products/image/" +
               encodeURIComponent(image_url)
             }
             alt="An image of the product."

@@ -2,7 +2,7 @@ import { Product } from "_types";
 import ProductCard from "_components/ProductCard";
 
 const LatestProducts = async () => {
-  const res = await fetch("https://api.brilliantwear.se/get-latest-products/8");
+  const res = await fetch("http://localhost:3000/api/products/latest/8");
   const latestProducts = await res.json();
 
   return (

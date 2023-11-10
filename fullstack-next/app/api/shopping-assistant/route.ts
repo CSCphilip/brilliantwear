@@ -1,4 +1,4 @@
-import { initializeOpenAI } from "_helpers/server";
+import { initializeOpenAI } from "_helpers/server/config";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 

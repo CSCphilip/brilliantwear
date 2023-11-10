@@ -10,7 +10,7 @@ export default async function Home() {
           Powered by ChatGPT
         </p>
         <img
-          src="icon-search-clothing.png"
+          src="/icon-search-clothing.png"
           alt="Search clothing icon"
           className="mt-2 h-14 lg:h-16"
         />

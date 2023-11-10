@@ -2,7 +2,7 @@ import ProductDetails from "_components/products/ProductDetails";
 import { Product } from "_types";
 
 async function getAllProducts() {
-  const res = await fetch("https://api.brilliantwear.se/get-all-products");
+  const res = await fetch("http://localhost:3000/api/products/latest");
   // next: { revalidate: 60 }, // This will update every 60 seconds and send a request to the backend API (api.brilliantwear.se) and not use values from the cache.
   // NOTE: BUG when using revalidate. The page will become blank after it has been revalidated.
   // See:
