@@ -23,7 +23,10 @@ export default function Dashboard() {
           <h1>Hi {user.firstName}!</h1>
           <p>You&apos;re logged in with Next.js 13 & JWT!!</p>
           <p className="h-fit w-fit p-2 mt-5 bg-blue-600 hover:bg-blue-500 rounded text-white">
-            <Link href="/dashboard/users">Manage Users</Link>
+            <Link href="/dashboard/users">Manage users</Link>
+          </p>
+          <p className="h-fit w-fit p-2 mt-2 bg-blue-600 hover:bg-blue-500 rounded text-white">
+            <Link href="/dashboard/products/add">Add product</Link>
           </p>
         </div>
       </main>

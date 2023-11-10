@@ -17,10 +17,43 @@ export function useFetch() {
       const requestOptions: any = {
         method,
       };
+
       if (body) {
-        requestOptions.headers = { "Content-Type": "application/json" };
-        requestOptions.body = JSON.stringify(body);
+        const formData = new FormData();
+        let isFileInBody = false;
+
+        for (const key in body) {
+          // It ensures that the property exists directly on the body object itself, not on its prototype chain.
+          if (body.hasOwnProperty(key)) {
+            if (body[key] instanceof FileList) {
+              for (let i = 0; i < body[key].length; i++) {
+                formData.append(key, body[key][i]);
+              }
+              isFileInBody = true;
+            } else {
+              formData.append(key, body[key]);
+            }
+          }
+        }
+
+        if (isFileInBody) {
+          /* NOTE: If you add the following, I get the error: missing boundary but if I remove it, 
+           the browser adds it automatically.
+           
+           requestOptions.headers = {
+           "Content-Type": "multipart/form-data",
+           };
+
+           */
+          requestOptions.body = formData;
+        } else {
+          requestOptions.headers = {
+            "Content-Type": "application/json",
+          };
+          requestOptions.body = JSON.stringify(body);
+        }
       }
+
       return fetch(url, requestOptions).then(handleResponse);
     };
   }

@@ -2,7 +2,12 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-import { errorHandler, jwtMiddleware, validateMiddleware } from "./";
+import {
+  errorHandler,
+  jwtMiddleware,
+  validateMiddlewareFormData,
+  validateMiddlewareJSON,
+} from ".";
 
 export function apiHandler(handler: any) {
   const wrappedHandler: any = {};
@@ -14,15 +19,27 @@ export function apiHandler(handler: any) {
 
     wrappedHandler[method] = async (req: NextRequest, ...args: any) => {
       try {
-        // monkey patch req.json() because it can only be called once
-        const json = await req.json();
-        req.json = () => json;
-      } catch {}
-
-      try {
         // global middleware
         await jwtMiddleware(req);
-        await validateMiddleware(req, handler[method].schema);
+
+        // Check the content type of the request
+        const contentType = req.headers.get("content-type");
+
+        if (contentType?.includes("multipart/form-data")) {
+          // Handle "multipart/form-data" requests
+
+          // middleware
+          await validateMiddlewareFormData(req, handler[method].schema);
+        } else {
+          try {
+            // monkey patch req.json() because it can only be called once
+            const json = await req.json();
+            req.json = () => json;
+          } catch {}
+
+          // middleware
+          await validateMiddlewareJSON(req, handler[method].schema);
+        }
 
         // route handler
         const responseBody = await handler[method](req, ...args);

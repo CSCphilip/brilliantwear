@@ -20,7 +20,11 @@ export function Alert() {
   if (!alert) return null;
 
   let alertColor = "bg-red-600";
-  if (alert.message == "User added" || alert.message == "User updated") {
+  if (
+    alert.message == "User added" ||
+    alert.message == "User updated" ||
+    alert.message == "Product added"
+  ) {
     alertColor = "bg-green-600";
   }
 
