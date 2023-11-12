@@ -3,3 +3,5 @@ local
 */node_modules/
 backend/.env
 *.vscode/
+mongodb-docker/dump/
+mongodb-docker/test-server/node_modules/

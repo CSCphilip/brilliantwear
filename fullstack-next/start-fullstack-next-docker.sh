@@ -3,7 +3,7 @@
 # docker build -t cscphilip/brilliantwear-fullstack-next:latest .
 
 # Then:
-# docker run -p 3000:3000 -d cscphilip/brilliantwear-fullstack-next:latest
+# docker run -p 3000:3000 -d --name brilliantwear-fullstack-next cscphilip/brilliantwear-fullstack-next:latest
 
 # or:
 

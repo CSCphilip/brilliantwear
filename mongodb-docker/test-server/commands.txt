@@ -1,0 +1,2 @@
+docker build -t test-server .
+docker stack deploy -c compose.yml bw-test-server
