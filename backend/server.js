@@ -141,22 +141,31 @@ app.get("/get-product/:id", async (req, res) => {
   }
 });
 
-const dbConfig = require("./config/db.config");
-const Role = db.role; // This is a mongoose model
+const getMongoDBConfig = require("./config/db.config");
 
-db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+getMongoDBConfig()
+  .then((dbConfig) => {
+    db.mongoose
+      .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+        auth: { username: dbConfig.USERNAME, password: dbConfig.PASSWORD },
+        authSource: "admin",
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then(() => {
+        console.log("Successfully connect to MongoDB.");
+        initial();
+      })
+      .catch((err) => {
+        console.error("Connection error", err);
+        process.exit();
+      });
   })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-    initial();
-  })
-  .catch((err) => {
-    console.error("Connection error", err);
-    process.exit();
+  .catch((error) => {
+    console.error("Error getting MongoDB Config:", error);
   });
+
+const Role = db.role; // This is a mongoose model
 
 function initial() {
   Role.estimatedDocumentCount()
