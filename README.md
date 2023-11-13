@@ -19,6 +19,11 @@ Visit at: https://www.brilliantwear.se/
 - Next.js 13 (App router)
 - Tailwind CSS
 
+### AWS specific:
+- EC2 instance
+- Route 53
+- SSM
+
 ## Tasks to build a complete online clothing shop and go live
 
 ### The most essential tasks
@@ -29,7 +34,7 @@ Visit at: https://www.brilliantwear.se/
 - [x] Design a good 404 page.
 - [x] Move parts of the backend (currently with Express) to Next.js backend. Perhaps add backend API key to keep the backend secure. **Edit**: all backend (Express) API endpoints have now been implemented in Next.js API, except the log in / authorization functionality.
 - [x] Log in functionality for admins to, for instance, upload new products. Implement a dashboard for admins. **Edit**: Now when logged in, an admin is able to look at the dashboard, see all of the users in the MongoDB, and add & edit & delete users. Furthermore, it is possible for admins to upload new products that is added to the MongoDB. There is currently no button to logout.
-- [ ] Database management. Improve the database for production ready use. For example: clothes in different sizes. Paging to not load all the products from database. Set password on MongoDB (and username). This will require to use a .env file or similar on AWS and connect to the database using password (change in code). Move to Docker.
+- [ ] Database management. Improve the database for production ready use. The following are examples of things to consider and perform. Paging to not load all the products from database. Set password on MongoDB (and username). This will require to use a .env file or similar on AWS and connect to the database using password (change in code). Move to Docker. Regular backups of the database. **Edit**: MongoDB is now running on Docker with authorization turned on. This means that the backend express API server has been modified to use the MongoDB on Docker. The backend API server uses AWS SSM to fetch the password for the MongoDB authorization. All of the collections from the MongoDB on host has beed imported to the MongoDB on Docker.  
 
 #### Second stage (fundamental functional parts of an online shop)
 
@@ -42,7 +47,7 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Split shop into Men's and Woman's clothing products
 - [ ] Create pages for different clothing types (e.g. shoes, pants, shirt)
 - [ ] Products filter & sorting feature
-- [ ] Improve product detail page (the page for each product). Add the possibility to have multiple images. Functionality to select different sizes. Perhaps also for different colors.
+- [ ] Improve product detail page (the page for each product). Add the possibility to have multiple images. Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
 - [ ] Create other overview pages on the website aside from the home page.
 - [ ] Improve the navbar and menu. This is related to the categories of clothes and men's and women's clothes.
 
