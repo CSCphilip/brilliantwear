@@ -7,3 +7,9 @@ services:
       - "mongoservice:172.17.0.1"
     deploy:
       replicas: 3
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    external: true
