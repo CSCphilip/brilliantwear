@@ -1,29 +1,39 @@
 version: '3.3'
 
 services:
-    mongo:
-        image: mongo
-        ports:
-            - '5000:27017'
-        volumes:
-            - /var/lib/mongodb-docker:/data/db
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=philip
-            - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-root-pw
-        secrets:
-            - mongo-root-pw
-        networks:
-            - mongo-network
-        logging:
-            options:
-                max-size: 1g
-        deploy:
-            replicas: 1
+  mongo:
+    image: mongo
+    volumes:
+      - /var/lib/mongodb-docker:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=philip
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-root-pw
+    secrets:
+      - mongo-root-pw
+    networks:
+      - mongo-network
+    logging:
+      options:
+        max-size: 1g
+
+  mongo-backup:
+    image: cscphilip/mongo-backup
+    volumes:
+      - /var/backups/mongodb:/app/dump
+    secrets:
+      - mongo-root-pw
+    networks:
+      - mongo-network
+    deploy:
+      restart_policy:
+        delay: 730h
+    depends_on:
+      - mongo
 
 secrets:
-    mongo-root-pw:
-        external: true
+  mongo-root-pw:
+    external: true
 
 networks:
-    mongo-network:
-        external: true
+  mongo-network:
+    external: true

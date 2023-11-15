@@ -1,0 +1,30 @@
+# To start a docker MongoDB as a service by using a docker compose file and starting a stack. It uses a bind mount to preserve the data when the service is closed. This will set up authentication by using a docker secret. It connects to an already existing docker network 'mongo-network'. Other docker services which want to access the MongoDB on docker also needs to be connected to this network. This command will also start the mongo-backup service which backups the data every 30 days and saves it to /var/backups/mongodb. 
+docker stack deploy -c compose.yml bw-mongo
+
+
+# Two ways to connect and authenticate. NOTE: this is not possible anymore (with the mongo service running in docker) since the port opening to the host has been removed to make the database more secure.
+mongosh localhost:5000 --authenticationDatabase "admin" -u "philip" -p
+
+# You will be prompted to enter password.
+
+# OR:
+
+mongosh localhost:5000
+
+# And then in mongosh:
+use admin
+db.auth("philip", passwordPrompt())
+
+# Enter password when prompted. 
+
+
+# You can connect to the MongoDB in docker container from the AWS EC2 by using the following command. However you will need to go to the admin db and enter user/pass. NOTE: again this will not connect since the port opening to the host has been removed.
+mongosh localhost:5000
+
+
+# Mongo import command:
+mongoimport mongodb://localhost:5000/brilliantwear users.json --authenticationDatabase "admin" -u "philip" -p <password>
+
+
+# To restore a mongodb from a .gz file. NOTE: the nsFrom and nsTo are not necessary and will only change the name of the db in mongodb.
+mongorestore --host=localhost --port=5000 --nsInclude=brilliantwear.* --nsFrom=brilliantwear.* --nsTo=brilliantwear-backup.* --archive=dump_2023-11-15.gz --gzip --authenticationDatabase=admin -u=philip < pass
