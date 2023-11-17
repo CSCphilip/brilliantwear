@@ -1,4 +1,4 @@
-# To start a docker MongoDB as a service by using a docker compose file and starting a stack. It uses a bind mount to preserve the data when the service is closed. This will set up authentication by using a docker secret. It connects to an already existing docker network 'mongo-network'. Other docker services which want to access the MongoDB on docker also needs to be connected to this network. This command will also start the mongo-backup service which backups the data every 30 days and saves it to /var/backups/mongodb. 
+# To start a docker MongoDB as a service by using a docker compose file and starting a stack. It uses a bind mount to preserve the data when the service is closed. This will set up authentication by using a docker secret. It connects to an already existing docker network 'mongo-network'. Other docker services which want to access the MongoDB on docker also needs to be connected to this network. This command will also start the mongo-backup service which backups the data every week (7 days) and saves it to /var/backups/mongodb.
 docker stack deploy -c compose.yml bw-mongo
 
 
