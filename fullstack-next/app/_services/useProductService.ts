@@ -5,6 +5,7 @@ import { useFetch } from "_helpers/client";
 const initialState = {
   products: undefined,
   product: undefined,
+  pagination: undefined,
 };
 
 // This is a hook that returns a store object and a service object.
@@ -12,15 +13,28 @@ const productStore = create<IProductStore>(() => initialState);
 
 export function useProductService(): IProductService {
   const fetch = useFetch();
-  const { products, product } = productStore();
+  const { products, product, pagination } = productStore();
 
   return {
     products,
     product,
+    pagination,
     // Add product-related functions here, such as creating, updating, or deleting products.
     // For example:
     create: async (product) => {
       await fetch.post("/api/products", product);
+    },
+    getLatest: async (page?: number) => {
+      let JSONresponse;
+      if (page || page === 0) {
+        JSONresponse = await fetch.get(`/api/products/latest?page=${page}`);
+      } else {
+        JSONresponse = await fetch.get("/api/products/latest");
+      }
+      productStore.setState({
+        products: JSONresponse.products,
+        pagination: JSONresponse.pagination,
+      });
     },
 
     // NOTE: For later use, you can add the following function signatures:
@@ -36,14 +50,25 @@ export function useProductService(): IProductService {
 // Import and define interfaces for product-related data and functions.
 import { Product as IProduct } from "_types";
 
+interface IPagination {
+  used: boolean;
+  total_products: number;
+  page: number | null;
+  total_pages: number | null;
+  per_page: number | null;
+  products_skipped: number | null;
+}
+
 interface IProductStore {
   products?: IProduct[];
   product?: IProduct;
+  pagination?: IPagination;
 }
 
 interface IProductService extends IProductStore {
   // Add product-related function signatures here.
   create: (product: IProduct) => Promise<void>;
+  getLatest: (page?: number) => Promise<void>;
 
   // NOTE: For later use, you can add the following function signatures:
   //   updateProduct: (

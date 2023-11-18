@@ -1,19 +1,19 @@
 import joi from "joi";
 import fs from "fs";
 import path from "path";
-import { NextRequest, NextResponse } from "next/server";
-import { db, productsRepo } from "_helpers/server";
+import { NextRequest } from "next/server";
+import { productsRepo } from "_helpers/server";
 import { apiHandler } from "_helpers/server/api";
-
-const Product = db.Product;
 
 module.exports = apiHandler({
   POST: create,
-  GET: getAll,
+  GET: get,
 });
 
-async function getAll(req: Request) {
-  return await productsRepo.getAll();
+async function get(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const page = searchParams.get("page");
+  return await productsRepo.get(parseInt(page as string));
 }
 
 async function create(req: NextRequest) {

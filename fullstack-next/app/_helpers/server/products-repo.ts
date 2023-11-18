@@ -1,4 +1,5 @@
 import path from "path";
+import { SortOrder } from "mongoose";
 
 import { db } from "./mongodb";
 
@@ -6,16 +7,9 @@ const Product = db.Product;
 
 export const productsRepo = {
   create,
-  getAll,
+  get,
+  getLatest,
 };
-
-async function getAll() {
-  console.log("Getting all products from the MongoDB in order of creation");
-
-  const allProducts = await Product.find({}, { _id: 0, __v: 0 }).lean(); // With the lean() method, the average execution time is less (sometimes a lot).
-
-  return allProducts;
-}
 
 async function create(params: FormData) {
   // validate
@@ -48,4 +42,75 @@ async function create(params: FormData) {
   await product.save();
 
   console.log("Product saved successfully. Brand:", params.get("brand"));
+}
+
+async function get(page?: number) {
+  return getProducts(page);
+}
+
+async function getLatest(page?: number) {
+  // Sorting by _id in descending order
+  const sortOptions: { [key: string]: SortOrder } = { _id: "descending" };
+  return getProducts(page, sortOptions);
+}
+
+async function getProducts(page?: number, sortOptions?: any) {
+  // Put all your queryParameters parameters in here
+  const queryParameters = {};
+
+  const totalProducts = await Product.estimatedDocumentCount(queryParameters);
+
+  const DEFAULT_PER_PAGE = 10;
+  let productsPerPage: number | null = DEFAULT_PER_PAGE;
+
+  let paginationUsed = false;
+  let skip = null;
+  let totalPages = null;
+  let products;
+
+  const queryBuilder = (q: any) => {
+    const builder = Product.find(q, {
+      _id: 0,
+      __v: 0,
+      createdAt: 0,
+      updatedAt: 0,
+    });
+    if (sortOptions) {
+      builder.sort(sortOptions);
+    }
+    return builder;
+  };
+
+  if (page || page === 0) {
+    if (page < 1) {
+      throw new Error("Page must be greater than 0");
+    }
+    console.log("Getting a page of products from the MongoDB");
+
+    paginationUsed = true;
+    skip = (page - 1) * productsPerPage;
+    totalPages = Math.ceil(totalProducts / productsPerPage);
+
+    products = await queryBuilder(queryParameters)
+      .limit(productsPerPage)
+      .skip(skip)
+      .lean();
+  } else {
+    console.log("Getting all products from the MongoDB");
+
+    productsPerPage = null;
+    products = await queryBuilder({}).lean();
+  }
+
+  return {
+    pagination: {
+      used: paginationUsed,
+      total_products: totalProducts,
+      page: page,
+      total_pages: totalPages,
+      per_page: productsPerPage,
+      products_skipped: skip,
+    },
+    products: products,
+  };
 }

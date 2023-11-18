@@ -45,7 +45,8 @@ async function fetchProductSuggestionsFromChatGPT(
 
   try {
     const res = await fetch("http://localhost:3000/api/products/latest"); //NOTE: This is a hack. We should not hardcode the URL like this. We should code the logic here and take the products from the MongoDB.
-    const allLatestProducts = await res.json();
+    const JSONresponse = await res.json();
+    const allLatestProducts = JSONresponse.products;
 
     const chatCompletion = await openaiInstance.chat.completions.create({
       messages: [
