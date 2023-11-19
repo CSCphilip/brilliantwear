@@ -46,6 +46,10 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Checkout functionality
 - [ ] Payment wall (1. Visa, 2. PayPal, 3. Swish)
 
+#### *Intermediate step*:
+
+- [ ] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.
+
 #### Third stage (design)
 
 - [ ] Split shop into Men's and Woman's clothing products
