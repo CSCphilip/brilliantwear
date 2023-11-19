@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
-import { Spinner } from "_components";
+import Spinner from "_components/Spinner";
 import { useUserService } from "_services";
 
 export default function Users() {

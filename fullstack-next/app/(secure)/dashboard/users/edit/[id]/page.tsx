@@ -5,8 +5,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import { AddEdit } from "_components/dashboard/users";
-import { Spinner } from "_components";
+import AddEdit from "_components/dashboard/users/AddEdit";
+import Spinner from "_components/Spinner";
 import { useUserService } from "_services";
 
 export default function Edit({ params: { id } }: any) {

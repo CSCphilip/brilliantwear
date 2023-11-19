@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-const ProductButton = ({ id }: { id: string }) => {
+export default function ProductButton({ id }: { id: string }) {
   const router = useRouter();
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -21,6 +21,4 @@ const ProductButton = ({ id }: { id: string }) => {
       Go to product
     </button>
   );
-};
-
-export default ProductButton;
+}

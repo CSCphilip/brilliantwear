@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import ProductDetails from "_components/products/ProductDetails";
 import { useProductService } from "_services";
-import { Spinner } from "_components";
+import Spinner from "_components/Spinner";
 
 // Old (left to remember the bug):
 // async function getAllProducts() {

@@ -1,7 +1,7 @@
 import { Product } from "_types";
 import ProductCard from "_components/ProductCard";
 
-const LatestProducts = async () => {
+export default async function LatestProducts() {
   const res = await fetch("http://localhost:3000/api/products/latest/8");
   const latestProducts = await res.json();
 
@@ -15,6 +15,4 @@ const LatestProducts = async () => {
       </div>
     </>
   );
-};
-
-export default LatestProducts;
+}

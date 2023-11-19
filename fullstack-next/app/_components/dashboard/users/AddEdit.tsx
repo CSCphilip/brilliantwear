@@ -8,7 +8,13 @@ import { useForm } from "react-hook-form";
 
 import { useAlertService, useUserService } from "_services";
 
-export function AddEdit({ title, user }: { title: string; user?: any }) {
+export default function AddEdit({
+  title,
+  user,
+}: {
+  title: string;
+  user?: any;
+}) {
   const router = useRouter();
   const alertService = useAlertService();
   const userService = useUserService();

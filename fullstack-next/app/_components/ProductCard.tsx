@@ -2,14 +2,14 @@ import Link from "next/link";
 
 import { Product as ProductCardProps } from "_types";
 
-const ProductCard = ({
+export default function ProductCard({
   id,
   brand,
   category,
   type,
   price,
   image_url,
-}: ProductCardProps) => {
+}: ProductCardProps) {
   return (
     <div className="flex justify-center">
       <div>
@@ -49,6 +49,4 @@ const ProductCard = ({
       </div>
     </div>
   );
-};
-
-export default ProductCard;
+}

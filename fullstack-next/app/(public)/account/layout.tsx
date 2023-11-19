@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { auth } from "_helpers/server";
-import { Alert } from "_components";
+import Alert from "_components/Alert";
 
 export default async function Layout({
   children,

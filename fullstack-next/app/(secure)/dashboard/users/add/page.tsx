@@ -1,6 +1,6 @@
 // Based on: https://jasonwatmore.com/next-js-13-app-router-mongodb-user-rego-and-login-tutorial-with-example#api-handler-ts
 
-import { AddEdit } from "_components/dashboard/users";
+import AddEdit from "_components/dashboard/users/AddEdit";
 
 export default function Add() {
   return (

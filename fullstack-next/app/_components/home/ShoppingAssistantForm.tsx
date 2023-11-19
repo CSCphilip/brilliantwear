@@ -4,9 +4,9 @@ interface ShoppingAssistantFormProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const ShoppingAssistantForm = ({
+export default function ShoppingAssistantForm({
   handleSubmit,
-}: ShoppingAssistantFormProps) => {
+}: ShoppingAssistantFormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center">
       <input
@@ -25,6 +25,4 @@ const ShoppingAssistantForm = ({
       </button>
     </form>
   );
-};
-
-export default ShoppingAssistantForm;
+}

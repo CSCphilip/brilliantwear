@@ -1,14 +1,14 @@
 import ProductButton from "./ProductButton";
 import { Product as ProductProps } from "_types";
 
-const ProductDetails = ({
+export default function ProductDetails({
   id,
   brand,
   category,
   type,
   price,
   image_url,
-}: ProductProps) => {
+}: ProductProps) {
   return (
     <div style={{ border: "1px solid black", margin: "20px", padding: "20px" }}>
       <p>
@@ -34,6 +34,4 @@ const ProductDetails = ({
       <ProductButton id={id} />
     </div>
   );
-};
-
-export default ProductDetails;
+}

@@ -14,7 +14,7 @@ const overrideCSS: CSSProperties = {
   marginBottom: "50px",
 };
 
-const ShoppingAssistant = () => {
+export default function ShoppingAssistant() {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -80,6 +80,4 @@ const ShoppingAssistant = () => {
       )}
     </div>
   );
-};
-
-export default ShoppingAssistant;
+}

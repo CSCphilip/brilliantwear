@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 import { useAlertService } from "_services";
 
-export function Alert() {
+export default function Alert() {
   const pathname = usePathname();
   const alertService = useAlertService();
   const alert = alertService.alert;
