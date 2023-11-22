@@ -52,7 +52,7 @@ export default async function ProductDetail({
               </p>
             </span>
             <div className="ms-5 mt-5">
-              <AddToCartButton id={params.id} />
+              <AddToCartButton product={product} />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Product as ProductCardProps } from "_types";
+import { formatCurrency } from "_utilities";
 
 export default function ProductCard({
   id,
@@ -42,7 +43,7 @@ export default function ProductCard({
           </li>
           <li>
             <p>
-              <b>Price:</b> {price} kr
+              <b>Price:</b> {formatCurrency(price)}
             </p>
           </li>
         </ul>

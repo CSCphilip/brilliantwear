@@ -6,3 +6,9 @@ export interface Product {
   price: number;
   image_url: string;
 }
+
+export type CartItem = {
+  product: Product;
+  quantity: number;
+  image: Blob | undefined;
+};

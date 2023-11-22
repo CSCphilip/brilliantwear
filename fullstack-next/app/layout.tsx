@@ -40,7 +40,7 @@ export default function RootLayout({
 
             {children}
 
-            <footer className="bottom-0 left-0 z-20 w-full p-4 bg-zinc-900 border-t-2 border-t-primary shadow lg:flex lg:items-center lg:justify-between lg:p-6">
+            <footer className="bottom-0 left-0 z-10 w-full p-4 bg-zinc-900 border-t-2 border-t-primary shadow lg:flex lg:items-center lg:justify-between lg:p-6">
               <span className="text-sm text-gray-200 sm:text-center">
                 &copy; {currentYear} Brilliantwear. All Rights Reserved.
               </span>
