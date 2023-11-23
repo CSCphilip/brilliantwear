@@ -5,11 +5,17 @@ import Link from "next/link";
 
 import { useShoppingCart } from "_context";
 import { formatCurrency } from "_utilities";
-import { CartItem } from "_types";
+import { CartItem, Product } from "_types";
 
 // Slide-over shopping cart menu
 export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
-  const { closeCart, cartItems, removeFromCart } = useShoppingCart();
+  const {
+    closeCart,
+    cartItems,
+    removeFromCart,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+  } = useShoppingCart();
 
   /* TODO: Improve this frontend code for the shopping cart menu. Remove the double buttons, perhaps you
    can use tailwinds 'pointer-events-none' on one of the divs.
@@ -19,7 +25,7 @@ export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
       <button
         onClick={closeCart}
         className={`${
-          isOpen ? "" : "hidden"
+          !isOpen && "hidden"
         } fixed left-0 top-0 h-full w-full z-20 bg-gray-500 bg-opacity-75 cursor-default`}
       />
 
@@ -80,16 +86,26 @@ export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
               with the actual items will be able to scroll. The heading & close button and total price
               section will always be visible. */}
               <div className="overflow-y-scroll grow">
-                <ul>
-                  {cartItems.map((item) => (
-                    <ShoppingCartItem
-                      key={item.product.id}
-                      item={item}
-                      removeFromCart={removeFromCart}
-                    />
-                  ))}
-                </ul>
-                {/* NOTE: Add "Looks empty!" message if cart is empty. */}
+                {cartItems.length !== 0 ? (
+                  <ul>
+                    {cartItems.map((item, index) => (
+                      <ShoppingCartItem
+                        key={item.product.id}
+                        item={item}
+                        isLastItem={index === cartItems.length - 1}
+                        removeFromCart={removeFromCart}
+                        increaseCartQuantity={increaseCartQuantity}
+                        decreaseCartQuantity={decreaseCartQuantity}
+                      />
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="h-full me-5 flex items-center justify-center">
+                    <p className="mb-3 text-gray-500">
+                      Oops! Your cart's feeling light as a feather.
+                    </p>
+                  </div>
+                )}
               </div>
               <div className="h-28 -ms-5 border-t-2 border-gray-300 pt-3">
                 <div className="flex justify-between px-6">
@@ -104,7 +120,7 @@ export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
                 </div>
                 <Link
                   href="#"
-                  className="mx-6 mt-2 flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                  className="mx-6 mt-2 mb-4 flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                 >
                   Checkout
                 </Link>
@@ -120,9 +136,18 @@ export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
 type ShoppingCartItemProps = {
   item: CartItem;
   removeFromCart: (id: string) => void;
+  increaseCartQuantity: (product: Product) => void;
+  decreaseCartQuantity: (id: string) => void;
+  isLastItem: boolean;
 };
 
-function ShoppingCartItem({ item, removeFromCart }: ShoppingCartItemProps) {
+function ShoppingCartItem({
+  item,
+  removeFromCart,
+  increaseCartQuantity,
+  decreaseCartQuantity,
+  isLastItem,
+}: ShoppingCartItemProps) {
   if (!item.image) {
     return <div>No image data available</div>;
   }
@@ -150,7 +175,83 @@ function ShoppingCartItem({ item, removeFromCart }: ShoppingCartItemProps) {
             <p>Brand: {item.product.brand}</p>
             <p>Category: {item.product.category}</p>
           </div>
-          <p>Qty: {item.quantity}</p>
+          <div className="flex">
+            <p>Qty: {item.quantity}</p>
+            <button
+              onClick={() => increaseCartQuantity(item.product)}
+              className="pt-[2px]"
+            >
+              <svg
+                className="w-4 h-4 ml-[6px] hover:scale-110 transform transition-all duration-150"
+                fill="#000000"
+                viewBox="0 0 56 56"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path d="M 27.9999 51.9063 C 41.0546 51.9063 51.9063 41.0781 51.9063 28 C 51.9063 14.9453 41.0312 4.0937 27.9765 4.0937 C 14.8983 4.0937 4.0937 14.9453 4.0937 28 C 4.0937 41.0781 14.9218 51.9063 27.9999 51.9063 Z M 27.9999 47.9219 C 16.9374 47.9219 8.1014 39.0625 8.1014 28 C 8.1014 16.9609 16.9140 8.0781 27.9765 8.0781 C 39.0155 8.0781 47.8983 16.9609 47.9219 28 C 47.9454 39.0625 39.0390 47.9219 27.9999 47.9219 Z M 27.9296 39.1328 C 29.1952 39.1328 29.9452 38.2656 29.9452 36.9063 L 29.9452 29.9688 L 37.2812 29.9688 C 38.5936 29.9688 39.5077 29.2890 39.5077 28.0469 C 39.5077 26.7812 38.6405 26.0547 37.2812 26.0547 L 29.9452 26.0547 L 29.9452 18.6953 C 29.9452 17.3125 29.1952 16.4688 27.9296 16.4688 C 26.6874 16.4688 26.0077 17.3594 26.0077 18.6953 L 26.0077 26.0547 L 18.6952 26.0547 C 17.3124 26.0547 16.4452 26.7812 16.4452 28.0469 C 16.4452 29.2890 17.3827 29.9688 18.6952 29.9688 L 26.0077 29.9688 L 26.0077 36.9063 C 26.0077 38.2188 26.6874 39.1328 27.9296 39.1328 Z"></path>
+                </g>
+              </svg>
+            </button>
+            <button
+              onClick={() => decreaseCartQuantity(item.product.id)}
+              className="pt-[2px]"
+            >
+              <svg
+                className="w-[14px] h-[14px] ml-[1px] hover:scale-110 transform transition-all duration-150"
+                viewBox="0 -0.5 21 21"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <title>minus_circle [#1426]</title>{" "}
+                  <desc>Created with Sketch.</desc> <defs> </defs>{" "}
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
+                    {" "}
+                    <g
+                      id="Dribbble-Light-Preview"
+                      transform="translate(-219.000000, -600.000000)"
+                      fill="#000000"
+                    >
+                      {" "}
+                      <g
+                        id="icons"
+                        transform="translate(56.000000, 160.000000)"
+                      >
+                        {" "}
+                        <path
+                          d="M177.7,450 C177.7,450.552 177.2296,451 176.65,451 L170.35,451 C169.7704,451 169.3,450.552 169.3,450 C169.3,449.448 169.7704,449 170.35,449 L176.65,449 C177.2296,449 177.7,449.448 177.7,450 M173.5,458 C168.86845,458 165.1,454.411 165.1,450 C165.1,445.589 168.86845,442 173.5,442 C178.13155,442 181.9,445.589 181.9,450 C181.9,454.411 178.13155,458 173.5,458 M173.5,440 C167.70085,440 163,444.477 163,450 C163,455.523 167.70085,460 173.5,460 C179.29915,460 184,455.523 184,450 C184,444.477 179.29915,440 173.5,440"
+                          id="minus_circle-[#1426]"
+                        >
+                          {" "}
+                        </path>{" "}
+                      </g>{" "}
+                    </g>{" "}
+                  </g>{" "}
+                </g>
+              </svg>
+            </button>
+          </div>
         </div>
         <div className="flex flex-col justify-between w-24 py-4">
           <p className="font-medium text-gray-900 text-right pr-[22px]">
@@ -164,7 +265,11 @@ function ShoppingCartItem({ item, removeFromCart }: ShoppingCartItemProps) {
           </button>
         </div>
       </div>
-      <hr className="h-px mr-5 mt-1 border-0 bg-gray-300" />
+      <hr
+        className={`${
+          isLastItem && "hidden"
+        } h-px mr-5 mt-1 border-0 bg-gray-300`}
+      />
     </li>
   );
 }

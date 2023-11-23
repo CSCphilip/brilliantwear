@@ -62,38 +62,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     );
   }
 
-  // Replace 'return [...currItems, { product, quantity: 1, image: undefined }];'
-  // with 'return [...currItems, { product, quantity: 1, image: undefined }] || [];'
-  // return [...currItems, { product, quantity: 1, image: undefined }] || [];
-
-  // if (currItems.find((item) => item.product.id === product.id) == null) {
-  //         fetch(
-  //           "http://localhost:3000/api/products/image/" +
-  //             encodeURIComponent(product.image_url)
-  //         )
-  //           .then((res) => {
-  //             if (res.ok) {
-  //               return res.blob(); // Get the image data as a Blob
-  //             }
-  //             throw new Error("Network res was not OK.");
-  //           })
-  //           .then((imageBlob) => {
-  //             console.log("imageBlob:", imageBlob);
-  //             console.log("Fetched image for item with id:", product.id);
-  //             console.log(
-  //               "An item with image available was added to the shopping cart with id:",
-  //               product.id
-  //             );
-  //             return [...currItems, { product, quantity: 1, imageBlob }];
-  //           })
-  //           .catch((error) => {
-  //             console.error("Error fetching image:", error);
-  //             console.log(
-  //               "An item without image available was added to the shopping cart with id:",
-  //               product.id
-  //             );
-  //             return [...currItems, { product, quantity: 1, image: undefined }];
-
   function increaseCartQuantity(product: Product) {
     const item = cartItems.find((item) => item.product.id === product.id);
 
