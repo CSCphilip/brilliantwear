@@ -37,9 +37,10 @@ export default function NavMenu() {
 
         <button
           onClick={openCart}
-          className="w-8 h-8 me-5 lg:me-8 relative flex justify-center"
+          className="w-8 h-8 me-5 lg:me-8 relative flex justify-center rounded-full p-[5px] border-2 border-black hover:rotate-12 duration-300"
         >
           <svg
+            className="-translate-x-[1px] translate-y-[1px]"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +61,7 @@ export default function NavMenu() {
               ></path>{" "}
             </g>
           </svg>
-          <div className="w-5 h-5 bg-slate-800 text-white text-sm rounded-full flex justify-center absolute top-0 right-0 translate-y-[-7px] translate-x-[8px]">
+          <div className="w-4 h-4 bg-slate-800 text-white text-xs rounded-full flex justify-center absolute top-0 right-0 translate-y-[-6px] translate-x-[6px]">
             {cartQuantity}
           </div>
         </button>
