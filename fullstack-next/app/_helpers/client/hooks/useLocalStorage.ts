@@ -15,7 +15,6 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
 
   useEffect(() => {
     const jsonValue = localStorage.getItem(key);
-    console.log("get from local storage", jsonValue);
     if (jsonValue != null) {
       setValue(JSON.parse(jsonValue));
     }
@@ -24,7 +23,6 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
 
   useEffect(() => {
     if (readFromLocalStorage === true) {
-      console.log("set to local storage", value);
       localStorage.setItem(key, JSON.stringify(value));
     }
   }, [key, value]);

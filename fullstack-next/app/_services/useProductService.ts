@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { useFetch } from "_helpers/client";
+import { useFetch } from "_helpers/client/hooks";
 
 const initialState = {
   products: undefined,

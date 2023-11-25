@@ -4,7 +4,7 @@ import { create } from "zustand";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { useAlertService } from "_services";
-import { useFetch } from "_helpers/client";
+import { useFetch } from "_helpers/client/hooks";
 
 // user state store
 const initialState = {
