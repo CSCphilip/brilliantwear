@@ -23,7 +23,7 @@ Visit at: https://www.brilliantwear.se/
 
 - EC2 instance
 - Route 53
-- SSM
+- Systems Manager (SSM)
 
 ## Tasks to build a complete online clothing shop and go live
 
@@ -34,15 +34,16 @@ Visit at: https://www.brilliantwear.se/
 - [x] Fix design bug with the horizontal scroll.
 - [x] Design a good 404 page.
 - [x] Move parts of the backend (currently with Express) to Next.js backend. Perhaps add backend API key to keep the backend secure.  
-       **Notes**: All backend (Express) API endpoints have now been implemented in Next.js API, except the log in / authorization functionality.
+       **Notes:** All backend (Express) API endpoints have now been implemented in Next.js API, except the log in / authorization functionality.
 - [x] Log in functionality for admins to, for instance, upload new products. Implement a dashboard for admins.  
-       **Notes**: Now when logged in, an admin is able to look at the dashboard, see all of the users in the MongoDB, and add & edit & delete users. Furthermore, it is possible for admins to upload new products that is added to the MongoDB. There is currently no button to logout.
+       **Notes:** Now when logged in, an admin is able to look at the dashboard, see all of the users in the MongoDB, and add & edit & delete users. Furthermore, it is possible for admins to upload new products that is added to the MongoDB. There is currently no button to logout.
 - [x] Database management. Improve the database for production ready use. The following are examples of things to consider and perform. Pagination to not load all the products from database. Set password on MongoDB (and username). This will require to use a .env file or similar on AWS and connect to the database using password (change in code). Move to Docker. Regular backups of the database.  
-       **Notes**: MongoDB is now running on Docker with authorization turned on. This means that the backend express API server has been modified to use the MongoDB on Docker. The backend API server uses AWS SSM to fetch the password for the MongoDB authorization. All of the collections from the MongoDB on host has beed imported to the MongoDB on Docker. I've built a backup script in JS which backups the brilliantwear db in the MongoDB running on Docker and togehter with the Docker compose file will make the script run every week (7 days). The backup is stored as a gzip on the EC2 instance under `/var/backups/mongodb`. Pagination has been implement on the Product Catalog page.
+       **Notes:** MongoDB is now running on Docker with authorization turned on. This means that the backend express API server has been modified to use the MongoDB on Docker. The backend API server uses AWS SSM to fetch the password for the MongoDB authorization. All of the collections from the MongoDB on host has beed imported to the MongoDB on Docker. I've built a backup script in JS which backups the brilliantwear db in the MongoDB running on Docker and togehter with the Docker compose file will make the script run every week (7 days). The backup is stored as a gzip on the EC2 instance under `/var/backups/mongodb`. Pagination has been implement on the Product Catalog page.
 
 #### Second stage (fundamental functional parts of an online shop)
 
-- [ ] Shopping cart functionality. Add buy button in the product detail page. This will imply the necessity to start implementing the use of cookies. For example: save sessions with products in the cart.
+- [x] Shopping cart functionality. Add buy button in the product detail page.  
+      **Notes:** To get the persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart. 
 - [ ] Checkout functionality
 - [ ] Payment wall (1. Visa, 2. PayPal, 3. Swish)
 
