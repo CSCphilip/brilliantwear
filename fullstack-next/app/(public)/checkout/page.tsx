@@ -1,18 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useCheckout } from "_context";
-import { useRouter } from "next/navigation";
 
 export default function Checkout() {
-  const { setEmail } = useCheckout();
+  const { setEmail, checkoutSteps, setCurrentCheckoutStep } = useCheckout();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
   const fields = {
     email: register("email", { required: "Email is required" }),
   };
+
+  setCurrentCheckoutStep(checkoutSteps.indexOf("Information"));
 
   const router = useRouter();
 
@@ -24,9 +26,9 @@ export default function Checkout() {
   }
 
   return (
-    <div className="grow w-screen pb-16 flex justify-center lg:items-center lg:mb-10">
+    <div className="grow w-screen pb-16 lg:pb-28 flex justify-center items-center">
       <div className="w-fit px-5 flex flex-col items-center">
-        <h3 className="my-7 lg:mt-0">Checkout</h3>
+        <h3 className="my-7">Checkout</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label className="pl-1 font-medium">Contact</label>
           <div className="relative mt-3">

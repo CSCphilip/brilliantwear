@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { useShoppingCart } from "_context";
 import { formatCurrency } from "_utilities";
@@ -211,6 +211,8 @@ function TotalPriceSection({
   cartItems: CartItem[];
   closeCart: () => void;
 }) {
+  const router = useRouter();
+
   return (
     <div className="h-28 -ms-5 border-t-2 border-gray-300 pt-3">
       <div className="flex justify-between px-6">
@@ -223,15 +225,20 @@ function TotalPriceSection({
           )}
         </p>
       </div>
-      <Link
-        onClick={() => {
-          closeCart();
-        }}
-        href="/checkout"
-        className="mx-6 mt-2 mb-4 flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-      >
-        Checkout
-      </Link>
+      <div className="flex">
+        <button
+          onClick={() => {
+            router.push("/checkout");
+            closeCart();
+          }}
+          disabled={cartItems.length === 0}
+          className="grow mx-6 mt-2 mb-4 flex items-center justify-center rounded-md border border-transparent 
+        bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700
+        disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Checkout
+        </button>
+      </div>
     </div>
   );
 }

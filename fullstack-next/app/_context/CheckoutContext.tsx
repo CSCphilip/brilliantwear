@@ -2,6 +2,12 @@
 
 import { ReactNode, createContext, useContext, useState } from "react";
 
+const CHECKOUT_STEPS = ["Information", "Shipping", "Payment", "Preview"];
+
+type CheckoutProviderProps = {
+  children: ReactNode;
+};
+
 type CheckoutUser = {
   email: string;
   // fistName: string;
@@ -10,13 +16,12 @@ type CheckoutUser = {
   // country: string;
 };
 
-type CheckoutProviderProps = {
-  children: ReactNode;
-};
-
 type CheckoutContext = {
   user: CheckoutUser;
   setEmail: (email: string) => void;
+  checkoutSteps: string[];
+  currentCheckoutStep: number;
+  setCurrentCheckoutStep: (step: number) => void;
 };
 
 const CheckoutContext = createContext({} as CheckoutContext);
@@ -30,12 +35,23 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
     email: "",
   });
 
+  const checkoutSteps = CHECKOUT_STEPS;
+  const [currentCheckoutStep, setCurrentCheckoutStep] = useState(0);
+
   function setEmail(email: string) {
     user.email = email;
   }
 
   return (
-    <CheckoutContext.Provider value={{ user, setEmail }}>
+    <CheckoutContext.Provider
+      value={{
+        user,
+        setEmail,
+        checkoutSteps,
+        currentCheckoutStep,
+        setCurrentCheckoutStep,
+      }}
+    >
       {children}
     </CheckoutContext.Provider>
   );
