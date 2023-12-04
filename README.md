@@ -25,6 +25,10 @@ Visit at: https://www.brilliantwear.se/
 - Route 53
 - Systems Manager (SSM)
 
+### External APIs used:
+- OpenAI API
+- PostNord API
+
 ## Tasks to build a complete online clothing shop and go live
 
 ### The most essential tasks
