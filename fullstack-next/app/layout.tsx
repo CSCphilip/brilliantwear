@@ -20,7 +20,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <ShoppingCartProvider>
           <div className="flex flex-col min-h-screen">
             <div className="overflow-hidden">
@@ -29,7 +29,7 @@ export default function RootLayout({
                   <Link href="/" className="flex justify-center">
                     <img
                       className="h-full scale-75 lg:scale-80"
-                      src="logo.png"
+                      src="/logo.png"
                       alt="Brilliantwear"
                     />
                   </Link>

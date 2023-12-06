@@ -1,10 +1,14 @@
 "use client";
 
 import { useCheckout } from "_context";
+import { useEffect } from "react";
 
-export default function CheckoutShipping() {
+export default function CheckoutPreview() {
   const { setCurrentCheckoutStep, checkoutSteps } = useCheckout();
-  setCurrentCheckoutStep(checkoutSteps.indexOf("Preview"));
+
+  useEffect(() => {
+    setCurrentCheckoutStep(checkoutSteps.indexOf("Preview"));
+  }, []);
 
   return (
     <main className="grow p-5">

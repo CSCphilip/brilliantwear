@@ -7,7 +7,7 @@ export default function CheckoutProgress() {
       <ol className="grow flex max-w-5xl">
         {checkoutSteps.map((step, index) => {
           return (
-            <li className="grow w-24 flex flex-col items-center">
+            <li key={index} className="grow w-24 flex flex-col items-center">
               <div className="w-full flex justify-center items-center">
                 <hr
                   className={`grow border border-black ${
