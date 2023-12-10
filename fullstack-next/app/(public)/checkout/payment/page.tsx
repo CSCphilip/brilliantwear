@@ -1,11 +1,21 @@
 "use client";
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { useCheckout } from "_context";
+import { useCheckout, useShoppingCart } from "_context";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPayment() {
-  const { checkoutSteps, setCurrentCheckoutStep } = useCheckout();
+  const {
+    checkoutSteps,
+    setCurrentCheckoutStep,
+    user,
+    shippingAddress,
+    servicePoint,
+  } = useCheckout();
+  const { cartItems } = useShoppingCart();
+
+  const router = useRouter();
 
   const [paypalClientId, setPaypalClientId] = useState<string | undefined>(
     undefined
@@ -36,18 +46,14 @@ export default function CheckoutPayment() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        cart: [
-          {
-            id: "test01",
-            quantity: 1,
-          },
-        ],
+        cart: cartItems,
+        user,
+        shippingAddress,
+        servicePoint,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Order created in page for payment");
-        console.log(data);
         return data.id;
       });
   }
@@ -61,24 +67,33 @@ export default function CheckoutPayment() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.httpStatusCode !== 201) {
+          // TODO: handle error and show on screen
+        } else {
+          router.push("/checkout/complete");
+        }
       });
   }
+
+  // TODO: add all information the user has entered so far and the total price together with cart items
 
   return (
     <main className="grow p-5">
       <h2 className="mb-10">Payment</h2>
 
       {paypalClientId !== undefined ? (
-        <PayPalScriptProvider
-          options={{ clientId: paypalClientId, currency: "SEK" }}
-        >
-          <PayPalButtons
-            createOrder={createOrder}
-            onApprove={onApprove}
-            style={{ layout: "horizontal" }}
-          />
-        </PayPalScriptProvider>
+        <div className="z-0">
+          {/* TODO: fix that the paypal button goes above the shopping cart when open */}
+          <PayPalScriptProvider
+            options={{ clientId: paypalClientId, currency: "SEK" }}
+          >
+            <PayPalButtons
+              createOrder={createOrder}
+              onApprove={onApprove}
+              style={{ layout: "horizontal" }}
+            />
+          </PayPalScriptProvider>
+        </div>
       ) : (
         <p>Cannot fetch the PayPal Client ID!</p>
       )}

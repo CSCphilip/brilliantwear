@@ -1,27 +1,12 @@
 "use client";
 
 import { ReactNode, createContext, useContext, useState } from "react";
-import { PostNordServicePoint } from "_types";
+import { PostNordServicePoint, CheckoutUser, ShippingAddress } from "_types";
 
-const CHECKOUT_STEPS = ["Information", "Shipping", "Payment", "Preview"];
+const CHECKOUT_STEPS = ["Information", "Shipping", "Payment", "Complete"];
 
 type CheckoutProviderProps = {
   children: ReactNode;
-};
-
-type CheckoutUser = {
-  email: string;
-  fistName: string;
-  lastName: string;
-  phone: string;
-};
-
-type ShippingAddress = {
-  street: string;
-  streetNumber: string;
-  city: string;
-  postalCode: string;
-  country: string;
 };
 
 type CheckoutContext = {
@@ -46,7 +31,7 @@ export function useCheckout() {
 export function CheckoutProvider({ children }: CheckoutProviderProps) {
   const [user, setUser] = useState<CheckoutUser>({
     email: "",
-    fistName: "",
+    firstName: "",
     lastName: "",
     phone: "",
   });

@@ -22,6 +22,7 @@ const Schema = mongoose.Schema;
 export const db = {
   User: userModel(),
   Product: productModel(),
+  Order: orderModel(),
 };
 
 // mongoose models with schema definitions
@@ -75,4 +76,29 @@ function productModel() {
    the existing model. If it doesn't exist, it defines a new "Product" model using the 
    specified schema and returns that. */
   return mongoose.models.Product || mongoose.model("Product", schema);
+}
+
+function orderModel() {
+  const schema = new Schema(
+    {
+      id: { type: String, unique: true, required: true },
+      status: { type: String, required: true },
+      user: { type: Object, required: true },
+      shippingAddress: { type: Object, required: true },
+      servicePoint: { type: Object, required: true },
+      cart: { type: Array, required: true },
+      totalPrice: { type: Object, required: true },
+      paypalOrder: { type: Object, required: true },
+      paypalCapture: { type: Object, required: true },
+    },
+    {
+      // Add createdAt and updatedAt timestamps
+      timestamps: true,
+    }
+  );
+
+  /* Checks if a Mongoose model named "Order" already exists. If it exists, it returns
+   the existing model. If it doesn't exist, it defines a new "Order" model using the 
+   specified schema and returns that. */
+  return mongoose.models.Order || mongoose.model("Order", schema);
 }

@@ -1,5 +1,7 @@
 import { getPaypalClientId, getPaypalClientSecret } from "../config";
 
+// The code in this file is based on: https://developer.paypal.com/docs/checkout/standard/integrate/#link-integratebackend
+
 export const paypalBase = "https://api-m.sandbox.paypal.com";
 
 /**
@@ -42,7 +44,7 @@ export async function handleResponse(response: any) {
     const jsonResponse = await response.json();
 
     return {
-      jsonResponse,
+      ...jsonResponse,
 
       httpStatusCode: response.status,
     };

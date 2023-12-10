@@ -14,6 +14,7 @@ export default function CheckoutShipping() {
     shippingAddress,
     setShippingAddress,
     setServicePoint,
+    setCheckoutUser,
   } = useCheckout();
 
   useEffect(() => {
@@ -67,10 +68,18 @@ export default function CheckoutShipping() {
 
     // Update the shipping address in the state
     setShippingAddress({
-      ...inputFields,
       street: street.join(" "),
       streetNumber,
+      city: inputFields.city,
+      postalCode: inputFields.postalCode,
+      country: inputFields.country,
     });
+
+    setCheckoutUser(
+      inputFields.firstName,
+      inputFields.lastName,
+      inputFields.phone
+    );
   }
 
   return (

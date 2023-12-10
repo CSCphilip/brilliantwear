@@ -9,6 +9,7 @@ export const productsRepo = {
   create,
   get,
   getLatest,
+  getById,
 };
 
 async function create(params: FormData) {
@@ -113,4 +114,17 @@ async function getProducts(page?: number, sortOptions?: any) {
     },
     products: products,
   };
+}
+
+async function getById(id: string) {
+  const product = await Product.findOne(
+    { id: id },
+    {
+      _id: 0,
+      __v: 0,
+      createdAt: 0,
+      updatedAt: 0,
+    }
+  );
+  return product;
 }

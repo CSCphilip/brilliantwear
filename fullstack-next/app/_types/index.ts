@@ -24,3 +24,30 @@ export type PostNordServicePoint = {
     countryCode: string;
   };
 };
+
+export type CheckoutUser = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+};
+
+export type ShippingAddress = {
+  street: string;
+  streetNumber: string;
+  city: string;
+  postalCode: string;
+  country: string;
+};
+
+export type Order = {
+  id: string;
+  status: string;
+  user: CheckoutUser;
+  shippingAddress: ShippingAddress;
+  servicePoint: PostNordServicePoint;
+  cart: CartItem[];
+  totalPrice: { value: number; currency: string };
+  paypalOrder: any;
+  paypalCapture: any;
+};

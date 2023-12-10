@@ -7,12 +7,12 @@ export default function CheckoutPreview() {
   const { setCurrentCheckoutStep, checkoutSteps } = useCheckout();
 
   useEffect(() => {
-    setCurrentCheckoutStep(checkoutSteps.indexOf("Preview"));
+    setCurrentCheckoutStep(checkoutSteps.indexOf("Complete"));
   }, []);
 
   return (
     <main className="grow p-5">
-      <h2>Preview order</h2>
+      <h2>You order has been completed</h2>
     </main>
   );
 }
