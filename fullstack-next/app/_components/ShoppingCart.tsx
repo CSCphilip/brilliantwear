@@ -228,7 +228,7 @@ function TotalPriceSection({
       <div className="flex">
         <button
           onClick={() => {
-            router.push("/checkout");
+            router.push("/checkout/information");
             closeCart();
           }}
           disabled={cartItems.length === 0}
