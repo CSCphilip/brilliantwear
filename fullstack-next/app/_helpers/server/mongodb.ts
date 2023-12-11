@@ -83,6 +83,7 @@ function orderModel() {
     {
       id: { type: String, unique: true, required: true },
       status: { type: String, required: true },
+      isPaid: { type: Boolean, required: true },
       user: { type: Object, required: true },
       shippingAddress: { type: Object, required: true },
       servicePoint: { type: Object, required: true },

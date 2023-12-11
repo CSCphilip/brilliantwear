@@ -19,7 +19,9 @@ async function create(params: OrderType) {
 async function update(id: string, params: any) {
   const order = await Order.findOne({ id: id });
 
-  if (!order) throw "Order not found";
+  if (!order) {
+    console.log("Order not found. ID:", id);
+  }
 
   // copy params properties to order
   Object.assign(order, params);

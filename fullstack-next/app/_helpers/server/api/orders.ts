@@ -2,7 +2,7 @@ import { getPaypalClientId, getPaypalClientSecret } from "../config";
 
 // The code in this file is based on: https://developer.paypal.com/docs/checkout/standard/integrate/#link-integratebackend
 
-export const paypalBase = "https://api-m.sandbox.paypal.com";
+export const paypalBase = "https://api-m.sandbox.paypal.com"; //NOTE: Change when going live
 
 /**
  * Generate an OAuth 2.0 access token for authenticating with PayPal REST APIs.

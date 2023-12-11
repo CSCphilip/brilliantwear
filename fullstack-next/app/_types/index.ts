@@ -41,8 +41,9 @@ export type ShippingAddress = {
 };
 
 export type Order = {
-  id: string;
-  status: string;
+  id: string; // This will be the same as the PayPal order ID
+  status: string; // This will be the same as the PayPal order status
+  isPaid: boolean;
   user: CheckoutUser;
   shippingAddress: ShippingAddress;
   servicePoint: PostNordServicePoint;

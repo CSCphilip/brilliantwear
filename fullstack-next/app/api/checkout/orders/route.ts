@@ -26,7 +26,7 @@ async function create(req: Request) {
           throw new Error("Product not found in the database based on ID");
         }
         // Ensure that the price is correct and not manipulated by the user.
-        // Also, ensure that the quantity is positive.
+        // Also, ensure that the quantity is positive to avoid negative total price.
         return {
           quantity: Math.abs(item.quantity),
           product: { ...item.product, price: product.price },
@@ -143,6 +143,7 @@ async function saveToDatabase(body: any, cart: CartItem[], paypalOrder: any) {
   await ordersRepo.create({
     id: paypalOrder.id,
     status: paypalOrder.status,
+    isPaid: false,
     user,
     shippingAddress,
     servicePoint,

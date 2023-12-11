@@ -26,8 +26,10 @@ Visit at: https://www.brilliantwear.se/
 - Systems Manager (SSM)
 
 ### External APIs used:
+
 - OpenAI API
 - PostNord API
+- PayPal API
 
 ## Tasks to build a complete online clothing shop and go live
 
@@ -47,17 +49,19 @@ Visit at: https://www.brilliantwear.se/
 #### Second stage (fundamental functional parts of an online shop)
 
 - [x] Shopping cart functionality. Add buy button in the product detail page.  
-      **Notes:** To get the persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart. 
+       **Notes:** To get the persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart.
 - [ ] Checkout functionality. An example of steps with images: [How To Design A Great Ecommerce Checkout Flow](https://www.bolt.com/thinkshop/ecommerce-checkout-process-flow). To reduce checkout abandonments, make the following steps as few and easy as possible.  
-      Steps: ~~Initiate checkout / View cart~~ > ~~(Optional) Login / Register~~ > Shipping information > Shipping method > Payment method / Billing information > Preview order > Place order > Confirmation > ~~Account creation (Optional).~~
+       Typical steps: Initiate checkout / View cart > (Optional) Login / Register > Shipping information > Shipping method > Payment method / Billing information > Preview order > Place order > Confirmation > Account creation (Optional).  
+       Brilliantwear steps: Information > Shipping > Payment > Complete
 - [ ] Payment gateway. Current suggestions and priority: 1. PayPal, 2. Visa, 3. Swish. Other suggestions: Stripe, Klarna, invoice. Some recommendations (for payments in Sweden): [Val av betallösningar för din e-handel](https://webshopsguiden.se/betallosningar/).  
-      60% of all online purchases are interrupted during the payment process. (Source: Bambora) To counteract this, smooth payment needs to be in place.
+       60% of all online purchases are interrupted during the payment process. (Source: Bambora) To counteract this, smooth payment needs to be in place.
 
-#### *Intermediate step:*
+#### _Intermediate step:_
 
 - [ ] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.
 
-#### *Testing step:*
+#### _Testing step:_
+
 - [ ] Write tests for this Next.js app using [Playwright](https://playwright.dev/). Next.js about [Playwright testing](https://nextjs.org/docs/pages/building-your-application/optimizing/testing#playwright).
 
 #### Third stage (design)
@@ -87,3 +91,4 @@ Visit at: https://www.brilliantwear.se/
 - Links to social media
 - Dark mode (mostly for fun)
 - Add button/function for logout of admins
+- Email order confirmation with receipt. You could use Postmark for this.
