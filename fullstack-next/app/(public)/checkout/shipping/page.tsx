@@ -17,6 +17,8 @@ export default function CheckoutShipping() {
     setCheckoutUser,
   } = useCheckout();
 
+  const router = useRouter();
+
   useEffect(() => {
     setCurrentCheckoutStep(checkoutSteps.indexOf("Shipping"));
   }, []);
@@ -223,6 +225,7 @@ export default function CheckoutShipping() {
       <ServicePoints
         servicePoints={servicePoints}
         setServicePoint={setServicePoint}
+        router={router}
       />
     </div>
   );
@@ -231,9 +234,14 @@ export default function CheckoutShipping() {
 type ServicePointsProps = {
   servicePoints: PostNordServicePoint[];
   setServicePoint: (servicePoint: PostNordServicePoint) => void;
+  router: any;
 };
 
-function ServicePoints({ servicePoints, setServicePoint }: ServicePointsProps) {
+function ServicePoints({
+  servicePoints,
+  setServicePoint,
+  router,
+}: ServicePointsProps) {
   const { register, handleSubmit, formState, setError } = useForm();
   const { errors } = formState;
 
@@ -242,8 +250,6 @@ function ServicePoints({ servicePoints, setServicePoint }: ServicePointsProps) {
       required: "Service point is required",
     }),
   };
-
-  const router = useRouter();
 
   function onSubmit({ servicePoint: servicePointId }: any) {
     if (!errors.servicePoint) {

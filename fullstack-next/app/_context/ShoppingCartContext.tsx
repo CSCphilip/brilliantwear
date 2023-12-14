@@ -24,9 +24,11 @@ type ShoppingCartContext = {
   increaseCartQuantity: (product: Product) => void;
   decreaseCartQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
+  emptyCart: () => void;
   cartQuantity: number;
   cartItems: CartItem[];
   cartImages: { [id: string]: Blob | undefined };
+  totalCartPrice: number;
 };
 
 /* NOTE: This file can be seen as a template for working with context in React.
@@ -72,6 +74,13 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const cartQuantity = cartItems.reduce(
     (quantity: number, item: CartItem) => item.quantity + quantity,
+    0
+  );
+
+  const totalCartPrice = cartItems.reduce(
+    (totalPrice: number, item: CartItem) => {
+      return totalPrice + item.product.price * item.quantity;
+    },
     0
   );
 
@@ -144,6 +153,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
+  function emptyCart() {
+    setCartItems([]);
+    setCartImages({});
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -153,9 +167,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         removeFromCart,
         openCart,
         closeCart,
+        emptyCart,
         cartItems,
         cartQuantity,
         cartImages,
+        totalCartPrice,
       }}
     >
       {children}

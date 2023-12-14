@@ -55,6 +55,14 @@ export default function RootLayout({
                     Contact
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/terms-and-conditions"
+                    className="ml-4 hover:underline lg:ml-6"
+                  >
+                    Terms and Conditions
+                  </Link>
+                </li>
               </ul>
             </footer>
           </div>
