@@ -27,9 +27,9 @@ Visit at: https://www.brilliantwear.se/
 
 ### External APIs used:
 
-- OpenAI API
-- PostNord API
-- PayPal API
+- OpenAI
+- PostNord
+- PayPal
 
 ## Tasks to build a complete online clothing shop and go live
 
@@ -50,11 +50,11 @@ Visit at: https://www.brilliantwear.se/
 
 - [x] Shopping cart functionality. Add buy button in the product detail page.  
        **Notes:** To get the persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart.
-- [ ] Checkout functionality. An example of steps with images: [How To Design A Great Ecommerce Checkout Flow](https://www.bolt.com/thinkshop/ecommerce-checkout-process-flow). To reduce checkout abandonments, make the following steps as few and easy as possible.  
+- [x] Checkout functionality. An example of steps with images: [How To Design A Great Ecommerce Checkout Flow](https://www.bolt.com/thinkshop/ecommerce-checkout-process-flow). To reduce checkout abandonments, make the following steps as few and easy as possible.  
        Typical steps: Initiate checkout / View cart > (Optional) Login / Register > Shipping information > Shipping method > Payment method / Billing information > Preview order > Place order > Confirmation > Account creation (Optional).  
-       Brilliantwear steps: Information > Shipping > Payment > Complete
-- [ ] Payment gateway. Current suggestions and priority: 1. PayPal, 2. Visa, 3. Swish. Other suggestions: Stripe, Klarna, invoice. Some recommendations (for payments in Sweden): [Val av betallösningar för din e-handel](https://webshopsguiden.se/betallosningar/).  
-       60% of all online purchases are interrupted during the payment process. (Source: Bambora) To counteract this, smooth payment needs to be in place.
+      **Notes:** The checkout steps for Brilliantwear are: Information > Shipping > Payment > Complete. In the shipping step, after the user has entered their shipping infrormation, services points are fetched from the PostNord API from which the use can select one. Only guest (no log in) checkouts has been implemented. 
+- [x] Payment gateway. Suggestions: PayPal, Visa, Swish, Stripe, Klarna, invoice. Some recommendations (for payments in Sweden): [Val av betallösningar för din e-handel](https://webshopsguiden.se/betallosningar/). 60% of all online purchases are interrupted during the payment process. (Source: Bambora) To counteract this, smooth payment needs to be in place.  
+      **Notes:** In the payment step, PayPal is the currently implemented payment method to checkout.
 
 #### _Intermediate step:_
 
