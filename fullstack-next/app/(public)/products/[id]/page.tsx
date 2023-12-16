@@ -16,8 +16,6 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
     });
   }, []);
 
-  // const product = await getProduct(params.id, router);
-
   return (
     <main className="grow">
       {product?.id && (
