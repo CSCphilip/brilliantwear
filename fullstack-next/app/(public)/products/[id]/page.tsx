@@ -1,32 +1,26 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Product } from "_types";
 import { formatCurrency } from "_utilities";
 import AddToCartButton from "_components/products/id/AddToCartButton";
+import { useEffect, useState } from "react";
 
-// Does so that the page only renders when a user visits a dynamic route that
-// corresponds to an actual product. Otherwise, a 404 page will be rendered.
-export const dynamicParams = false;
+export default function ProductDetail({ params }: { params: { id: string } }) {
+  const router = useRouter();
+  const [product, setProduct] = useState<Product>();
 
-export async function generateStaticParams() {
-  const res = await fetch("http://localhost:3000/api/products");
-  const allProducts: Product[] = await res.json();
+  useEffect(() => {
+    getProduct(params.id, router).then((product) => {
+      setProduct(product);
+    });
+  }, []);
 
-  const params = allProducts.map((product) => ({
-    id: product.id,
-  }));
-
-  return params;
-}
-
-export default async function ProductDetail({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const product = await getProduct(params.id);
+  // const product = await getProduct(params.id, router);
 
   return (
-    product && (
-      <main className="flex-grow">
+    <main className="grow">
+      {product?.id && (
         <div className="p-4 m-5 border border-black flex flew-row">
           <img
             src={
@@ -56,15 +50,19 @@ export default async function ProductDetail({
             </div>
           </div>
         </div>
-      </main>
-    )
+      )}
+    </main>
   );
 }
 
-async function getProduct(id: string) {
+async function getProduct(id: string, router: any) {
   const res = await fetch(
     "http://localhost:3000/api/products/" + encodeURIComponent(id)
   );
   const product: Product = await res.json();
+  if (!product.id) {
+    router.push("/not-found");
+  }
+
   return product;
 }
