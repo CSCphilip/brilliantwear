@@ -3,34 +3,33 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useCheckout, useShoppingCart } from "_context";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
 import { CartItem } from "_types";
 import { formatCurrency } from "_utilities";
 import PlusSign from "_components/PlusSign";
 import MinusSign from "_components/MinusSign";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type paymentStatus = "PENDING" | "SUCCESSFUL" | "FAILED";
 
 export default function CheckoutPayment() {
-  const { checkoutSteps, setCurrentCheckoutStep } = useCheckout();
   const { cartItems } = useShoppingCart();
+  const { setCurrentCheckoutStepWithPath } = useCheckout();
+
+  const pathname = usePathname();
+  useEffect(() => {
+    setCurrentCheckoutStepWithPath(pathname);
+  }, []);
 
   const [paymentStatus, setPaymentStatus] = useState<paymentStatus>("PENDING");
-
-  const router = useRouter();
-
-  useEffect(() => {
-    setCurrentCheckoutStep(checkoutSteps.indexOf("Payment"));
-  }, []);
 
   useEffect(() => {
     if (paymentStatus === "FAILED") {
       let timeoutId: NodeJS.Timeout;
       timeoutId = setTimeout(() => {
         setPaymentStatus("PENDING");
-      }, 1000000); // 7000
+      }, 7000);
     }
   }, [paymentStatus]);
 
@@ -46,7 +45,6 @@ export default function CheckoutPayment() {
             <PaypalPayment
               cartItems={cartItems}
               setPaymentStatus={setPaymentStatus}
-              router={router}
             />
           </>
         )}
@@ -186,15 +184,16 @@ function OrderSummary({ cartItems }: OrderSummaryProps) {
 interface PaypalPaymentProps {
   cartItems: CartItem[];
   setPaymentStatus: React.Dispatch<paymentStatus>;
-  router: any;
 }
 
-function PaypalPayment({
-  cartItems,
-  setPaymentStatus,
-  router,
-}: PaypalPaymentProps) {
-  const { user, shippingAddress, servicePoint, setOrderId } = useCheckout();
+function PaypalPayment({ cartItems, setPaymentStatus }: PaypalPaymentProps) {
+  const {
+    user,
+    shippingAddress,
+    servicePoint,
+    setOrderId,
+    toNextCheckoutStep,
+  } = useCheckout();
 
   const [paypalClientId, setPaypalClientId] = useState<string | undefined>(
     undefined
@@ -255,7 +254,7 @@ function PaypalPayment({
         } else {
           setPaymentStatus("SUCCESSFUL");
           setOrderId(data.id);
-          router.push("/checkout/complete");
+          toNextCheckoutStep();
         }
       });
   }

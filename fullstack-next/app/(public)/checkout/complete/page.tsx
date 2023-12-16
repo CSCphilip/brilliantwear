@@ -1,31 +1,18 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useCheckout, useShoppingCart } from "_context";
 import { useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function CheckoutComplete() {
-  const {
-    checkoutSteps,
-    setCurrentCheckoutStep,
-    orderId,
-    clearCheckoutContext,
-  } = useCheckout();
-
+  const { orderId, setCurrentCheckoutStepWithPath } = useCheckout();
   const { emptyCart } = useShoppingCart();
 
-  // Save order id because the orderId is cleared when the user enters this page as you can see in
-  // the useEffect below
-  const preservedOrderId = orderId;
-
-  const router = useRouter();
-
-  //TODO: FIX THIS in all checkout pages
+  const pathname = usePathname();
   useEffect(() => {
-    setCurrentCheckoutStep(checkoutSteps.indexOf("Complete"));
+    setCurrentCheckoutStepWithPath(pathname);
     emptyCart();
-    // clearCheckoutContext();
   }, []);
 
   return (
@@ -34,7 +21,7 @@ export default function CheckoutComplete() {
         <h3 className="mt-7">Your order has been taken!</h3>
         <p className="mt-1 text-lg">
           <span className="font-medium">Order id:</span>
-          {" " + preservedOrderId}
+          {" " + orderId}
         </p>
         <img
           src="/thumbs-up.gif"

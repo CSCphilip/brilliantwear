@@ -1,9 +1,17 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { PostNordServicePoint, CheckoutUser, ShippingAddress } from "_types";
 
-const CHECKOUT_STEPS = ["Information", "Shipping", "Payment", "Complete"];
+// NOTE: The url paths for every checkout page: /checkout/"step". They need to match following:
+const CHECKOUT_STEPS = ["information", "shipping", "payment", "complete"];
 
 type CheckoutProviderProps = {
   children: ReactNode;
@@ -17,15 +25,15 @@ type CheckoutContext = {
   setShippingAddress: (shippingAddress: ShippingAddress) => void;
   servicePoint: PostNordServicePoint;
   setServicePoint: (servicePoint: PostNordServicePoint) => void;
+  orderId: string;
+  setOrderId: (orderId: string) => void;
   checkoutSteps: string[];
   currentCheckoutStep: number;
   setCurrentCheckoutStep: (step: number) => void;
   maxReachedCheckoutStep: number;
   setMaxReachedCheckoutStep: (step: number) => void;
-  areCheckoutStepsCompletedInOrder: () => boolean;
-  orderId: string;
-  setOrderId: (orderId: string) => void;
-  clearCheckoutContext: () => void;
+  toNextCheckoutStep: () => void;
+  setCurrentCheckoutStepWithPath: (fullPathName: string) => void;
 };
 
 const CheckoutContext = createContext({} as CheckoutContext);
@@ -35,6 +43,8 @@ export function useCheckout() {
 }
 
 export function CheckoutProvider({ children }: CheckoutProviderProps) {
+  const router = useRouter();
+
   const [user, setUser] = useState<CheckoutUser>({
     email: "",
     firstName: "",
@@ -78,42 +88,29 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
     setUser((user) => ({ ...user, firstName, lastName, phone }));
   }
 
-  function areCheckoutStepsCompletedInOrder() {
-    return currentCheckoutStep <= maxReachedCheckoutStep;
+  function toNextCheckoutStep() {
+    if (currentCheckoutStep <= checkoutSteps.length - 1) {
+      setMaxReachedCheckoutStep(
+        (maxReachedCheckoutStep) => maxReachedCheckoutStep + 1
+      );
+
+      router.push(`/checkout/${checkoutSteps[currentCheckoutStep + 1]}`);
+    }
   }
 
-  function clearCheckoutContext() {
-    setUser({
-      email: "",
-      firstName: "",
-      lastName: "",
-      phone: "",
-    });
+  useEffect(() => {
+    if (!isCurrentCheckoutStepValid()) {
+      router.push(`/checkout/${checkoutSteps[maxReachedCheckoutStep]}`);
+    }
+  }, [currentCheckoutStep]);
 
-    setShippingAddress({
-      street: "",
-      streetNumber: "",
-      city: "",
-      postalCode: "",
-      country: "",
-    });
+  async function setCurrentCheckoutStepWithPath(fullPathName: string) {
+    const pathname = fullPathName.split("/")[2];
+    setCurrentCheckoutStep(checkoutSteps.indexOf(pathname));
+  }
 
-    setServicePoint({
-      name: "",
-      servicePointId: "",
-      routeDistance: 0,
-      visitingAddress: {
-        streetName: "",
-        streetNumber: "",
-        postalCode: "",
-        city: "",
-        countryCode: "",
-      },
-    });
-
-    setCurrentCheckoutStep(0);
-    setMaxReachedCheckoutStep(0);
-    setOrderId("");
+  function isCurrentCheckoutStepValid() {
+    return currentCheckoutStep <= maxReachedCheckoutStep;
   }
 
   return (
@@ -126,15 +123,15 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
         setShippingAddress,
         servicePoint,
         setServicePoint,
+        orderId,
+        setOrderId,
         checkoutSteps,
         currentCheckoutStep,
         setCurrentCheckoutStep,
         maxReachedCheckoutStep,
         setMaxReachedCheckoutStep,
-        areCheckoutStepsCompletedInOrder,
-        orderId,
-        setOrderId,
-        clearCheckoutContext,
+        toNextCheckoutStep,
+        setCurrentCheckoutStepWithPath,
       }}
     >
       {children}

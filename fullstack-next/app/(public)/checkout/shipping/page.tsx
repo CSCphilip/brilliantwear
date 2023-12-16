@@ -1,26 +1,25 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useCheckout } from "_context";
 import { useFetch } from "_helpers/client/hooks";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { PostNordServicePoint } from "_types";
 
 export default function CheckoutShipping() {
   const {
-    checkoutSteps,
-    setCurrentCheckoutStep,
     shippingAddress,
     setShippingAddress,
     setServicePoint,
     setCheckoutUser,
+    setCurrentCheckoutStepWithPath,
+    toNextCheckoutStep,
   } = useCheckout();
 
-  const router = useRouter();
-
+  const pathname = usePathname();
   useEffect(() => {
-    setCurrentCheckoutStep(checkoutSteps.indexOf("Shipping"));
+    setCurrentCheckoutStepWithPath(pathname);
   }, []);
 
   const fetch = useFetch();
@@ -225,7 +224,7 @@ export default function CheckoutShipping() {
       <ServicePoints
         servicePoints={servicePoints}
         setServicePoint={setServicePoint}
-        router={router}
+        toNextCheckoutStep={toNextCheckoutStep}
       />
     </div>
   );
@@ -234,13 +233,13 @@ export default function CheckoutShipping() {
 type ServicePointsProps = {
   servicePoints: PostNordServicePoint[];
   setServicePoint: (servicePoint: PostNordServicePoint) => void;
-  router: any;
+  toNextCheckoutStep: () => void;
 };
 
 function ServicePoints({
   servicePoints,
   setServicePoint,
-  router,
+  toNextCheckoutStep,
 }: ServicePointsProps) {
   const { register, handleSubmit, formState, setError } = useForm();
   const { errors } = formState;
@@ -264,7 +263,7 @@ function ServicePoints({
       }
 
       setServicePoint(servicePoint);
-      router.push("/checkout/payment");
+      toNextCheckoutStep();
     }
   }
 

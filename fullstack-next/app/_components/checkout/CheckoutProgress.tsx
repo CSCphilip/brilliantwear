@@ -29,7 +29,10 @@ export default function CheckoutProgress() {
                   }`}
                 />
               </div>
-              <p className="mt-1 text-sm">{checkoutSteps[index]}</p>
+              <p className="mt-1 text-sm">
+                {checkoutSteps[index].charAt(0).toUpperCase() +
+                  checkoutSteps[index].slice(1)}
+              </p>
             </li>
           );
         })}

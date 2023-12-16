@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useCheckout } from "_context";
 import { useEffect } from "react";
 
 export default function CheckoutInformation() {
-  const { setEmail, checkoutSteps, setCurrentCheckoutStep } = useCheckout();
+  const { setEmail, toNextCheckoutStep, setCurrentCheckoutStepWithPath } =
+    useCheckout();
 
+  const pathname = usePathname();
   useEffect(() => {
-    setCurrentCheckoutStep(checkoutSteps.indexOf("Information"));
+    setCurrentCheckoutStepWithPath(pathname);
   }, []);
 
   const { register, handleSubmit, formState } = useForm();
@@ -20,12 +22,10 @@ export default function CheckoutInformation() {
     email: register("email", { required: "Email is required" }),
   };
 
-  const router = useRouter();
-
   function onSubmit({ email }: any) {
     if (!errors.email) {
       setEmail(email);
-      router.push("/checkout/shipping");
+      toNextCheckoutStep();
     }
   }
 
