@@ -51,4 +51,5 @@ export type Order = {
   totalPrice: { value: number; currency: string };
   paypalOrder: any;
   paypalCapture: any;
+  createdAt?: Date;
 };

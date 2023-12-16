@@ -7,6 +7,7 @@ export const ordersRepo = {
   create,
   update,
   getAll,
+  getAllLatest,
   getById,
 };
 
@@ -35,10 +36,20 @@ async function getAll() {
     {
       _id: 0,
       __v: 0,
-      createdAt: 0,
-      updatedAt: 0,
     }
   ).lean();
+}
+
+async function getAllLatest() {
+  return await Order.find(
+    {},
+    {
+      _id: 0,
+      __v: 0,
+    }
+  )
+    .sort({ _id: -1 })
+    .lean();
 }
 
 async function getById(id: string) {
