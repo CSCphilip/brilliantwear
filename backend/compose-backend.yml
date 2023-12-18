@@ -6,7 +6,7 @@ services:
     extra_hosts:
       - "mongoservice:172.17.0.1"
     deploy:
-      replicas: 3
+      replicas: 1
     networks:
       - mongo-network
 

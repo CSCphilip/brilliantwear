@@ -1,10 +1,6 @@
-#!/usr/bin/env bash
-
-# docker build -t cscphilip/brilliantwear-fullstack-next:latest .
+docker build -t cscphilip/brilliantwear-fullstack-next:latest .
 
 # Then:
-# docker run -p 3000:3000 -d --name brilliantwear-fullstack-next cscphilip/brilliantwear-fullstack-next:latest
+docker run -p 3000:3000 -d --name brilliantwear-fullstack-next cscphilip/brilliantwear-fullstack-next:latest
 
-# or:
-
-# docker stack deploy -c fullstack-next-compose.yml bw-next-server-stack
+# NOTE: It seems (after pretty good testing) that Next.js applications can't be run in docker swarm mode.
