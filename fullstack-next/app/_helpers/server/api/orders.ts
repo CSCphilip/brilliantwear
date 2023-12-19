@@ -1,4 +1,4 @@
-import { getPaypalClientId, getPaypalClientSecret } from "../config";
+import { getPaypalClientId, getPaypalClientSecret } from "../init";
 
 // The code in this file is based on: https://developer.paypal.com/docs/checkout/standard/integrate/#link-integratebackend
 

@@ -1,21 +1,33 @@
 import mongoose, { ConnectOptions } from "mongoose";
+import { getMongoPassword } from "./init";
 
-const HOST = "localhost"; // NOTE: This might be different if you're using Docker
+const HOST = "localhost";
 const PORT = 27017;
 const DB = "brilliantwear";
+const USERNAME = "philip";
 
-mongoose
-  .connect(`mongodb://${HOST}:${PORT}/${DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  } as ConnectOptions)
-  .then(() => {
-    console.log("Successfully connected to MongoDB.");
+getMongoPassword()
+  .then((password) => {
+    const PASSWORD = password;
+
+    mongoose
+      .connect(`mongodb://${HOST}:${PORT}/${DB}`, {
+        auth: { username: USERNAME, password: PASSWORD },
+        authSource: "admin",
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      } as ConnectOptions)
+      .then(() => {
+        console.log("Successfully connected to MongoDB.");
+      })
+      .catch((err) => {
+        console.error("Connection error", err);
+      });
+    mongoose.Promise = global.Promise;
   })
   .catch((err) => {
-    console.error("Connection error", err);
+    console.error("Error:", err);
   });
-mongoose.Promise = global.Promise;
 
 const Schema = mongoose.Schema;
 

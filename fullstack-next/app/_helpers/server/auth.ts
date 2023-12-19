@@ -2,7 +2,7 @@
 
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { getJwtSecret } from "./config/auth";
+import { getJwtSecret } from "./init/jwt-secret";
 
 export const auth = {
   isAuthenticated,

@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { headers } from "next/headers";
 import { db } from "./mongodb";
-import { getJwtSecret } from "./config/auth";
+import { getJwtSecret } from "./init/jwt-secret";
 
 const User = db.User;
 

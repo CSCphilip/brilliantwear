@@ -1,5 +1,5 @@
 import { apiHandler } from "_helpers/server/api";
-import { getPaypalClientId } from "_helpers/server/config";
+import { getPaypalClientId } from "_helpers/server/init";
 
 module.exports = apiHandler({
   GET: clientId,

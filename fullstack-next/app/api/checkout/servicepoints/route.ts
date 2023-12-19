@@ -1,11 +1,11 @@
 import joi from "joi";
 import { apiHandler } from "_helpers/server/api";
-import { getPostNordApiKey } from "_helpers/server/config";
+import { getPostnordApiKey } from "_helpers/server/init";
 
 const NUMBER_OF_SERVICE_POINTS = 5;
 
 let apiKey: string | undefined;
-getPostNordApiKey().then((key) => {
+getPostnordApiKey().then((key) => {
   apiKey = key;
 });
 
