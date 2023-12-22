@@ -1,6 +1,7 @@
+import { Secret } from "jsonwebtoken";
 import { parameterRetrieve } from ".";
 
-export async function getJwtSecret() {
+export async function getJwtSecret(): Promise<Secret | undefined> {
   try {
     if (process.env.NODE_ENV === "development") {
       console.log("Trying to retrieve the JWT Secret from the .env file");

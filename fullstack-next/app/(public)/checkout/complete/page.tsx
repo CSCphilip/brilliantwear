@@ -30,8 +30,8 @@ export default function CheckoutComplete() {
         ></img>
         <p className="mt-7 px-5 text-center bg-blue-500 text-white rounded-md pt-5 pb-9 selection:bg-blue-700">
           Thank you for choosing Brilliantwear! Your order has been successfully
-          placed and is now in motion. We're thrilled to be a part of your style
-          journey. Our team is diligently working to ensure your items are
+          placed and is now in motion. We&apos;re thrilled to be a part of your
+          style journey. Our team is diligently working to ensure your items are
           prepared with care and swiftly delivered to you. Should you have any
           questions or need assistance, feel free to reach out to our friendly
           support team. We appreciate your trust in us and look forward to

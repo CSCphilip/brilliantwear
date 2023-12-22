@@ -86,7 +86,7 @@ export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
                 ) : (
                   <div className="h-full me-5 flex items-center justify-center">
                     <p className="mb-3 text-gray-500">
-                      Oops! Your cart's feeling light as a feather.
+                      Oops! Your cart&apos;s feeling light as a feather.
                     </p>
                   </div>
                 )}

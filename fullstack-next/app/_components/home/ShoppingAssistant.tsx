@@ -39,13 +39,12 @@ export default function ShoppingAssistant() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setSuggestedProducts(json);
         setHasSearched(true);
         // Hide the loading spinner
         setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }
 
   return (

@@ -1,6 +1,6 @@
 // Based on: https://jasonwatmore.com/next-js-13-app-router-mongodb-user-rego-and-login-tutorial-with-example#api-handler-ts
 
-import jwt from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { headers } from "next/headers";
 import { db } from "./mongodb";
@@ -34,7 +34,7 @@ async function authenticate({
   const jwtSecret = await getJwtSecret();
 
   // create a jwt token that is valid for 7 days
-  const token = jwt.sign({ sub: user.id }, jwtSecret, {
+  const token = jwt.sign({ sub: user.id }, jwtSecret as Secret, {
     expiresIn: "7d",
   });
 

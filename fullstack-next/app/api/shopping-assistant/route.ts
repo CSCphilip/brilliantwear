@@ -1,4 +1,5 @@
 import { initializeOpenAI } from "_helpers/server/init";
+import log from "_utilities/log";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
@@ -24,9 +25,17 @@ export async function POST(request: Request) {
     const suggestedProducts =
       await fetchProductSuggestionsFromChatGPT(userInput);
 
+    if (suggestedProducts === "NO_SUGGESTIONS_FOUND") {
+      return NextResponse.json({
+        message:
+          "No products were found in the database matching the user's input.",
+        status: 404,
+      });
+    }
+
     const JSONsuggestedProducts = JSON.parse(suggestedProducts);
 
-    console.log(JSONsuggestedProducts);
+    log(JSONsuggestedProducts);
 
     return NextResponse.json(JSONsuggestedProducts);
   } catch (error) {
@@ -38,10 +47,10 @@ export async function POST(request: Request) {
 async function fetchProductSuggestionsFromChatGPT(
   userInput: string
 ): Promise<string> {
-  console.log(
+  log(
     "Trying to fetch product suggestions from ChatGPT based on the user's input."
   );
-  console.log("User's input: " + userInput);
+  log("User's input: " + userInput);
 
   try {
     const res = await fetch("http://localhost:3000/api/products/latest"); //NOTE: This is a hack. We should not hardcode the URL like this. We should code the logic here and take the products from the MongoDB.
@@ -59,9 +68,16 @@ async function fetchProductSuggestionsFromChatGPT(
       model: "gpt-3.5-turbo", // Points to the latest version of the GPT-3.5 model
     });
 
-    console.log("Response from ChatGPT:");
-    console.log(chatCompletion);
-    console.log(chatCompletion.choices);
+    log("Response from ChatGPT:");
+    log(chatCompletion);
+    log(chatCompletion.choices);
+
+    if (chatCompletion.choices[0].message.content?.charAt(0) !== "[") {
+      console.error(
+        "ChatGPT did not return a JSON array. Probably because there were no products in the database mathing the input from the user."
+      );
+      return "NO_SUGGESTIONS_FOUND";
+    }
 
     return chatCompletion.choices[0].message.content as string;
   } catch (error) {
