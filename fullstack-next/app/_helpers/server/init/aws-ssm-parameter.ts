@@ -23,6 +23,8 @@ export async function parameterRetrieve(name: string) {
       throw new Error("No parameter value with that name was found");
     }
 
+    console.log("Successfully retrieved the parameter from AWS SSM");
+
     return response.Parameters[0].Value;
   } catch (err) {
     console.log("Error", err);
