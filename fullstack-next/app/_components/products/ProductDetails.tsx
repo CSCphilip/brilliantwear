@@ -25,7 +25,7 @@ export default function ProductDetails({
       </p>
       <img
         src={
-          "http://localhost:3000/api/products/image/" +
+          "https://brilliantwear.se/api/products/image/" +
           encodeURIComponent(image_url)
         }
         alt="The image of the product."

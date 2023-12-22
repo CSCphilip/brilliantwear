@@ -17,7 +17,7 @@ export default function ProductCard({
         <Link href={"/products/" + id}>
           <img
             src={
-              "http://localhost:3000/api/products/image/" +
+              "https://brilliantwear.se/api/products/image/" +
               encodeURIComponent(image_url)
             }
             alt="An image of the product."

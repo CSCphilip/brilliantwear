@@ -86,7 +86,7 @@ function OrderSummary({ cartItems }: OrderSummaryProps) {
             <div className="flex mb-3">
               <img
                 src={
-                  "http://localhost:3000/api/products/image/" +
+                  "https://brilliantwear.se/api/products/image/" +
                   encodeURIComponent(item.product.image_url)
                 }
                 alt="Image of product"

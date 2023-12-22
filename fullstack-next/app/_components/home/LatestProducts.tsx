@@ -5,7 +5,7 @@ export default async function LatestProducts() {
   let latestProducts: Product[] = [];
 
   try {
-    const res = await fetch("http://localhost:3000/api/products/latest/8", {
+    const res = await fetch("https://brilliantwear.se/api/products/latest/8", {
       cache: "no-cache",
     });
     latestProducts = await res.json();

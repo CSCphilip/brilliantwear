@@ -22,7 +22,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
         <div className="p-4 m-5 border border-black flex flew-row">
           <img
             src={
-              "http://localhost:3000/api/products/image/" +
+              "https://brilliantwear.se/api/products/image/" +
               encodeURIComponent(product.image_url)
             }
             alt="The image of the product."
@@ -55,7 +55,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
 async function getProduct(id: string, router: any) {
   const res = await fetch(
-    "http://localhost:3000/api/products/" + encodeURIComponent(id)
+    "https://brilliantwear.se/api/products/" + encodeURIComponent(id)
   );
   const product: Product = await res.json();
   if (!product.id) {

@@ -33,7 +33,7 @@ export default function ShoppingAssistant() {
     const userInputData = {
       userInput: userInputProductDescription,
     };
-    fetch("http://localhost:3000/api/shopping-assistant", {
+    fetch("https://brilliantwear.se/api/shopping-assistant", {
       method: "POST",
       body: JSON.stringify(userInputData),
     })

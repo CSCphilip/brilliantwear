@@ -188,7 +188,7 @@ function fetchCartImage(
   >
 ) {
   fetch(
-    "http://localhost:3000/api/products/image/" +
+    "https://brilliantwear.se/api/products/image/" +
       encodeURIComponent(product.image_url)
   )
     .then((res) => {
