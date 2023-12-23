@@ -3,6 +3,7 @@ docker build -t cscphilip/brilliantwear-fullstack-next:latest .
 # Then:
 docker run -p 3000:3000 --mount type=bind,source=/home/ubuntu/brilliantwear/backend/images,target=/app/product-images/images -d --name brilliantwear-fullstack-next cscphilip/brilliantwear-fullstack-next:latest
 
-# NOTE: It seems (after pretty good testing) that Next.js applications can't be run in docker swarm mode.
-
 # Take note of the bind mount in the above command that is for accessing the product images on the host.
+
+
+# NOTE: It seems (after pretty good testing) that Next.js applications can't be run in docker swarm mode.

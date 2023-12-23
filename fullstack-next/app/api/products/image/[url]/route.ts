@@ -10,7 +10,7 @@ export async function GET(req: Request, { params: { url } }: any) {
     if (process.env.NODE_ENV === "development") {
       imagePath = path.join("./../backend", url); // Starts from the root of the node/npm project
     } else {
-      imagePath = path.join("/app/product-images", url); // Starts from the root of the node/npm project
+      imagePath = path.join("/app/product-images", url); // Inside the Docker container
     }
 
     if (fs.existsSync(imagePath)) {
