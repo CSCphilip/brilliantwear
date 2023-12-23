@@ -1,7 +1,8 @@
 import mongoose, { ConnectOptions } from "mongoose";
 import { getMongoPassword } from "./init";
 
-const HOST = "localhost";
+const HOST =
+  process.env.NODE_ENV === "development" ? "localhost" : "172.17.0.1"; // NOTE: The latter is the default gateway for Docker containers using the default bridge network
 const PORT = 27017;
 const DB = "brilliantwear";
 const USERNAME = "philip";
