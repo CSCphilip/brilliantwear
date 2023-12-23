@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { db } from "_helpers/server";
+import log from "_utilities/log";
 
 const Product = db.Product;
 
 export async function GET(req: Request, { params: { id } }: any) {
-  console.log("Getting the product from the MongoDB with id:", id);
+  log("Getting the product from the MongoDB with id: " + id);
 
   try {
     const product = await Product.findOne(

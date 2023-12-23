@@ -1,16 +1,15 @@
+import log from "_utilities/log";
 import { parameterRetrieve } from ".";
 
 export async function getPaypalClientId() {
   try {
     if (process.env.NODE_ENV === "development") {
-      console.log("Trying to retrieve the PayPal Client ID from the .env file");
+      log("Trying to retrieve the PayPal Client ID from the .env file");
 
       const paypalClientIdKey = process.env.PAYPAL_CLIENT_ID;
 
       if (paypalClientIdKey !== undefined) {
-        console.log(
-          "Successfully retrieved the PayPal Client ID the .env file"
-        );
+        log("Successfully retrieved the PayPal Client ID the .env file");
 
         return paypalClientIdKey;
       } else {
@@ -19,7 +18,7 @@ export async function getPaypalClientId() {
         );
       }
     } else {
-      console.log("Trying to retrieve the PayPal Client ID from AWS SSM");
+      log("Trying to retrieve the PayPal Client ID from AWS SSM");
 
       const paypalClientIdKey = await parameterRetrieve(
         "Brilliantwear-PayPal-Client-Id-Sandbox" // NOTE: Sandbox only, change when wanting to take real payments.
@@ -39,16 +38,12 @@ export async function getPaypalClientId() {
 export async function getPaypalClientSecret() {
   try {
     if (process.env.NODE_ENV === "development") {
-      console.log(
-        "Trying to retrieve the PayPal Client Secret from the .env file"
-      );
+      log("Trying to retrieve the PayPal Client Secret from the .env file");
 
       const paypalClientSecretKey = process.env.PAYPAL_CLIENT_SECRET;
 
       if (paypalClientSecretKey !== undefined) {
-        console.log(
-          "Successfully retrieved the PayPal Client Secret the .env file"
-        );
+        log("Successfully retrieved the PayPal Client Secret the .env file");
 
         return paypalClientSecretKey;
       } else {
@@ -57,7 +52,7 @@ export async function getPaypalClientSecret() {
         );
       }
     } else {
-      console.log("Trying to retrieve the PayPal Client Secret from AWS SSM");
+      log("Trying to retrieve the PayPal Client Secret from AWS SSM");
 
       const paypalClientSecretKey = await parameterRetrieve(
         "Brilliantwear-PayPal-Client-Secret-Sandbox" // NOTE: Sandbox only, change when wanting to take real payments.

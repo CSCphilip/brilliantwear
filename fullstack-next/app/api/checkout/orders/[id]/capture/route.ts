@@ -5,12 +5,13 @@ import {
   handleResponse,
 } from "_helpers/server/api/orders";
 import { ordersRepo } from "_helpers/server";
+import log from "_utilities/log";
 
 export async function POST(req: Request, { params: { id } }: any) {
   try {
     const jsonResponse = await captureOrder(id);
 
-    console.log("Response for capture order:", jsonResponse);
+    log("Response for capture order: " + jsonResponse);
 
     if (jsonResponse.httpStatusCode === 201) {
       await updateOrderInDatabase(jsonResponse);

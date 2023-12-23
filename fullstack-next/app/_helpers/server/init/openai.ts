@@ -1,15 +1,16 @@
 import OpenAI from "openai";
 import { parameterRetrieve } from ".";
+import log from "_utilities/log";
 
 async function getOpenAIApiKey() {
   try {
     if (process.env.NODE_ENV === "development") {
-      console.log("Trying to retrieve the OpenAI API key from the .env file");
+      log("Trying to retrieve the OpenAI API key from the .env file");
 
       const openaiApiKey = process.env.OPENAI_API_KEY;
 
       if (openaiApiKey !== undefined) {
-        console.log("Successfully retrieved the OpenAI API key the .env file");
+        log("Successfully retrieved the OpenAI API key the .env file");
 
         return openaiApiKey;
       } else {
@@ -18,7 +19,7 @@ async function getOpenAIApiKey() {
         );
       }
     } else {
-      console.log("Trying to retrieve the OpenAI API key from AWS SSM");
+      log("Trying to retrieve the OpenAI API key from AWS SSM");
 
       const openaiApiKey = await parameterRetrieve(
         "Brilliantwear-OpenAI-API-Key"

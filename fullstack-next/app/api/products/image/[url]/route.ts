@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
+import log from "_utilities/log";
 
 export async function GET(req: Request, { params: { url } }: any) {
-  console.log("Getting image from url:", url);
+  log("Getting image from url: " + url);
 
   try {
     let imagePath = "";
