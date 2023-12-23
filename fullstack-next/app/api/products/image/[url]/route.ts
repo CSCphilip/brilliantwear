@@ -8,9 +8,9 @@ export async function GET(req: Request, { params: { url } }: any) {
   try {
     let imagePath = "";
     if (process.env.NODE_ENV === "development") {
-      path.join("./../backend", url); // Starts from the root of the node/npm project
+      imagePath = path.join("./../backend", url); // Starts from the root of the node/npm project
     } else {
-      path.join("/app/product-images", url); // Starts from the root of the node/npm project
+      imagePath = path.join("/app/product-images", url); // Starts from the root of the node/npm project
     }
 
     if (fs.existsSync(imagePath)) {
