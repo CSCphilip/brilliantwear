@@ -32,6 +32,8 @@ COPY --from=build --chown=nextuser:nextuser /app/.next/static ./.next/static
 USER nextuser
 # expose 3000 on container
 EXPOSE 3000
+# create a folder for product images and bind mount it to the host
+RUN mkdir /app/product-images
 
 # set app host ,port and node env 
 ENV HOST=0.0.0.0 PORT=3000 NODE_ENV=production

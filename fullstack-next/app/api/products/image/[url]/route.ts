@@ -6,7 +6,12 @@ export async function GET(req: Request, { params: { url } }: any) {
   console.log("Getting image from url:", url);
 
   try {
-    const imagePath = path.join("./../backend", url); // Starts from the root of the node/npm project
+    let imagePath = "";
+    if (process.env.NODE_ENV === "development") {
+      path.join("./../backend", url); // Starts from the root of the node/npm project
+    } else {
+      path.join("/app/product-images", url); // Starts from the root of the node/npm project
+    }
 
     if (fs.existsSync(imagePath)) {
       const imageBuffer = fs.readFileSync(imagePath);
