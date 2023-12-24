@@ -48,7 +48,12 @@ async function saveImage(formData: FormData) {
     }
 
     const binary = new Uint8Array(imageDataU8);
-    const imagePath = path.join("./../backend/images", imageName);
+    let imagePath = "";
+    if (process.env.NODE_ENV === "development") {
+      imagePath = path.join("./../backend/images", imageName);
+    } else {
+      imagePath = path.join("/app/products/images", imageName);
+    }
     fs.writeFileSync(imagePath, binary);
 
     log("Image saved successfully");
