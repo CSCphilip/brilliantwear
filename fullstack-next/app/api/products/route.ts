@@ -52,7 +52,7 @@ async function saveImage(formData: FormData) {
     if (process.env.NODE_ENV === "development") {
       imagePath = path.join("./../backend/images", imageName);
     } else {
-      imagePath = path.join("/app/products/images", imageName);
+      imagePath = path.join("./products/images", imageName); // The WORKDIR is set to /app in the Dockerfile
     }
     fs.writeFileSync(imagePath, binary);
 
