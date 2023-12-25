@@ -58,6 +58,7 @@ async function saveImage(formData: FormData) {
 
     log("Image saved successfully");
   } catch (error) {
+    console.error(error);
     throw new Error("An error occurred when trying to save the image");
   }
 }

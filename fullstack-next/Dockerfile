@@ -28,6 +28,8 @@ COPY --from=build --chown=nextuser:nextuser /app/public ./public
 COPY --from=build --chown=nextuser:nextuser /app/.next/standalone ./
 # copy the static folder inside the .next folder generated from the build process 
 COPY --from=build --chown=nextuser:nextuser /app/.next/static ./.next/static
+# Create a folder for the product images with the correct permissions for later bind mount to the host
+RUN install -d -m 0755 -o nextuser -g nextuser /app/products/images
 # set non root user
 USER nextuser
 # expose 3000 on container
