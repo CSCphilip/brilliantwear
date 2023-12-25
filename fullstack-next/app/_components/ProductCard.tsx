@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Product as ProductCardProps } from "_types";
 import { formatCurrency } from "_utilities";
+import ProductCardImage from "./ProductCardImage";
 
 export default function ProductCard({
   id,
@@ -15,14 +16,7 @@ export default function ProductCard({
     <div className="flex justify-center">
       <div>
         <Link href={"/products/" + id}>
-          <img
-            src={
-              "http://localhost:3000/api/products/image/" +
-              encodeURIComponent(image_url)
-            }
-            alt="An image of the product."
-            className="h-64 w-[170px] lg:h-72 lg:w-48 border border-primary"
-          />
+          <ProductCardImage image_url={image_url} />
         </Link>
         <ul className="text-sm">
           <li>
