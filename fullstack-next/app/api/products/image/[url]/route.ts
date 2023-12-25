@@ -1,16 +1,17 @@
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
+import log from "_utilities/log";
 
 export async function GET(req: Request, { params: { url } }: any) {
-  console.log("Getting image from url:", url);
+  log("Getting image from url: " + url);
 
   try {
     let imagePath = "";
     if (process.env.NODE_ENV === "development") {
       imagePath = path.join("./../backend", url); // Starts from the root of the node/npm project
     } else {
-      imagePath = path.join("/app/product-images", url); // Inside the Docker container
+      imagePath = path.join("/app/products", url); // Inside the Docker container
     }
 
     if (fs.existsSync(imagePath)) {

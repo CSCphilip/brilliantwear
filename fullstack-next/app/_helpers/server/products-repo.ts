@@ -2,6 +2,7 @@ import path from "path";
 import { SortOrder } from "mongoose";
 
 import { db } from "./mongodb";
+import log from "_utilities/log";
 
 const Product = db.Product;
 
@@ -42,7 +43,7 @@ async function create(params: FormData) {
   // Save product to MongoDB
   await product.save();
 
-  console.log("Product saved successfully. Brand:", params.get("brand"));
+  log("Product saved successfully. Brand: " + params.get("brand"));
 }
 
 async function get(page?: number) {
@@ -86,7 +87,7 @@ async function getProducts(page?: number, sortOptions?: any) {
     if (page < 1) {
       throw new Error("Page must be greater than 0");
     }
-    console.log("Getting a page of products from the MongoDB");
+    log("Getting a page of products from the MongoDB");
 
     paginationUsed = true;
     skip = (page - 1) * productsPerPage;
@@ -97,7 +98,7 @@ async function getProducts(page?: number, sortOptions?: any) {
       .skip(skip)
       .lean();
   } else {
-    console.log("Getting all products from the MongoDB");
+    log("Getting all products from the MongoDB");
 
     productsPerPage = null;
     products = await queryBuilder({}).lean();

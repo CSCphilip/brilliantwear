@@ -1,16 +1,15 @@
+import log from "_utilities/log";
 import { parameterRetrieve } from ".";
 
 export async function getMongoPassword() {
   try {
     if (process.env.NODE_ENV === "development") {
-      console.log("Trying to retrieve the MongoDB Password from the .env file");
+      log("Trying to retrieve the MongoDB Password from the .env file");
 
       const mongoDBPassword = process.env.MongoDB_Password;
 
       if (mongoDBPassword !== undefined) {
-        console.log(
-          "Successfully retrieved the MongoDB Password the .env file"
-        );
+        log("Successfully retrieved the MongoDB Password the .env file");
 
         return mongoDBPassword;
       } else {
@@ -19,7 +18,7 @@ export async function getMongoPassword() {
         );
       }
     } else {
-      console.log("Trying to retrieve the MongoDB Password from AWS SSM");
+      log("Trying to retrieve the MongoDB Password from AWS SSM");
 
       const mongoPassword = await parameterRetrieve(
         "Brilliantwear-MongoDB-Password"

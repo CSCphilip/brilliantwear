@@ -1,3 +1,4 @@
+import log from "_utilities/log";
 import { db } from "./mongodb";
 import { Order as OrderType } from "_types";
 
@@ -14,20 +15,20 @@ export const ordersRepo = {
 async function create(params: OrderType) {
   const order = new Order(params);
   await order.save();
-  console.log("Order saved successfully. ID:", params.id);
+  log("Order saved successfully. ID: " + params.id);
 }
 
 async function update(id: string, params: any) {
   const order = await Order.findOne({ id: id });
 
   if (!order) {
-    console.log("Order not found. ID:", id);
+    log("Order not found. ID: " + id);
   }
 
   // copy params properties to order
   Object.assign(order, params);
   await order.save();
-  console.log("Order updated successfully. ID:", id);
+  log("Order updated successfully. ID: " + id);
 }
 
 async function getAll() {

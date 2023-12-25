@@ -4,6 +4,7 @@ import path from "path";
 import { NextRequest } from "next/server";
 import { productsRepo } from "_helpers/server";
 import { apiHandler } from "_helpers/server/api";
+import log from "_utilities/log";
 
 module.exports = apiHandler({
   POST: create,
@@ -47,10 +48,15 @@ async function saveImage(formData: FormData) {
     }
 
     const binary = new Uint8Array(imageDataU8);
-    const imagePath = path.join("./../backend/images", imageName);
+    let imagePath = "";
+    if (process.env.NODE_ENV === "development") {
+      imagePath = path.join("./../backend/images", imageName);
+    } else {
+      imagePath = path.join("/app/products/images", imageName);
+    }
     fs.writeFileSync(imagePath, binary);
 
-    console.log("Image saved successfully");
+    log("Image saved successfully");
   } catch (error) {
     throw new Error("An error occurred when trying to save the image");
   }

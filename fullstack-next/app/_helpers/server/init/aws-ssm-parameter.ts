@@ -1,4 +1,5 @@
 import { SSMClient, GetParametersCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+import log from "_utilities/log";
 
 const config = { region: "eu-north-1" };
 
@@ -23,11 +24,11 @@ export async function parameterRetrieve(name: string) {
       throw new Error("No parameter value with that name was found");
     }
 
-    console.log("Successfully retrieved the parameter from AWS SSM");
+    log("Successfully retrieved the parameter from AWS SSM");
 
     return response.Parameters[0].Value;
   } catch (err) {
-    console.log("Error", err);
+    log("Error: " + err);
   }
 }
 

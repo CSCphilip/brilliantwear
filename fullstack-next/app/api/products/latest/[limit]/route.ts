@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "_helpers/server";
+import log from "_utilities/log";
 
 const Product = db.Product;
 
@@ -9,7 +10,7 @@ export async function GET(req: Request, { params: { limit } }: any) {
     return NextResponse.json({ message: "Bad Request", status: 400 });
   }
 
-  console.log("Getting the latest", limit, "products from the MongoDB");
+  log("Getting the latest " + limit + " products from the MongoDB");
 
   try {
     const latestProducts = await Product.find({}, { _id: 0, __v: 0 })

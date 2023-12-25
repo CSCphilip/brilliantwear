@@ -7,6 +7,7 @@ import {
 } from "_helpers/server/api/orders";
 import { productsRepo, ordersRepo } from "_helpers/server";
 import { CartItem } from "_types";
+import log from "_utilities/log";
 
 module.exports = apiHandler({
   POST: create,
@@ -36,7 +37,7 @@ async function create(req: Request) {
 
     const jsonResponse = await createOrder(sanitizedCart);
 
-    console.log("Response for create order:", jsonResponse);
+    log("Response for create order: " + jsonResponse);
 
     if (
       jsonResponse.httpStatusCode === 201 &&
@@ -67,9 +68,9 @@ create.schema = joi.object({
 const createOrder = async (cart: CartItem[]) => {
   // use the cart information passed from the front-end to calculate the purchase unit details
 
-  console.log(
-    "shopping cart information passed from the frontend createOrder() callback after sanitized:",
-    cart
+  log(
+    "shopping cart information passed from the frontend createOrder() callback after sanitized: " +
+      cart
   );
 
   const accessToken = await generateAccessToken();

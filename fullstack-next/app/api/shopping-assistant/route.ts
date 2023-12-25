@@ -1,3 +1,4 @@
+import { productsRepo } from "_helpers/server";
 import { initializeOpenAI } from "_helpers/server/init";
 import log from "_utilities/log";
 import { NextResponse } from "next/server";
@@ -53,15 +54,17 @@ async function fetchProductSuggestionsFromChatGPT(
   log("User's input: " + userInput);
 
   try {
-    const res = await fetch("http://localhost:3000/api/products/latest"); //NOTE: This is a hack. We should not hardcode the URL like this. We should code the logic here and take the products from the MongoDB.
-    const JSONresponse = await res.json();
-    const allLatestProducts = JSONresponse.products;
+    const paginationAndProducts = await productsRepo.getLatest();
+    const allLatestProducts = paginationAndProducts.products;
 
     const chatCompletion = await openaiInstance.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: generateContent(allLatestProducts, userInput),
+          content: generateContent(
+            JSON.stringify(allLatestProducts),
+            userInput
+          ),
         },
         { role: "user", content: userInput },
       ],
@@ -86,12 +89,12 @@ async function fetchProductSuggestionsFromChatGPT(
   }
 }
 
-function generateContent(products: JSON, userInput: string) {
+function generateContent(products: string, userInput: string) {
   var content =
     "Given the following database of our clothing products, return the products that best matches the user's input. \n\n";
   content += "Database:\n";
 
-  content += JSON.stringify(products) + "\n\n";
+  content += products + "\n\n";
 
   content +=
     "Can you respond with products in the same format as the database? (I.e. a JSON array of products)\n\n";

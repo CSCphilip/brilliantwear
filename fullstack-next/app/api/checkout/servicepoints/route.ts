@@ -1,6 +1,7 @@
 import joi from "joi";
 import { apiHandler } from "_helpers/server/api";
 import { getPostnordApiKey } from "_helpers/server/init";
+import log from "_utilities/log";
 
 const NUMBER_OF_SERVICE_POINTS = 5;
 
@@ -17,7 +18,7 @@ async function servicePoints(req: Request) {
   const body = await req.json();
   const { street, streetNumber, postalCode, city } = body;
 
-  console.log("Service points request:", body);
+  log("Service points request: " + body);
 
   try {
     if (!apiKey) {
@@ -33,7 +34,7 @@ async function servicePoints(req: Request) {
 
     return resJSON.servicePointInformationResponse.servicePoints;
   } catch (err) {
-    console.log("Could not retrieve the service points from PostNord");
+    log("Could not retrieve the service points from PostNord");
     throw err;
   }
 }

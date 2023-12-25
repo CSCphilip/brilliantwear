@@ -6,8 +6,17 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import { useUserService } from "_services";
+import { Suspense } from "react";
 
-export default function Login() {
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoginFallback />}>
+      <Login />
+    </Suspense>
+  );
+}
+
+function Login() {
   const userService = useUserService();
 
   // get functions to build form with useForm() hook
@@ -110,4 +119,8 @@ export default function Login() {
       </div>
     </main>
   );
+}
+
+function LoginFallback() {
+  return <div>Loading...</div>;
 }
