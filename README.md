@@ -58,25 +58,28 @@ Visit at: https://www.brilliantwear.se/
 
 #### _Intermediate step:_
 
-- [ ] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.
+- [x] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.  
+      **Notes:** Since this is the first time I moved the backend to Next.js instead of using my Express server, I had to create a bind mount to save and access the product images. This resulted in some changes in the Dockerfile. During this step I also migrated from AWS SDK v2 to v3 as recommended. Enhanced the environment verification by introducing a NODE_ENV variable in the .env file, enabling distinction between app operation in development and production modes. Added my own log function with time stamps instead of using console.log because I felt a need for this. Additionally, I implemented various miscellaneous updates, such as incorporating a front-end loading icon for fetching images of the latest products on the home page, and more.
 
 #### _Testing step:_
 
-- [ ] Write tests for this Next.js app using [Playwright](https://playwright.dev/). Next.js about [Playwright testing](https://nextjs.org/docs/pages/building-your-application/optimizing/testing#playwright).
+- [ ] Write tests for this Next.js app. Next.js about [testing](https://nextjs.org/docs/app/building-your-application/testing).
 
 #### Third stage (design)
 
 - [ ] Split shop into Men's and Woman's clothing products
+- [ ] Improve home page. Add new sections (content). Design improvements.
 - [ ] Create pages for different clothing types (e.g. shoes, pants, shirt)
 - [ ] Products filter & sorting feature
 - [ ] Improve product detail page (the page for each product). Add the possibility to have multiple images. Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
 - [ ] Create other overview pages on the website aside from the home page.
 - [ ] Improve the navbar and menu. This is related to the categories of clothes and men's and women's clothes.
+- [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.
 
 #### Fourth stage (finalization)
 
-- [ ] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results.
-- [ ] Improve home page. Add new sections (content). Design improvements.
+- [ ] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve.
+- [ ] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [ ] Information pages. E.g, about, contact, delivery.
 - [ ] GDPR and personal information saved when buying products.
 - [ ] Add cookie consent banner.
