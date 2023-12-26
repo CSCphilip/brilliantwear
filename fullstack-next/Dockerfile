@@ -16,23 +16,22 @@ RUN npm run build
 # we are using multi stage build process to keep the image size as small as possible
 FROM node:18-alpine
 # update and install latest dependencies, add dumb-init package
-# add a non root user
-RUN apk update && apk upgrade && apk add dumb-init && adduser -D nextuser 
+RUN apk update && apk upgrade && apk add dumb-init
 
 
 # set work dir as app
 WORKDIR /app
 # copy the public folder from the project as this is not included in the build process
-COPY --from=build --chown=nextuser:nextuser /app/public ./public
+COPY --from=build --chown=node:node /app/public ./public
 # copy the standalone folder inside the .next folder generated from the build process 
-COPY --from=build --chown=nextuser:nextuser /app/.next/standalone ./
+COPY --from=build --chown=node:node /app/.next/standalone ./
 # copy the static folder inside the .next folder generated from the build process 
-COPY --from=build --chown=nextuser:nextuser /app/.next/static ./.next/static
-# Create a folder for the product images and set the correct directory permissions for later bind mount to the host
-RUN mkdir -p products/images
-RUN chown -R nextuser:nextuser products/images
+COPY --from=build --chown=node:node /app/.next/static ./.next/static
+# Create a folder for the product images and set the correct directory permissions for later bind mount
+RUN mkdir products
+RUN chown node:node products
 # set non root user
-USER nextuser
+USER node
 # expose 3000 on container
 EXPOSE 3000
 
