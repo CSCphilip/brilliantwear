@@ -8,7 +8,7 @@ import Spinner from "_components/Spinner";
 
 // Old (left to remember the bug):
 // async function getAllProducts() {
-//   const res = await fetch("http://localhost:3000/api/products/latest");
+//   const res = await fetch("URL_TO_API");
 //   // next: { revalidate: 60 }, // This will update every 60 seconds and send a request to the backend API (api.brilliantwear.se) and not use values from the cache.
 //   // NOTE: BUG when using revalidate. The page will become blank after it has been revalidated.
 //   // See:

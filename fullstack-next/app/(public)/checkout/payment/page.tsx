@@ -36,6 +36,11 @@ export default function CheckoutPayment() {
   return (
     <main className="grow px-5 mb-8 flex flex-col items-center">
       <div className="max-w-xl">
+        <p className="py-2 px-3 mt-7 text-center bg-red-500 rounded-md">
+          <b>Please note:</b> PayPal Sandbox is currently in use. No real
+          transactions will be processed. Feel free to use a PayPal sandbox
+          account to simulate a payment transaction and complete the checkout.
+        </p>
         <h3 className="my-7 text-center">Order preview & Payment</h3>
 
         <OrderSummary cartItems={cartItems} />
