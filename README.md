@@ -64,7 +64,7 @@ Visit at: https://www.brilliantwear.se/
 #### _Testing step:_
 
 - [ ] Write tests for this Next.js app. Next.js about [testing](https://nextjs.org/docs/app/building-your-application/testing).  
-      **Notes:** I chose *Jest and React Testing Library* because it is ideal for comprehensive unit testing, integration testing, and end-to-end testing of React components within my Next.js application.
+      **Notes:** I chose Jest and React Testing Library (RTL) because it is ideal for comprehensive unit testing, integration testing, and end-to-end testing of React components within my Next.js application.
 
 #### Third stage (design)
 
