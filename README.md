@@ -52,19 +52,19 @@ Visit at: https://www.brilliantwear.se/
        **Notes:** To get the persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart.
 - [x] Checkout functionality. An example of steps with images: [How To Design A Great Ecommerce Checkout Flow](https://www.bolt.com/thinkshop/ecommerce-checkout-process-flow). To reduce checkout abandonments, make the following steps as few and easy as possible.  
        Typical steps: Initiate checkout / View cart > (Optional) Login / Register > Shipping information > Shipping method > Payment method / Billing information > Preview order > Place order > Confirmation > Account creation (Optional).  
-      **Notes:** The checkout steps for Brilliantwear are: Information > Shipping > Payment > Complete. In the shipping step, after the user has entered their shipping infrormation, services points are fetched from the PostNord API from which the use can select one. Only guest (no log in) checkouts has been implemented. On the admin dashboard, a list of orders was added, clearly showing the payment status of each order. 
+       **Notes:** The checkout steps for Brilliantwear are: Information > Shipping > Payment > Complete. In the shipping step, after the user has entered their shipping infrormation, services points are fetched from the PostNord API from which the use can select one. Only guest (no log in) checkouts has been implemented. On the admin dashboard, a list of orders was added, clearly showing the payment status of each order.
 - [x] Payment gateway. Suggestions: PayPal, Visa, Swish, Stripe, Klarna, invoice. Some recommendations (for payments in Sweden): [Val av betallösningar för din e-handel](https://webshopsguiden.se/betallosningar/). 60% of all online purchases are interrupted during the payment process. (Source: Bambora) To counteract this, smooth payment needs to be in place.  
-      **Notes:** In the payment step, PayPal is the currently implemented payment method to checkout.
+       **Notes:** In the payment step, PayPal is the currently implemented payment method to checkout.
 
 #### _Intermediate step:_
 
 - [x] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.  
-      **Notes:** Since this is the first time I moved the backend to Next.js instead of using my Express server, I had to create a bind mount to save and access the product images. This resulted in some changes in the Dockerfile. During this step I also migrated from AWS SDK v2 to v3 as recommended. Enhanced the environment verification by introducing a NODE_ENV variable in the .env file, enabling distinction between app operation in development and production modes. Added my own log function with time stamps instead of using console.log because I felt a need for this. Additionally, I implemented various miscellaneous updates, such as incorporating a front-end loading icon for fetching images of the latest products on the home page, and more.
+       **Notes:** Since this is the first time I moved the backend to Next.js instead of using my Express server, I had to create a bind mount to save and access the product images. This resulted in some changes in the Dockerfile. During this step I also migrated from AWS SDK v2 to v3 as recommended. Enhanced the environment verification by introducing a NODE_ENV variable in the .env file, enabling distinction between app operation in development and production modes. Added my own log function with time stamps instead of using console.log because I felt a need for this. Additionally, I implemented various miscellaneous updates, such as incorporating a front-end loading icon for fetching images of the latest products on the home page, and more.
 
 #### _Testing step:_
 
 - [ ] Write tests for this Next.js app. Next.js about [testing](https://nextjs.org/docs/app/building-your-application/testing).  
-      **Notes:** I chose Jest and React Testing Library (RTL) because it is ideal for comprehensive unit testing, integration testing, and end-to-end testing of React components within my Next.js application.
+       **Notes:** I used Jest together with the React Testing Library (RTL) because with these you can both write test for the UI and the backend code. I am not done with the testing yet since I had a lot of problems with setting everything up. I might consider trying out another testing library like Vitest later.
 
 #### Third stage (design)
 

@@ -1,7 +1,7 @@
 import ShoppingAssistant from "_components/home/ShoppingAssistant";
 import LatestProducts from "_components/home/LatestProducts";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="overflow-hidden mb-5">
       <div className="w-screen flex flex-col items-center">
