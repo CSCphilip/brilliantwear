@@ -18,6 +18,7 @@ Visit at: https://www.brilliantwear.se/
 - Bootstrap 5
 - Next.js 13 (App router)
 - Tailwind CSS
+- Jest together with React Testing Library
 
 ### AWS specific:
 
@@ -75,7 +76,8 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Improve product detail page (the page for each product). Add the possibility to have multiple images. Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
 - [ ] Create other overview pages on the website aside from the home page.
 - [ ] Improve the navbar and menu. This is related to the categories of clothes and men's and women's clothes.
-- [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.
+- [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
+      **Notes:** I started of this stage by creating web layouts and designs with Figma.
 
 #### Fourth stage (finalization)
 
