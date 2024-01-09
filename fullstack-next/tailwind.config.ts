@@ -18,6 +18,10 @@ const config: Config = {
       },
     },
   },
+  plugins: [
+    require("tailwindcss-font-inter"),
+    require("tailwind-scrollbar-hide"),
+  ],
 };
 
 export default config;

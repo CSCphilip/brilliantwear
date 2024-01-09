@@ -79,6 +79,7 @@ function productModel() {
       type: { type: String, required: true },
       price: { type: Number, required: true },
       image_url: { type: String, unique: true, required: true },
+      gender: { type: String, required: true },
     },
     {
       // Add createdAt and updatedAt timestamps

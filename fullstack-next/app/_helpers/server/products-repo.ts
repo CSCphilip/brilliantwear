@@ -21,6 +21,7 @@ async function create(params: FormData) {
       category: params.get("category"),
       type: params.get("type"),
       price: params.get("price"),
+      gender: params.get("gender"),
     })
   ) {
     throw "Product already exists in the database";
@@ -32,6 +33,7 @@ async function create(params: FormData) {
   product.category = params.get("category");
   product.type = params.get("type");
   product.price = params.get("price");
+  product.gender = params.get("gender");
 
   const image = params.get("image") as File;
   const imageName = image.name;
@@ -46,19 +48,19 @@ async function create(params: FormData) {
   log("Product saved successfully. Brand: " + params.get("brand"));
 }
 
-async function get(page?: number) {
-  return getProducts(page);
+async function get(page?: number, query?: {}) {
+  return getProducts(page, undefined, query);
 }
 
-async function getLatest(page?: number) {
+async function getLatest(page?: number, query?: {}) {
   // Sorting by _id in descending order
   const sortOptions: { [key: string]: SortOrder } = { _id: "descending" };
-  return getProducts(page, sortOptions);
+  return getProducts(page, sortOptions, query);
 }
 
-async function getProducts(page?: number, sortOptions?: any) {
+async function getProducts(page?: number, sortOptions?: any, query?: {}) {
   // Put all your queryParameters parameters in here
-  const queryParameters = {};
+  const queryParameters = query ?? {};
 
   const totalProducts = await Product.estimatedDocumentCount(queryParameters);
 
@@ -101,7 +103,7 @@ async function getProducts(page?: number, sortOptions?: any) {
     log("Getting all products from the MongoDB");
 
     productsPerPage = null;
-    products = await queryBuilder({}).lean();
+    products = await queryBuilder(queryParameters).lean();
   }
 
   return {

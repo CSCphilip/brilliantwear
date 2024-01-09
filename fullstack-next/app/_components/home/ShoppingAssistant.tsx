@@ -1,18 +1,9 @@
 "use client";
 
-import { CSSProperties, useState } from "react";
-import { BarLoader } from "react-spinners";
+import { useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
 import { Product } from "_types";
-import ShoppingAssistantForm from "./ShoppingAssistantForm";
-import ProductCard from "_components/ProductCard";
-
-const overrideCSS: CSSProperties = {
-  display: "block",
-  margin: "0 auto",
-  marginTop: "50px",
-  marginBottom: "50px",
-};
 
 export default function ShoppingAssistant() {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
@@ -48,35 +39,63 @@ export default function ShoppingAssistant() {
   }
 
   return (
-    <div className="mt-1 w-screen flex flex-col items-center">
-      <div className="flex flex-col items-center justify-center border border-black container bg-home-shopping-assistant h-48">
-        <ShoppingAssistantForm handleSubmit={handleSubmit} />
+    <div className="mb-16">
+      <div className="flex justify-between px-9 mt-5">
+        <h2 className="font-inter mt-4 font-normal">Shopping Assistant</h2>
+        <img
+          src="/icon-search-clothing.png"
+          alt="Clothing search icon"
+          className="w-[70px] h-[70px]"
+        />
       </div>
+      <ShoppingAssistantForm />
+      <ShoppingAssistantTextSuggestions />
+    </div>
+  );
+}
 
-      <BarLoader
-        aria-label="BarLoader"
-        data-testid="loader"
-        loading={loading}
-        color="blue"
-        width={300}
-        cssOverride={overrideCSS}
+function ShoppingAssistantForm() {
+  return (
+    <form className="px-5 mt-4">
+      {/* TODO: add handleSubmit */}
+      <input
+        type="text"
+        placeholder="Seeking clothing ideas? Search here..."
+        name="product-description"
+        maxLength={250}
+        className="bg-[#F4F4F4] border-2 border-[#F4F4F4] ps-2 py-4 w-full font-inter 
+        placeholder-black custom-box-shadow focus:outline-none focus:border-2 focus:border-gray-400"
+        autoComplete="off"
       />
-      {suggestedProducts.length > 0 ? (
-        <>
-          <h3 className="mt-4">Suggested Products</h3>
-          <div className="container grid gap-y-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-2">
-            {suggestedProducts.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </div>
-        </>
-      ) : (
-        hasSearched && (
-          <p className="text-center w-1/2 my-3 p-2 bg-slate-300 rounded-lg">
-            No products could be suggested. Try searching for something else.
-          </p>
-        )
-      )}
+    </form>
+  );
+}
+
+function ShoppingAssistantTextSuggestions() {
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/...") //TODO: add api endpoint
+      .then((res) => res.json())
+      .then((json) => {
+        setSuggestions(json);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  return (
+    <div className="mt-6 px-5">
+      <div className="bg-[#F4F4F4] custom-box-shadow font-inter text-md p-2 flex flex-wrap gap-2">
+        <button className="py-1 px-2 rounded-lg border-2 border-black hover:underline">
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </button>
+        <button className="py-1 px-2 rounded-lg border-2 border-black hover:underline">
+          aaaaaaa
+        </button>
+        <button className="py-1 px-2 rounded-lg border-2 border-black hover:underline">
+          aaaaaaaaaaaaaaaaaaaa
+        </button>
+      </div>
     </div>
   );
 }
