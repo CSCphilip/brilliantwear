@@ -1,84 +1,35 @@
 import { render, screen } from "@testing-library/react";
-import ProductCard from "../app/_components/ProductCard";
+import ProductCard from "../app/_components/home/ProductCard";
+import { Product } from "_types";
+
+const product: Product = {
+  id: "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178",
+  brand: "Unknown",
+  category: "High heels",
+  type: "Shoe",
+  price: 1399,
+  image_url:
+    "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178",
+};
 
 describe("ProductCard text tests", () => {
   it("should have brand text", () => {
     // NOTE: Triple A (Arrange, Act, Assert) testing pattern applied.
 
     // ARRANGE
-    render(
-      <ProductCard
-        id={
-          "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-        }
-        brand="Unknown"
-        category="High heels"
-        type="Shoe"
-        price={1399}
-        image_url="shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-      />
-    );
+    render(<ProductCard product={product} />);
 
     // ACT
-    const brandElement = screen.getByText(/Brand/);
+    const brandElement = screen.getByText(/Unknown/);
 
     // ASSERT
     expect(brandElement).toBeInTheDocument();
   });
 
-  it("should have category text", () => {
-    render(
-      <ProductCard
-        id={
-          "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-        }
-        brand="Unknown"
-        category="High heels"
-        type="Shoe"
-        price={1399}
-        image_url="shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-      />
-    );
-
-    const categoryElement = screen.getByText(/Category/);
-
-    expect(categoryElement).toBeInTheDocument;
-  });
-
-  it("should have type text", () => {
-    render(
-      <ProductCard
-        id={
-          "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-        }
-        brand="Unknown"
-        category="High heels"
-        type="Shoe"
-        price={1399}
-        image_url="shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-      />
-    );
-
-    const typeElement = screen.getByText(/Type/);
-
-    expect(typeElement).toBeInTheDocument();
-  });
-
   it("should have price text", () => {
-    render(
-      <ProductCard
-        id={
-          "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-        }
-        brand="Unknown"
-        category="High heels"
-        type="Shoe"
-        price={1399}
-        image_url="shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-      />
-    );
+    render(<ProductCard product={product} />);
 
-    const priceElement = screen.getByText(/Price/);
+    const priceElement = screen.getByText(/1 399,00 kr/);
 
     expect(priceElement).toBeInTheDocument();
   });
@@ -86,18 +37,7 @@ describe("ProductCard text tests", () => {
 
 describe("ProductCard link", () => {
   beforeEach(() => {
-    render(
-      <ProductCard
-        id={
-          "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-        }
-        brand="Unknown"
-        category="High heels"
-        type="Shoe"
-        price={1399}
-        image_url="shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178"
-      />
-    );
+    render(<ProductCard product={product} />);
   });
 
   it("should have link to product page", () => {

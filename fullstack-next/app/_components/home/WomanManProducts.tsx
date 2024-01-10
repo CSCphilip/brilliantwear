@@ -54,7 +54,7 @@ function HorizontalScrollableList({
               {products.map((product) => {
                 return (
                   <li>
-                    <ProductCard product={product} />
+                    <WomanManProductCard product={product} />
                   </li>
                 );
               })}
@@ -68,7 +68,7 @@ function HorizontalScrollableList({
   );
 }
 
-function ProductCard({ product }: { product: Product }) {
+function WomanManProductCard({ product }: { product: Product }) {
   const [imageLoading, setImageLoading] = useState(true);
 
   useEffect(() => {

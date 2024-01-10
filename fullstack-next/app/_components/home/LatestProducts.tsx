@@ -1,5 +1,5 @@
 import { Product } from "_types";
-import ProductCard from "_components/ProductCard";
+import ProductCard from "./ProductCard";
 
 export default async function LatestProducts() {
   let latestProducts: Product[] = [];
