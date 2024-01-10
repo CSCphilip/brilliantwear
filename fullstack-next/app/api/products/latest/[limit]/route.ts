@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
-import { db } from "_helpers/server";
+import { productsRepo } from "_helpers/server";
 import log from "_utilities/log";
-
-const Product = db.Product;
 
 export async function GET(req: Request, { params: { limit } }: any) {
   const limitNumber = parseInt(limit);
@@ -12,13 +10,13 @@ export async function GET(req: Request, { params: { limit } }: any) {
 
   log("Getting the latest " + limit + " products from the MongoDB");
 
-  try {
-    const latestProducts = await Product.find({}, { _id: 0, __v: 0 })
-      .limit(limitNumber)
-      .sort({ _id: -1 })
-      .lean();
+  const latestProductsPagination: any = await productsRepo.getLatest();
 
-    return NextResponse.json(latestProducts);
+  try {
+    return NextResponse.json({
+      ...latestProductsPagination,
+      products: latestProductsPagination.products.slice(0, limit),
+    });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "Internal Server Error", status: 500 });

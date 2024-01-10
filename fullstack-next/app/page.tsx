@@ -9,7 +9,8 @@ export default function Home() {
       <ShoppingAssistant />
       <WomanManProducts />
       <PopularItems />
-      <div className="h-20"></div>
+      <LatestProducts />
+      <span className="block h-7"></span>
     </main>
   );
 }

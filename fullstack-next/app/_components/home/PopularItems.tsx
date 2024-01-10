@@ -17,7 +17,7 @@ export default async function PopularItems() {
     );
     popularProducts = await res.json().then((data) => data.products);
   } catch (err) {
-    console.error("Failed to fetch latest products");
+    console.error("Failed to popular products");
     console.error(err);
   }
 

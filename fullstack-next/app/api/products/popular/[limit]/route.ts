@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { productsRepo } from "_helpers/server";
 import { shuffleArray } from "_utilities";
+import log from "_utilities/log";
 
 export async function GET(request: Request, { params: { limit } }: any) {
   const allProductsPagination: any = await productsRepo.get();
 
   const shuffledProducts = shuffleArray(allProductsPagination.products);
 
-  console.log(
+  log(
     "Producing a random list of " +
       limit +
       " products from the MongoDB to represent the most popular products"
