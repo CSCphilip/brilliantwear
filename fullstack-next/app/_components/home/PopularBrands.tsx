@@ -40,7 +40,7 @@ export default function PopularBrands() {
   return (
     <div className="bg-primary mt-5 flex">
       <div className="pt-5">
-        <Triangle rotate="180" />
+        <Triangle rotate={270} />
       </div>
       <div className="grow mb-7">
         <h2 className="font-inter font-normal pt-3 text-center">
@@ -63,19 +63,44 @@ export default function PopularBrands() {
         </div>
       </div>
       <div className="pb-5 flex flex-col justify-end">
-        <Triangle rotate="0" />
+        <Triangle rotate={90} />
       </div>
     </div>
   );
 }
 
-function Triangle({ rotate }: { rotate: string }) {
-  return (
-    <div
-      className={`border-t-[80px] border-t-transparent
+function Triangle({ rotate }: { rotate: number }) {
+  if (rotate === 0) {
+    return (
+      <div
+        className="border-l-[80px] border-l-transparent
+      border-t-[50px] border-l-[#f1f1f1]
+      border-r-[80px] border-r-transparent"
+      />
+    );
+  } else if (rotate === 90) {
+    return (
+      <div
+        className="border-t-[80px] border-t-transparent
                   border-r-[50px] border-l-[#f1f1f1]
-                  border-b-[80px] border-b-transparent
-                  rotate-${rotate}`}
-    />
-  );
+                  border-b-[80px] border-b-transparent"
+      />
+    );
+  } else if (rotate === 180) {
+    return (
+      <div
+        className="border-l-[80px] border-l-transparent
+                 border-b-[50px] border-l-[#f1f1f1]
+                 border-r-[80px] border-r-transparent"
+      />
+    );
+  } else if (rotate === 270) {
+    return (
+      <div
+        className="border-t-[80px] border-t-transparent
+    border-l-[50px] border-l-[#f1f1f1]
+    border-b-[80px] border-b-transparent"
+      />
+    );
+  }
 }

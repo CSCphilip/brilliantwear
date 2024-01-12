@@ -1,12 +1,42 @@
 "use client";
 
-interface ShoppingAssistantFormProps {
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+import { Product } from "_types";
+import { useState } from "react";
 
-export default function ShoppingAssistantForm({
-  handleSubmit,
-}: ShoppingAssistantFormProps) {
+export default function ShoppingAssistantForm() {
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  const [hasSearched, setHasSearched] = useState(false);
+  // for react-spinners
+  const [loading, setLoading] = useState(false);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    // Show the loading spinner
+    setLoading(true);
+    // Prevent the browser from reloading the page
+    e.preventDefault();
+    // Read the form data
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const userInputProductDescription = formData.get(
+      "product-description"
+    ) as string;
+    const userInputData = {
+      userInput: userInputProductDescription,
+    };
+    fetch("http://localhost:3000/api/shopping-assistant", {
+      method: "POST",
+      body: JSON.stringify(userInputData),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setSuggestedProducts(json);
+        setHasSearched(true);
+        // Hide the loading spinner
+        setLoading(false);
+      })
+      .catch((err) => console.error(err));
+  }
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center">
       <input
