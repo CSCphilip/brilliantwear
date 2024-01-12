@@ -27,6 +27,7 @@ create.schema = joi.object({
   brand: joi.string().required(),
   category: joi.string().required(),
   type: joi.string().required(),
+  gender: joi.string().required(),
   price: joi.number().required(),
   image: joi.object().required(),
 });

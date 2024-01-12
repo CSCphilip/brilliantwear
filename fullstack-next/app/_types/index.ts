@@ -5,6 +5,7 @@ export interface Product {
   type: string;
   price: number;
   image_url: string;
+  gender: "Woman" | "Man" | "Unisex";
 }
 
 export type CartItem = {

@@ -23,6 +23,7 @@ export default function AddProduct() {
       min: 0,
     }),
     image: register("image", { required: "An image is required" }),
+    gender: register("gender", { required: "A gender is required" }),
   };
 
   async function onSubmit(data: any) {
@@ -91,6 +92,22 @@ export default function AddProduct() {
             </select>
             <p className="text-red-500 mt-1">
               {errors.type?.message?.toString()}
+            </p>
+          </div>
+          <div className="mb-3">
+            <label
+              htmlFor="gender"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Gender
+            </label>
+            <select {...fields.gender} className="" defaultValue={"Woman"}>
+              <option value="Woman">Woman</option>
+              <option value="Man">Man</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+            <p className="text-red-500 mt-1">
+              {errors.gender?.message?.toString()}
             </p>
           </div>
           <div className="mb-3">

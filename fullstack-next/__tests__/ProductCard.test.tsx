@@ -10,6 +10,7 @@ const product: Product = {
   price: 1399,
   image_url:
     "shoe_blue_style_footwear_fashion_female_pair_girl-1194422-1856815178",
+  gender: "Woman",
 };
 
 describe("ProductCard text tests", () => {
