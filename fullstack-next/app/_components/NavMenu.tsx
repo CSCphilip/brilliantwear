@@ -76,23 +76,41 @@ export default function NavMenu() {
 function NavMenuLinks({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
   return (
     <div className="flex items-center border-y-2 border-black lg:border-y-0">
-      <ul className="ms-2 my-1 lg:my-0 lg:flex lg:gap-4">
+      <ul className="font-inter ms-2 py-1 lg:ms-5 lg:flex lg:gap-1">
         <li>
           <Link
-            href="/products"
+            href="/woman"
             onClick={toggleMobileMenu}
-            className="text-black hover:text-white"
+            className="lg:py-2 lg:px-3 lg:rounded-md lg:hover:bg-[#E47112]"
           >
-            Products
+            Woman
           </Link>
         </li>
         <li>
           <Link
-            href="#"
+            href="/man"
             onClick={toggleMobileMenu}
-            className="text-black hover:text-white"
+            className="lg:py-2 lg:px-3 lg:rounded-md lg:hover:bg-[#E47112]"
           >
-            Test
+            Man
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/products"
+            onClick={toggleMobileMenu}
+            className="lg:py-2 lg:px-3 lg:rounded-md lg:hover:bg-[#E47112]"
+          >
+            All Products
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/shopping-assistant"
+            onClick={toggleMobileMenu}
+            className="lg:py-2 lg:px-3 lg:rounded-md lg:hover:bg-[#E47112]"
+          >
+            Shopping Assistant
           </Link>
         </li>
       </ul>

@@ -1,24 +1,33 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Product } from "_types";
 
 export default function ShoppingAssistant() {
   const router = useRouter();
 
   return (
-    <div className="mb-12">
-      <div className="flex justify-between px-9 mt-5">
-        <h2 className="font-inter mt-4 font-normal">Shopping Assistant</h2>
+    <div className="mb-12 lg:flex lg:mt-24 lg:mb-20">
+      <div className="lg:w-1/3 flex justify-between px-9 mt-5 lg:px-0 lg:mt-0 lg:justify-center lg:items-center">
+        <h2 className="font-inter mt-4 font-normal lg:mt-0 lg:pb-14">
+          Shopping Assistant
+        </h2>
         <img
           src="/icon-search-clothing.png"
           alt="Clothing search icon"
-          className="w-[70px] h-[70px]"
+          className="w-[70px] h-[70px] lg:hidden"
         />
       </div>
-      <ShoppingAssistantForm router={router} />
-      <ShoppingAssistantTextSuggestions router={router} />
+      <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-center lg:items-center">
+        <ShoppingAssistantForm router={router} />
+        <ShoppingAssistantTextSuggestions router={router} />
+      </div>
+      <div className="hidden lg:flex lg:w-1/3 lg:justify-center">
+        <img
+          src="/icon-search-clothing.png"
+          alt="Clothing search icon"
+          className="hidden lg:block w-[280px] h-[280px]"
+        />
+      </div>
     </div>
   );
 }
@@ -40,7 +49,10 @@ function ShoppingAssistantForm({ router }: { router: any }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative px-5 mt-4">
+    <form
+      onSubmit={handleSubmit}
+      className="relative px-5 mt-4 lg:px-0 lg:mt-0 lg:max-w-[600px] lg:w-full"
+    >
       <input
         type="text"
         placeholder="Seeking clothing ideas? Search here..."
@@ -79,12 +91,13 @@ function ShoppingAssistantForm({ router }: { router: any }) {
 
 function ShoppingAssistantTextSuggestions({ router }: { router: any }) {
   function handleClick(query: string) {
-    router.push(`/shopping-assistant?query=${query}`);
+    const queryString = encodeURIComponent(query);
+    router.push(`/shopping-assistant?query=${queryString}`);
   }
 
   // NOTE: Hard coded text suggestions for now
   return (
-    <div className="mt-6 px-5">
+    <div className="mt-6 px-5 lg:px-0 lg:max-w-[600px]">
       <div className="bg-[#F4F4F4] custom-box-shadow font-inter text-md px-2 py-3 flex flex-wrap gap-2">
         <button
           onClick={() => handleClick("Formal shoes for a wedding")}
@@ -108,7 +121,13 @@ function ShoppingAssistantTextSuggestions({ router }: { router: any }) {
           onClick={() => handleClick("Blue t-shirt")}
           className="flex-grow py-1 px-2 rounded-lg border-2 border-black hover:bg-gray-200"
         >
-          Blue t-shirt
+          White t-shirt from Levi's
+        </button>
+        <button
+          onClick={() => handleClick("Shorts for the beach")}
+          className="hidden lg:block flex-grow py-1 px-2 rounded-lg border-2 border-black hover:bg-gray-200"
+        >
+          Shorts for the beach
         </button>
       </div>
     </div>

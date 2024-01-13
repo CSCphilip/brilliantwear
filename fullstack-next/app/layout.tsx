@@ -8,7 +8,7 @@ import { ShoppingCartProvider } from "_context";
 
 export const metadata: Metadata = {
   title: "Brilliantwear",
-  description: "The most intelligent (brilliant) clothing store online.",
+  description: "The most brilliant (intelligent) clothing store online.",
 };
 
 export default function RootLayout({
