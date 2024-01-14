@@ -3,10 +3,10 @@
 import { Product } from "_types";
 import { formatCurrency } from "_utilities";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ClipLoader } from "react-spinners";
 
-const NO_PRODUCTS = 8;
+const NO_PRODUCTS = 20;
 
 export default function WomanManProducts() {
   const [womanProducts, setWomanProducts] = useState<Product[] | null>(null);
@@ -43,6 +43,14 @@ function HorizontalScrollableList({
   products: Product[] | null;
   gender: string;
 }) {
+  const containerRef = useRef<HTMLInputElement>(null);
+
+  const handleScroll = (scrollAmount: number) => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += scrollAmount;
+    }
+  };
+
   return (
     <div
       className={`lg:flex lg:items-center ${
@@ -58,72 +66,82 @@ function HorizontalScrollableList({
       </h2>
       <div className="grow flex mt-1 lg:overflow-x-auto">
         {/* NOTE: You can use 'scrollbar-hide' here to hide scrollbar */}
-        <div className="grow overflow-x-auto ps-16 lg:ps-0">
+        <div
+          ref={containerRef}
+          className={`grow flex overflow-x-auto ps-16 lg:ps-0 lg:snap-x lg:scroll-smooth ${
+            gender === "Man" && "lg:flex-row-reverse"
+          }`}
+        >
           {products ? (
-            <ol
-              className={`flex ${
-                gender === "Man" && "lg:flex-row-reverse lg:overflow-x-auto"
-              }`}
-            >
+            <>
               {products.map((product, index) => {
                 return (
-                  <li key={index}>
+                  <div
+                    key={index}
+                    className={`${
+                      gender === "Man" ? "lg:snap-end" : "lg:snap-start"
+                    }`}
+                  >
                     <WomanManProductCard product={product} />
-                  </li>
+                  </div>
                 );
               })}
-            </ol>
+            </>
           ) : (
-            <div className="h-[300px]" />
+            <div className="h-[300px] lg:h-[430px]" />
           )}
         </div>
       </div>
-      <div className="hidden lg:block lg:mx-4 lg:pb-10">
-        <svg
-          className={`lg:w-14 lg:h-12 ${gender === "Man" && "lg:hidden"}`}
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></g>
-          <g id="SVGRepo_iconCarrier">
-            <path
-              d="M4 12H20M20 12L16 8M20 12L16 16"
-              stroke="#000000"
-              strokeWidth="2"
+      <div className="hidden lg:block lg:mx-4 lg:pb-6">
+        <button onClick={() => handleScroll(500)}>
+          <svg
+            className={`lg:w-14 lg:h-12 ${gender === "Man" && "lg:hidden"}`}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
               strokeLinecap="round"
               strokeLinejoin="round"
-            ></path>
-          </g>
-        </svg>
-        <svg
-          className={`lg:w-14 lg:h-12 ${gender === "Woman" && "lg:hidden"}`}
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          transform="matrix(-1, 0, 0, 1, 0, 0)"
-        >
-          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></g>
-          <g id="SVGRepo_iconCarrier">
-            <path
-              d="M4 12H20M20 12L16 8M20 12L16 16"
-              stroke="#000000"
-              strokeWidth="2"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M4 12H20M20 12L16 8M20 12L16 16"
+                stroke="#000000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </button>
+        <button onClick={() => handleScroll(-500)}>
+          <svg
+            className={`lg:w-14 lg:h-12 ${gender === "Woman" && "lg:hidden"}`}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            transform="matrix(-1, 0, 0, 1, 0, 0)"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
               strokeLinecap="round"
               strokeLinejoin="round"
-            ></path>
-          </g>
-        </svg>
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M4 12H20M20 12L16 8M20 12L16 16"
+                stroke="#000000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -146,7 +164,7 @@ function WomanManProductCard({ product }: { product: Product }) {
     <div
       className={`w-max font-inter text-[13px] me-6 ${
         product.gender === "Man" ? "lg:me-0 lg:ms-10" : "lg:me-10"
-      } mb-2 hover:underline`}
+      } mb-2 lg:mb-3 hover:underline`}
     >
       <Link href={"/products/" + product.id} className="">
         {imageLoading ? (
