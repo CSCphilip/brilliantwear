@@ -62,7 +62,10 @@ function ShoppingAssistantForm({ router }: { router: any }) {
         placeholder-black custom-box-shadow focus:outline-none focus:border-2 focus:border-gray-400 pr-12"
         autoComplete="off"
       />
-      <button type="submit" className="absolute top-0 right-0 mt-[13.5px] mr-7">
+      <button
+        type="submit"
+        className="absolute top-0 right-0 mt-[13.5px] mr-7 lg:mr-3"
+      >
         <svg
           className="w-8 h-8 p-0.5 hover:bg-gray-200 rounded-md"
           viewBox="0 0 24 24"

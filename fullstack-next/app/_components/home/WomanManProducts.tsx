@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
 
-const NO_PRODUCTS = 4;
+const NO_PRODUCTS = 8;
 
 export default function WomanManProducts() {
   const [womanProducts, setWomanProducts] = useState<Product[] | null>(null);
@@ -30,7 +30,7 @@ export default function WomanManProducts() {
   return (
     <div className="bg-[#f1f1f1] py-4">
       <HorizontalScrollableList products={womanProducts} gender="Woman" />
-      <span className="block h-2" />
+      <span className="block h-2 lg:h-5" />
       <HorizontalScrollableList products={manProducts} gender="Man" />
     </div>
   );
@@ -44,16 +44,30 @@ function HorizontalScrollableList({
   gender: string;
 }) {
   return (
-    <>
-      <h2 className="font-inter font-normal ms-6">{gender}</h2>
-      <div className="flex mt-1">
+    <div
+      className={`lg:flex lg:items-center ${
+        gender === "Man" && "lg:flex-row-reverse"
+      }`}
+    >
+      <h2
+        className={`font-inter font-normal lg:text-5xl ms-6 lg:ms-0 lg:px-14 lg:pb-14 ${
+          gender === "Man" && "lg:px-[100px]"
+        }`}
+      >
+        {gender}
+      </h2>
+      <div className="grow flex mt-1 lg:overflow-x-auto">
         {/* NOTE: You can use 'scrollbar-hide' here to hide scrollbar */}
-        <div className="grow overflow-x-auto ps-16">
+        <div className="grow overflow-x-auto ps-16 lg:ps-0">
           {products ? (
-            <ol className="flex">
-              {products.map((product) => {
+            <ol
+              className={`flex ${
+                gender === "Man" && "lg:flex-row-reverse lg:overflow-x-auto"
+              }`}
+            >
+              {products.map((product, index) => {
                 return (
-                  <li>
+                  <li key={index}>
                     <WomanManProductCard product={product} />
                   </li>
                 );
@@ -64,7 +78,54 @@ function HorizontalScrollableList({
           )}
         </div>
       </div>
-    </>
+      <div className="hidden lg:block lg:mx-4 lg:pb-10">
+        <svg
+          className={`lg:w-14 lg:h-12 ${gender === "Man" && "lg:hidden"}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M4 12H20M20 12L16 8M20 12L16 16"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </g>
+        </svg>
+        <svg
+          className={`lg:w-14 lg:h-12 ${gender === "Woman" && "lg:hidden"}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          transform="matrix(-1, 0, 0, 1, 0, 0)"
+        >
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M4 12H20M20 12L16 8M20 12L16 16"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </div>
+    </div>
   );
 }
 
@@ -82,10 +143,14 @@ function WomanManProductCard({ product }: { product: Product }) {
   }, [product]);
 
   return (
-    <div className="w-max font-inter text-[13px] me-6 mb-2 hover:underline">
+    <div
+      className={`w-max font-inter text-[13px] me-6 ${
+        product.gender === "Man" ? "lg:me-0 lg:ms-10" : "lg:me-10"
+      } mb-2 hover:underline`}
+    >
       <Link href={"/products/" + product.id} className="">
         {imageLoading ? (
-          <div className="h-64 w-44 mb-1 flex justify-center items-center">
+          <div className="h-64 w-44 lg:h-96 lg:w-[270px] mb-1 flex justify-center items-center">
             <ClipLoader color="#3B82F6" speedMultiplier={1} />
           </div>
         ) : (
@@ -95,7 +160,7 @@ function WomanManProductCard({ product }: { product: Product }) {
               encodeURIComponent(product.image_url)
             }
             alt="An image of the product."
-            className="h-64 w-44 mb-1"
+            className="h-64 w-44 lg:h-96 lg:w-[270px] mb-1"
           />
         )}
         <p>{product.brand}</p>
