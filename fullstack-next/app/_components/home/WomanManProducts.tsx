@@ -28,7 +28,7 @@ export default function WomanManProducts() {
   }, []);
 
   return (
-    <div className="bg-[#f1f1f1] py-4">
+    <div className="bg-[#f1f1f1] py-7">
       <HorizontalScrollableList products={womanProducts} gender="Woman" />
       <span className="block h-2 lg:h-5" />
       <HorizontalScrollableList products={manProducts} gender="Man" />
@@ -74,18 +74,25 @@ function HorizontalScrollableList({
         >
           {products ? (
             <>
-              {products.map((product, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={`${
-                      gender === "Man" ? "lg:snap-end" : "lg:snap-start"
-                    }`}
-                  >
-                    <WomanManProductCard product={product} />
-                  </div>
-                );
-              })}
+              {products
+                .filter((product) => {
+                  const { gender } = product;
+                  if (gender !== "Unisex") {
+                    return product;
+                  }
+                })
+                .map((product, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`${
+                        gender === "Man" ? "lg:snap-end" : "lg:snap-start"
+                      }`}
+                    >
+                      <WomanManProductCard product={product} />
+                    </div>
+                  );
+                })}
             </>
           ) : (
             <div className="h-[300px] lg:h-[430px]" />

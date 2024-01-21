@@ -76,7 +76,7 @@ export default function NavMenu() {
 function NavMenuLinks({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
   return (
     <div className="flex items-center border-y-2 border-black lg:border-y-0">
-      <ul className="font-inter ms-2 py-1 lg:ms-5 lg:flex lg:gap-1">
+      <ul className="font-inter ms-2 py-1 lg:flex lg:gap-1">
         <li>
           <Link
             href="/woman"

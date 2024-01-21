@@ -20,10 +20,10 @@ export default function ProductCard({ product }: { product: Product }) {
   }, [product]);
 
   return (
-    <div className="font-inter text-[13px] hover:underline">
+    <div className="font-inter text-[13px] xl:text-[15px] hover:underline">
       <Link href={"/products/" + product.id}>
         {imageLoading ? (
-          <div className="h-64 w-44 mb-1 flex justify-center items-center">
+          <div className="h-64 w-44 xl:h-[450px] xl:w-[307px] mb-1 flex justify-center items-center">
             <ClipLoader color="#3B82F6" speedMultiplier={1} />
           </div>
         ) : (
@@ -33,7 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
               encodeURIComponent(product.image_url)
             }
             alt="An image of the product."
-            className="h-64 w-44 mb-1"
+            className="h-64 w-44 xl:h-[450px] xl:w-[307px] mb-1"
           />
         )}
         <p>{product.brand}</p>

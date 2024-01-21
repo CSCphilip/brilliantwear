@@ -6,9 +6,9 @@ export default function ShoppingAssistant() {
   const router = useRouter();
 
   return (
-    <div className="mb-12 lg:flex lg:mt-24 lg:mb-20">
+    <div className="mb-12 lg:mb-0 lg:flex lg:py-24">
       <div className="lg:w-1/3 flex justify-between px-9 mt-5 lg:px-0 lg:mt-0 lg:justify-center lg:items-center">
-        <h2 className="font-inter mt-4 font-normal lg:mt-0 lg:pb-14">
+        <h2 className="font-inter mt-4 font-normal lg:mt-0">
           Shopping Assistant
         </h2>
         <img
@@ -17,11 +17,11 @@ export default function ShoppingAssistant() {
           className="w-[70px] h-[70px] lg:hidden"
         />
       </div>
-      <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-center lg:items-center">
+      <div className="lg:w-1/3 lg:flex lg:flex-col lg:justify-center lg:items-center lg:pt-8">
         <ShoppingAssistantForm router={router} />
         <ShoppingAssistantTextSuggestions router={router} />
       </div>
-      <div className="hidden lg:flex lg:w-1/3 lg:justify-center">
+      <div className="hidden lg:flex lg:w-1/3 lg:justify-center lg:pt-8">
         <img
           src="/icon-search-clothing.png"
           alt="Clothing search icon"
@@ -58,7 +58,7 @@ function ShoppingAssistantForm({ router }: { router: any }) {
         placeholder="Seeking clothing ideas? Search here..."
         name="user-query"
         maxLength={250}
-        className="bg-[#F4F4F4] border-2 border-[#F4F4F4] ps-2 py-4 w-full font-inter 
+        className="bg-[#F4F4F4] border-2 border-[#F4F4F4] ps-2 lg:ps-[14px] py-4 w-full font-inter 
         placeholder-black custom-box-shadow focus:outline-none focus:border-2 focus:border-gray-400 pr-12"
         autoComplete="off"
       />
@@ -101,7 +101,7 @@ function ShoppingAssistantTextSuggestions({ router }: { router: any }) {
   // NOTE: Hard coded text suggestions for now
   return (
     <div className="mt-6 px-5 lg:px-0 lg:max-w-[600px]">
-      <div className="bg-[#F4F4F4] custom-box-shadow font-inter text-md px-2 py-3 flex flex-wrap gap-2">
+      <div className="bg-[#F4F4F4] custom-box-shadow font-inter text-md px-2 lg:px-3 lg:pb-8 py-3 flex flex-wrap gap-2">
         <button
           onClick={() => handleClick("Formal shoes for a wedding")}
           className="flex-grow py-1 px-2 rounded-lg border-2 border-black hover:bg-gray-200"
