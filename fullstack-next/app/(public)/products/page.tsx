@@ -47,39 +47,46 @@ export default function ProductCatalog() {
 
   if (pageProducts) {
     return (
-      <div className="mb-12">
+      <div className="grow mb-12 flex flex-col">
         <h1 className="ms-[20px] mt-4">Product Catalog</h1>
-        {pageProducts.length > 0 &&
-          pageProducts.map((product) => (
-            <ProductDetails key={product.id} {...product} />
-          ))}
-        <div className="flex justify-center">
-          <button
-            disabled={page === 1}
-            onClick={handlePrevious}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Prev
-          </button>
-          <button
-            disabled={page === totalPages}
-            onClick={handleNext}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Next
-          </button>
-          <select
-            value={page}
-            onChange={handleOnChangePage}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold ps-4 pe-2 border-s-2 border-black rounded-r "
-          >
-            {Array(totalPages)
-              .fill(null)
-              .map((_, index) => {
-                return <option key={index}>{index + 1}</option>;
-              })}
-          </select>
-        </div>
+        {pageProducts.length > 0 ? (
+          <>
+            {pageProducts.map((product) => (
+              <ProductDetails key={product.id} {...product} />
+            ))}
+            <div className="flex justify-center">
+              <button
+                disabled={page === 1}
+                onClick={handlePrevious}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Prev
+              </button>
+              <button
+                disabled={page === totalPages || !totalPages}
+                onClick={handleNext}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Next
+              </button>
+              <select
+                value={page}
+                onChange={handleOnChangePage}
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold ps-4 pe-2 border-s-2 border-black rounded-r "
+              >
+                {Array(totalPages)
+                  .fill(null)
+                  .map((_, index) => {
+                    return <option key={index}>{index + 1}</option>;
+                  })}
+              </select>
+            </div>
+          </>
+        ) : (
+          <div className="grow flex items-center justify-center">
+            <h3>No products found with this search criteria.</h3>
+          </div>
+        )}
       </div>
     );
   } else {

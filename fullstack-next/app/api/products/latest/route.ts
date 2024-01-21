@@ -9,5 +9,12 @@ module.exports = apiHandler({
 async function getLatest(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const page = searchParams.get("page");
-  return await productsRepo.getLatest(parseInt(page as string));
+  const brand = searchParams.get("brand");
+  if (brand) {
+    return await productsRepo.getLatest(undefined, {
+      brand: brand,
+    });
+  } else {
+    return await productsRepo.getLatest(parseInt(page as string));
+  }
 }

@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 import { useFetch } from "_helpers/client/hooks";
+import { useSearchParams } from "next/navigation";
 
 const initialState = {
   products: undefined,
@@ -14,6 +15,7 @@ const productStore = create<IProductStore>(() => initialState);
 export function useProductService(): IProductService {
   const fetch = useFetch();
   const { products, product, pagination } = productStore();
+  const searchParams = useSearchParams();
 
   return {
     products,
@@ -25,11 +27,18 @@ export function useProductService(): IProductService {
       await fetch.post("/api/products", product);
     },
     getLatest: async (page?: number) => {
+      const brandSearch = searchParams.get("brand");
       let JSONresponse;
       if (page || page === 0) {
-        JSONresponse = await fetch.get(`/api/products/latest?page=${page}`);
+        JSONresponse = await fetch.get(
+          `/api/products/latest?page=${page}${
+            brandSearch && `&brand=${brandSearch}`
+          }`
+        );
       } else {
-        JSONresponse = await fetch.get("/api/products/latest");
+        JSONresponse = await fetch.get(
+          `/api/products/latest${brandSearch && `&brand=${brandSearch}`}`
+        );
       }
       productStore.setState({
         products: JSONresponse.products,
