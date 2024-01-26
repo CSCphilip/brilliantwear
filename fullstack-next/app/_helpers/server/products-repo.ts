@@ -11,6 +11,7 @@ export const productsRepo = {
   get,
   getLatest,
   getById,
+  getTypes,
 };
 
 async function create(params: FormData) {
@@ -130,4 +131,9 @@ async function getById(id: string) {
     }
   );
   return product;
+}
+
+async function getTypes() {
+  const types = await Product.distinct("type");
+  return types;
 }

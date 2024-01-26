@@ -22,6 +22,7 @@ function isPublicPath(req: NextRequest) {
     "GET:/api/products/latest",
     "GET:/api/products/woman",
     "GET:/api/products/man",
+    "GET:/api/products/types",
     "POST:/api/checkout/servicepoints",
     "GET:/api/checkout/paypal-client-id",
     "POST:/api/checkout/orders",

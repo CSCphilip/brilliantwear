@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ProductCard from "../app/_components/home/ProductCard";
+import ProductCard from "../app/_components/ProductCard";
 import { Product } from "_types";
 
 const product: Product = {
