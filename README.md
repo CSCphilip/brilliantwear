@@ -69,15 +69,15 @@ Visit at: https://www.brilliantwear.se/
 
 #### Third stage (design)
 
-- [ ] Split shop into Men's and Woman's clothing products
-- [ ] Improve home page. Add new sections (content). Design improvements.
-- [ ] Create pages for different clothing types (e.g. shoes, pants, shirt)
-- [ ] Products filter & sorting feature
-- [ ] Improve product detail page (the page for each product). Add the possibility to have multiple images. Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
-- [ ] Create other overview pages on the website aside from the home page.
-- [ ] Improve the navbar and menu. This is related to the categories of clothes and men's and women's clothes.
+- [x] Split shop into Men's and Woman's clothing products.
+- [x] Improve home page. Add new sections. Design improvements.
+- [ ] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
+- [ ] Make a specific page for the shopping assistant and make this page look good with search queries from users.
+- [ ] Products filter & sorting feature (add sorting on the All Products page)
+- [ ] Improve product detail page (the page for each product). Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
+- [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
-      **Notes:** I started of this stage by creating web layouts and designs with Figma.
+      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket).  
 
 #### Fourth stage (finalization)
 
