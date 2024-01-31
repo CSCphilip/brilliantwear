@@ -76,6 +76,7 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Products filter & sorting feature (add sorting on the All Products page)
 - [ ] Improve product detail page (the page for each product). Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
 - [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
+- [ ] Create a new nicer looking favicon. 
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
       **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket).  
 
