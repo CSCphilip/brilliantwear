@@ -14,7 +14,47 @@ module.exports = apiHandler({
 async function get(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const page = searchParams.get("page");
-  return await productsRepo.get(parseInt(page as string));
+
+  const brand = searchParams.get("brand");
+  const brandQuery = brand ? { brand: brand } : {};
+
+  const typeFilter = searchParams.get("typeFilter");
+  const typeFilterQuery =
+    typeFilter && typeFilter !== "All" ? { type: typeFilter } : {};
+
+  const order = searchParams.get("order");
+
+  let productsPagination;
+
+  if (!order || order === "latest") {
+    productsPagination = await productsRepo.getLatest(
+      parseInt(page as string),
+      {
+        ...brandQuery,
+        ...typeFilterQuery,
+      }
+    );
+  } else {
+    let sortOptions = {};
+    switch (order) {
+      case "priceAsc":
+        sortOptions = { price: 1 };
+        break;
+      case "priceDesc":
+        sortOptions = { price: -1 };
+        break;
+    }
+    productsPagination = await productsRepo.get(
+      parseInt(page as string),
+      sortOptions,
+      {
+        ...brandQuery,
+        ...typeFilterQuery,
+      }
+    );
+  }
+
+  return productsPagination;
 }
 
 async function create(req: NextRequest) {

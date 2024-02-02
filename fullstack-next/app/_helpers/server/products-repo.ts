@@ -49,8 +49,8 @@ async function create(params: FormData) {
   log("Product saved successfully. Brand: " + params.get("brand"));
 }
 
-async function get(page?: number, query?: {}) {
-  return getProducts(page, undefined, query);
+async function get(page?: number, sortOptions?: any, query?: {}) {
+  return getProducts(page, sortOptions, query);
 }
 
 async function getLatest(page?: number, query?: {}) {
@@ -63,9 +63,9 @@ async function getProducts(page?: number, sortOptions?: any, query?: {}) {
   // Put all your queryParameters parameters in here
   const queryParameters = query ?? {};
 
-  const totalProducts = await Product.estimatedDocumentCount(queryParameters);
+  const totalProducts = await Product.countDocuments(queryParameters);
 
-  const DEFAULT_PER_PAGE = 10;
+  const DEFAULT_PER_PAGE = 3;
   let productsPerPage: number | null = DEFAULT_PER_PAGE;
 
   let paginationUsed = false;

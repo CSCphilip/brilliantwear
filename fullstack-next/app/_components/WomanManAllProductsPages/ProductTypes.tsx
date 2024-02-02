@@ -2,13 +2,23 @@
 
 import { useState, useEffect } from "react";
 
+interface ProductTypesFilterProps {
+  typeFilter: string;
+  setTypeFilter: React.Dispatch<React.SetStateAction<string>>;
+  order: string;
+  getProducts: (
+    page?: number,
+    typeFilter?: string,
+    order?: string
+  ) => Promise<void>;
+}
+
 export default function ProductTypesFilter({
   typeFilter,
   setTypeFilter,
-}: {
-  typeFilter: string;
-  setTypeFilter: React.Dispatch<React.SetStateAction<string>>;
-}) {
+  order,
+  getProducts,
+}: ProductTypesFilterProps) {
   const [types, setTypes] = useState<string[]>([]);
 
   useEffect(() => {
@@ -22,8 +32,10 @@ export default function ProductTypesFilter({
   function handleClick(type: string) {
     if (type === typeFilter) {
       setTypeFilter("All");
+      getProducts(1, "All", order);
     } else {
       setTypeFilter(type);
+      getProducts(1, type, order);
     }
   }
 

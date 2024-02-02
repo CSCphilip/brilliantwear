@@ -1,11 +1,15 @@
 "use client";
 
-import ProductsGrid from "_components/WomanManPages/ProductsGrid";
-import ProductTypesFilter from "_components/WomanManPages/ProductTypes";
+import ProductOrdersDropdown from "_components/WomanManAllProductsPages/ProductOrders";
+import ProductsGrid from "_components/WomanManAllProductsPages/ProductsGrid";
+import ProductTypesFilter from "_components/WomanManAllProductsPages/ProductTypes";
+import { useProductService } from "_services";
 import { useState } from "react";
 
 export default function WomanProducts() {
   const [typeFilter, setTypeFilter] = useState<string>("All");
+  const [order, setOrder] = useState<string>("");
+  const productService = useProductService();
 
   return (
     <main className="grow flex flex-col items-center pb-7">
@@ -14,10 +18,20 @@ export default function WomanProducts() {
         <ProductTypesFilter
           typeFilter={typeFilter}
           setTypeFilter={setTypeFilter}
+          order={order}
+          getProducts={productService.getWomans}
+        />
+        <ProductOrdersDropdown
+          order={order}
+          setOrder={setOrder}
+          typeFilter={typeFilter}
+          getProducts={productService.getWomans}
         />
       </div>
       <ProductsGrid
-        apiUrl={"http://localhost:3000/api/products/woman"}
+        productService={productService}
+        getProducts={productService.getWomans}
+        order={order}
         typeFilter={typeFilter}
       />
     </main>

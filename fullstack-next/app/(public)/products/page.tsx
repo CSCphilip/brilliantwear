@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState } from "react";
 
-import ProductDetails from "_components/products/ProductDetails";
 import { useProductService } from "_services";
-import Spinner from "_components/Spinner";
+import ProductTypesFilter from "_components/WomanManAllProductsPages/ProductTypes";
+import ProductsGrid from "_components/WomanManAllProductsPages/ProductsGrid";
 
 // Old (left to remember the bug):
 // async function getAllProducts() {
@@ -20,76 +20,22 @@ import Spinner from "_components/Spinner";
 // }
 
 export default function ProductCatalog() {
+  const [typeFilter, setTypeFilter] = useState<string>("All");
   const productService = useProductService();
 
-  const pageProducts = productService.products;
-  const page = productService.pagination?.page ?? 1;
-  const totalPages = productService.pagination?.total_pages;
-
-  useEffect(() => {
-    productService.getLatest(1);
-  }, []);
-
-  function handlePrevious() {
-    if (page === 1) return;
-    productService.getLatest(page - 1);
-  }
-
-  function handleNext() {
-    if (page === totalPages) return;
-    productService.getLatest(page + 1);
-  }
-
-  function handleOnChangePage(event: React.ChangeEvent<HTMLSelectElement>) {
-    const page = Number(event.target.value);
-    productService.getLatest(page);
-  }
-
-  if (pageProducts) {
-    return (
-      <div className="grow mb-12 flex flex-col">
-        <h1 className="ms-[20px] mt-4">Product Catalog</h1>
-        {pageProducts.length > 0 ? (
-          <>
-            {pageProducts.map((product) => (
-              <ProductDetails key={product.id} {...product} />
-            ))}
-            <div className="flex justify-center">
-              <button
-                disabled={page === 1}
-                onClick={handlePrevious}
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Prev
-              </button>
-              <button
-                disabled={page === totalPages || !totalPages}
-                onClick={handleNext}
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Next
-              </button>
-              <select
-                value={page}
-                onChange={handleOnChangePage}
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold ps-4 pe-2 border-s-2 border-black rounded-r "
-              >
-                {Array(totalPages)
-                  .fill(null)
-                  .map((_, index) => {
-                    return <option key={index}>{index + 1}</option>;
-                  })}
-              </select>
-            </div>
-          </>
-        ) : (
-          <div className="grow flex items-center justify-center">
-            <h3>No products found with this search criteria.</h3>
-          </div>
-        )}
+  return (
+    <main className="grow flex flex-col items-center pb-7">
+      <div className="w-[375px] lg:w-[775px] xl:w-[1240px] 2xl:w-[1345px]">
+        <h2 className="text-center my-4 lg:text-left lg:ps-1">All Products</h2>
+        <ProductTypesFilter
+          typeFilter={typeFilter}
+          setTypeFilter={setTypeFilter}
+        />
       </div>
-    );
-  } else {
-    return <Spinner />;
-  }
+      <ProductsGrid
+        productService={productService}
+        getProducts={productService.getLatest}
+      />
+    </main>
+  );
 }
