@@ -74,7 +74,7 @@ Visit at: https://www.brilliantwear.se/
 - [x] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
 - [ ] Make a specific page for the shopping assistant and make this page look good with search queries from users.
 - [ ] Products filter & sorting feature.
-- [ ] Improve product detail page (the page for each product). Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
+- [ ] Improve product detail page (the page for each product). Recall that YouTube video about this that you watched.
 - [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
 - [ ] Create a new nicer looking favicon. 
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
