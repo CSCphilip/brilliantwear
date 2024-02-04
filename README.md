@@ -88,6 +88,8 @@ Visit at: https://www.brilliantwear.se/
 - [ ] GDPR and personal information saved when buying products.
 - [ ] Add cookie consent banner.
 - [ ] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
+- [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented. 
+- [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
 
 ### Tasks for extra features that are not necessary in the beginning
 
