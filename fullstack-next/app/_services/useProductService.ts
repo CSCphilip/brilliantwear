@@ -26,22 +26,21 @@ export function useProductService(): IProductService {
     create: async (product) => {
       await fetch.post("/api/products", product);
     },
-    getLatest: async (page?: number, typeFilter?: string) => {
+    getLatest: async (page?: number, typeFilter?: string, order?: string) => {
       const brandSearch = searchParams.get("brand");
-      let JSONresponse;
-      if (page || page === 0) {
-        JSONresponse = await fetch.get(
-          `/api/products/latest?page=${page}${
-            brandSearch && `&brand=${brandSearch}`
-          }${typeFilter && `&type=${typeFilter}`}`
-        );
-      } else {
-        JSONresponse = await fetch.get(
-          `/api/products/latest${brandSearch && `?brand=${brandSearch}`}${
-            typeFilter && `&type=${typeFilter}`
-          }`
-        );
-      }
+
+      const queryParams = new URLSearchParams();
+
+      if (page) queryParams.append("page", page.toString());
+      if (typeFilter) queryParams.append("typeFilter", typeFilter);
+      if (order) queryParams.append("order", order);
+      if (brandSearch) queryParams.append("brand", brandSearch);
+
+      const queryString = queryParams.toString();
+      const url = `/api/products${queryString ? `?${queryString}` : ""}`;
+
+      const JSONresponse = await fetch.get(url);
+
       productStore.setState({
         products: JSONresponse.products,
         pagination: JSONresponse.pagination,
@@ -64,17 +63,18 @@ export function useProductService(): IProductService {
         pagination: JSONresponse.pagination,
       });
     },
-    getMens: async (page?: number, typeFilter?: string) => {
-      let JSONresponse;
-      if (page || page === 0) {
-        JSONresponse = await fetch.get(
-          `/api/products/man?page=${page}${typeFilter && `&type=${typeFilter}`}`
-        );
-      } else {
-        JSONresponse = await fetch.get(
-          `/api/products/man${typeFilter && `?type=${typeFilter}`}`
-        );
-      }
+    getMens: async (page?: number, typeFilter?: string, order?: string) => {
+      const queryParams = new URLSearchParams();
+
+      if (page) queryParams.append("page", page.toString());
+      if (typeFilter) queryParams.append("typeFilter", typeFilter);
+      if (order) queryParams.append("order", order);
+
+      const queryString = queryParams.toString();
+      const url = `/api/products/man${queryString ? `?${queryString}` : ""}`;
+
+      const JSONresponse = await fetch.get(url);
+
       productStore.setState({
         products: JSONresponse.products,
         pagination: JSONresponse.pagination,
@@ -112,13 +112,21 @@ interface IProductStore {
 interface IProductService extends IProductStore {
   // Add product-related function signatures here.
   create: (product: IProduct) => Promise<void>;
-  getLatest: (page?: number, typeFilter?: string) => Promise<void>;
+  getLatest: (
+    page?: number,
+    typeFilter?: string,
+    order?: string
+  ) => Promise<void>;
   getWomans: (
     page?: number,
     typeFilter?: string,
     order?: string
   ) => Promise<void>;
-  getMens: (page?: number, typeFilter?: string) => Promise<void>;
+  getMens: (
+    page?: number,
+    typeFilter?: string,
+    order?: string
+  ) => Promise<void>;
 
   // NOTE: For later use, you can add the following function signatures:
   //   updateProduct: (

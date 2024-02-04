@@ -65,7 +65,7 @@ async function getProducts(page?: number, sortOptions?: any, query?: {}) {
 
   const totalProducts = await Product.countDocuments(queryParameters);
 
-  const DEFAULT_PER_PAGE = 3;
+  const DEFAULT_PER_PAGE = 10;
   let productsPerPage: number | null = DEFAULT_PER_PAGE;
 
   let paginationUsed = false;

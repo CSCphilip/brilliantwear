@@ -17,6 +17,8 @@
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "encoding": "^0.1.13",
+    "flowbite": "^2.2.1",
+    "flowbite-react": "^0.7.2",
     "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3",
