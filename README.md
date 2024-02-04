@@ -71,14 +71,14 @@ Visit at: https://www.brilliantwear.se/
 
 - [x] Split shop into Men's and Woman's clothing products.
 - [x] Improve home page. Add new sections. Design improvements.
-- [ ] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
+- [x] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
 - [ ] Make a specific page for the shopping assistant and make this page look good with search queries from users.
-- [ ] Products filter & sorting feature (add sorting on the All Products page)
+- [ ] Products filter & sorting feature.
 - [ ] Improve product detail page (the page for each product). Functionality to select different sizes of the clothes, think of a good way to do this since there are different size measurements (e.g. Small/Medium/Large and numbers which represent different sizes). This will require changes in the MongoDB. Perhaps also for different colors.
 - [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
 - [ ] Create a new nicer looking favicon. 
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
-      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket).  
+      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. 
 
 #### Fourth stage (finalization)
 
