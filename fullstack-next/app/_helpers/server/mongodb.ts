@@ -37,6 +37,7 @@ export const db = {
   User: userModel(),
   Product: productModel(),
   Order: orderModel(),
+  AssistantQuery: assistantQueryModel(),
 };
 
 // mongoose models with schema definitions
@@ -117,4 +118,23 @@ function orderModel() {
    the existing model. If it doesn't exist, it defines a new "Order" model using the 
    specified schema and returns that. */
   return mongoose.models.Order || mongoose.model("Order", schema);
+}
+
+function assistantQueryModel() {
+  const schema = new Schema(
+    {
+      userInput: { type: String, required: true },
+    },
+    {
+      // Add createdAt and updatedAt timestamps
+      timestamps: true,
+    }
+  );
+
+  /* Checks if a Mongoose model named "AssistantQuery" already exists. If it exists, it returns
+   the existing model. If it doesn't exist, it defines a new "AssistantQuery" model using the 
+   specified schema and returns that. */
+  return (
+    mongoose.models.AssistantQuery || mongoose.model("AssistantQuery", schema)
+  );
 }
