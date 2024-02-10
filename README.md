@@ -72,24 +72,25 @@ Visit at: https://www.brilliantwear.se/
 - [x] Split shop into Men's and Woman's clothing products.
 - [x] Improve home page. Add new sections. Design improvements.
 - [x] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
-- [ ] Make a specific page for the shopping assistant and make this page look good with search queries from users.
-- [ ] Products filter & sorting feature.
+- [x] Make a specific page for the shopping assistant and make this page look good with search queries from users.
+- [x] Products filter & sorting feature.
 - [ ] Improve product detail page (the page for each product). Recall that YouTube video about this that you watched.
 - [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
 - [ ] Create a new nicer looking favicon. 
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
-      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. 
+      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design.
 
 #### Fourth stage (finalization)
 
-- [ ] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
+- [x] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
 - [ ] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [ ] Information pages. E.g, about, contact, delivery.
 - [ ] GDPR and personal information saved when buying products.
 - [ ] Add cookie consent banner.
 - [ ] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
 - [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented. 
-- [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
+- [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.  
+      **Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use.
 
 ### Tasks for extra features that are not necessary in the beginning
 
