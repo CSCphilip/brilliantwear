@@ -96,15 +96,3 @@ export default function ShoppingAssistant() {
     </main>
   );
 }
-
-{
-  /* <div className="mt-10 px-14 w-full max-w-[600px]">
-            <p className="font-inter text-center bg-[#F4F4F4] p-4 rounded-lg">
-              Discover your perfect look with our interactive shopping
-              assistant. Whether you're seeking the latest trends or outfits for
-              specific occasions, our assistant is here to guide you through a
-              curated selection of clothing items tailored to your preferences.
-              Let the shopping journey begin!
-            </p>
-          </div> */
-}

@@ -35,7 +35,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
         message === initialMessage
           ? "bg-primary hover:bg-orange-400"
           : "bg-sky-500 transition-colors duration-300"
-      } rounded-full px-8 py-1 transition-transform`}
+      } rounded-full px-8 py-1 transition-transform w-full md:text-lg`}
     >
       {message}
     </button>
