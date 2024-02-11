@@ -74,11 +74,11 @@ Visit at: https://www.brilliantwear.se/
 - [x] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
 - [x] Make a specific page for the shopping assistant and make this page look good with search queries from users.
 - [x] Products filter & sorting feature.
-- [ ] Improve product detail page (the page for each product). Recall that YouTube video about this that you watched.
+- [x] Improve the design of the product page.
 - [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
 - [ ] Create a new nicer looking favicon. 
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched.  
-      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design.
+      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus).
 
 #### Fourth stage (finalization)
 
@@ -90,7 +90,8 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
 - [ ] Look at bugs related to using www.brilliantwear.se instead of brilliantwear.se
 - [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented. 
-- [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.  
+- [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
+- [ ] Check all of the product pages to see that they work.  
       **Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use.
 
 ### Tasks for extra features that are not necessary in the beginning
