@@ -1,7 +1,12 @@
+import { Metadata } from "next";
 import ShoppingAssistant from "_components/home/ShoppingAssistant";
 import WomanManProducts from "_components/home/WomanManProducts";
 import PopularBrands from "_components/home/PopularBrands";
 import ProductsGrid from "_components/home/ProductsGrid";
+
+export const metadata: Metadata = {
+  title: "Home | Brilliantwear",
+};
 
 export default function Home() {
   return (

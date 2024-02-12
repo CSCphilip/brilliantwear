@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
 
 import "./globals.css";
@@ -7,7 +7,10 @@ import NavMenu from "_components/NavMenu";
 import { ShoppingCartProvider } from "_context";
 
 export const metadata: Metadata = {
-  title: "Brilliantwear",
+  title: {
+    template: "%s | Brilliantwear",
+    default: "Brilliantwear",
+  },
   description: "The most brilliant (intelligent) clothing store online.",
 };
 
@@ -40,11 +43,11 @@ export default function RootLayout({
 
             {children}
 
-            <footer className="bottom-0 left-0 z-10 w-full p-4 bg-zinc-900 border-t-2 border-t-primary shadow lg:flex lg:items-center lg:justify-between lg:p-6">
-              <span className="text-sm text-gray-200 sm:text-center">
+            <footer className="bottom-0 left-0 z-10 w-full p-4 bg-zinc-900 border-t-2 border-t-primary shadow md:flex md:items-center md:justify-between md:p-6">
+              <span className="text-sm text-gray-200 md:text-center">
                 &copy; {currentYear} Brilliantwear. All Rights Reserved.
               </span>
-              <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-200 sm:mt-0">
+              <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-200 md:mt-0">
                 <li>
                   <Link href="#" className="mr-4 hover:underline lg:mr-6">
                     About
