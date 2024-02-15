@@ -75,7 +75,7 @@ Visit at: https://www.brilliantwear.se/
 - [x] Make a specific page for the shopping assistant and make this page look good with search queries from users.
 - [x] Products filter & sorting feature.
 - [x] Improve the design of the product page.
-- [ ] Improve the navbar and menu. Remember to do this for the navbar in the small screen size mode.
+- [ ] Improve the navbar in the mobile mode (smaller screen).
 - [x] Create a new nicer looking favicon.
 - [ ] Other smaller points: think of how you should solve the product image loading icon when the image can't be fetched. Look into the problem of odd number of products which don't look good on the pages with pagination (Woman, Man, All Products).  
       **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. 
