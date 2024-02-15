@@ -83,7 +83,7 @@ Visit at: https://www.brilliantwear.se/
 #### Fourth stage (finalization)
 
 - [x] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
-- [ ] Page titles (text in the tab) and other metadata.
+- [x] Page titles (text in the tab) and other metadata.
   - [ ] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.  
 - [ ] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [ ] Information pages. E.g, about, contact, delivery.
@@ -94,7 +94,7 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented. 
 - [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
 - [ ] Check all of the product pages to see that they work.  
-      **Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use.
+      **Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking.
 
 ### Tasks for extra features that are not necessary in the beginning
 
