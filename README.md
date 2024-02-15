@@ -83,7 +83,8 @@ Visit at: https://www.brilliantwear.se/
 #### Fourth stage (finalization)
 
 - [x] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
-- [ ] Page titles (text in the tab) and other metadata. Test if the Open Graph meta with image works after deploying the website. 
+- [ ] Page titles (text in the tab) and other metadata.
+  - [ ] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.  
 - [ ] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [ ] Information pages. E.g, about, contact, delivery.
 - [ ] GDPR and personal information saved when buying products.
