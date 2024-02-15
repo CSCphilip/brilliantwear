@@ -2,9 +2,17 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 import { auth } from "_helpers/server";
 import Alert from "_components/Alert";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Dashboard | Brilliantwear",
+    default: "Dashboard",
+  },
+};
 
 export default async function Layout({
   children,

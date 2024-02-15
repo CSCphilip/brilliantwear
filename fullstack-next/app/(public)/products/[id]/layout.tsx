@@ -9,21 +9,14 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // read route params
   const id = params.id;
-  // TODO: fetch product data and display brand name in title together with category name or something
 
-  //   // fetch data
-  //   const product = await fetch(`https://.../${id}`).then((res) => res.json());
-
-  //   // optionally access and extend (rather than replace) parent metadata
-  //   const previousImages = (await parent).openGraph?.images || [];
+  const product = await fetch(`http://localhost:3000/api/products/${id}`).then(
+    (res) => res.json()
+  );
 
   return {
-    title: `${id} | Brilliantwear`,
-    // openGraph: {
-    //   images: ["/some-specific-page-image.jpg", ...previousImages],
-    // },
+    title: `${product.brand} | Brilliantwear`,
   };
 }
 

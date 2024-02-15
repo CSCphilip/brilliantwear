@@ -12,6 +12,26 @@ export const metadata: Metadata = {
     default: "Brilliantwear",
   },
   description: "The most brilliant (intelligent) clothing store online.",
+  openGraph: {
+    title: "Home",
+    description: "The most brilliant (intelligent) clothing store online.",
+    url: "https://brilliantwear.se",
+    siteName: "Brilliantwear",
+    images: [
+      {
+        url: "https://brilliantwear.se/api/meta/opengraph/image",
+        width: 1200,
+        height: 627,
+        alt: "Brilliantwear logo",
+      },
+    ],
+    locale: "en",
+    type: "website",
+  },
+  metadataBase: new URL("https://brilliantwear.se"),
+  creator: "Philip Andersson",
+  keywords: ["clothing", "store", "fashion", "ecommerce", "brilliantwear"],
+  generator: "Next.js",
 };
 
 export default function RootLayout({

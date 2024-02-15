@@ -98,7 +98,7 @@ function CustomerBenefits() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-8 h-8"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
               strokeLinecap="round"
@@ -110,7 +110,7 @@ function CustomerBenefits() {
                 stroke="#000000"
                 strokeWidth="1.5"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
               ></path>
               <path
                 d="M23 13.97H13"
@@ -137,7 +137,7 @@ function CustomerBenefits() {
             xmlns="http://www.w3.org/2000/svg"
             className="w-9 h-9"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
               strokeLinecap="round"
@@ -203,7 +203,7 @@ function CustomerBenefits() {
             fill="#000000"
             className="w-8 h-8"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
               strokeLinecap="round"
@@ -254,7 +254,7 @@ function RelatedProducts({ product }: { product: Product }) {
       <h3 className="mt-4 font-inter text-center text-2xl">Related products</h3>
       {relatedProducts.length > 0 ? (
         <div
-          className={`mt-2 lg:mt-4 grid grid-cols-1 md:grid-cols-${relatedProducts.length === 1 ? "1" : "2"} lg:grid-cols-${relatedProducts.length} gap-y-5 lg:gap-y-10 md:gap-x-10`}
+          className={`mt-2 lg:mt-4 grid grid-cols-1 ${relatedProducts.length === 1 ? "md:grid-cols-1" : "md:grid-cols-2"} lg:grid-cols-${relatedProducts.length} gap-y-5 lg:gap-y-10 md:gap-x-10`}
         >
           {relatedProducts.map((product: Product) => (
             <RelatedProductCard key={product.id} product={product} />
