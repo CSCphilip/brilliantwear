@@ -45,8 +45,9 @@ Visit at: https://www.brilliantwear.se/
        **Notes:** All backend (Express) API endpoints have now been implemented in Next.js API, except the log in / authorization functionality.
 - [x] Log in functionality for admins to, for instance, upload new products. Implement a dashboard for admins.  
        **Notes:** Now when logged in, an admin is able to look at the dashboard, see all of the users in the MongoDB, and add & edit & delete users. Furthermore, it is possible for admins to upload new products that is added to the MongoDB. There is currently no button to logout.
-- [x] Database management. Improve the database for production ready use. The following are examples of things to consider and perform. Pagination to not load all the products from database. Set password on MongoDB (and username). This will require to use a .env file or similar on AWS and connect to the database using password (change in code). Move to Docker. Regular backups of the database.  
-       **Notes:** MongoDB is now running on Docker with authorization turned on. This means that the backend express API server has been modified to use the MongoDB on Docker. The backend API server uses AWS SSM to fetch the password for the MongoDB authorization. All of the collections from the MongoDB on host has beed imported to the MongoDB on Docker. I've built a backup script in JS which backups the brilliantwear db in the MongoDB running on Docker and togehter with the Docker compose file will make the script run every week (7 days). The backup is stored as a gzip on the EC2 instance under `/var/backups/mongodb`. Pagination has been implement on the Product Catalog page.
+- [x] Database management. Improve the database for production ready use. The following are examples of things to consider and perform. Pagination to not load all the products from database. Set password on MongoDB (and username). This will require to use a .env file or similar on AWS and connect to the database using password (change in code). Move to Docker. Regular backups of the database.
+
+**Notes:** MongoDB is now running on Docker with authorization turned on. This means that the backend express API server has been modified to use the MongoDB on Docker. The backend API server uses AWS SSM to fetch the password for the MongoDB authorization. All of the collections from the MongoDB on host has beed imported to the MongoDB on Docker. I've built a backup script in JS which backups the brilliantwear db in the MongoDB running on Docker and togehter with the Docker compose file will make the script run every week (7 days). The backup is stored as a gzip on the EC2 instance under `/var/backups/mongodb`. Pagination has been implement on the Product Catalog page.
 
 #### Second stage (fundamental functional parts of an online shop)
 
@@ -60,13 +61,15 @@ Visit at: https://www.brilliantwear.se/
 
 #### _Intermediate step:_
 
-- [x] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.  
-       **Notes:** Since this is the first time I moved the backend to Next.js instead of using my Express server, I had to create a bind mount to save and access the product images. This resulted in some changes in the Dockerfile. During this step I also migrated from AWS SDK v2 to v3 as recommended. Enhanced the environment verification by introducing a NODE_ENV variable in the .env file, enabling distinction between app operation in development and production modes. Added my own log function with time stamps instead of using console.log because I felt a need for this. Additionally, I implemented various miscellaneous updates, such as incorporating a front-end loading icon for fetching images of the latest products on the home page, and more.
+- [x] Build and and deploy the website (this far) on the EC2 instance. This is to earlier catch and work on bugs for building the app and avoid major problems in the end when trying to publish the full website. Make sure the website is secure enough to make it public since payments are now integrated on the website.
+
+**Notes:** Since this is the first time I moved the backend to Next.js instead of using my Express server, I had to create a bind mount to save and access the product images. This resulted in some changes in the Dockerfile. During this step I also migrated from AWS SDK v2 to v3 as recommended. Enhanced the environment verification by introducing a NODE_ENV variable in the .env file, enabling distinction between app operation in development and production modes. Added my own log function with time stamps instead of using console.log because I felt a need for this. Additionally, I implemented various miscellaneous updates, such as incorporating a front-end loading icon for fetching images of the latest products on the home page, and more.
 
 #### _Testing step:_
 
-- [ ] Write tests for this Next.js app. Next.js about [testing](https://nextjs.org/docs/app/building-your-application/testing).  
-       **Notes:** I used Jest together with the React Testing Library (RTL) because with these you can both write test for the UI and the backend code. I am not done with the testing yet since I had a lot of problems with setting everything up. I might consider trying out another testing library like Vitest later.
+- [ ] Write tests for this Next.js app. Next.js about [testing](https://nextjs.org/docs/app/building-your-application/testing).
+
+**Notes:** I used Jest together with the React Testing Library (RTL) because with these you can both write test for the UI and the backend code. I am not done with the testing yet since I had a lot of problems with setting everything up. I might consider trying out another testing library like Vitest later.
 
 #### Third stage (design)
 
@@ -80,8 +83,9 @@ Visit at: https://www.brilliantwear.se/
 - [x] Create a new nicer looking favicon.
 - [ ] Other small points:
   - [ ] Think about how you should solve the product image loading icon when the image can't be fetched.
-  - [ ] Look into the problem of odd number of products which don't look good on the pages with pagination (Woman, Man, All Products).  
-      **Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. The navbar menu on smaller screens now looks better with a new transition animation using Framer Motion for opening and closing the menu.
+  - [ ] Look into the problem of odd number of products which don't look good on the pages with pagination (Woman, Man, All Products).
+
+**Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. The navbar menu on smaller screens now looks better with a new transition animation using Framer Motion for opening and closing the menu.
 
 #### Fourth stage (finalization)
 
@@ -96,8 +100,9 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Look at bugs related to using www.brilliantwear.se instead of brilliantwear.se
 - [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented. 
 - [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
-- [ ] Check all of the product pages to see that they work.  
-      **Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking.
+- [ ] Check all of the product pages to see that they work.
+
+**Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking.
 
 ### Tasks for extra features that are not necessary in the beginning
 
