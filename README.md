@@ -19,6 +19,7 @@ Visit at: https://www.brilliantwear.se/
 - Next.js 13 (App router)
 - Tailwind CSS
 - Jest together with React Testing Library
+- Framer Motion
 
 ### AWS specific:
 
