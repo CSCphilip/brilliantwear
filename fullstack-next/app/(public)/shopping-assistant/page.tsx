@@ -61,7 +61,7 @@ export default function ShoppingAssistant() {
         </div>
         <>
           {isLoading ? (
-            <div className="mt-10 flex justify-center">
+            <div className="my-10 flex justify-center">
               <PropagateLoader color="#3B82F6" size={15} />
             </div>
           ) : suggestedProducts.length > 0 ? (
