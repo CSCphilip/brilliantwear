@@ -1,13 +1,28 @@
 "use client";
 
-import { Product } from "_types";
-import { formatCurrency } from "_utilities";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
+import { Product } from "_types";
+import { formatCurrency } from "_utilities";
 
-export default function ProductCard({ product }: { product: Product }) {
+interface ProductCardProps {
+  product: Product;
+  smallCardSizeStyle: { height: string; width: string };
+  mediumCardSizeStyle: { height: string; width: string };
+  largeCardSizeStyle: { height: string; width: string };
+  customOuterDivStyle: string;
+}
+
+export default function ProductCard({
+  product,
+  smallCardSizeStyle,
+  mediumCardSizeStyle,
+  largeCardSizeStyle,
+  customOuterDivStyle,
+}: ProductCardProps) {
   const [imageLoading, setImageLoading] = useState(true);
+  const [isImageFetched, setIsImageFetched] = useState(false);
 
   useEffect(() => {
     const img = new Image();
@@ -15,16 +30,34 @@ export default function ProductCard({ product }: { product: Product }) {
       product.image_url
     )}`;
     img.onload = () => {
+      setIsImageFetched(true);
+      setImageLoading(false);
+    };
+    img.onerror = () => {
       setImageLoading(false);
     };
   }, [product]);
 
   return (
-    <div className="font-inter text-[13px] xl:text-[15px] hover:underline">
+    <div
+      className={`font-inter text-[13px] hover:underline ${customOuterDivStyle}`}
+    >
       <Link href={"/products/" + product.id}>
-        {imageLoading ? (
-          <div className="h-64 w-44 xl:h-[400px] xl:w-[280px] 2xl:h-[450px] 2xl:w-[307px] mb-1 flex justify-center items-center">
-            <ClipLoader color="#3B82F6" speedMultiplier={1} />
+        {!isImageFetched ? (
+          <div
+            className={`mb-1 flex justify-center items-center ${smallCardSizeStyle.height} 
+            ${smallCardSizeStyle.width} ${mediumCardSizeStyle.height} ${mediumCardSizeStyle.width}
+            ${largeCardSizeStyle.height} ${largeCardSizeStyle.width}`}
+          >
+            {imageLoading ? (
+              <ClipLoader color="#3B82F6" />
+            ) : (
+              <img
+                src="/product-image-not-found.png"
+                alt="A default product image not found."
+                className="text-center"
+              />
+            )}
           </div>
         ) : (
           <img
@@ -33,7 +66,9 @@ export default function ProductCard({ product }: { product: Product }) {
               encodeURIComponent(product.image_url)
             }
             alt="An image of the product."
-            className="h-64 w-44 xl:h-[400px] xl:w-[280px] 2xl:h-[450px] 2xl:w-[307px] mb-1"
+            className={`"mb-1 text-center ${smallCardSizeStyle.height} ${smallCardSizeStyle.width} 
+            ${mediumCardSizeStyle.height} ${mediumCardSizeStyle.width} ${largeCardSizeStyle.height}
+            ${largeCardSizeStyle.width}`}
           />
         )}
         <p>{product.brand}</p>

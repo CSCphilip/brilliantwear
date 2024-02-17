@@ -1,5 +1,6 @@
 "use client";
 
+import ProductCard from "_components/ProductCard";
 import { Product } from "_types";
 import { formatCurrency } from "_utilities";
 import Link from "next/link";
@@ -89,7 +90,20 @@ function HorizontalScrollableList({
                         gender === "Man" ? "lg:snap-end" : "lg:snap-start"
                       }`}
                     >
-                      <WomanManProductCard product={product} />
+                      <ProductCard
+                        product={product}
+                        smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+                        mediumCardSizeStyle={{
+                          height: "lg:h-96",
+                          width: "lg:w-[270px]",
+                        }}
+                        largeCardSizeStyle={{ height: "", width: "" }}
+                        customOuterDivStyle={`w-max me-6 ${
+                          product.gender === "Man"
+                            ? "lg:me-0 lg:ms-10"
+                            : "lg:me-10"
+                        } mb-2 lg:mb-3`}
+                      />
                     </div>
                   );
                 })}
@@ -150,47 +164,6 @@ function HorizontalScrollableList({
           </svg>
         </button>
       </div>
-    </div>
-  );
-}
-
-function WomanManProductCard({ product }: { product: Product }) {
-  const [imageLoading, setImageLoading] = useState(true);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = `http://localhost:3000/api/products/image/${encodeURIComponent(
-      product.image_url
-    )}`;
-    img.onload = () => {
-      setImageLoading(false);
-    };
-  }, [product]);
-
-  return (
-    <div
-      className={`w-max font-inter text-[13px] me-6 ${
-        product.gender === "Man" ? "lg:me-0 lg:ms-10" : "lg:me-10"
-      } mb-2 lg:mb-3 hover:underline`}
-    >
-      <Link href={"/products/" + product.id} className="">
-        {imageLoading ? (
-          <div className="h-64 w-44 lg:h-96 lg:w-[270px] mb-1 flex justify-center items-center">
-            <ClipLoader color="#3B82F6" speedMultiplier={1} />
-          </div>
-        ) : (
-          <img
-            src={
-              "http://localhost:3000/api/products/image/" +
-              encodeURIComponent(product.image_url)
-            }
-            alt="An image of the product."
-            className="h-64 w-44 lg:h-96 lg:w-[270px] mb-1"
-          />
-        )}
-        <p>{product.brand}</p>
-        <p>{formatCurrency(product.price)}</p>
-      </Link>
     </div>
   );
 }

@@ -35,7 +35,20 @@ export default async function ProductsGrid({
         <div className="lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-6 lg:gap-x-10">
           {products.length > 0 &&
             products.map((product: Product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+                mediumCardSizeStyle={{
+                  height: "xl:h-[400px]",
+                  width: "xl:w-[280px]",
+                }}
+                largeCardSizeStyle={{
+                  height: "2xl:h-[450px]",
+                  width: "2xl:w-[307px]",
+                }}
+                customOuterDivStyle="xl:text-[15px]"
+              />
             ))}
         </div>
       </div>

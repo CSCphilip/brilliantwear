@@ -7,6 +7,7 @@ import AddToCartButton from "_components/products/id/AddToCartButton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ClipLoader } from "react-spinners";
+import ProductCard from "_components/ProductCard";
 
 /** Product page
  *
@@ -39,7 +40,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 "http://localhost:3000/api/products/image/" +
                 encodeURIComponent(product.image_url)
               }
-              alt="The image of the product."
+              alt="An image of the product."
               className="w-full md:max-w-[500px] h-auto"
             />
             <div className="w-full md:w-auto md:ms-7">
@@ -257,49 +258,25 @@ function RelatedProducts({ product }: { product: Product }) {
           className={`mt-2 lg:mt-4 grid grid-cols-1 ${relatedProducts.length === 1 ? "md:grid-cols-1" : "md:grid-cols-2"} lg:grid-cols-${relatedProducts.length} gap-y-5 lg:gap-y-10 md:gap-x-10`}
         >
           {relatedProducts.map((product: Product) => (
-            <RelatedProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              smallCardSizeStyle={{ height: "h-[340px]", width: "w-[250px]" }}
+              mediumCardSizeStyle={{
+                height: "md:h-[300px]",
+                width: "md:w-[200px]",
+              }}
+              largeCardSizeStyle={{
+                height: "xl:h-[400px]",
+                width: "xl:w-[275px]",
+              }}
+              customOuterDivStyle="xl:text-[15px]"
+            />
           ))}
         </div>
       ) : (
         <p className="mt-5 text-center">No related products found.</p>
       )}
-    </div>
-  );
-}
-
-function RelatedProductCard({ product }: { product: Product }) {
-  const [imageLoading, setImageLoading] = useState(true);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = `http://localhost:3000/api/products/image/${encodeURIComponent(
-      product.image_url
-    )}`;
-    img.onload = () => {
-      setImageLoading(false);
-    };
-  }, [product]);
-
-  return (
-    <div className="font-inter text-[13px] xl:text-[15px] hover:underline">
-      <Link href={"/products/" + product.id}>
-        {imageLoading ? (
-          <div className="h-[340px] w-[250px] md:h-[300px] md:w-[200px] xl:h-[400px] xl:w-[275px] mb-1 flex justify-center items-center">
-            <ClipLoader color="#3B82F6" speedMultiplier={1} />
-          </div>
-        ) : (
-          <img
-            src={
-              "http://localhost:3000/api/products/image/" +
-              encodeURIComponent(product.image_url)
-            }
-            alt="An image of the product."
-            className="h-[340px] w-[250px] md:h-[300px] md:w-[200px] xl:h-[400px] xl:w-[275px] mb-1"
-          />
-        )}
-        <p>{product.brand}</p>
-        <p>{formatCurrency(product.price)}</p>
-      </Link>
     </div>
   );
 }

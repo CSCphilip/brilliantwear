@@ -82,23 +82,23 @@ Visit at: https://www.brilliantwear.se/
 - [x] Improve the navbar in the mobile mode (smaller screens).
 - [x] Create a new nicer looking favicon.
 - [ ] Other small points:
-  - [ ] Think about how you should solve the product image loading icon when the image can't be fetched.
+  - [x] Think about how you should solve the product image loading icon when the image can't be fetched.
   - [ ] Look into the problem of odd number of products which don't look good on the pages with pagination (Woman, Man, All Products).
 
-**Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. The navbar menu on smaller screens now looks better with a new transition animation using Framer Motion for opening and closing the menu.
+**Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. The navbar menu on smaller screens now looks better with a new transition animation using Framer Motion for opening and closing the menu. Now when a product image can't be fetched, instead of having an infinite loading icon, a default clothing icon image is shown.
 
 #### Fourth stage (finalization)
 
 - [x] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
 - [x] Page titles (text in the tab) and other metadata.
-  - [ ] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.  
+  - [ ] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.
 - [ ] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [ ] Information pages. E.g, about, contact, delivery.
 - [ ] GDPR and personal information saved when buying products.
 - [ ] Add cookie consent banner.
 - [ ] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
 - [ ] Look at bugs related to using www.brilliantwear.se instead of brilliantwear.se
-- [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented. 
+- [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented.
 - [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
 - [ ] Check all of the product pages to see that they work.
 

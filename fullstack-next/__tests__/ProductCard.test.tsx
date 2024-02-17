@@ -18,7 +18,21 @@ describe("ProductCard text tests", () => {
     // NOTE: Triple A (Arrange, Act, Assert) testing pattern applied.
 
     // ARRANGE
-    render(<ProductCard product={product} />);
+    render(
+      <ProductCard
+        product={product}
+        smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+        mediumCardSizeStyle={{
+          height: "xl:h-[400px]",
+          width: "xl:w-[280px]",
+        }}
+        largeCardSizeStyle={{
+          height: "2xl:h-[450px]",
+          width: "2xl:w-[307px]",
+        }}
+        customOuterDivStyle="xl:text-[15px]"
+      />
+    );
 
     // ACT
     const brandElement = screen.getByText(/Unknown/);
@@ -28,7 +42,21 @@ describe("ProductCard text tests", () => {
   });
 
   it("should have price text", () => {
-    render(<ProductCard product={product} />);
+    render(
+      <ProductCard
+        product={product}
+        smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+        mediumCardSizeStyle={{
+          height: "xl:h-[400px]",
+          width: "xl:w-[280px]",
+        }}
+        largeCardSizeStyle={{
+          height: "2xl:h-[450px]",
+          width: "2xl:w-[307px]",
+        }}
+        customOuterDivStyle="xl:text-[15px]"
+      />
+    );
 
     const priceElement = screen.getByText(/1 399,00 kr/);
 
@@ -38,7 +66,21 @@ describe("ProductCard text tests", () => {
 
 describe("ProductCard link", () => {
   beforeEach(() => {
-    render(<ProductCard product={product} />);
+    render(
+      <ProductCard
+        product={product}
+        smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+        mediumCardSizeStyle={{
+          height: "xl:h-[400px]",
+          width: "xl:w-[280px]",
+        }}
+        largeCardSizeStyle={{
+          height: "2xl:h-[450px]",
+          width: "2xl:w-[307px]",
+        }}
+        customOuterDivStyle="xl:text-[15px]"
+      />
+    );
   });
 
   it("should have link to product page", () => {
