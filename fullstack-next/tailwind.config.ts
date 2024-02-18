@@ -15,6 +15,7 @@ const config: Config = {
       },
       backgroundImage: {
         "404-background": "url('../public/404-background.jpeg')",
+        "information-background": "url('../public/information-background.jpg')",
       },
     },
   },

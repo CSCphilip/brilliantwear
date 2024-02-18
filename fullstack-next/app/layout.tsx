@@ -69,12 +69,12 @@ export default function RootLayout({
               </span>
               <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-200 md:mt-0">
                 <li>
-                  <Link href="#" className="mr-4 hover:underline lg:mr-6">
+                  <Link href="/about" className="mr-4 hover:underline lg:mr-6">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:underline">
+                  <Link href="/contact" className="hover:underline">
                     Contact
                   </Link>
                 </li>
