@@ -101,6 +101,7 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented.
 - [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
 - [ ] Check all of the product pages to see that they work.
+- [ ] Deploy version 1.0.0 of Brilliantwear.
 
 **Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking.
 
