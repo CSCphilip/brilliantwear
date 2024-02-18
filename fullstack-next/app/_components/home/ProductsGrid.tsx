@@ -18,7 +18,7 @@ export default async function ProductsGrid({
 
   try {
     const res = await fetch(apiPath + productItems, {
-      cache: "no-cache",
+      cache: "no-store",
     });
     products = await res.json().then((data) => data.products);
   } catch (err) {
