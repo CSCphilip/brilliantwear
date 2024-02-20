@@ -108,7 +108,9 @@ export default function TermsAndConditions() {
           </Link>
           .
         </p>
-        <p className="font-bold my-4">Thank you for choosing Brilliantwear!</p>
+        <p className="font-bold mt-4 mb-2">
+          Thank you for choosing Brilliantwear!
+        </p>
       </div>
     </main>
   );

@@ -27,6 +27,7 @@ function isPublicPath(req: NextRequest) {
     "POST:/api/checkout/servicepoints",
     "GET:/api/checkout/paypal-client-id",
     "POST:/api/checkout/orders",
+    "POST:/api/contact",
   ];
   return publicPaths.includes(`${req.method}:${req.nextUrl.pathname}`);
 }
