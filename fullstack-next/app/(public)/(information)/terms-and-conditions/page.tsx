@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function TermsAndConditions() {
   return (
     <main className="grow px-8 bg-information-background bg-cover bg-center flex flex-col items-center">
-      <div className="bg-gray-100 opacity-95 p-4 max-w-[1000px]">
+      <div className="mb-10 bg-gray-100 opacity-95 p-4 max-w-[1000px]">
         <h2 className="mb-2">
           Brilliantwear - Demo Terms and Conditions (For Display Purposes Only)
         </h2>
