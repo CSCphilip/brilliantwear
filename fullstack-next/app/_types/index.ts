@@ -54,3 +54,11 @@ export type Order = {
   paypalCapture: any;
   createdAt?: Date;
 };
+
+export type ContactRequest = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+  createdAt?: Date;
+};

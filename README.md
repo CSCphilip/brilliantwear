@@ -93,7 +93,7 @@ Visit at: https://www.brilliantwear.se/
 - [x] Page titles (text in the tab) and other metadata.
   - [ ] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.
 - [x] Review all fetch calls to ensure Next.js cache isn't causing any issues.
-- [ ] Information pages. E.g, about, contact, delivery.
+- [x] Information pages (footer links): About, Contact, Terms and Conditions
 - [ ] GDPR and personal information saved when buying products.
 - [ ] Add cookie consent banner.
 - [ ] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
@@ -103,7 +103,7 @@ Visit at: https://www.brilliantwear.se/
 - [ ] Check all of the product pages to see that they work.
 - [ ] Deploy version 1.0.0 of Brilliantwear.
 
-**Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking.
+**Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking. All of the information pages has been added. For the contact page with the form, a backend endpoint has been created to save the contact requests in the database. A page for a list of contact requests has also been added in the dashboard to read the requests.
 
 ### Tasks for extra features that are not necessary in the beginning
 
@@ -115,3 +115,7 @@ Visit at: https://www.brilliantwear.se/
 - Dark mode (mostly for fun)
 - Add button/function for logout of admins
 - Email order confirmation with receipt. You could use Postmark for this.
+
+## Admin dashboard pages
+
+TODO: Add text and images of pages.

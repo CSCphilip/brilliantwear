@@ -15,7 +15,7 @@ export default function About() {
           reflected in its name "brilliant" denoting intelligence. From this,
           the idea of a shopping assistant was born, designed to assist users in
           discovering clothes through searches like "Shoes for a wedding" or
-          "Hiking shoes in black". At the same time, offering a wide range of
+          "Running shorts in green". At the same time, offering a wide range of
           clothing items, ensuring that everyone can find something to wear. At
           Brilliantwear, we believe that fashion and technology are the perfect
           match.

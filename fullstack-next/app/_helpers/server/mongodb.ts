@@ -38,6 +38,7 @@ export const db = {
   Product: productModel(),
   Order: orderModel(),
   AssistantQuery: assistantQueryModel(),
+  ContactRequest: contactRequestModel(),
 };
 
 // mongoose models with schema definitions
@@ -136,5 +137,24 @@ function assistantQueryModel() {
    specified schema and returns that. */
   return (
     mongoose.models.AssistantQuery || mongoose.model("AssistantQuery", schema)
+  );
+}
+
+function contactRequestModel() {
+  const schema = new Schema(
+    {
+      firstName: { type: String, required: true },
+      lastName: { type: String, required: true },
+      email: { type: String, required: true },
+      message: { type: String, required: true },
+    },
+    {
+      // Add createdAt and updatedAt timestamps
+      timestamps: true,
+    }
+  );
+
+  return (
+    mongoose.models.ContactRequest || mongoose.model("ContactRequest", schema)
   );
 }

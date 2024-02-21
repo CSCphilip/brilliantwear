@@ -31,6 +31,11 @@ export default function Dashboard() {
           <p className="h-fit w-fit p-2 mt-2 bg-blue-600 hover:bg-blue-500 rounded text-white">
             <Link href="/dashboard/orders">Look at orders</Link>
           </p>
+          <p className="h-fit w-fit p-2 mt-2 bg-blue-600 hover:bg-blue-500 rounded text-white">
+            <Link href="/dashboard/contact-requests">
+              Look at contact requests
+            </Link>
+          </p>
         </div>
       </main>
     );
