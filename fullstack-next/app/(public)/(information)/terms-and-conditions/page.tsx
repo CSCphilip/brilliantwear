@@ -9,9 +9,10 @@ export default function TermsAndConditions() {
   return (
     <main className="grow px-8 bg-information-background bg-cover bg-center flex flex-col items-center">
       <div className="mb-10 bg-gray-100 opacity-95 p-4 max-w-[1000px]">
-        <h2 className="mb-2">
-          Brilliantwear - Demo Terms and Conditions (For Display Purposes Only)
-        </h2>
+        <h2 className="mb-2">Brilliantwear - Terms and Conditions</h2>
+        <p className="text-red-600 opacity-100 mb-2">
+          Disclaimer: Brilliantwear is a project and an idea in development.
+        </p>
         <p>
           Welcome to Brilliantwear! By accessing our website and using our
           services, you agree to comply with and be bound by the following terms
@@ -32,7 +33,16 @@ export default function TermsAndConditions() {
             <p>
               Your privacy is important to us. Brilliantwear is dedicated to
               safeguarding your personal information and using it responsibly.
-              We employ industry-standard practices to protect your data.
+              We employ industry-standard practices to protect your data. For
+              detailed information on how we collect, use, and secure your
+              personal information, please review our{" "}
+              <Link
+                href="/privacy-notice"
+                className="font-medium text-blue-600 hover:underline"
+              >
+                Privacy Notice
+              </Link>
+              .{" "}
             </p>
           </li>
           <li>

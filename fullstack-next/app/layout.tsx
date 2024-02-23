@@ -86,6 +86,14 @@ export default function RootLayout({
                     Terms and Conditions
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/privacy-notice"
+                    className="ml-4 hover:underline lg:ml-6"
+                  >
+                    Privacy Notice
+                  </Link>
+                </li>
               </ul>
             </footer>
           </div>
