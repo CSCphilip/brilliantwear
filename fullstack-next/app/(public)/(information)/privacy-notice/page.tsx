@@ -32,14 +32,25 @@ export default function PrivacyNotice() {
                 <li>Email</li>
                 <li>Name</li>
                 <li>Phone number</li>
-                <li>
+                {/* <li>
                   Address (Street, Street number, City, Postal Code, Country)
-                </li>
-                <li>Service Point chosen during checkout</li>
+                </li> */}
+                <li>Street and number</li>
+                <li>City</li>
+                <li>Postal code</li>
+                <li>Country</li>
+                <li>Service point chosen during checkout</li>
                 <li>Cart details</li>
                 <li>Paypal order capture details</li>
               </ul>
             </div>
+          </li>
+          <li className="font-bold mt-2">
+            <p>Cookies:</p>
+            <p className="-ms-4 font-normal">
+              Only third-party cookies are used on the website from Paypal
+              during the payment step of the checkout process.
+            </p>
           </li>
           <li className="font-bold mt-2">
             <p>Shopping Assistant Queries:</p>

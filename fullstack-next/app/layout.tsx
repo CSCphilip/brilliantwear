@@ -5,6 +5,7 @@ import "./globals.css";
 
 import NavMenu from "_components/NavMenu";
 import { ShoppingCartProvider } from "_context";
+import CookieBanner from "_components/CookieBanner";
 
 export const metadata: Metadata = {
   title: {
@@ -96,6 +97,8 @@ export default function RootLayout({
                 </li>
               </ul>
             </footer>
+
+            <CookieBanner />
           </div>
         </ShoppingCartProvider>
       </body>
