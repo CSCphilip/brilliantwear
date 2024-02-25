@@ -35,8 +35,8 @@ export function useUserService(): IUserService {
         userStore.setState({ ...initialState, currentUser });
 
         // get return url from query parameters or default to '/'
-        const returnUrl = searchParams.get("returnUrl") || "/dashboard";
-        router.push(returnUrl);
+        // const returnUrl = searchParams.get("returnUrl") || "/dashboard";
+        router.push("/dashboard");
       } catch (error: any) {
         alertService.error(error);
       }

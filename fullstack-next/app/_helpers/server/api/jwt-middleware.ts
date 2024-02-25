@@ -17,7 +17,7 @@ function isPublicPath(req: NextRequest) {
   const publicPaths = [
     "POST:/api/account/login",
     "POST:/api/account/logout",
-    "POST:/api/account/register",
+    // "POST:/api/account/register",
     "GET:/api/products",
     "GET:/api/products/latest",
     "GET:/api/products/woman",

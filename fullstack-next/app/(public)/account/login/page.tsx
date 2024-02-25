@@ -73,7 +73,7 @@ function Login() {
                   <p>{errors.password?.message?.toString()}</p>
                 </div>
               </li>
-              <li className="flex justify-center">
+              <li className="flex justify-center my-5">
                 <button
                   disabled={formState.isSubmitting}
                   className="py-2 px-5 bg-gray-600 hover:bg-gray-500 rounded text-white"
@@ -83,7 +83,7 @@ function Login() {
                     <div role="status">
                       <svg
                         aria-hidden="true"
-                        className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+                        className="inline w-8 h-8 me-[1px] text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
                         viewBox="0 0 100 101"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -97,21 +97,10 @@ function Login() {
                           fill="currentFill"
                         />
                       </svg>
-                      <span className="sr-only">Loading...</span>
                     </div>
                   )}
-                  Login
+                  Log in
                 </button>
-              </li>
-              <li>
-                <div className="flex justify-center mt-10">
-                  <Link
-                    href="/account/register"
-                    className="py-2 px-5 bg-gray-600 hover:bg-gray-500 rounded text-white"
-                  >
-                    Register
-                  </Link>
-                </div>
               </li>
             </ul>
           </form>

@@ -1,11 +1,11 @@
 // Based on: https://jasonwatmore.com/next-js-13-app-router-mongodb-user-rego-and-login-tutorial-with-example#api-handler-ts
 
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
 import { auth } from "_helpers/server";
 import Alert from "_components/Alert";
+import DashboardNav from "_components/dashboard/DashboardNav";
 
 export const metadata: Metadata = {
   title: {
@@ -21,13 +21,12 @@ export default async function Layout({
 }) {
   // if not logged in redirect to login page
   if (!(await auth.isAuthenticated())) {
-    const returnUrl = encodeURIComponent(headers().get("x-invoke-path") || "/");
-    redirect(`/account/login?returnUrl=${returnUrl}`);
+    redirect(`/account/login`);
   }
 
   return (
     <>
-      {/* <Nav /> */}
+      <DashboardNav />
       <Alert />
       {children}
     </>
