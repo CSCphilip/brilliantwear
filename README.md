@@ -96,14 +96,14 @@ Visit at: https://www.brilliantwear.se/
 - [x] Information pages (footer links): About, Contact, Terms and Conditions
 - [x] GDPR and personal information saved when buying products.
 - [x] Add Cookie consent banner.
-- [ ] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
+- [x] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
 - [ ] Look at bugs related to using www.brilliantwear.se instead of brilliantwear.se
 - [ ] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented.
 - [ ] Remove products which do not look good on the website and then add some new clothing products to make up for these.
 - [ ] Check all of the product pages to see that they work.
 - [ ] Deploy version 1.0.0 of Brilliantwear.
 
-**Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking. All of the information pages has been added. For the contact page with the form, a backend endpoint has been created to save the contact requests in the database. A page for a list of contact requests has also been added in the dashboard to read the requests. A Privacy Notice page has been incorporated to address GDPR compliance and provide information regarding the handling of user's personal data. Cookie banner added with link to more information about how cookies as used on the website. If a user accepts cookies, this setting is saved by using the localStorage.
+**Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking. All of the information pages has been added. For the contact page with the form, a backend endpoint has been created to save the contact requests in the database. A page for a list of contact requests has also been added in the dashboard to read the requests. A Privacy Notice page has been incorporated to address GDPR compliance and provide information regarding the handling of user's personal data. Cookie banner added with link to more information about how cookies as used on the website. If a user accepts cookies, this setting is saved by using the localStorage. Now only real admins can access the dashboard. A new dashboard navigation bar has been added having a log out button and links to some of the dashboard pages. 
 
 ### Tasks for extra features that are not necessary in the beginning
 
