@@ -7,7 +7,6 @@ export default function CookieBanner() {
   const [isBannerShown, setIsBannerShown] = useState(false);
 
   useEffect(() => {
-    console.log(localStorage.getItem("cookieBanner"));
     if (localStorage.getItem("cookieBanner") !== "accepted") {
       setIsBannerShown(true);
     }

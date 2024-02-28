@@ -89,6 +89,9 @@ export default function AddProduct() {
               <option value="Shoe">Shoes</option>
               <option value="Jacket">Jacket</option>
               <option value="Pants">Pants</option>
+              <option value="Dress">Dress</option>
+              <option value="T-shirt">T-shirt</option>
+              <option value="Shorts">Shorts</option>
             </select>
             <p className="text-red-500 mt-1">
               {errors.type?.message?.toString()}

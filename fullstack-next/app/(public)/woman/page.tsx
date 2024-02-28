@@ -17,6 +17,7 @@ export default function WomanProducts() {
         <h2 className="text-center my-4 lg:text-left lg:ps-1">Woman</h2>
         <div className="flex justify-between gap-x-8">
           <ProductTypesFilter
+            gender="Woman"
             typeFilter={typeFilter}
             setTypeFilter={setTypeFilter}
             order={order}

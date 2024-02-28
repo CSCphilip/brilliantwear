@@ -30,6 +30,7 @@ export default function ProductCatalog() {
         <h2 className="text-center my-4 lg:text-left lg:ps-1">All Products</h2>
         <div className="flex justify-between gap-x-8">
           <ProductTypesFilter
+            gender="All"
             typeFilter={typeFilter}
             setTypeFilter={setTypeFilter}
             order={order}

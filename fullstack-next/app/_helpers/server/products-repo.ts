@@ -11,7 +11,10 @@ export const productsRepo = {
   get,
   getLatest,
   getById,
-  getTypes,
+  getAllTypes,
+  getWomanTypes,
+  getManTypes,
+  getUnisexTypes,
 };
 
 async function create(params: FormData) {
@@ -133,7 +136,22 @@ async function getById(id: string) {
   return product;
 }
 
-async function getTypes() {
+async function getAllTypes() {
   const types = await Product.distinct("type");
   return types;
+}
+
+async function getWomanTypes() {
+  const womanTypes = await Product.distinct("type", { gender: "Woman" });
+  return womanTypes;
+}
+
+async function getManTypes() {
+  const manTypes = await Product.distinct("type", { gender: "Man" });
+  return manTypes;
+}
+
+async function getUnisexTypes() {
+  const unisexTypes = await Product.distinct("type", { gender: "Unisex" });
+  return unisexTypes;
 }

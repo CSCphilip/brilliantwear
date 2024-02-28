@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 interface ProductTypesFilterProps {
+  gender: "Woman" | "Man" | "Unisex" | "All";
   typeFilter: string;
   setTypeFilter: React.Dispatch<React.SetStateAction<string>>;
   order: string;
@@ -14,6 +15,7 @@ interface ProductTypesFilterProps {
 }
 
 export default function ProductTypesFilter({
+  gender,
   typeFilter,
   setTypeFilter,
   order,
@@ -22,8 +24,11 @@ export default function ProductTypesFilter({
   const [types, setTypes] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/products/types").then((res) => {
+    fetch(
+      `http://localhost:3000/api/products/types?genderTypeFilter=${gender}`
+    ).then((res) => {
       res.json().then((data) => {
+        console.log("test:", data);
         setTypes(data);
       });
     });
