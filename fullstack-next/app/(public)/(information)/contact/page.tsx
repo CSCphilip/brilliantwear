@@ -32,7 +32,7 @@ export default function Contact() {
   const fetch = useFetch();
 
   async function onSubmit({ firstName, lastName, email, message }: any) {
-    await fetch.post("http://localhost:3000/api/contact", {
+    await fetch.post("https://www.brilliantwear.se/api/contact", {
       firstName,
       lastName,
       email,

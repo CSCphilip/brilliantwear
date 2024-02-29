@@ -37,7 +37,7 @@ export default function ShoppingAssistant() {
     setHasSearched(true);
     setIsLoading(true);
 
-    fetch("http://localhost:3000/api/shopping-assistant", {
+    fetch("https://www.brilliantwear.se/api/shopping-assistant", {
       method: "POST",
       body: JSON.stringify(userInputData),
     })

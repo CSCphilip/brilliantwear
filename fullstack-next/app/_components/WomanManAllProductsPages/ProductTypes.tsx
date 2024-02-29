@@ -25,7 +25,7 @@ export default function ProductTypesFilter({
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/api/products/types?genderTypeFilter=${gender}`
+      `https://www.brilliantwear.se/api/products/types?genderTypeFilter=${gender}`
     ).then((res) => {
       res.json().then((data) => {
         console.log("test:", data);

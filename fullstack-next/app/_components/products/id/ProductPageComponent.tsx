@@ -35,7 +35,7 @@ export default function ProductPageComponent({ id }: { id: string }) {
           <div className="grow mx-10 mt-5 md:mt-10 flex flex-col md:flex-row items-center md:items-start md:justify-center max-w-[1500px]">
             <img
               src={
-                "http://localhost:3000/api/products/image/" +
+                "https://www.brilliantwear.se/api/products/image/" +
                 encodeURIComponent(product.image_url)
               }
               alt="An image of the product."
@@ -65,7 +65,7 @@ export default function ProductPageComponent({ id }: { id: string }) {
 
 async function getProduct(id: string, router: any) {
   const res = await fetch(
-    "http://localhost:3000/api/products/" + encodeURIComponent(id)
+    "https://www.brilliantwear.se/api/products/" + encodeURIComponent(id)
   );
   const product: Product = await res.json();
   if (!product.id) {
@@ -242,7 +242,7 @@ function RelatedProducts({ product }: { product: Product }) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/api/products/related?id=${product.id}&type=${product.type}&gender=${product.gender}`
+      `https://www.brilliantwear.se/api/products/related?id=${product.id}&type=${product.type}&gender=${product.gender}`
     )
       .then((res) => res.json())
       .then((products) => setRelatedProducts(products.slice(0, 4)));

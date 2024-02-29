@@ -15,13 +15,13 @@ export default function Home() {
       <WomanManProducts />
       <ProductsGrid
         heading="Popular Items"
-        apiPath="http://localhost:3000/api/products/popular/"
+        apiPath="https://www.brilliantwear.se/api/products/popular/"
         productItems={8}
       />
       <PopularBrands />
       <ProductsGrid
         heading="Latest Products"
-        apiPath="http://localhost:3000/api/products/latest/"
+        apiPath="https://www.brilliantwear.se/api/products/latest/"
         productItems={8}
       />
       <span className="block h-7" />
