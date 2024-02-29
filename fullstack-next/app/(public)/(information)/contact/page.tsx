@@ -51,7 +51,7 @@ export default function Contact() {
           <h2 className="text-center mb-1 lg:mb-2">Contact</h2>
           <p className="mb-6 text-center">
             If you have any questions or comments about our website, feel free
-            to fill in this form. We'd love to hear from you.
+            to fill in this form. We&apos;d love to hear from you.
           </p>
           <label
             htmlFor="firstName"

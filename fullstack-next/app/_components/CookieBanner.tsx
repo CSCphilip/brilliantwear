@@ -32,7 +32,8 @@ export default function CookieBanner() {
       <div className="w-full max-w-[500px] flex flex-col items-center mt-3">
         <p className="text-center">
           We use cookies to give you the best possible experience on our
-          website. By clicking "Accept", you are agreeing to the use of cookies.{" "}
+          website. By clicking &quot;Accept&quot;, you are agreeing to the use
+          of cookies.{" "}
           <a href="/privacy-notice" className="underline hover:text-gray-300">
             Learn more
           </a>

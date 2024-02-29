@@ -100,7 +100,7 @@ export default function ShoppingAssistant() {
       <div className="text-sm lg:text-base font-inter text-center bg-[#F4F4F4] p-4 flex justify-center">
         <p className="max-w-[830px]">
           Discover your perfect look with our interactive shopping assistant.
-          Whether you're seeking the latest trends or outfits for specific
+          Whether you&apos;re seeking the latest trends or outfits for specific
           occasions, our assistant is here to guide you through a curated
           selection of clothing items tailored to your preferences. Let the
           shopping journey begin!

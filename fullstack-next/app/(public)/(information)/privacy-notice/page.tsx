@@ -126,7 +126,7 @@ export default function PrivacyNotice() {
         <p>
           We may update this Privacy Notice from time to time to reflect changes
           in our practices. The updated notice will be posted on our website
-          with the revised "Last Updated" date.
+          with the revised &quot;Last Updated&quot; date.
         </p>
         <h3 className="text-xl lg:text-2xl mt-3">Contact Us</h3>
         <p>

@@ -85,9 +85,9 @@ export default function TermsAndConditions() {
           <li>
             <p className="font-bold">Disclaimer of Warranties:</p>
             <p>
-              Brilliantwear is provided "as is" and without warranties of any
-              kind, whether express or implied. We do not warrant that our
-              website will be error-free, secure, or uninterrupted.
+              Brilliantwear is provided &quot;as is&quot; and without warranties
+              of any kind, whether express or implied. We do not warrant that
+              our website will be error-free, secure, or uninterrupted.
             </p>
           </li>
           <li>

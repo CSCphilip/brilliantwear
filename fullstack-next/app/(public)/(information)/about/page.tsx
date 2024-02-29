@@ -12,13 +12,13 @@ export default function About() {
         <p>
           Brilliantwear originated from the vision to establish an innovative
           online clothing store seamlessly integrating Artificial Intelligence,
-          reflected in its name "brilliant" denoting intelligence. From this,
-          the idea of a shopping assistant was born, designed to assist users in
-          discovering clothes through searches like "Shoes for a wedding" or
-          "Running shorts in green". At the same time, offering a wide range of
-          clothing items, ensuring that everyone can find something to wear. At
-          Brilliantwear, we believe that fashion and technology are the perfect
-          match.
+          reflected in its name &quot;brilliant&quot; denoting intelligence.
+          From this, the idea of a shopping assistant was born, designed to
+          assist users in discovering clothes through searches like &quot;Shoes
+          for a wedding&quot; or &quot;Running shorts in green&quot;. At the
+          same time, offering a wide range of clothing items, ensuring that
+          everyone can find something to wear. At Brilliantwear, we believe that
+          fashion and technology are the perfect match.
         </p>
       </div>
     </main>
