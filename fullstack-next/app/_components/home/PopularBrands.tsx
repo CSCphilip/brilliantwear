@@ -37,6 +37,38 @@ export default function PopularBrands() {
     "GANT",
   ];
 
+  /* TODO: change to these:
+      Zephyr;
+      Lumina;
+      Verve;
+      Looma;
+      Zestra;
+      Ombra;
+      Ethos;
+      Quill;
+      Zaraq;
+      Nebula;
+      Celestial Drapes
+      Ephemeral Ensemble
+      Urbane Canvas
+      Sapphire Haven
+      Ethereal Elegance
+      Infinite Threads
+      Velvet Odyssey
+      Muse Mirage
+      Noir Nova
+      Svelte
+      Mirage
+      Cresta
+      Zephyra
+      Elysium
+      Azurea
+      Quanta
+      Solace
+      Jovial
+      Zenith
+*/
+
   return (
     <div className="bg-primary mt-5 lg:mt-7 flex">
       <div className="pt-5 lg:hidden">
