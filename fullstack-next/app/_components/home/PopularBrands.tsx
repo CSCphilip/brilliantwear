@@ -3,71 +3,39 @@ import Link from "next/link";
 export default function PopularBrands() {
   // NOTE: This is a mockup of the popular brands
   const popularBrands: string[] = [
-    "Adidas",
-    "Timberland",
-    "Jordan",
-    "Skechers",
-    "Converse",
-    "Nike",
-    "Vans",
-    "Gideon",
-    "Levi's",
-    "Scott",
-    "Hugo Boss",
-    "Hermès",
-    "Les Deux",
-    "Jack & Jones",
-    "Gina Tricot",
-    "Haglöfs",
-    "Vagabond",
-    "Michael Kors",
-    "Ralph Lauren",
-    "Esprit",
-    "Calvin Klein",
-    "Belstaff",
-    "Under Armour",
-    "Makia",
-    "Helly Hansen",
-    "Björn Borg",
-    "Tommy Hilfiger",
-    "G-star",
-    "Filippa K",
-    "Vero Moda",
-    "Tiger of Sweden",
-    "GANT",
+    "Zephyr",
+    "Lumina",
+    "Verve",
+    "Looma",
+    "Zestra",
+    "Ombra",
+    "Ethos",
+    "Quill",
+    "Zaraq",
+    "Nebula",
+    "Celestial Drapes",
+    "Ephemeral Ensemble",
+    "Urbane Canvas",
+    "Sapphire Haven",
+    "Ethereal Elegance",
+    "Infinite Threads",
+    "Velvet Odyssey",
+    "Muse Mirage",
+    "Noir Nova",
+    "Svelte",
+    "Mirage",
+    "Cresta",
+    "Zephyra",
+    "Elysium",
+    "Azurea",
+    "Quanta",
+    "Solace",
+    "Jovial",
+    "Zenith",
+    "Ethereal Vogue",
+    "Urban Luxe Attire",
+    "Retro Charm Couture",
   ];
-
-  /* TODO: change to these:
-      Zephyr;
-      Lumina;
-      Verve;
-      Looma;
-      Zestra;
-      Ombra;
-      Ethos;
-      Quill;
-      Zaraq;
-      Nebula;
-      Celestial Drapes
-      Ephemeral Ensemble
-      Urbane Canvas
-      Sapphire Haven
-      Ethereal Elegance
-      Infinite Threads
-      Velvet Odyssey
-      Muse Mirage
-      Noir Nova
-      Svelte
-      Mirage
-      Cresta
-      Zephyra
-      Elysium
-      Azurea
-      Quanta
-      Solace
-      Jovial
-      Zenith
-*/
 
   return (
     <div className="bg-primary mt-5 lg:mt-7 flex">

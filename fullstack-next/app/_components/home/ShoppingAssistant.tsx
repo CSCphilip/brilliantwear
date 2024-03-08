@@ -77,10 +77,10 @@ function ShoppingAssistantTextSuggestions({ router }: { router: any }) {
           Dress for a dinner party
         </button>
         <button
-          onClick={() => handleClick("White t-shirt from Levi's")}
+          onClick={() => handleClick("Spring vibe T-shirt")}
           className="flex-grow py-1 px-2 rounded-lg border-2 border-black hover:bg-gray-200"
         >
-          White t-shirt from Levi&apos;s
+          Spring vibe T-shirt
         </button>
         <button
           onClick={() => handleClick("Shorts for the beach")}
