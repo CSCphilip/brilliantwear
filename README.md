@@ -122,6 +122,9 @@ Visit at: https://www.brilliantwear.se/
 
 TODO: Add text and images of pages.
 
-# Copyright notes
+## Products on the website
+The products on the webiste are not real. All of the product images have been taken from Unsplash which has this [license](https://unsplash.com/license) and can be used without any permissions. The product brand names have been made up.
+
+## Copyright notes
 
 TODO: Add text here
