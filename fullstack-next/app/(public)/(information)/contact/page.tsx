@@ -42,7 +42,7 @@ export default function Contact() {
   }
 
   return (
-    <main className="grow px-5 bg-information-background bg-cover bg-center flex justify-center sm:items-center">
+    <main className="grow px-4 bg-information-background bg-cover bg-center flex justify-center sm:items-center">
       {!submitted ? (
         <form
           onSubmit={handleSubmit(onSubmit)}
