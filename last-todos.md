@@ -8,7 +8,8 @@
 - [x] Look at the bug of right arrow when it should be left on the home page for the horizontal scroll list.
 - [x] Look the problem with font Inter and add other for backup compatibility. (see console).
   - [ ] Check that this has been solved on several different browsers and devices. Otherwise check out: https://blog.logrocket.com/how-to-use-custom-fonts-tailwind-css/
-- [ ] Look at the link on the 404 page which sometimes don't work.
+- [x] Look at the link on the 404 page which sometimes don't work.
+  - [ ] Make sure this works from both product pages and other pages. Otherwise, you could perhaps use refresh from https://nextjs.org/docs/app/api-reference/functions/use-router
 - [ ] On some pages (products catalog due to type I think, checkout pages) you can scroll the entire page horizontally which should not be. This is because some elements are too big on the x axis.
 
 Final touches:

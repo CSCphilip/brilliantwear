@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Metadata } from "next";
+import ReturnHomeButton from "_components/not-found/ReturnHomeButton";
 
 export const metadata: Metadata = {
   title: "404",
@@ -15,12 +15,7 @@ export default function NotFound() {
           our website.
         </p>
         <p className="text-center text-lg mt-5">Find your way back there:</p>
-        <Link
-          href="/"
-          className="border border-black rounded-sm p-3 hover:bg-blue-100 mt-3"
-        >
-          Return Home
-        </Link>
+        <ReturnHomeButton />
       </div>
     </main>
   );
