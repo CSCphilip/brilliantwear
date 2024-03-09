@@ -123,6 +123,6 @@ TODO: Add text and images of pages.
 ## Products on the website
 The products on the webiste are not real. All of the product images have been taken from Unsplash which has this [license](https://unsplash.com/license) and can be used without any permissions. The product brand names have been made up.
 
-## Copyright notes
+## Copyright notice
 
-TODO: Add text here
+Brilliantwear by Philip Andersson. All Rights Reserved. 
