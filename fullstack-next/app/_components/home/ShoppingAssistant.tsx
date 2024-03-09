@@ -24,7 +24,7 @@ export default function ShoppingAssistant() {
   return (
     <div className="mb-12 lg:mb-0 lg:flex lg:py-24">
       <div className="lg:w-1/3 flex justify-between px-9 mt-5 lg:px-0 lg:mt-0 lg:justify-center lg:items-center">
-        <h2 className="font-inter mt-4 font-normal lg:mt-0">
+        <h2 className="font-interSansSerif mt-4 font-normal lg:mt-0">
           Shopping Assistant
         </h2>
         <img
@@ -57,7 +57,7 @@ function ShoppingAssistantTextSuggestions({ router }: { router: any }) {
   // NOTE: Hard coded text suggestions for now
   return (
     <div className="mt-6 px-5 lg:px-0 lg:max-w-[600px]">
-      <div className="bg-[#F4F4F4] custom-box-shadow font-inter text-md px-2 lg:px-3 lg:pb-8 py-3 flex flex-wrap gap-2">
+      <div className="bg-[#F4F4F4] custom-box-shadow font-interSansSerif text-md px-2 lg:px-3 lg:pb-8 py-3 flex flex-wrap gap-2">
         <button
           onClick={() => handleClick("Formal shoes for a wedding")}
           className="flex-grow py-1 px-2 rounded-lg border-2 border-black hover:bg-gray-200"

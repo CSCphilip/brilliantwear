@@ -44,7 +44,7 @@ export default function ProductPageComponent({ id }: { id: string }) {
             <div className="w-full md:w-auto md:ms-7">
               <div className="flex md:flex-col justify-between md:items-start px-1 items-center mt-3 md:mt-2">
                 <ProductDetails product={product} />
-                <p className="font-inter text-2xl md:text-3xl font-bold md:mt-5">
+                <p className="font-interSansSerif text-2xl md:text-3xl font-bold md:mt-5">
                   {formatCurrency(product.price)}
                 </p>
               </div>
@@ -78,7 +78,7 @@ async function getProduct(id: string, router: any) {
 
 function ProductDetails({ product }: { product: Product }) {
   return (
-    <div className="font-inter">
+    <div className="font-interSansSerif">
       <p className="text-3xl md:text-4xl">{product.brand}</p>
       <p className="text-lg">{product.category}</p>
       <p className="text-gray-500 italic">{product.type}</p>
@@ -127,7 +127,9 @@ function CustomerBenefits() {
               ></path>
             </g>
           </svg>
-          <p className="ms-3 md:ms-[14px] font-inter">Secure payment</p>
+          <p className="ms-3 md:ms-[14px] font-interSansSerif">
+            Secure payment
+          </p>
         </div>
         <div className="flex items-center md:mt-4">
           <svg
@@ -167,7 +169,7 @@ function CustomerBenefits() {
               ></path>
             </g>
           </svg>
-          <p className="ms-3 font-inter">Free shipping</p>
+          <p className="ms-3 font-interSansSerif">Free shipping</p>
         </div>
       </div>
       <div className="flex md:flex-col justify-between md:justify-start mt-4">
@@ -191,7 +193,7 @@ function CustomerBenefits() {
               ></path>
             </g>
           </svg>
-          <p className="ms-3 md:ms-[18px] font-inter">Free returns</p>
+          <p className="ms-3 md:ms-[18px] font-interSansSerif">Free returns</p>
         </div>
         <div className="flex items-center md:mt-5">
           <svg
@@ -230,7 +232,7 @@ function CustomerBenefits() {
               </g>
             </g>
           </svg>
-          <p className="ms-3 md:ms-[17px] font-inter">Fast delivery</p>
+          <p className="ms-3 md:ms-[17px] font-interSansSerif">Fast delivery</p>
         </div>
       </div>
     </div>
@@ -250,7 +252,9 @@ function RelatedProducts({ product }: { product: Product }) {
 
   return (
     <div className="w-fit">
-      <h3 className="mt-4 font-inter text-center text-2xl">Related products</h3>
+      <h3 className="mt-4 font-interSansSerif text-center text-2xl">
+        Related products
+      </h3>
       {relatedProducts.length > 0 ? (
         <div
           className={`mt-2 lg:mt-4 grid grid-cols-1 ${relatedProducts.length === 1 ? "md:grid-cols-1" : "md:grid-cols-2"} lg:grid-cols-${relatedProducts.length} gap-y-5 lg:gap-y-10 md:gap-x-10`}

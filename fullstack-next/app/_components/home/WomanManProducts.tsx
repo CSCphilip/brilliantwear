@@ -59,7 +59,7 @@ function HorizontalScrollableList({
       }`}
     >
       <h2
-        className={`font-inter font-normal lg:text-5xl ms-6 lg:ms-0 lg:px-14 lg:pb-14 ${
+        className={`font-interSansSerif font-normal lg:text-5xl ms-6 lg:ms-0 lg:px-14 lg:pb-14 ${
           gender === "Man" && "lg:px-[100px]"
         }`}
       >

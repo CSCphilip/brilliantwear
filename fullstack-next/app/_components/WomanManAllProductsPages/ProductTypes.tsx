@@ -28,7 +28,6 @@ export default function ProductTypesFilter({
       `http://localhost:3000/api/products/types?genderTypeFilter=${gender}`
     ).then((res) => {
       res.json().then((data) => {
-        console.log("test:", data);
         setTypes(data);
       });
     });

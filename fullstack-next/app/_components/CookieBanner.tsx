@@ -27,7 +27,7 @@ export default function CookieBanner() {
       initial={false}
       animate={isBannerShown ? "open" : "closed"}
       variants={bannerVariants}
-      className="fixed bottom-0 z-50 w-screen bg-indigo-700 px-5 flex justify-center font-inter text-white"
+      className="fixed bottom-0 z-50 w-screen bg-indigo-700 px-5 flex justify-center font-interSansSerif text-white"
     >
       <div className="w-full max-w-[500px] flex flex-col items-center mt-3">
         <p className="text-center">

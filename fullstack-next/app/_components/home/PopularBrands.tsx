@@ -46,7 +46,7 @@ export default function PopularBrands() {
         <Triangle rotate={0} />
       </div>
       <div className="grow h-[371px] lg:h-[275px] mb-7 overflow-y-hidden">
-        <h2 className="font-inter font-normal pt-3 lg:py-5 text-center">
+        <h2 className="font-interSansSerif font-normal pt-3 lg:py-5 text-center">
           Popular Brands
         </h2>
         <div
@@ -58,7 +58,7 @@ export default function PopularBrands() {
               <Link
                 key={index}
                 href={`/products?brand=${encodeURIComponent(brand)}`}
-                className={`font-inter hover:underline ${
+                className={`font-interSansSerif hover:underline ${
                   index % 2 === 0 && "text-right lg:text-start"
                 } truncate`}
               >
