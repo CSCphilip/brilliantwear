@@ -59,7 +59,7 @@ function HorizontalScrollableList({
       }`}
     >
       <h2
-        className={`font-inter font-normal lg:text-5xl ms-6 lg:ms-0 lg:px-14 lg:pb-14 ${
+        className={`font-interSansSerif font-normal lg:text-5xl ms-6 lg:ms-0 lg:px-14 lg:pb-14 ${
           gender === "Man" && "lg:px-[100px]"
         }`}
       >
@@ -121,13 +121,13 @@ function HorizontalScrollableList({
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_bgCarrier_right" strokeWidth="0"></g>
             <g
-              id="SVGRepo_tracerCarrier"
+              id="SVGRepo_tracerCarrier_right"
               strokeLinecap="round"
               strokeLinejoin="round"
             ></g>
-            <g id="SVGRepo_iconCarrier">
+            <g id="SVGRepo_iconCarrier_right">
               <path
                 d="M4 12H20M20 12L16 8M20 12L16 16"
                 stroke="#000000"
@@ -144,17 +144,16 @@ function HorizontalScrollableList({
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            transform="matrix(-1, 0, 0, 1, 0, 0)"
           >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_bgCarrier_left" strokeWidth="0"></g>
             <g
-              id="SVGRepo_tracerCarrier"
+              id="SVGRepo_tracerCarrier_left"
               strokeLinecap="round"
               strokeLinejoin="round"
             ></g>
-            <g id="SVGRepo_iconCarrier">
+            <g id="SVGRepo_iconCarrier_left">
               <path
-                d="M4 12H20M20 12L16 8M20 12L16 16"
+                d="M4 12H20M4 12L8 8M4 12L8 16"
                 stroke="#000000"
                 strokeWidth="2"
                 strokeLinecap="round"

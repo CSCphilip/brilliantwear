@@ -68,7 +68,7 @@ export default function ShoppingCart({ isOpen }: { isOpen: boolean }) {
               {/* In next div, 'overflow-y-scroll' to allow vertical scrolling. Only the part of the menu
               with the actual items will be able to scroll. The heading & close button and total price
               section will always be visible. */}
-              <div className="overflow-y-scroll grow">
+              <div className="overflow-y-scroll grow scrollbar-hide">
                 {cartItems.length !== 0 ? (
                   <ul>
                     {cartItems.map((item, index) => (

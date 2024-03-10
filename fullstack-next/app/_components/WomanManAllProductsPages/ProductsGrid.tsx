@@ -45,13 +45,13 @@ export default function ProductsGrid({
   if (pageProducts) {
     return (
       <div>
-        <div className="lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-6 xl:gap-x-10">
+        <div className="px-2 lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 xl:gap-y-10 gap-x-4 xl:gap-x-10">
           {pageProducts.length > 0 &&
             pageProducts.map((product: Product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+                smallCardSizeStyle={{ height: "h-60", width: "w-40" }}
                 mediumCardSizeStyle={{
                   height: "xl:h-[400px]",
                   width: "xl:w-[280px]",

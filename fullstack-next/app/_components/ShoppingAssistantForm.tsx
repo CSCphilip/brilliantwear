@@ -21,7 +21,7 @@ export default function ShoppingAssistantForm({
         placeholder="Seeking clothing ideas? Search here..."
         name="user-query"
         maxLength={250}
-        className="bg-[#F4F4F4] border-2 border-[#F4F4F4] ps-2 lg:ps-[14px] py-4 w-full font-inter 
+        className="bg-[#F4F4F4] border-2 border-[#F4F4F4] ps-2 lg:ps-[14px] py-4 w-full font-interSansSerif 
         placeholder-black custom-box-shadow focus:outline-none focus:border-2 focus:border-gray-400 pr-12"
         autoComplete="off"
         value={inputValue}

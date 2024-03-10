@@ -30,17 +30,17 @@ export default async function ProductsGrid({
 
   return (
     <div className="lg:container lg:mx-auto lg:w-fit">
-      <h2 className="font-inter font-normal mt-5 lg:mt-5 text-center lg:text-start lg:ms-5">
+      <h2 className="font-interSansSerif font-normal mt-5 lg:mt-5 text-center lg:text-start lg:ms-5">
         {heading}
       </h2>
       <div className="flex justify-center mt-1.5 lg:mt-3">
-        <div className="lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-6 lg:gap-x-10">
+        <div className="lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-4 lg:gap-x-10">
           {products.length > 0 &&
             products.map((product: Product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+                smallCardSizeStyle={{ height: "h-60", width: "w-40" }}
                 mediumCardSizeStyle={{
                   height: "xl:h-[400px]",
                   width: "xl:w-[280px]",

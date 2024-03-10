@@ -40,7 +40,7 @@ export default function ProductCard({
 
   return (
     <div
-      className={`font-inter text-[13px] hover:underline ${customOuterDivStyle}`}
+      className={`font-interSansSerif text-[13px] hover:underline ${customOuterDivStyle}`}
     >
       <Link href={"/products/" + product.id}>
         {!isImageFetched ? (

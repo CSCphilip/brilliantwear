@@ -3,38 +3,38 @@ import Link from "next/link";
 export default function PopularBrands() {
   // NOTE: This is a mockup of the popular brands
   const popularBrands: string[] = [
-    "Adidas",
-    "Timberland",
-    "Jordan",
-    "Skechers",
-    "Converse",
-    "Nike",
-    "Vans",
-    "Gideon",
-    "Levi's",
-    "Scott",
-    "Hugo Boss",
-    "Hermès",
-    "Les Deux",
-    "Jack & Jones",
-    "Gina Tricot",
-    "Haglöfs",
-    "Vagabond",
-    "Michael Kors",
-    "Ralph Lauren",
-    "Esprit",
-    "Calvin Klein",
-    "Belstaff",
-    "Under Armour",
-    "Makia",
-    "Helly Hansen",
-    "Björn Borg",
-    "Tommy Hilfiger",
-    "G-star",
-    "Filippa K",
-    "Vero Moda",
-    "Tiger of Sweden",
-    "GANT",
+    "Zephyr",
+    "Lumina",
+    "Verve",
+    "Looma",
+    "Zestra",
+    "Ombra",
+    "Ethos",
+    "Quill",
+    "Zaraq",
+    "Nebula",
+    "Celestial Drapes",
+    "Ephemeral Ensemble",
+    "Urbane Canvas",
+    "Sapphire Haven",
+    "Ethereal Elegance",
+    "Infinite Threads",
+    "Velvet Odyssey",
+    "Muse Mirage",
+    "Noir Nova",
+    "Svelte",
+    "Mirage",
+    "Cresta",
+    "Zephyra",
+    "Elysium",
+    "Azurea",
+    "Quanta",
+    "Solace",
+    "Jovial",
+    "Zenith",
+    "Ethereal Vogue",
+    "Urban Luxe Attire",
+    "Retro Charm Couture",
   ];
 
   return (
@@ -46,7 +46,7 @@ export default function PopularBrands() {
         <Triangle rotate={0} />
       </div>
       <div className="grow h-[371px] lg:h-[275px] mb-7 overflow-y-hidden">
-        <h2 className="font-inter font-normal pt-3 lg:py-5 text-center">
+        <h2 className="font-interSansSerif font-normal pt-3 lg:py-5 text-center">
           Popular Brands
         </h2>
         <div
@@ -58,7 +58,7 @@ export default function PopularBrands() {
               <Link
                 key={index}
                 href={`/products?brand=${encodeURIComponent(brand)}`}
-                className={`font-inter hover:underline ${
+                className={`font-interSansSerif hover:underline ${
                   index % 2 === 0 && "text-right lg:text-start"
                 } truncate`}
               >

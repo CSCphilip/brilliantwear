@@ -65,13 +65,13 @@ export default function ShoppingAssistant() {
               <PropagateLoader color="#3B82F6" size={15} />
             </div>
           ) : suggestedProducts.length > 0 ? (
-            <div className="mt-7 lg:mt-10 lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-6 lg:gap-x-10">
+            <div className="mt-7 lg:mt-10 px-2 lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-4 lg:gap-x-10">
               {suggestedProducts.length > 0 &&
                 suggestedProducts.map((product: Product) => (
                   <ProductCard
                     key={product.id}
                     product={product}
-                    smallCardSizeStyle={{ height: "h-64", width: "w-44" }}
+                    smallCardSizeStyle={{ height: "h-60", width: "w-40" }}
                     mediumCardSizeStyle={{
                       height: "xl:h-[400px]",
                       width: "xl:w-[280px]",
@@ -87,7 +87,7 @@ export default function ShoppingAssistant() {
           ) : (
             hasSearched && (
               <div className="mt-10 px-14 w-full max-w-[600px]">
-                <p className="font-inter text-center bg-[#F4F4F4] border-4 border-primary p-4 rounded-lg">
+                <p className="font-interSansSerif text-center bg-[#F4F4F4] border-4 border-primary p-4 rounded-lg">
                   No products could be suggested based on your input. Feel free
                   to try searching for something else to discover a personalized
                   selection of clothing products.
@@ -97,7 +97,7 @@ export default function ShoppingAssistant() {
           )}
         </>
       </div>
-      <div className="text-sm lg:text-base font-inter text-center bg-[#F4F4F4] p-4 flex justify-center">
+      <div className="text-sm lg:text-base font-interSansSerif text-center bg-[#F4F4F4] p-4 flex justify-center">
         <p className="max-w-[830px]">
           Discover your perfect look with our interactive shopping assistant.
           Whether you&apos;re seeking the latest trends or outfits for specific

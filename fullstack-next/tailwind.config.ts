@@ -17,13 +17,10 @@ const config: Config = {
         "404-background": "url('../public/404-background.jpeg')",
         "information-background": "url('../public/information-background.jpg')",
       },
+      fontFamily: { interSansSerif: ["Inter", "sans-serif"] },
     },
   },
-  plugins: [
-    require("tailwindcss-font-inter"),
-    require("tailwind-scrollbar-hide"),
-    require("flowbite/plugin"),
-  ],
+  plugins: [require("tailwind-scrollbar-hide"), require("flowbite/plugin")],
 };
 
 export default config;

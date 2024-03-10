@@ -17,7 +17,7 @@ export default function CheckoutComplete() {
 
   return (
     <main className="grow flex justify-center mb-20">
-      <div className="w-96 flex flex-col items-center">
+      <div className="w-96 flex flex-col items-center mx-2">
         <h3 className="mt-7">Your order has been taken!</h3>
         <p className="mt-1 text-lg">
           <span className="font-medium">Order id:</span>

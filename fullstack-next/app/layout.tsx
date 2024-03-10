@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Home",
     description: "The most brilliant (intelligent) clothing store online.",
-    url: "https://brilliantwear.se",
+    url: "https://www.brilliantwear.se",
     siteName: "Brilliantwear",
     images: [
       {
-        url: "https://brilliantwear.se/api/meta/opengraph/image",
+        url: "https://www.brilliantwear.se/api/meta/opengraph/image",
         width: 1200,
         height: 627,
         alt: "Brilliantwear logo",
@@ -29,9 +29,16 @@ export const metadata: Metadata = {
     locale: "en",
     type: "website",
   },
-  metadataBase: new URL("https://brilliantwear.se"),
+  metadataBase: new URL("https://www.brilliantwear.se"),
   creator: "Philip Andersson",
-  keywords: ["clothing", "store", "fashion", "ecommerce", "brilliantwear"],
+  keywords: [
+    "clothing",
+    "store",
+    "fashion",
+    "AI",
+    "ecommerce",
+    "brilliantwear",
+  ],
   generator: "Next.js",
 };
 
@@ -68,9 +75,9 @@ export default function RootLayout({
               <span className="text-sm text-gray-200 md:text-center">
                 &copy; {currentYear} Brilliantwear. All Rights Reserved.
               </span>
-              <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-200 md:mt-0">
+              <ul className="flex flex-wrap gap-x-4 gap-y-3 lg:gap-x-6 lg:gap-y-0 items-center mt-3 text-sm font-medium text-gray-200 md:mt-0">
                 <li>
-                  <Link href="/about" className="mr-4 hover:underline lg:mr-6">
+                  <Link href="/about" className="hover:underline">
                     About
                   </Link>
                 </li>
@@ -82,16 +89,13 @@ export default function RootLayout({
                 <li>
                   <Link
                     href="/terms-and-conditions"
-                    className="ml-4 hover:underline lg:ml-6"
+                    className="hover:underline"
                   >
                     Terms and Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/privacy-notice"
-                    className="ml-4 hover:underline lg:ml-6"
-                  >
+                  <Link href="/privacy-notice" className="hover:underline">
                     Privacy Notice
                   </Link>
                 </li>

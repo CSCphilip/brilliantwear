@@ -13,7 +13,7 @@ export default function ManProducts() {
 
   return (
     <main className="grow flex flex-col items-center pb-7">
-      <div className="w-[375px] lg:w-[775px] xl:w-[1240px] 2xl:w-[1345px]">
+      <div className="px-2 lg:px-0 w-full max-w-[351px] lg:max-w-[688px] xl:max-w-[1240px] 2xl:max-w-[1345px] mb-2">
         <h2 className="text-center my-4 lg:text-left lg:ps-1">Man</h2>
         <div className="flex justify-between gap-x-8">
           <ProductTypesFilter

@@ -28,7 +28,6 @@ export default function ProductTypesFilter({
       `https://www.brilliantwear.se/api/products/types?genderTypeFilter=${gender}`
     ).then((res) => {
       res.json().then((data) => {
-        console.log("test:", data);
         setTypes(data);
       });
     });
@@ -45,7 +44,7 @@ export default function ProductTypesFilter({
   }
 
   return (
-    <div className="overflow-x-scroll lg:px-1 mb-2">
+    <div className="overflow-x-scroll lg:px-1 lg:scrollbar-hide">
       <ul className="flex">
         {types.map((type, index) => {
           return (
@@ -54,7 +53,7 @@ export default function ProductTypesFilter({
               className={`${index !== types.length - 1 && "me-2"}`}
             >
               <button
-                className={`border border-black py-1 px-1.5 rounded-sm hover:bg-gray-200 ${
+                className={`border border-black py-1 w-16 rounded-sm hover:bg-gray-200 ${
                   type === typeFilter && "bg-gray-200"
                 }`}
                 onClick={() => handleClick(type)}

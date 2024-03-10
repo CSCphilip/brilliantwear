@@ -92,15 +92,13 @@ Visit at: https://www.brilliantwear.se/
 - [x] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
   - [ ] Experiment with the new GPT-4 model to see if you get better product suggestions.
 - [x] Page titles (text in the tab) and other metadata.
-  - [ ] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.
+  - [x] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.
 - [x] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [x] Information pages (footer links): About, Contact, Terms and Conditions
 - [x] GDPR and personal information saved when buying products.
 - [x] Add Cookie consent banner.
 - [x] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
 - [x] Look at bugs related to using www.brilliantwear.se instead of brilliantwear.se
-  - [ ] When building the app, use www.brilliantwear.se/api in the code.
-  - [ ] Test if this is solved after deployed. Now the main URL that should be used is www.brilliantwear.se and not brilliantwear.se.
 - [x] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented.
 - [ ] Check all of the product pages to see that they work.
 - [ ] Deploy version 1.0.0 of Brilliantwear.
@@ -122,6 +120,9 @@ Visit at: https://www.brilliantwear.se/
 
 TODO: Add text and images of pages.
 
-# Copyright notes
+## Products on the website
+The products on the webiste are not real. All of the product images have been taken from Unsplash which has this [license](https://unsplash.com/license) and can be used without any permissions. The product brand names have been made up.
 
-TODO: Add text here
+## Copyright notice
+
+Brilliantwear by Philip Andersson. All Rights Reserved. 

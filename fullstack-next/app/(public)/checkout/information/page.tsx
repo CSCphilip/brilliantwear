@@ -31,11 +31,11 @@ export default function CheckoutInformation() {
 
   return (
     <div className="grow w-screen pb-16 lg:pb-28 flex justify-center items-center">
-      <div className="w-fit flex flex-col items-center">
+      <div className="w-full px-2 flex flex-col items-center">
         <h3 className="my-7">Checkout</h3>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-[350px] flex flex-col"
+          className="w-full max-w-[350px] flex flex-col"
         >
           <div className="w-full">
             <label className="pl-1 font-medium">Contact</label>
@@ -56,7 +56,7 @@ export default function CheckoutInformation() {
                 {...fields.email}
                 type="email"
                 placeholder="Email"
-                className="w-[350px] bg-gray-50 border border-gray-300 text-gray-900 ps-10 p-2.5 
+                className="w-full bg-gray-50 border border-gray-300 text-gray-900 ps-10 p-2.5 
               focus:outline-none focus:border-black"
               />
             </div>
@@ -74,7 +74,7 @@ export default function CheckoutInformation() {
             </button>
           </div>
         </form>
-        <div className="w-full mt-10 px-5 flex items-center justify-between">
+        <div className="w-full max-w-[350px] mt-10 px-5 flex items-center justify-between">
           <hr className="grow h-px border-0 bg-gray-700" />
           <p className="mx-4 pb-1 italic">OR:</p>
           <hr className="grow h-px border-0 bg-gray-700" />
