@@ -19,5 +19,3 @@ export default function ReturnHomeButton() {
     </button>
   );
 }
-
-// font-medium text-gray-900 4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
