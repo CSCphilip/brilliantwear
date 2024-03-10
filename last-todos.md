@@ -10,13 +10,15 @@
   - [ ] Check that this has been solved on several different browsers and devices. Otherwise check out: https://blog.logrocket.com/how-to-use-custom-fonts-tailwind-css/
 - [x] Look at the link on the 404 page which sometimes don't work.
   - [ ] Make sure this works from both product pages and other pages. Otherwise, you could perhaps use refresh from https://nextjs.org/docs/app/api-reference/functions/use-router
-- [ ] On some pages (products catalog due to type I think, checkout pages) you can scroll the entire page horizontally which should not be. This is because some elements are too big on the x axis.
+- [x] On some pages (products catalog due to type I think, checkout pages) you can scroll the entire page horizontally which should not be. This is because some elements are too big on the x axis.
+  - [ ] Check this on smaller screens after deployed.
 
 Final touches:
 
 - [ ] Remove this file from the root of the repo on GitHub
+- [ ] Make sure that I have enough credits for the OpenAI API before the launch
 - [ ] Make a new release for version 1.0.0 on GitHub.
 - [ ] Go through and work on the README.md.
-- [ ] Make the repo public
+- [ ] Make the repo public.
 - [ ] Write text for LinkedIn post.
 - [ ] Update LinkedIn profile.

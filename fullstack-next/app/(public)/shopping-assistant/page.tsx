@@ -65,7 +65,7 @@ export default function ShoppingAssistant() {
               <PropagateLoader color="#3B82F6" size={15} />
             </div>
           ) : suggestedProducts.length > 0 ? (
-            <div className="mt-7 lg:mt-10 lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-4 lg:gap-x-10">
+            <div className="mt-7 lg:mt-10 px-2 lg:px-4 grid grid-cols-2 lg:grid-cols-4 gap-y-5 lg:gap-y-10 gap-x-4 lg:gap-x-10">
               {suggestedProducts.length > 0 &&
                 suggestedProducts.map((product: Product) => (
                   <ProductCard

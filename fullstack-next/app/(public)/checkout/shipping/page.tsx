@@ -6,6 +6,7 @@ import { useFetch } from "_helpers/client/hooks";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { PostNordServicePoint } from "_types";
+import { set } from "mongoose";
 
 export default function CheckoutShipping() {
   const {
@@ -37,30 +38,33 @@ export default function CheckoutShipping() {
     country: register("country", { required: "Country is required" }),
   };
 
-  const [servicePoints, setServicePoints] = useState([]);
+  const [servicePoints, setServicePoints] = useState<any[]>([]);
   const [fetchingServicePoints, setFetchingServicePoints] = useState(false);
+  const [isAddressInvalid, setIsAddressInvalid] = useState(false);
 
   useEffect(() => {
-    (async () => {
-      if (shippingAddress.street !== "") {
-        setFetchingServicePoints(true);
-        try {
-          const servicePoints = await fetch.post(
-            "http://localhost:3000/api/checkout/servicepoints",
-            shippingAddress
-          );
-
-          setServicePoints(servicePoints);
-        } catch (error) {
+    if (shippingAddress.street !== "") {
+      setFetchingServicePoints(true);
+      fetch
+        .post(
+          "http://localhost:3000/api/checkout/servicepoints",
+          shippingAddress
+        )
+        .then((servicePoints) => {
+          if (servicePoints.constructor === Array) {
+            setServicePoints(servicePoints);
+            setIsAddressInvalid(false);
+          } else {
+            setIsAddressInvalid(true);
+          }
+        })
+        .catch((error) => {
           console.error("Error fetching service points:", error);
-        }
-        setFetchingServicePoints(false);
-      }
-    })();
-
-    return () => {
-      // this now gets called when the component unmounts
-    };
+        })
+        .finally(() => {
+          setFetchingServicePoints(false);
+        });
+    }
   }, [shippingAddress]);
 
   async function onSubmitShippingInformation(inputFields: any) {
@@ -84,12 +88,12 @@ export default function CheckoutShipping() {
   }
 
   return (
-    <div className="grow w-screen pb-12 flex flex-col lg:flex-row justify-center items-center">
-      <div className="w-fit flex flex-col items-center">
+    <div className="grow w-screen pb-12 px-2 flex flex-col lg:flex-row justify-center items-center">
+      <div className="w-full max-w-[350px] flex flex-col items-center">
         <h3 className="my-7">Shipping information</h3>
         <form
           onSubmit={handleSubmit(onSubmitShippingInformation)}
-          className="w-[350px] flex flex-col gap-2"
+          className="w-full flex flex-col gap-2"
         >
           <div className="flex flex-col">
             <input
@@ -187,7 +191,7 @@ export default function CheckoutShipping() {
             <button
               type="submit"
               disabled={fetchingServicePoints}
-              className="w-full mx-5 h-11 mt-7 pb-[1px] flex items-center justify-center rounded-full border border-transparent  
+              className="w-full mx-5 px-3 py-[9px] mt-7 flex items-center justify-center rounded-full border border-transparent  
             bg-amber-400 hover:bg-amber-300"
             >
               Continue to select service point
@@ -215,17 +219,25 @@ export default function CheckoutShipping() {
         </form>
       </div>
 
+      {/* Vertical separator for desktop mode:  */}
       <div
         className={`hidden lg:inline ms-14 w-px mt-8 h-[550px] bg-gray-700 ${
           servicePoints.length === 0 && "lg:hidden"
         }`}
-      ></div>
-
-      <ServicePoints
-        servicePoints={servicePoints}
-        setServicePoint={setServicePoint}
-        toNextCheckoutStep={toNextCheckoutStep}
       />
+
+      {isAddressInvalid ? (
+        <p className="w-full max-w-[310px] mt-10 lg:ms-20 border border-black rounded-sm p-2 text-center bg-gray-300">
+          We're sorry, but the address you provided appears to be incorrect.
+          Please check the address and try again.
+        </p>
+      ) : (
+        <ServicePoints
+          servicePoints={servicePoints}
+          setServicePoint={setServicePoint}
+          toNextCheckoutStep={toNextCheckoutStep}
+        />
+      )}
     </div>
   );
 }
@@ -268,71 +280,70 @@ function ServicePoints({
   }
 
   return (
-    <div
-      className={`w-[350px] mt-10 lg:mt-0 lg:ms-10 ${
-        servicePoints.length === 0 && "hidden"
-      }`}
-    >
-      <hr className="w-full h-px border-0 bg-gray-700 lg:hidden" />
+    servicePoints.length > 0 && (
+      <div className="w-full max-w-[350px] mt-10 lg:mt-0 lg:ms-10">
+        {/* Horizontal separator for mobile mode:  */}
+        <hr className="w-full h-px border-0 bg-gray-700 lg:hidden" />
 
-      <h3 className="mt-7 lg:mt-7 text-center">Service points</h3>
+        <h3 className="mt-7 lg:mt-7 text-center">Service points</h3>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mt-4 lg:mt-10 pb-4">
-          <ol className="flex flex-col w-full gap-3 px-3">
-            {servicePoints.map((servicePoint) => (
-              <li key={servicePoint.servicePointId}>
-                <input
-                  {...fields.servicePoint}
-                  id={servicePoint.servicePointId}
-                  value={servicePoint.servicePointId}
-                  name="servicePoint"
-                  type="radio"
-                  className="hidden peer"
-                />
-                <label
-                  htmlFor={servicePoint.servicePointId}
-                  className="flex items-center justify-between w-full p-2 text-gray-700 bg-gray-50 
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mt-4 lg:mt-10 pb-4">
+            <ol className="flex flex-col w-full gap-3 px-3">
+              {servicePoints.map((servicePoint) => (
+                <li key={servicePoint.servicePointId}>
+                  <input
+                    {...fields.servicePoint}
+                    id={servicePoint.servicePointId}
+                    value={servicePoint.servicePointId}
+                    name="servicePoint"
+                    type="radio"
+                    className="hidden peer"
+                  />
+                  <label
+                    htmlFor={servicePoint.servicePointId}
+                    className="flex items-center justify-between w-full p-2 text-gray-700 bg-gray-50 
                   border border-gray-300 rounded-sm cursor-pointer hover:text-black 
                   hover:bg-slate-200 peer-checked:border-black peer-checked:text-black 
                   peer-checked:bg-slate-200"
-                >
-                  <div className="w-full flex justify-between">
-                    <div className="pe-6">
-                      <p className="w-full text-lg font-semibold">
-                        {servicePoint.name}
-                      </p>
-                      <p className="w-full">
-                        {servicePoint.visitingAddress.streetName +
-                          " " +
-                          servicePoint.visitingAddress.streetNumber}
-                      </p>
+                  >
+                    <div className="w-full flex justify-between">
+                      <div className="pe-6">
+                        <p className="w-full text-lg font-semibold">
+                          {servicePoint.name}
+                        </p>
+                        <p className="w-full">
+                          {servicePoint.visitingAddress.streetName +
+                            " " +
+                            servicePoint.visitingAddress.streetNumber}
+                        </p>
+                      </div>
+                      <div className="flex items-center">
+                        <p className="whitespace-nowrap">
+                          {servicePoint.routeDistance} m
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <p className="whitespace-nowrap">
-                        {servicePoint.routeDistance} m
-                      </p>
-                    </div>
-                  </div>
-                </label>
-              </li>
-            ))}
-          </ol>
-          <p className="text-red-600 pl-1 pt-2 text-center">
-            {errors.servicePoint?.message?.toString()}
-          </p>
-        </div>
+                  </label>
+                </li>
+              ))}
+            </ol>
+            <p className="text-red-600 pl-1 pt-2 text-center">
+              {errors.servicePoint?.message?.toString()}
+            </p>
+          </div>
 
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="w-56 h-11 mt-3 lg:mt-6 pb-[1px] flex items-center justify-center rounded-full border border-transparent  
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="w-56 h-11 mt-3 lg:mt-6 pb-[1px] flex items-center justify-center rounded-full border border-transparent  
             bg-amber-400 hover:bg-amber-300 shadow-md"
-          >
-            Continue to payment
-          </button>
-        </div>
-      </form>
-    </div>
+            >
+              Continue to payment
+            </button>
+          </div>
+        </form>
+      </div>
+    )
   );
 }
