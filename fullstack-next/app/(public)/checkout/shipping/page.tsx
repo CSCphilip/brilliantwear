@@ -228,8 +228,8 @@ export default function CheckoutShipping() {
 
       {isAddressInvalid ? (
         <p className="w-full max-w-[310px] mt-10 lg:ms-20 border border-black rounded-sm p-2 text-center bg-gray-300">
-          We're sorry, but the address you provided appears to be incorrect.
-          Please check the address and try again.
+          We&apos;re sorry, but the address you provided appears to be
+          incorrect. Please check the address and try again.
         </p>
       ) : (
         <ServicePoints
