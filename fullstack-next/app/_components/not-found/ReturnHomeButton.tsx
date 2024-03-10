@@ -7,6 +7,7 @@ export default function ReturnHomeButton() {
 
   const handleClick = () => {
     router.push("/");
+    router.refresh();
   };
 
   return (
