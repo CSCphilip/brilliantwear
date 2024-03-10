@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  brilliantwear-fullstack-next:
+    image: cscphilip/brilliantwear-fullstack-next:latest
+    container_name: brilliantwear-fullstack-next
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/ubuntu/brilliantwear/backend/images:/app/products/images
+    restart: always
