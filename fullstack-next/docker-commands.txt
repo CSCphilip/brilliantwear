@@ -3,6 +3,10 @@ docker build -t cscphilip/brilliantwear-fullstack-next:latest .
 # With Docker Compose
 docker compose up -d
 
+# You can check the status of all Docker Compose containers (started with Docker Compose) with:
+docker compose ps
+
+
 # Without Docker Compose (and no automatic restart)
 docker run -p 3000:3000 --mount type=bind,source=/home/ubuntu/brilliantwear/backend/images,target=/app/products/images -d --name brilliantwear-fullstack-next cscphilip/brilliantwear-fullstack-next:latest
 
