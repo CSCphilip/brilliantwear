@@ -116,7 +116,7 @@ Visit at: https://www.brilliantwear.se/
 
 ## Admin dashboard pages
 
-A dashboard was created for admins of Brilliantwear where they can, for instance, add new products and check contact requests from users. The following images show some of the dashboard pages.
+A dashboard was created for admins of Brilliantwear where they can, for instance, add new products and check contact requests from users. To reach the dashboard pages an admin needs to log in. The following images show some of the dashboard pages.
 
 <img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-home.png" style=" width:700px ; height:380px "  >
 
