@@ -116,12 +116,11 @@ Visit at: https://www.brilliantwear.se/
 
 ## Admin dashboard pages
 
-The following images show the dashboard pages of Brilliantwear, only available for admins after logging in.
+A dashboard was created for admins of Brilliantwear where they can, for instance, add new products and check contact requests from users. The following images show some of the dashboard pages.
 
 <img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-home.png" style=" width:700px ; height:380px "  >
 
 <img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-orders.jpg" style=" width:700px ; height:380px "  >
-
 
 ## Products on the website
 The products on the webiste are not real. All of the product images have been taken from Unsplash which has this [license](https://unsplash.com/license) and can be used without any permissions. The product brand names have been made up.
