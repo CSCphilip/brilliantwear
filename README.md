@@ -118,13 +118,9 @@ Visit at: https://www.brilliantwear.se/
 
 The following images show the dashboard pages of Brilliantwear, only available for admins after logging in.
 
-<div style="width:60px ; height:60px">
-![Dashboard Home](https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-home.png)
-<div>
+<img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-home.png" style=" width:900px ; height:500px "  >
 
-<div style="width:60px ; height:60px">
-![Dashboard Orders](https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-orders.jpg)
-<div>
+<img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-orders.jpg" style=" width:900px ; height:500px "  >
 
 
 ## Products on the website
