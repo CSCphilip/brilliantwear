@@ -33,7 +33,7 @@ Visit at: https://www.brilliantwear.se/
 - PostNord
 - PayPal
 
-## Tasks to build a complete online clothing shop and go live
+## Tasks to build a complete online clothing shop
 
 ### The most essential tasks
 
@@ -52,12 +52,12 @@ Visit at: https://www.brilliantwear.se/
 #### Second stage (fundamental functional parts of an online shop)
 
 - [x] Shopping cart functionality. Add buy button in the product detail page.  
-       **Notes:** To get the persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart.
-- [x] Checkout functionality. An example of steps with images: [How To Design A Great Ecommerce Checkout Flow](https://www.bolt.com/thinkshop/ecommerce-checkout-process-flow). To reduce checkout abandonments, make the following steps as few and easy as possible.  
+       **Notes:** To get persistence of the items in the cart between browser sessions, the usage of the local storage was implemented (as a custom hook). React's useContext hook was also used to create the shopping cart.
+- [x] Checkout functionality. An example of steps with images: [How To Design A Great Ecommerce Checkout Flow](https://www.bolt.com/thinkshop/ecommerce-checkout-process-flow).  
        Typical steps: Initiate checkout / View cart > (Optional) Login / Register > Shipping information > Shipping method > Payment method / Billing information > Preview order > Place order > Confirmation > Account creation (Optional).  
-       **Notes:** The checkout steps for Brilliantwear are: Information > Shipping > Payment > Complete. In the shipping step, after the user has entered their shipping infrormation, services points are fetched from the PostNord API from which the use can select one. Only guest (no log in) checkouts has been implemented. On the admin dashboard, a list of orders was added, clearly showing the payment status of each order.
-- [x] Payment gateway. Suggestions: PayPal, Visa, Swish, Stripe, Klarna, invoice. Some recommendations (for payments in Sweden): [Val av betallösningar för din e-handel](https://webshopsguiden.se/betallosningar/). 60% of all online purchases are interrupted during the payment process. (Source: Bambora) To counteract this, smooth payment needs to be in place.  
-       **Notes:** In the payment step, PayPal is the currently implemented payment method to checkout.
+       **Notes:** The checkout steps for Brilliantwear are: Information > Shipping > Payment > Complete. In the shipping step, after the user has entered their shipping infrormation, services points are fetched from the PostNord API from which the user can select one. Only guest (no log in) checkouts has been implemented. On the admin dashboard, a list of orders was added, clearly showing the payment status of each order.
+- [x] Payment gateway. Considerations: PayPal, Visa, Swish, Stripe, Klarna, invoice.  
+       **Notes:** In the payment step, PayPal is currently the only implemented payment method to checkout.
 
 #### _Intermediate step:_
 
@@ -77,33 +77,32 @@ Visit at: https://www.brilliantwear.se/
 - [x] Improve home page. Add new sections. Design improvements.
 - [x] Add pages for Woman, Man and All Products. Make these pages look good and pretty similar.
 - [x] Make a specific page for the shopping assistant and make this page look good with search queries from users.
-- [x] Products filter & sorting feature.
+- [x] Products filter & sorting features.
 - [x] Improve the design of the product page.
-- [x] Improve the navbar in the mobile mode (smaller screens).
+- [x] Improve the navbar for the mobiles (smaller screens).
 - [x] Create a new nicer looking favicon.
 - [x] Other small points:
   - [x] Think about how you should solve the product image loading icon when the image can't be fetched.
   - [x] Look into the problem of odd number of products which don't look good on the pages with pagination (Woman, Man, All Products).
 
-**Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input will already be filled in for the request to go to OpenAI' API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. The navbar menu on smaller screens now looks better with a new transition animation using Framer Motion for opening and closing the menu. Now when a product image can't be fetched, instead of having an infinite loading icon, a default clothing icon image is shown.
+**Notes:** I started of this stage by creating web layouts and designs with Figma. The website now has two main separate woman and man pages with filters on the types of products (e.g. shoe, pants and jacket). Now a user can filter on type (e.g. Shoes or Jacket) at the same time as using sorting (e.g. price - low to high or latest products). Additionally, on the All Products page, it is possible to filter products by brand name. If a user uses the shopping assistant form on the home page, the user will be redirected to the dedicated shopping assistant page where the input already will be filled in for the request to go to OpenAI's API for product suggestions based on the user's input and the database. Otherwise, a user can search as usual through the form on the shopping assistant page which now has an improved design. On the product page, some customer benefits icons has been added as well as a section for related products (based on type and gender of the product in focus). Added new favicon to better align with the brand color of Brilliantwear. The navbar menu on smaller screens now looks better with a new transition animation using Framer Motion for opening and closing the menu. Now when a product image can't be fetched, instead of having an infinite loading icon, a default clothing icon image is shown.
 
 #### Fourth stage (finalization)
 
 - [x] Now once the backend part for the shopping assistant has been moved to Next.js backend, improve this functionality and make it faster and give better results. The shopping assistant seems a bit buggy, noticed during the intermediate step of building the app. Look into this and try to improve. Save the user searches from the shopping assistant in the DB for later use.
-  - [ ] Experiment with the new GPT-4 model to see if you get better product suggestions.
 - [x] Page titles (text in the tab) and other metadata.
   - [x] Test if the Open Graph meta with image works after deploying the website. Also check the page title for the product page which is set dynamically to the brand of the product.
 - [x] Review all fetch calls to ensure Next.js cache isn't causing any issues.
 - [x] Information pages (footer links): About, Contact, Terms and Conditions
-- [x] GDPR and personal information saved when buying products.
-- [x] Add Cookie consent banner.
+- [x] GDPR and personal information saved for completed checkouts.
+- [x] Add cookie consent banner.
 - [x] Remove the possibility for anyone to register and consequently access the dashboard only intended for admins.
 - [x] Look at bugs related to using www.brilliantwear.se instead of brilliantwear.se
 - [x] Add women's products to the website to make the distribution equal between men's and women's products. Also, think about adding types which are underrepresented.
-- [ ] Check all of the product pages to see that they work.
-- [ ] Deploy version 1.0.0 of Brilliantwear.
+- [x] Check all of the product pages to see that they work.
+- [x] Deploy version 1.0.0 of Brilliantwear.
 
-**Notes:** On the backend, some prompt engineering has been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use. Page titles has been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking. All of the information pages has been added. For the contact page with the form, a backend endpoint has been created to save the contact requests in the database. A page for a list of contact requests has also been added in the dashboard to read the requests. A Privacy Notice page has been incorporated to address GDPR compliance and provide information regarding the handling of user's personal data. Cookie banner added with link to more information about how cookies as used on the website. If a user accepts cookies, this setting is saved by using the localStorage. Now only real admins can access the dashboard. A new dashboard navigation bar has been added having a log out button and links to some of the dashboard pages. The bugs related to using www.brilliantwear.se was due to CORS. Therefore, in the config file for Brilliantwear of Nginx on the hosting server, a rule has been added to redirect all requests to brilliantwear.se so the main URL for accessing Brilliantwear becomes www.brilliantwear.se. New products added which makes the website more fun and realistic.
+**Notes:** On the backend, some prompt engineering have been tried to improve the results from OpenAI's API, including cases where no products could be suggested resulting in returning an empty array. Each user input is now also saved in the database for later use and features. Page titles have been added to most pages on the website with dynamic titles on the product page with the brand of the product. General metadata has also been added including Open Graph data for social media linking. All of the information pages has been added. For the contact page with the form, a backend endpoint has been created to save the contact requests in the database. A page for a list of contact requests has also been added in the dashboard to read the requests. A Privacy Notice page has been incorporated to address GDPR compliance and provide information regarding the handling of user's personal data. Cookie banner added with link to more information about how cookies are used on the website. If a user accepts cookies, this setting is saved by using the localStorage. Now only real admins can access the dashboard. A new dashboard navigation bar has been added having a log out button and links to some of the dashboard pages. The bugs related to using www.brilliantwear.se was due to CORS. Therefore, in the config file for Brilliantwear of Nginx on the hosting server, a rule has been added to redirect all requests from brilliantwear.se to www.brilliantwear.se, the new main URL for Brilliantwear. New products added which makes the website more realistic and fun to browse. Some smaller bug fixes that were discovered during an iterative deployment phase: footer links gap on a newline, no shopping cart icon visible on Apple devices, right arrow (on some devices) instead of left on the home page in the horizontal scroll list, problem with Google's Inter font which did not work across browsers where instead others fonts were added for backup compatibility, "Return Home" link on the 404 page (known bug in Next.js), horizontal scroll on entire pages due to incorrect width on some elements.
 
 ### Tasks for extra features that are not necessary in the beginning
 
@@ -113,12 +112,15 @@ Visit at: https://www.brilliantwear.se/
 - Log in for users
 - Links to social media
 - Dark mode (mostly for fun)
-- Add button/function for logout of admins
 - Email order confirmation with receipt. You could use Postmark for this.
 
 ## Admin dashboard pages
 
-TODO: Add text and images of pages.
+A dashboard was created for admins of Brilliantwear where they can, for instance, add new products and check contact requests from users. To reach the dashboard pages an admin needs to log in. The following images show some of the dashboard pages.
+
+<img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-home.png" style=" width:700px ; height:380px "  >
+
+<img src="https://github.com/CSCphilip/brilliantwear/blob/main/fullstack-next/dashboard-page-images/dashboard-orders.jpg" style=" width:700px ; height:380px "  >
 
 ## Products on the website
 The products on the webiste are not real. All of the product images have been taken from Unsplash which has this [license](https://unsplash.com/license) and can be used without any permissions. The product brand names have been made up.
