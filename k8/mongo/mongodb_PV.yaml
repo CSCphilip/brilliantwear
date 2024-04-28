@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv
+spec:
+  storageClassName: mongodb-storage
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  local:
+    path: /var/lib/mongodb-k8
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k8-worker-1

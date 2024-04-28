@@ -18,8 +18,11 @@ db.auth("philip", passwordPrompt())
 # Enter password when prompted. 
 
 
+# Mongo export command:
+mongoexport mongodb://localhost:27017 --db=brilliantwear --collection=users --out=users.json --authenticationDatabase "admin" -u "philip"
+
 # Mongo import command:
-mongoimport mongodb://localhost:27017/brilliantwear users.json --authenticationDatabase "admin" -u "philip" -p <password>
+mongoimport mongodb://localhost:27017/brilliantwear --collection=users users.json --authenticationDatabase "admin" -u "philip"
 
 
 # To restore a mongodb from a .gz file. NOTE: the nsFrom and nsTo are not necessary and will only change the name of the db in mongodb.

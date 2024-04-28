@@ -4,3 +4,4 @@ local
 backend/.env
 *.vscode/
 mongodb-docker/test-server/node_modules/
+k8/mongo/mongodb_Secrets.yaml
