@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: brilliantwear-fullstack-next
-          image: cscphilip/brilliantwear-fullstack-next
+          image: localhost:5000/brilliantwear-fullstack-next
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
