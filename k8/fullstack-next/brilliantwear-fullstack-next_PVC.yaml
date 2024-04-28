@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: fullstack-next-pvc
+  name: brilliantwear-fullstack-next-pvc
 spec:
-  storageClassName: fullstack-next-storage
+  storageClassName: brilliantwear-fullstack-next-storage
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1.8Gi
+      storage: 1Gi

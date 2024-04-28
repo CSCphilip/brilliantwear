@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brilliantwear-fullstack-next-deployment
+  labels:
+    app: brilliantwear-fullstack-next
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brilliantwear-fullstack-next
+  template:
+    metadata:
+      labels:
+        app: brilliantwear-fullstack-next
+    spec:
+      containers:
+        - name: brilliantwear-fullstack-next
+          image:
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: "brilliantwear-fullstack-next-products-images"
+              mountPath: "/app/products/images"
+      volumes:
+        - name: "brilliantwear-fullstack-next-products-images"
+          persistentVolumeClaim:
+            claimName: "brilliantwear-fullstack-next-pvc"
