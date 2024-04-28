@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fullstack-next-pvc
+spec:
+  storageClassName: fullstack-next-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1.8Gi
