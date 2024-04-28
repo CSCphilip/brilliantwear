@@ -47,7 +47,7 @@ export default function CheckoutShipping() {
       setFetchingServicePoints(true);
       fetch
         .post(
-          "http://localhost:3000/api/checkout/servicepoints",
+          "https://www.brilliantwear.se/api/checkout/servicepoints",
           shippingAddress
         )
         .then((servicePoints) => {

@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Home",
     description: "The most brilliant (intelligent) clothing store online.",
-    url: "https://brilliantwear.se",
+    url: "https://www.brilliantwear.se",
     siteName: "Brilliantwear",
     images: [
       {
-        url: "https://brilliantwear.se/api/meta/opengraph/image",
+        url: "https://www.brilliantwear.se/api/meta/opengraph/image",
         width: 1200,
         height: 627,
         alt: "Brilliantwear logo",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: "en",
     type: "website",
   },
-  metadataBase: new URL("https://brilliantwear.se"),
+  metadataBase: new URL("https://www.brilliantwear.se"),
   creator: "Philip Andersson",
   keywords: [
     "clothing",

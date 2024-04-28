@@ -26,7 +26,7 @@ export default function ProductCard({
 
   useEffect(() => {
     const img = new Image();
-    img.src = `http://localhost:3000/api/products/image/${encodeURIComponent(
+    img.src = `https://www.brilliantwear.se/api/products/image/${encodeURIComponent(
       product.image_url
     )}`;
     img.onload = () => {
@@ -62,7 +62,7 @@ export default function ProductCard({
         ) : (
           <img
             src={
-              "http://localhost:3000/api/products/image/" +
+              "https://www.brilliantwear.se/api/products/image/" +
               encodeURIComponent(product.image_url)
             }
             alt="An image of the product."

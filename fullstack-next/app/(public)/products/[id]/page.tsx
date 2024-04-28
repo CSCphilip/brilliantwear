@@ -12,9 +12,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = params.id;
 
-  const product = await fetch(`http://localhost:3000/api/products/${id}`).then(
-    (res) => res.json()
-  );
+  const product = await fetch(
+    `https://www.brilliantwear.se/api/products/${id}`
+  ).then((res) => res.json());
 
   return {
     title: `${product.brand} | Brilliantwear`,

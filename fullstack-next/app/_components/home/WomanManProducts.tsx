@@ -14,13 +14,13 @@ export default function WomanManProducts() {
   const [manProducts, setManProducts] = useState<Product[] | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/products/woman?shuffle=true")
+    fetch("https://www.brilliantwear.se/api/products/woman?shuffle=true")
       .then((res) => res.json())
       .then((json) => {
         setWomanProducts(json.products.slice(0, NO_PRODUCTS));
       })
       .catch((err) => console.error(err));
-    fetch("http://localhost:3000/api/products/man?shuffle=true")
+    fetch("https://www.brilliantwear.se/api/products/man?shuffle=true")
       .then((res) => res.json())
       .then((json) => {
         setManProducts(json.products.slice(0, NO_PRODUCTS));
