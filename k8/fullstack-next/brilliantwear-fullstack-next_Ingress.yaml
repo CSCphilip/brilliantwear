@@ -4,6 +4,8 @@ metadata:
   name: brilliantwear-fullstack-next-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    # Related to the parameter below. The parameter 'client_max_body_size' needs to be added to the nginx config on the host pointing to the NodePort of the Nginx Ingress Controller.
+    nginx.ingress.kubernetes.io/proxy-body-size: "20m"
 spec:
   ingressClassName: nginx
   rules:
