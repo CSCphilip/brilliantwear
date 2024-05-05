@@ -16,7 +16,7 @@ spec:
         app: mongodb-client
     spec:
       containers:
-        - image: mongo:latest
+        - image: mongo
           name: mongodb-client
           env:
             - name: mongo-client_INITDB_ROOT_USERNAME
