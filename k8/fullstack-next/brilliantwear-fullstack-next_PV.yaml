@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: brilliantwear-fullstack-next-pv
+spec:
+  storageClassName: brilliantwear-fullstack-next-storage
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Recycle
+  mountOptions:
+    - hard
+    - nfsvers=4
+  nfs:
+    path: /home/ubuntu/brilliantwear/backend/images
+    server: 10.0.81.213

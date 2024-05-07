@@ -3,7 +3,7 @@ import { getMongoPassword } from "./init";
 import log from "_utilities/log";
 
 const HOST =
-  process.env.NODE_ENV === "development" ? "localhost" : "172.17.0.1"; // NOTE: The latter is the default gateway for Docker containers using the default bridge network
+  process.env.NODE_ENV === "development" ? "localhost" : "mongodb-service"; // NOTE: The latter is the name of the K8 service for mongodb
 const PORT = 27017;
 const DB = "brilliantwear";
 const USERNAME = "philip";
